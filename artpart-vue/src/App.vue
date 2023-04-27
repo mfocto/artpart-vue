@@ -1,11 +1,11 @@
 <template>
-  <PageHeader v-if="!$route.name"/> <!-- 헤더 컴포넌트 -->
-  <div class="container-fluid">
-  <div class="row">
-  <ASidebar v-if="!$route.name"/>
-  <main style="margin-left: 340px !important; margin-top: 120px !important; width: 100%;" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  <router-view/>  <!-- 페이지 이동이 표시될 곳 -->
-  </main>
+  <PageHeader/> <!-- 헤더 컴포넌트 -->
+    <div class="container-fluid">
+     <div class="row"> 
+    <ASidebar/>
+     <main style="margin-left: 340px !important; width: calc(100% - 340px);" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <router-view/>  <!-- 페이지 이동이 표시될 곳 -->
+   </main> 
   </div>
   </div>
 </template>
@@ -18,12 +18,15 @@ import PageHeader from './components/common/PageHeader-member.vue';
 import ASidebar from './components/common/ArtPartSidebar.vue';
 
 
+
 export default {
   name: 'App',
   components: { 
     //HelloWorld
     PageHeader,
-    ASidebar,
+    ASidebar
+   
+    
   }
 }
 </script>
@@ -51,6 +54,7 @@ export default {
 
 .container-fluid{
   height: 100%;
+  margin-top: 120px !important;
 }
 .row{
   height: 100%;

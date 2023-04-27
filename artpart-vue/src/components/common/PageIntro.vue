@@ -6,7 +6,7 @@
     <div class="masthead-content">
         <div class="masthead">
             <div class="box">
-                <div class="front"> <img src="@/assets/images/black.jpg" /> </div>
+                <div class="front"> <img id="img" src="@/assets/images/black.jpg"/></div>
             </div>
 
             <div class="container-fluid px-4 px-lg-0">
@@ -15,11 +15,16 @@
                 <form id="contactForm" >
                     <!-- id address input-->
                     <div class="row input-group-newsletter">
-                        <div class="col"><input class="form-control" id="id" type="text" placeholder="Enter email address..." aria-label="Enter id" data-sb-validations="required,id" /></div>
-                        <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">LOGIN</button></div>
+                        <div class="col">
+                            <input class="form-control" id="id" type="text" placeholder="아이디를 입력해주세요" aria-label="Enter id" data-sb-validations="required,id" style="width:500px;"/>
+                            <input class="form-control" id="password" type="password" placeholder="비밀번호를 입력해주세요" aria-label="Enter password" style="width:500px;" />
+                            
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary disabled" id="submitButton" type="submit">LOGIN</button></div>
                     </div>
-                    <div class="invalid-feedback mt-2" data-sb-feedback="text:required">id를 입력해주세요</div>
-                    <div class="invalid-feedback mt-2" data-sb-feedback="email:email">Email is not valid.</div>
+                    <!-- <div class="invalid-feedback mt-2" data-sb-feedback="text:required">id를 입력해주세요</div>
+                    <div class="invalid-feedback mt-2" data-sb-feedback="email:email">Email is not valid.</div> -->
                     <!-- Submit success message-->
                     <!---->
                     <!-- This is what your users will see when the form-->
@@ -62,44 +67,57 @@ export default {
 
 </script>
 
-
-
-
-
-
-
 <style scoped>
 .background{
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    margin:auto;
-    background-image: url("@/assets/images/bg-mobile-fallback.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: auto;
+  background-image: url("@/assets/images/bg-mobile-fallback.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0; 
   
 }
 
-.box{
-    position: relative;
-}
-
+ .box{
+    position: absolute;
+    /* left: 400px;
+    top: 8%; 
+    bottom: 0; */
+    z-index: 1;
+    background-size: cover;
+    object-fit: cover;
+    
+} 
 
 .front {
     position: absolute;
-    bottom: 50%;
-    left: -80%;
-    border-right: 180px
+    top: 550px;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-size: cover;
+    object-fit: cover;
 }
 
-/* 작성중 */
 .container-fluid {
     position: absolute;
-    font-size: 20px;
+    top: 550px;
+    width: 20%;
+    height: 20%;
+    /* right: 0;
+    top: 70%;
+    left: -10%; */
+     transform: translateY(-50%);
+    z-index: 3;
+    
     color: white;
-    border-right: 180px;
 }
+
+
 
 </style>
 
