@@ -7,9 +7,9 @@
     <div class="flex-shrink-0 p-3" style="width: 280px;">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
-          <button class="btn d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          <router-link to="/notice-list" class="btn d-inline-flex align-items-center rounded border-0">
             공지사항
-          </button>
+          </router-link>
         </li>
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
@@ -33,9 +33,9 @@
           </button>
           <div class="collapse" id="dashboard-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">검침</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설 관리</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">외부업체</a></li>
+              <li><router-link to="/read" class="link-body-emphasis d-inline-flex text-decoration-none rounded">검침</router-link></li>
+              <li><router-link to="/seesul" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설 관리</router-link></li>
+              <li><router-link to="/company-list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">외부업체</router-link></li>
             </ul>
           </div>
         </li>
