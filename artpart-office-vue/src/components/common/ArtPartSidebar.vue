@@ -17,8 +17,12 @@
           </button>
           <div class="collapse" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">관리비</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">입출금목록</a></li>
+              <li><router-link to="/fee" class="link-body-emphasis d-inline-flex text-decoration-none rounded">관리비</router-link></li>
+              <li><router-link to="/daily-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded">일계표</router-link></li>
+              <li><router-link to="/monthly-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded">월계표</router-link></li>
+              <li><router-link to="/voucher-registration" class="link-body-emphasis d-inline-flex text-decoration-none rounded">전표등록</router-link></li>
+              <li><router-link to="/voucher-inquiry" class="link-body-emphasis d-inline-flex text-decoration-none rounded">전표조회</router-link></li>
+              <li><router-link to="/cash-journal" class="link-body-emphasis d-inline-flex text-decoration-none rounded">현금출납부</router-link></li>
             </ul>
           </div>
         </li>
@@ -35,7 +39,6 @@
           </div>
         </li>
         
-        <!-- <li class="border-top my-3"></li> -->
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#resident-collapse" aria-expanded="false">
             입주민
