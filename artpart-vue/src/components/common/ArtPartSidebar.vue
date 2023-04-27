@@ -1,6 +1,6 @@
 <template>  
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse ">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
     <img src="../../assets/images/rogo/ArtPart_navy.png" width="150" height="100" class="d-inline-block align-top" alt="">
   </a>
   <hr>
@@ -12,8 +12,8 @@
         </button>
         <div class="collapse" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">관리비 사용 내역</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">관리비 납부 내역</a></li>
+            <li><a href="/Using" class="link-dark d-inline-flex text-decoration-none rounded">관리비 사용 내역</a></li>
+            <li><a href="/Pay" class="link-dark d-inline-flex text-decoration-none rounded">관리비 납부 내역</a></li>
           </ul>
         </div>
       </li>
@@ -23,7 +23,7 @@
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설관리현황</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">시설관리현황</a></li>
           </ul>
         </div>
       </li>
@@ -33,7 +33,7 @@
         </button>
         <div class="collapse" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">공지사항</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공지사항</a></li>
           </ul>
         </div>
       </li>
