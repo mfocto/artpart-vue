@@ -7,7 +7,7 @@ import reportD from '@/views/accounting/D-report.vue'
 import reportM from '@/views/accounting/M-report.vue'
 import VoucherReg from '@/views/accounting/Voucher-reg.vue'
 import VoucherInq from '@/views/accounting/Voucher-inquiry.vue'
-
+import MFeeList from '@/views/accounting/MFeeList.vue'
 
 const routes = [
   {
@@ -49,6 +49,11 @@ const routes = [
     path: '/voucher-inquiry',
     name: 'VoucherInq',
     component: VoucherInq
+  },
+  {
+    path: '/feelist',
+    name: 'MFeeList',
+    component: MFeeList
   }
   
 ]

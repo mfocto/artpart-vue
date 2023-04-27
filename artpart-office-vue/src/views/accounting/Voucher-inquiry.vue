@@ -1,7 +1,12 @@
 <template>
 <h2>전표 조회</h2>
 <br><br>
+<div class="input-group mb-3 border rounded">
+          <input type="text" class="form-control" placeholder="전표 번호 조회">
+          <button type="submit" class="btn btn-secondary">조회</button>
+        </div>
 <div class="table-responsive">
+  
       <table class="table table-striped table-sm">
         <thead>
           <tr>
@@ -75,10 +80,7 @@
 </tbody>
 
       </table>
-      <div class="input-group">
-          <input type="text" class="form-control" placeholder="전표 번호 조회">
-          <button type="submit" class="btn btn-secondary">조회</button>
-        </div>
+      
     </div>
     </template>
 
