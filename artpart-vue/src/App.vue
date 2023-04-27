@@ -1,9 +1,12 @@
 <template>
-  <PageHeader v-if="!$route.name"/> <!-- 헤더 컴포넌트 -->
+  <PageHeader /> <!-- 헤더 컴포넌트 -->
+  <!-- <PageHeader v-if="!$route.name"/>  -->
   <div class="container-fluid">
   <div class="row">
-  <ASidebar v-if="!$route.name"/>
-  <main style="margin-left: 340px !important; margin-top: 120px !important; width: 100%;" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+  <ASidebar />
+  <!-- <ASidebar v-if="!$route.name"/> -->
+  <main style="margin-left: 340px !important;  width: 100%;" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <router-view/>  <!-- 페이지 이동이 표시될 곳 -->
   </main>
   </div>
@@ -36,7 +39,7 @@ export default {
 @font-face {
     font-family: 'TheJamsil5Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -50,14 +53,15 @@ export default {
 }
 
 .container-fluid{
+  margin-top: 120px !important;
   height: 100%;
 }
+
 .row{
   height: 100%;
 }
+
 .col-md-9{
   background-color: #f8f9fa;
-  
-  
 }
 </style>
