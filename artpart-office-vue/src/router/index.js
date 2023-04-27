@@ -7,6 +7,12 @@ import reportD from '@/views/accounting/D-report.vue'
 import reportM from '@/views/accounting/M-report.vue'
 import VoucherReg from '@/views/accounting/Voucher-reg.vue'
 import VoucherInq from '@/views/accounting/Voucher-inquiry.vue'
+import NoticeList from '@/views/notice/NoticeList.vue'
+import NoticeDetail from '@/views/notice/NoticeDetail.vue'
+import NoticeWrite from '@/views/notice/NoticeWrite.vue'
+import Read from '@/views/apartment/Read.vue'
+import Seesul from '@/views/apartment/Seesul.vue'
+import CompanyList from '@/views/company/CompanyList.vue'
 
 
 const routes = [
@@ -49,6 +55,36 @@ const routes = [
     path: '/voucher-inquiry',
     name: 'VoucherInq',
     component: VoucherInq
+  },
+  {
+    path: '/notice-list',
+    name: 'NoticeList',
+    component: NoticeList
+  },
+  {
+    path: '/notice-detail',
+    name: 'NoticeDetail',
+    component: NoticeDetail
+  },
+  {
+    path: '/notice-write',
+    name: 'NoticeWrite',
+    component: NoticeWrite
+  },
+  {
+    path: '/read',
+    name: 'Read',
+    component: Read
+  },
+  {
+    path: '/seesul',
+    name: 'Seesul',
+    component: Seesul
+  },
+  {
+    path: '/company-list',
+    name: 'CompanyList',
+    component: CompanyList
   }
   
 ]
