@@ -17,12 +17,13 @@
           </button>
           <div class="collapse" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/fee" class="link-body-emphasis d-inline-flex text-decoration-none rounded">관리비</router-link></li>
-              <li><router-link to="/daily-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded">일계표</router-link></li>
-              <li><router-link to="/monthly-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded">월계표</router-link></li>
-              <li><router-link to="/voucher-registration" class="link-body-emphasis d-inline-flex text-decoration-none rounded">전표등록</router-link></li>
-              <li><router-link to="/voucher-inquiry" class="link-body-emphasis d-inline-flex text-decoration-none rounded">전표조회</router-link></li>
-              <li><router-link to="/cash-journal" class="link-body-emphasis d-inline-flex text-decoration-none rounded">현금출납부</router-link></li>
+              <li><router-link to="/fee" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">관리비등록</router-link></li>
+              <li><router-link to="/feeList" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">관리비조회</router-link></li>
+              <li><router-link to="/daily-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">일계표</router-link></li>
+              <li><router-link to="/monthly-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">월계표</router-link></li>
+              <li><router-link to="/voucher-registration" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표등록</router-link></li>
+              <li><router-link to="/voucher-inquiry" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표조회</router-link></li>
+              <li><router-link to="/cash-journal" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">현금출납부</router-link></li>
             </ul>
           </div>
         </li>
@@ -45,10 +46,10 @@
           </button>
           <div class="collapse" id="resident-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">입주민 관리</a></li>
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">민원 조회</a></li>
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">설문 조사</a></li>
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">대표자 회의</a></li>
+              <li><a href="/MemberList" class="link-dark d-inline-flex text-decoration-none rounded">입주민 관리</a></li>
+              <li><a href="/ComplaintList" class="link-dark d-inline-flex text-decoration-none rounded">민원 조회</a></li>
+              <li><a href="/SurveyList" class="link-dark d-inline-flex text-decoration-none rounded">설문 조사</a></li>
+              <li><a href="/MeetingList" class="link-dark d-inline-flex text-decoration-none rounded">대표자 회의</a></li>
             </ul>
           </div>
         </li>

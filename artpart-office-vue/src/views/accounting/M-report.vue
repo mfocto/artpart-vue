@@ -1,16 +1,4 @@
 <template>
-  <div class="pa-5">
-          <v-row>
-              <v-col cols="12" md="6" class="mb-4">
-                  <v-sheet height="500">
-                      <v-calendar
-                              ref="calendar"
-                              dark
-                      ></v-calendar>
-                  </v-sheet>
-              </v-col>
-          </v-row>
-  </div>
   <div class="col-md-7 col-lg-8" style="margin:0 auto; width: 100%;">
     <h2 class="mb-3">월계표</h2>
     <form class="needs-validation" novalidate="">
@@ -38,11 +26,27 @@
             </tbody>
           </table>
         </div>
-      <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+      <button class="w-100 btn btn-primary btn-lg mt-4 mb-3" type="submit">Continue to checkout</button>
     </form>
   </div>
   <hr>
   
+  <div class="input-group mt-5">
+<div class="col-sm-2 me-2 ms-5">
+  <select class="form-select form-select-md" aria-label=".form-select-sm example">
+    <option selected>조회 목록</option>
+    <option value="1">과목</option>
+    <option value="2">일자</option>
+  </select>
+</div> &nbsp;
+<div class="col-sm-7">
+  <input type="text" class="form-control" id="searchDreport" placeholder="검색할 내용 입력">  
+</div>
+<div class="col-2 ">
+  <button type="submit" class="btn btn-secondary">조회</button>
+</div>
+
+</div>
   
   <br><br>
   <div class="table-responsive">

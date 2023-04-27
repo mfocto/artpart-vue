@@ -2,8 +2,9 @@
   <br><br>
   <h2>현금출납부</h2>
   <br><br>
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
+
+  <div>
+    <table class="table">
       <thead>
         <tr>       
           <th scope="col">적요</th>              
@@ -30,6 +31,22 @@
   </div>
   <br><br><hr><br><br>
   
+  <div class="input-group mb-5">
+<div class="col-sm-2 me-2 ms-5">
+  <select class="form-select form-select-md" aria-label=".form-select-sm example">
+    <option selected>조회 목록</option>
+    <option value="1">과목</option>
+    <option value="2">일자</option>
+  </select>
+</div> &nbsp;
+<div class="col-sm-7">
+  <input type="text" class="form-control" id="searchDreport" placeholder="검색할 내용 입력">  
+</div>
+<div class="col-2 ">
+  <button type="submit" class="btn btn-secondary">조회</button>
+</div>
+</div>
+
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -91,10 +108,7 @@
   </tr>
 </tbody>
     </table>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="일자별 조회">
-      <button type="submit" class="btn btn-secondary">조회</button>
-    </div>
+    
   </div>
 </template>
 
