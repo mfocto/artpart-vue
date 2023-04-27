@@ -1,8 +1,8 @@
 <template>
-  <PageHeader v-if="!$route.name"/> <!-- 헤더 컴포넌트 -->
+  <PageHeader v-if="$route.name && !$route.name.startsWith('PageHIntro')"/> <!-- 헤더 컴포넌트 -->
   <div class="container-fluid">
   <div class="row">
-  <ASidebar v-if="!$route.name"/>
+  <ASidebar v-if="$route.name && !$route.name.startsWith('PageHIntro')"/>
   <main style="margin-left: 340px !important; margin-top: 120px !important; width: calc(100% - 340px);" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <router-view/>  <!-- 페이지 이동이 표시될 곳 -->
   </main>

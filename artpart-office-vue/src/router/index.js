@@ -4,12 +4,12 @@ import PageHIntro from '@/views/home/PageHIntro.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'PageHIntro',
     component: PageHIntro
   },
   {
-    path: '/PageHome',
+    path: '/',
     name: 'PageHome',
     component: PageHome
   },
