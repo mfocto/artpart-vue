@@ -23,7 +23,7 @@ header{
   left: 340px;
   right: 0;
   height: 120px;
-  background-color: #f8f9fa !important;  /* 배경색 */
+  background-color: #f8f9fa !important;
  
   
 }
