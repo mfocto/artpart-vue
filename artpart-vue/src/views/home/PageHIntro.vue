@@ -2,7 +2,7 @@
 <template>
 
     <PageIntro msg="Intro 페이지 입니다."/>
-
+  
 </template>
 
 <script>
