@@ -18,17 +18,22 @@
             </div>
             <!-- Contact Form -->
             <form> 
-              <!-- Email address input-->
-              <div class="row input-group-newsletter ms-5">
-                <div class="col">
-                  <input class="form-control" v-model="email" type="email" placeholder="Enter email address..." aria-label="Enter email address..." />
+            
+              <div class="row input-group-newsletter ms-5 ps-5">
+                    <div class="col-auto">
+                    <label for="inputId" class="visually-hidden">Id</label>
+                    <input type="Id" class="form-control" id="inputId" placeholder="아이디">
                 </div>
                 <div class="col-auto">
-                  <router-link to="/Pay" class="btn btn-primary">로그인</router-link>
+                    <label for="inputPassword2" class="visually-hidden">Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="비밀번호">
+                </div>
+                <div class="col-auto">
+                    <!-- <button type="submit" class="btn btn-primary mb-3">로그인</button> -->
+                    <router-link to="/Pay" class="btn btn-primary">로그인</router-link>
                 </div>
               </div>
-              <div class="invalid-feedback mt-2" v-show="isEmailRequired">An email is required.</div>
-              <div class="invalid-feedback mt-2" v-show="isEmailInvalid">Email is not valid.</div>
+              
               <!-- Submit success message-->
               <div class="d-none" :class="{ 'd-block': isFormSubmitted }" id="submitSuccessMessage">
                 <div class="text-center mb-3 mt-2">
