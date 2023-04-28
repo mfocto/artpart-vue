@@ -54,7 +54,7 @@
           </td>
         </tr>
         <tr style="border : 1px solid #000 ;">
-          <td><font size="5">사명</font></td>
+          <td><font size="5">사원명</font></td>
           <td><input style="width:250px;height:30px;" type="text"></td>
         </tr>
         <tr style="border : 1px solid #000 ;">
