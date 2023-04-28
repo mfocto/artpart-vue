@@ -12,10 +12,14 @@
             <p class="mb-5">
               We're working hard to finish the development of this site. Sign up below to receive updates and to be notified when we launch!
             </p>
+
+            <div class="col-auto mb-5">
+                  <a href="http://192.168.0.117:80" class="btn btn-primary">관리자 로그인</a>
+            </div>
             <!-- Contact Form -->
-            <form>
+            <form> 
               <!-- Email address input-->
-              <div class="row input-group-newsletter">
+              <div class="row input-group-newsletter ms-5">
                 <div class="col">
                   <input class="form-control" v-model="email" type="email" placeholder="Enter email address..." aria-label="Enter email address..." />
                 </div>

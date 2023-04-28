@@ -70,12 +70,12 @@ import MFeeList from '@/views/accounting/MFeeList.vue'
 
 const routes = [
   {
-    path: '/login',
+    path: '/',
     name: 'PageHIntro',
     component: PageHIntro
   },
   {
-    path: '/',
+    path: '/login',
     name: 'PageHome',
     component: PageHome
   },
