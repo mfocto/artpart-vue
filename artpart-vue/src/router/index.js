@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHIntro from '@/views/home/PageHIntro.vue'
+import ManageMentPay from '@/views/manageMent/ManageMentPay.vue'
+import ManageMentUsing from '@/views/manageMent/ManageMentUsing.vue'
+import FacilityManageMent from '@/views/facility/FacilityManageMent.vue'
 
 //공지사항
 import PageAnno from '@/views/announcement/PageAnno.vue'
@@ -15,11 +18,31 @@ import PageVisitCar from '@/views/car/PageVisitCar.vue'
 import PageMeeting from '@/views/meeting/PageMeeting.vue'
 import PageMeetingForm from '@/views/meeting/PageMeetingForm.vue'
 import PageArchiveForm from '@/views/meeting/PageArchiveForm.vue'
+
 //마이페이지
 import MemberMypage from '@/views/member/MemberMypage.vue'
 //메인페이지
 import MemberMain from '@/views/member/MemberMain.vue'
 
+
+
+{
+  path: '/Pay',
+  name: 'ManageMentPay',
+  component: ManageMentPay
+},
+//관리비 사용 내역
+{
+  path: '/Using',
+  name: 'ManageMentUsing',
+  component: ManageMentUsing
+},
+//시설 관리
+{
+  path: '/Facility',
+  name: 'FacilityManageMent',
+  component: FacilityManageMent
+}
 
 const routes = [
 
@@ -80,8 +103,10 @@ const routes = [
     name: 'PageMyCar',
     component: PageMyCar
   },
+
   //----------------------------------------------
   //민원
+
   {
     path: '/minone/PageMinone',
     name: 'PageMinone',
@@ -102,10 +127,31 @@ const routes = [
     name: 'PageMyMinoneForm',
     component: PageMyMinoneForm
   },
+
   //----------------------------------------------
 
-  
+
+  {
+    path: '/Pay',
+    name: 'ManageMentPay',
+    component: ManageMentPay
+  },
+  //관리비 사용 내역
+  {
+    path: '/Using',
+    name: 'ManageMentUsing',
+    component: ManageMentUsing
+  },
+  //시설 관리
+  {
+    path: '/Facility',
+    name: 'FacilityManageMent',
+    component: FacilityManageMent
+  }
+
+
 ]
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes

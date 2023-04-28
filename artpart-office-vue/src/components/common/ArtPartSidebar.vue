@@ -34,7 +34,7 @@
           <div class="collapse" id="dashboard-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><router-link to="/read" class="link-body-emphasis d-inline-flex text-decoration-none rounded">검침</router-link></li>
-              <li><router-link to="/seesul" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설 관리</router-link></li>
+              <li><router-link to="/seesul-list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설 관리</router-link></li>
               <li><router-link to="/company-list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">외부업체</router-link></li>
             </ul>
           </div>
@@ -46,10 +46,10 @@
           </button>
           <div class="collapse" id="resident-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/MemberList" class="link-dark d-inline-flex text-decoration-none rounded">입주민 관리</a></li>
-              <li><a href="/ComplaintList" class="link-dark d-inline-flex text-decoration-none rounded">민원 조회</a></li>
-              <li><a href="/SurveyList" class="link-dark d-inline-flex text-decoration-none rounded">설문 조사</a></li>
-              <li><a href="/MeetingList" class="link-dark d-inline-flex text-decoration-none rounded">대표자 회의</a></li>
+              <li><router-link to="/MemberList" class="link-dark d-inline-flex text-decoration-none rounded">입주민 관리</router-link></li>
+              <li><router-link to="/ComplaintList" class="link-dark d-inline-flex text-decoration-none rounded">민원 조회</router-link></li>
+              <li><router-link to="/SurveyList" class="link-dark d-inline-flex text-decoration-none rounded">설문 조사</router-link></li>
+              <li><router-link to="/MeetingList" class="link-dark d-inline-flex text-decoration-none rounded">대표자 회의</router-link></li>
             </ul>
           </div>
         </li>
@@ -59,8 +59,8 @@
           </button>
           <div class="collapse" id="member-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">직원 등록 관리</a></li>
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">직원 스케줄 관리</a></li>
+              <li><router-link to="/adminList" class="link-dark d-inline-flex text-decoration-none rounded">직원 등록 관리 </router-link></li>
+              <li><router-link to="/scheduleList" class="link-dark d-inline-flex text-decoration-none rounded">직원 스케줄 관리</router-link></li>
             </ul>
           </div>
         </li>
@@ -70,8 +70,8 @@
           </button>
           <div class="collapse" id="car-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">입주민 차량 관리</a></li>
-              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">방문 차량 관리</a></li>
+              <li><router-link to="/memberCarList" class="link-body-emphasis d-inline-flex text-decoration-none rounded">입주민 차량 관리</router-link></li>
+              <li><router-link to="/visitorCarList" class="link-dark d-inline-flex text-decoration-none rounded">방문 차량 관리</router-link></li>
             </ul>
           </div>
         </li>
