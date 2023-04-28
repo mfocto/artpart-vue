@@ -20,20 +20,20 @@
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">입주민 전화 번호 </font></td>
-          <td><input style="width:500px;height:50px;" type="text"></td>
+          <td><input style="width:500px;height:50px;" type="text" value="01012345678"></td>
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">차량구분</font></td>
-          <h1 style="margin: 0; padding: 0; vertical-align:middle;"><input style="width:40px; height:60px;" type="checkbox" name="car" value="member"> &nbsp; 입주민&nbsp; 
+          <h1 style="margin: 0; padding: 0; vertical-align:middle;"><input style="width:40px; height:60px;" type="checkbox" name="car" value="member" checked> &nbsp; 입주민&nbsp; 
             <input style="width:40px; height:60px " type="checkbox" name="car" value="noentry"> &nbsp; 출입체한 </h1>
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">차량번호</font></td>
-          <td><input style="width:500px;height:50px;" type="text"></td> 
+          <td><input style="width:500px;height:50px;" type="text" value="12가3456"></td> 
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">차종</font></td>
-          <td><input style="width:500px;height:50px;" type="text"></td>
+          <td><input style="width:500px;height:50px;" type="text" value="지바겐"></td>
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">비고</font></td>

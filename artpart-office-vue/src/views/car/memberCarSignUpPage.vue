@@ -7,7 +7,7 @@
   </div>
       <br>
       <br>
-      <div align="left" class="jb-header" ><h2>차량 조회</h2> 
+      <div align="left" class="jb-header" ><h2>차량 등록</h2> 
       </div>
       
       <div>
