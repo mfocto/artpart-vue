@@ -80,7 +80,7 @@
     padding-top: 20px;
     background-color: #ebe9e9;
     width: 800px;
-    height: 52vh;                 /* 폼 높이 */
+    height: 60vh;                 /* 폼 높이 */
     overflow: hidden;
     margin:auto;
     background-size: cover;
