@@ -86,7 +86,7 @@
     padding-top: 20px;
     background-color: #ebe9e9;
     width: 800px;
-    height: 75vh;                 /* 폼 높이 */
+    height: 80vh;                 /* 폼 높이 */
     overflow: hidden;
     margin:auto;
     background-size: cover;
@@ -109,6 +109,7 @@
     margin: 45px;     /*박스 사이간격*/
     }
 
+  
   </style>
   
   

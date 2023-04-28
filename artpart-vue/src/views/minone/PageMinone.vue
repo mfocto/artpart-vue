@@ -1,4 +1,4 @@
-<!-- PageMyMinone.vue-->
+<!-- PageMinone.vue -->
 
 <template>
   <div class="background">
@@ -25,13 +25,14 @@
       </div>
       <hr style="border-color: gray;"/>
 
-      <div class="back-box-one">
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/quarantine.png" width="100" height="100" class="d-inline-block align-top" alt="방역"><span style="text-align:center; top: 100px; color:Darkslategray ;">방역</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block align-top" alt="자동문"><span style="text-align:center; top: 100px; color:Darkslategray ;">자동문</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/piping.png" width="100" height="100" class="d-inline-block align-top" alt="배관"><span style="text-align:center; top: 100px; color:Darkslategray ;">배관</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/etc.png" width="100" height="100" class="d-inline-block align-top" alt="기타"><span style="text-align:center; top: 100px; color:Darkslategray ;">기타</span></a><h2></h2>
+      <div class="back-box-one" >
+        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/quarantine.png" width="100" height="100" class="d-inline-block align-top" alt="방역"><span class="spanee" style="text-align:center; color:Darkslategray ;">승강기</span></a>
+        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block align-top" alt="자동문"><span class="spanee" style="text-align:center; color:Darkslategray ;">자동문</span></a>
+        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/piping.png" width="100" height="100" class="d-inline-block align-top" alt="배관"><span class="spanee" style="text-align:center; color:Darkslategray ;">배관</span></a>
+        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/etc.png" width="100" height="100" class="d-inline-block align-top" alt="기타"><span class="spanee" style="text-align:center; color:Darkslategray ;">기타</span></a><h2></h2>
         <br>
       </div>
+
 
     </div> <!-- back-box close-->
 
@@ -83,7 +84,7 @@ width: 80px;
   padding-top: 20px;
   background-color: #ebe9e9;
   width: 800px;
-  height: 45vh;
+  height: 65vh;
   overflow: hidden;
   margin:auto;
   background-size: cover;
@@ -108,6 +109,11 @@ span {
   transform:translate(-50%, 0)
 }
 
+.spanee {
+  position:absolute; 
+  top:620%; 
+  
+}
 
 
 
