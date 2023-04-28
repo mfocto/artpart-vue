@@ -60,7 +60,15 @@ import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
 import NoticeWrite from '@/views/notice/NoticeWrite.vue'
 import Read from '@/views/apartment/Read.vue'
-import Seesul from '@/views/apartment/Seesul.vue'
+import SeesulList from '@/views/apartment/SeesulList.vue'
+import SeesulElectric from '@/views/apartment/SeesulElectric.vue'
+import SeesulGas from '@/views/apartment/SeesulGas.vue'
+import SeesulElevator from '@/views/apartment/SeesulElevator.vue'
+import SeesulPlayground from '@/views/apartment/SeesulPlayground.vue'
+import ElectricWrite from '@/views/apartment/ElectricWrite.vue'
+import GasWrite from '@/views/apartment/GasWrite.vue'
+import ElevatorWrite from '@/views/apartment/ElevatorWrite.vue'
+import PlaygroundWrite from '@/views/apartment/PlaygroundWrite.vue'
 import CompanyList from '@/views/company/CompanyList.vue'
 
 
@@ -199,6 +207,9 @@ const routes = [
     component: VoucherInq
   },
 
+  // 공지사항
+
+
   //직원 정보 등록
   {
     path: '/adminList',
@@ -300,6 +311,7 @@ const routes = [
     name: 'vcChange',
     component: vcChange
    },
+
   {
     path: '/notice-list',
     name: 'NoticeList',
@@ -315,15 +327,56 @@ const routes = [
     name: 'NoticeWrite',
     component: NoticeWrite
   },
+  // 아파트관리
   {
     path: '/read',
     name: 'Read',
     component: Read
   },
   {
-    path: '/seesul',
-    name: 'Seesul',
-    component: Seesul
+    path: '/seesul-list',
+    name: 'SeesulList',
+    component: SeesulList
+  },
+  {
+    path: '/seesul-electric',
+    name: 'SeesulElectric',
+    component: SeesulElectric
+  },
+  {
+    path: '/seesul-gas',
+    name: 'SeesulGas',
+    component: SeesulGas
+  },
+  {
+    path: '/seesul-elevator',
+    name: 'SeesulElevator',
+    component: SeesulElevator
+  },
+  {
+    path: '/seesul-playground',
+    name: 'SeesulPlayground',
+    component: SeesulPlayground
+  },
+  {
+    path: '/electric-write',
+    name: 'ElectricWrite',
+    component: ElectricWrite
+  },
+  {
+    path: '/gas-write',
+    name: 'GasWrite',
+    component: GasWrite
+  },
+  {
+    path: '/elevator-write',
+    name: 'ElevatorWrite',
+    component: ElevatorWrite
+  },
+  {
+    path: '/playground-write',
+    name: 'PlaygroundWrite',
+    component: PlaygroundWrite
   },
   {
     path: '/company-list',
