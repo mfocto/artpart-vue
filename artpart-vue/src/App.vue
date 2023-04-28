@@ -1,4 +1,5 @@
 <template>
+
   <PageHeader /> <!-- 헤더 컴포넌트 -->
   <!-- <PageHeader v-if="!$route.name"/>  -->
   <div class="container-fluid">
@@ -9,6 +10,7 @@
   <main style="margin-left: 340px !important;  width: 100%;" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <router-view/>  <!-- 페이지 이동이 표시될 곳 -->
   </main>
+
   </div>
   </div>
 </template>
@@ -21,12 +23,15 @@ import PageHeader from './components/common/PageHeader-member.vue';
 import ASidebar from './components/common/ArtPartSidebar.vue';
 
 
+
 export default {
   name: 'App',
   components: { 
     //HelloWorld
     PageHeader,
-    ASidebar,
+    ASidebar
+   
+    
   }
 }
 </script>
@@ -55,6 +60,7 @@ export default {
 .container-fluid{
   margin-top: 120px !important;
   height: 100%;
+  margin-top: 120px !important;
 }
 
 .row{

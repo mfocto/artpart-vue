@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHIntro from '@/views/home/PageHIntro.vue'
+
 import PageAnno from '@/views/announcement/PageAnno.vue'
 import PageMinone from '@/views/minone/PageMinone.vue'
 import PageMinoneForm from '@/views/minone/PageMinoneForm.vue'
@@ -8,6 +9,9 @@ import PageMyMinoneForm from '@/views/minone/PageMyMinoneForm.vue'
 import PageMeeting from '@/views/meeting/PageMeeting.vue'
 import PageMyCar from '@/views/car/PageMyCar.vue'
 import PageVisitCar from '@/views/car/PageVisitCar.vue'
+
+import ManageMentPay from '@/views/home/ManageMentPay.vue'
+import ManageMentUsing from '@/views/home/ManageMentUsing.vue'
 
 
 const routes = [
@@ -56,12 +60,23 @@ const routes = [
     name: 'PageMeeting',
     component: PageMeeting
   },
+  {
+     path: '/Pay',
+     name: 'ManageMentPay',
+     component: ManageMentPay
+  },
+  {
+    path: '/Using',
+    name: 'ManageMentUsing',
+    component: ManageMentUsing
+
+  },
 
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-});
+})
 
 export default router

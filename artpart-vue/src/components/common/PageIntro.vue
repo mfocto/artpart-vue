@@ -4,6 +4,7 @@
 
     <div class="masthead-content">
         <div class="masthead">
+
             <div class="box">  
                 <div class="front"> <img src="@/assets/images/black.jpg" /> 
                     <div class="container-fluid px-4 px-lg-0">
@@ -37,6 +38,7 @@
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -61,13 +63,8 @@ export default {
 
 </script>
 
-
-
-
-
-
-
 <style scoped>
+
 .background{ /*백그라운드*/
     width: 100%;
     height: 100vh;
@@ -77,28 +74,46 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
   
 }
 
-.box{
-    position: relative;
-}
-
+ .box{
+    position: absolute;
+    /* left: 400px;
+    top: 8%; 
+    bottom: 0; */
+    z-index: 1;
+    background-size: cover;
+    object-fit: cover;
+    
+} 
 
 .front {
     position: absolute;
-    bottom: 50%;
-    left: -80%;
-    border-right: 180px
+    top: 550px;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-size: cover;
+    object-fit: cover;
 }
 
-/* 작성중 */
 .container-fluid {
     position: absolute;
-    font-size: 20px;
+    top: 550px;
+    width: 20%;
+    height: 20%;
+    /* right: 0;
+    top: 70%;
+    left: -10%; */
+     transform: translateY(-50%);
+    z-index: 3;
+    
     color: white;
-    border-right: 180px;
 }
+
+
 
 </style>
 

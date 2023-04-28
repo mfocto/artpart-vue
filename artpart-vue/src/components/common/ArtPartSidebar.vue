@@ -1,4 +1,5 @@
 <template>  
+
   <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse ">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
       <img src="../../assets/images/rogo/ArtPart_navy.png" width="150" height="100" class="d-inline-block align-top" alt="">
@@ -90,6 +91,7 @@
     <br><br>
     Copyright © 023 ArtPart Inc.<br>TEAM 0040. Project ArtPart. All rights reserved.
     </div>
+
     <hr style="border-color: gray;"/>
   </footer>
   </nav>
