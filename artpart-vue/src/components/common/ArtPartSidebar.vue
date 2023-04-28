@@ -24,7 +24,7 @@
           </button>
           <div class="collapse" id="dashboard-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설관리현황</a></li>
+              <li><a href="/Facility" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설관리현황</a></li>
             </ul>
           </div>
         </li>
