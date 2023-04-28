@@ -12,7 +12,7 @@
   
         <h2>민원 조회</h2>
         <form>
-              민원내용 <input type="text" style="width: 15%"> 접수날짜 <input type="text" style="width: 15%"> 처리여부 <input type="text" style="width: 5%"> &nbsp;&nbsp;<button type="submit" name="ad"> 검색</button>     
+              민원내용 <input type="text" style="width: 15%"> 접수날짜 <input type="date" style="width: 15%"> 처리여부 <input type="text" style="width: 5%"> &nbsp;&nbsp;<button type="submit" name="ad"> 검색</button>     
         </form>
         <div class="table-responsive">
           <table class="table table-striped table-sm">

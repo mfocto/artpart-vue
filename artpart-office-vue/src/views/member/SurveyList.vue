@@ -13,7 +13,7 @@
   
         <h2>설문조사</h2>
         <form>
-              등록날짜 <input type="text" style="width: 15%">  마감여부 <input type="text" style="width: 5%"> &nbsp;&nbsp;<button type="submit" name="ad"> 검색</button>     
+              등록날짜 <input type="date" style="width: 15%">  마감여부 <input type="text" style="width: 5%"> &nbsp;&nbsp;<button type="submit" name="ad"> 검색</button>     
         </form>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
