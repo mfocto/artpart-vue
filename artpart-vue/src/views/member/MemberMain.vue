@@ -4,18 +4,84 @@
   <div class="background">
     
     <!-- 백 이미지 -->
-    <div class="backImg rounded-1">
+    <div class="backImg rounded-1" >
       <img src="../../assets/images/apart/building.png" width="1500" height="600" class="d-inline-block align-top" alt="">
     </div>
 
     <!-- 팝업이미지 -->
-    <div class="popup rounded-1">
-      <span style="text-align:center; color:Darkslategray ;">청소</span>
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true"></button>
-      
-    </div>
+    <div class="popup1 rounded-1" align="left" style="">
+      <div class="popup2 rounded-1">
+        
+        <div class="popup1-1" style="margin-top: 20px;">
+        <span style="text-align:center; color:Darkslategray; font-size: 12px;" onclick="#">1</span>
+        <span style="text-align:center; color:Darkslategray; font-size: 12px; margin-left: 20px;" onclick="#">2</span>
+        <span style="text-align:center; color:Darkslategray; font-size: 12px; margin-left: 20px;" onclick="#">3</span>
+        </div>
+
+        <div class="popup1-1" style="margin-top: 50px;">
+        <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36);"> 101동대표 투표</h1>
+        <span style="text-align:center; color:Darkslategray; font-size: 12px;">투표기간 : 2023.04.01 ~ 2023.04.15</span>
+        </div>
+
+        <div class="popup1-2" style="margin-top: 80px;">
+          <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+              style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; font-family:TheJamsil5Bold; font-size: 13px; width: 250px; height: 32px; " >MORE VIEW ▶</a>
+        </div>
+
+      </div>  <!-- popup2 close -->
+    </div> <!-- popup1 close -->
 
 
+  <!-- 하단 공지 -->
+    <div class="anno rounded-1" align="left" >
+          
+      <!--################# 공지1 #################-->
+      <div class="anno1 rounded-1" style="float:left; margin:10px; font-size: 18px;">
+
+        <div class="anno1-1" style="margin-top: 10px;">
+        <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36); font-size: 18px;">연휴기간 청소안내</h1>
+        <span style="text-align:center; color:Darkslategray; font-size: 12px;">청소는 블라블라</span>
+        </div>
+
+        <div class="anno1-2" style="margin-top: 10px;">
+          <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+              style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</a>
+        </div>
+
+      </div>  <!-- back-box-inputbox close-->
+
+      <!--################# 공지2 #################-->
+      <div class="anno1 rounded-1" style="float:left; margin:10px; font-size: 18px;">
+
+      <div class="anno1-1" style="margin-top: 10px;">
+      <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36); font-size: 18px;">연휴기간 청소안내</h1>
+      <span style="text-align:center; color:Darkslategray; font-size: 12px;">청소는 블라블라</span>
+      </div>
+
+      <div class="anno1-2" style="margin-top: 10px;">
+        <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</a>
+      </div>
+
+      </div>  <!-- back-box-inputbox close-->
+
+
+      <!--################# 공지3 #################-->
+      <div class="anno1 rounded-1" style="float:left; margin:10px; font-size: 18px;">
+
+      <div class="anno1-1" style="margin-top: 10px;">
+      <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36); font-size: 18px;">연휴기간 청소안내</h1>
+      <span style="text-align:center; color:Darkslategray; font-size: 12px;">청소는 블라블라</span>
+      </div>
+
+      <div class="anno1-2" style="margin-top: 10px;">
+        <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</a>
+      </div>
+
+      </div>  <!-- back-box-inputbox close-->
+          
+    </div> <!-- anno close--> 
 
 
 
@@ -50,6 +116,11 @@
       font-style: normal;
   }
 
+  popup2 {
+    border-color: black;
+  }
+
+
 
   .backImg {
     position: relative; 
@@ -57,16 +128,30 @@
   }
 
 
-  .popup {
+  .popup1 {
     position: absolute;
-    background-color: aqua;
-    width: 400px;
-    height: 400px;
+    background-color: #EBC07F;
+    width: 350px;
+    height: 350px;
     top: 270px;   /*숫자늘리면 박스가 밑으로 감 */
     left: 340px;  /*숫자늘리면 박스가 오른쪽으로 감 */
+    opacity: 0.85;  /*투명도 */
+    padding:20px;
+    
     }
 
+
+  .anno1 {
+    position: relative;
+    left: -10px;
+    width: 270px;
+    height: 190px;
+    padding: 10px;
+    opacity: 0.85;  /*투명도 */
+    background-color: #cccccc;
+  }
      
+
   .background{ /*background*/
     width: 100%;
     height: 100vh;

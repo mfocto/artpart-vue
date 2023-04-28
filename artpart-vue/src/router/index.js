@@ -15,16 +15,34 @@ import PageVisitCar from '@/views/car/PageVisitCar.vue'
 import PageMeeting from '@/views/meeting/PageMeeting.vue'
 import PageMeetingForm from '@/views/meeting/PageMeetingForm.vue'
 import PageArchiveForm from '@/views/meeting/PageArchiveForm.vue'
-
+//마이페이지
+import MemberMypage from '@/views/member/MemberMypage.vue'
+//메인페이지
+import MemberMain from '@/views/member/MemberMain.vue'
 
 
 const routes = [
+
   //----------------------------------------------
   //인트로
   {
     path: '/',
     name: 'PageHIntro',
     component: PageHIntro
+  },
+  //----------------------------------------------
+  //마이페이지
+  {
+    path: '/member/MemberMypage',
+    name: 'MemberMypage',
+    component: MemberMypage
+  },
+  //----------------------------------------------
+  //메인페이지
+  {
+    path: '/member/MemberMain',
+    name: 'MemberMain',
+    component: MemberMain
   },
   //----------------------------------------------
   //공지사항
@@ -85,6 +103,8 @@ const routes = [
     component: PageMyMinoneForm
   },
   //----------------------------------------------
+
+  
 ]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
