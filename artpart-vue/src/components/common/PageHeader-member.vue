@@ -3,8 +3,8 @@
   <div></div>
   <div class="navbar-nav ml-auto">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">마이페이지</a>
-      <a class="nav-link px-3" href="#">로그아웃</a>
+      <a class="nav-link px-3" href="/member/MemberMypage">마이페이지</a>
+      <a class="nav-link px-3" href="/">로그아웃</a>
     </div>
   </div>
 </header>

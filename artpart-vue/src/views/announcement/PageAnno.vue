@@ -291,7 +291,7 @@ export default {
 
 .serch {
    position: relative; 
-   top: 40%;
+   top: 50%;
 }
 
 
