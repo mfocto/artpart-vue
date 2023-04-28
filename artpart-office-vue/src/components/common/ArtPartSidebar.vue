@@ -46,10 +46,10 @@
           </button>
           <div class="collapse" id="resident-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/MemberList" class="link-dark d-inline-flex text-decoration-none rounded">입주민 관리</a></li>
-              <li><a href="/ComplaintList" class="link-dark d-inline-flex text-decoration-none rounded">민원 조회</a></li>
-              <li><a href="/SurveyList" class="link-dark d-inline-flex text-decoration-none rounded">설문 조사</a></li>
-              <li><a href="/MeetingList" class="link-dark d-inline-flex text-decoration-none rounded">대표자 회의</a></li>
+              <li><router-link to="/MemberList" class="link-dark d-inline-flex text-decoration-none rounded">입주민 관리</router-link></li>
+              <li><router-link to="/ComplaintList" class="link-dark d-inline-flex text-decoration-none rounded">민원 조회</router-link></li>
+              <li><router-link to="/SurveyList" class="link-dark d-inline-flex text-decoration-none rounded">설문 조사</router-link></li>
+              <li><router-link to="/MeetingList" class="link-dark d-inline-flex text-decoration-none rounded">대표자 회의</router-link></li>
             </ul>
           </div>
         </li>
