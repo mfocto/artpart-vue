@@ -6,15 +6,30 @@ import PageMinone from '@/views/minone/PageMinone.vue'
 import PageMinoneForm from '@/views/minone/PageMinoneForm.vue'
 import PageMyMinone from '@/views/minone/PageMyMinone.vue'
 import PageMyMinoneForm from '@/views/minone/PageMyMinoneForm.vue'
-import PageMeeting from '@/views/meeting/PageMeeting.vue'
 import PageMyCar from '@/views/car/PageMyCar.vue'
 import PageVisitCar from '@/views/car/PageVisitCar.vue'
+import PageMeeting from '@/views/meeting/PageMeeting.vue'
+import PageMeetingForm from '@/views/meeting/PageMeetingForm.vue'
+import PageArchiveForm from '@/views/meeting/PageArchiveForm.vue'
 
-import ManageMentPay from '@/views/home/ManageMentPay.vue'
-import ManageMentUsing from '@/views/home/ManageMentUsing.vue'
 
 
 const routes = [
+  {
+    path: '/meeting/PageArchiveForm',
+    name: 'PageArchiveForm',
+    component: PageArchiveForm
+  },
+  {
+    path: '/meeting/PageMeeting',
+    name: 'PageMeeting',
+    component: PageMeeting
+  },
+  {
+    path: '/meeting/PageMeetingForm',
+    name: 'PageMeetingForm',
+    component: PageMeetingForm
+  },
   {
     path: '/car/PageVisitCar',
     name: 'PageVisitCar',
@@ -55,25 +70,7 @@ const routes = [
     name: 'PageMyMinoneForm',
     component: PageMyMinoneForm
   },
-  {
-    path: '/meeting/PageMeeting',
-    name: 'PageMeeting',
-    component: PageMeeting
-  },
-  {
-     path: '/Pay',
-     name: 'ManageMentPay',
-     component: ManageMentPay
-  },
-  {
-    path: '/Using',
-    name: 'ManageMentUsing',
-    component: ManageMentUsing
-
-  },
-
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes

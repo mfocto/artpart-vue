@@ -2,27 +2,24 @@
 
 <template>
   <div class="background">
-
-    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >회의/투표/설문</h1>
+    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >회의/투표/설문 접수</h1>
     <hr style="border-color: gray;"/>
 
-    <div class="back-box rounded-1" >
-      <div class="input-group mb-3" >
-          <input type="text" class="form-control" name="" placeholder="차량번호를 입력해주세요"><br>
+    <div class="back-box">
+      <div class="back-box-one">
+        <a class="meeting-menu" href="/meeting/PageMeetingForm"><img src="../../assets/images/meeting/conversation.png" width="100" height="100" class="d-inline-block " alt="회의"><span style="text-align:center; color:Darkslategray ;">회의</span></a>
+        <a class="meeting-menu" href="/meeting/PageArchiveForm"><img src="../../assets/images/meeting/archive.png" width="100" height="100" class="d-inline-block " alt="투표"><span style="text-align:center; color:Darkslategray ;">투표</span></a>
+        <a class="meeting-menu" href="/meeting/PageArchiveForm"><img src="../../assets/images/meeting/survey.png" width="100" height="100" class="d-inline-block " alt="설문"><span style="text-align:center; color:Darkslategray ;">설문</span></a>
+        <br>
+        <br>
+        <hr style="border-color: gray; "/>
       </div>
 
-      <div class="input-group mb-3">
-          <input type="text" class="form-control" name="" placeholder="차량번호를 입력해주세요">
-      </div>
 
-      <div class="input-group mb-3">
-          <input type="text" class="form-control" name="" placeholder="차량번호를 입력해주세요">
-      </div>
-      
 
-    </div> <!-- back-box close--> 
+    </div> <!-- back-box close-->
 
-  </div> <!--background close-->
+</div> <!--background close-->
 </template>
 
 
@@ -70,17 +67,30 @@ width: 80px;
   padding-top: 20px;
   background-color: #ebe9e9;
   width: 800px;
-  height: 50vh;
+  height: 18vh;
   overflow: hidden;
-  padding: 20px;      /*안쪽여백 */
-  margin:auto;        /*바깥여백 */
+  margin:auto;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left;
   position: absolute;
 }
 
+.meeting-menu {      /*메뉴박스들*/
+  position: relative;
+  margin: 45px;     /*박스 사이간격*/
 
+}
+
+span {
+  position:absolute; 
+  top:400%; 
+  left:50%; 
+  color:#666; 
+  line-height:1.462em; 
+  white-space:nowrap; 
+  transform:translate(-50%, 0)
+}
 
 
 

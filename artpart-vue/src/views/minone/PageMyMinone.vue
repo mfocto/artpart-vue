@@ -53,7 +53,7 @@
 
     <br><br>
     <!-- 검색필드 추가 -->
-    <div style="text-align:left;">
+    <div class="serch" style="text-align:left;">
       <select v-model="search_key" 
           style="text-align:center; color: gray; font-family:TheJamsil5Bold; font-size: 12px; height: 30px; width: 100px; ">
         <option value="">- 선택 -</option>
@@ -283,6 +283,17 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
 
+}
+
+
+
+.board-list {
+   position: absolute;
+}
+
+.serch {
+   position: relative; 
+   top: 37%;
 }
 
 
