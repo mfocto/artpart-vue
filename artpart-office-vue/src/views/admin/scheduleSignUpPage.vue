@@ -66,7 +66,7 @@
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">근무 시간</font></td>
-          <td><input type="time"></td>
+          <td><input type="time"> &nbsp; ~ &nbsp; <input type="time"></td>
         </tr>
         
       </table>
