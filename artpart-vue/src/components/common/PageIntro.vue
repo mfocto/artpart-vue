@@ -14,7 +14,7 @@
             </p>
 
             <div class="col-auto mb-5">
-                  <a href="http://192.168.0.117:80" class="btn btn-primary">관리자 로그인</a>
+                  <a href="http://localhost:80" class="btn btn-primary">관리자 로그인</a>
             </div>
             <!-- Contact Form -->
             <form> 

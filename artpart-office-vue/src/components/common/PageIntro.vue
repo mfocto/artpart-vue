@@ -14,7 +14,7 @@
             </p>
 
             <div class="col-auto mb-5">
-                <a href="http://192.168.0.117:8080" class="btn btn-primary">입주민 로그인</a>
+                <a href="http://localhost:8080/" class="btn btn-primary">입주민 로그인</a>
             </div>
             <!-- Contact Form -->
             <form> 
