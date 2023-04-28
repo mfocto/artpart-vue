@@ -13,6 +13,10 @@
       </div>
 
       <div>
+        <img src = "../../assets/images/차사원.jpeg" />
+      </div>
+
+      <div>
         <table style="width:100%; border : 1px solid #000 ;">
           <tr style="border : 1px solid #000 ;">
           <td> <font size="5">사원구분 </font></td>
@@ -41,6 +45,13 @@
             <font size="5">차사원</font>
 
         </td>
+        </tr>
+        <tr style="border : 1px solid #000 ;">
+          <td><font size="5">연락처</font></td>
+          <td>
+            <!-- <input style="width:250px;height:30px;" type="text"> -->
+            <font size="5">010-9283-0293</font>
+          </td>
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td> <font size="5">근무 날짜</font></td>
