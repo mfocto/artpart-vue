@@ -74,7 +74,6 @@
         .then((res) => {
           if(res.data.result_code === 'OK'){
             sessionStorage.setItem('member', JSON.stringify(res.data.data));
-            alert(sessionStorage.getItem('member'));
             // 로그인 성공시 메인페이지 이동
             this.$router.push({ 
               path: '/member/main',

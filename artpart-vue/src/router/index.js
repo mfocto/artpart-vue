@@ -76,7 +76,7 @@ const routes = [
   //----------------------------------------------
   //회의&투표&설문
   {
-    path: '/meeting/pagemeeting',
+    path: '/meeting/meetingpage',
     name: 'PageMeeting',
     component: PageMeeting
   },

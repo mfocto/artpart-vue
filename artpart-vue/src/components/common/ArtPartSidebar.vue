@@ -56,7 +56,7 @@
           </button>
           <div class="collapse" id="member-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/meeting/pagemeeting" class="link-dark d-inline-flex text-decoration-none rounded">회의/투표/설문</router-link></li>
+                <li><router-link to="/meeting/meetingpage" class="link-dark d-inline-flex text-decoration-none rounded">회의/투표/설문</router-link></li>
             </ul>
           </div>
         </li>
