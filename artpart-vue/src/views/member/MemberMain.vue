@@ -24,8 +24,8 @@
         </div>
 
         <div class="popup1-2" style="margin-top: 80px;">
-          <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-              style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; font-family:TheJamsil5Bold; font-size: 13px; width: 250px; height: 32px; " >MORE VIEW ▶</a>
+          <router-link to="/pagemeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+              style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; font-family:TheJamsil5Bold; font-size: 13px; width: 250px; height: 32px; " >MORE VIEW ▶</router-link>
         </div>
 
       </div>  <!-- popup2 close -->
@@ -44,8 +44,8 @@
         </div>
 
         <div class="anno1-2" style="margin-top: 10px;">
-          <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-              style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</a>
+          <router-link to="/pagemeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+              style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</router-link>
         </div>
 
       </div>  <!-- back-box-inputbox close-->
@@ -59,8 +59,8 @@
       </div>
 
       <div class="anno1-2" style="margin-top: 10px;">
-        <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</a>
+        <router-link to="/pagemeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</router-link>
       </div>
 
       </div>  <!-- back-box-inputbox close-->
@@ -75,8 +75,8 @@
       </div>
 
       <div class="anno1-2" style="margin-top: 10px;">
-        <a href="/PageMeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</a>
+        <router-link to="/pagemeeting" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</router-link>
       </div>
 
       </div>  <!-- back-box-inputbox close-->

@@ -29,8 +29,8 @@
             </div>
 
             <div class="submit-button">
-            <a href="/minone/PageMyMinone" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-                style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; " >Enter</a>
+            <router-link to="/minone/pagemyminone" class="btn" tabindex="-1" role="button" aria-disabled="true" 
+                style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; " >Enter</router-link>
             </div>
 
 

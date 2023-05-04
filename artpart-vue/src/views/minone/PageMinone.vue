@@ -7,29 +7,29 @@
 
     <div class="back-box">
       <div class="back-box-one">
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/elevator.png" width="100" height="100" class="d-inline-block " alt="승강기"><span style="text-align:center; color:Darkslategray ;">승강기</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/fire.png" width="100" height="100" class="d-inline-block " alt="소방"><span style="text-align:center; color:Darkslategray ;">소방</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/intercom.png" width="100" height="100" class="d-inline-block " alt="인터폰"><span style="text-align:center; color:Darkslategray ;">인터폰</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block " alt="물탱크"><span style="text-align:center; color:Darkslategray ;">물탱크</span></a><h2></h2>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/elevator.png" width="100" height="100" class="d-inline-block " alt="승강기"><span style="text-align:center; color:Darkslategray ;">승강기</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/fire.png" width="100" height="100" class="d-inline-block " alt="소방"><span style="text-align:center; color:Darkslategray ;">소방</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/intercom.png" width="100" height="100" class="d-inline-block " alt="인터폰"><span style="text-align:center; color:Darkslategray ;">인터폰</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block " alt="물탱크"><span style="text-align:center; color:Darkslategray ;">물탱크</span></router-link><h2></h2>
         <br>
       </div>
       <hr style="border-color: gray; "/>
 
 
       <div class="back-box-one">
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/cleaning.png" width="100" height="100" class="d-inline-block " alt="청소"><span style="text-align:center; color:Darkslategray ;">청소</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/electricity.png" width="100" height="100" class="d-inline-block " alt="전기"><span style="text-align:center; color:Darkslategray ;">전기</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/water-filter.png" width="100" height="100" class="d-inline-block align-top" alt="정화조"><span style="text-align:center; color:Darkslategray ;">정화조</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/Sensors.png" width="100" height="100" class="d-inline-block align-top" alt="센서등"><span style="text-align:center; color:Darkslategray ;">센서등</span></a><h2></h2>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/cleaning.png" width="100" height="100" class="d-inline-block " alt="청소"><span style="text-align:center; color:Darkslategray ;">청소</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/electricity.png" width="100" height="100" class="d-inline-block " alt="전기"><span style="text-align:center; color:Darkslategray ;">전기</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/water-filter.png" width="100" height="100" class="d-inline-block align-top" alt="정화조"><span style="text-align:center; color:Darkslategray ;">정화조</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/Sensors.png" width="100" height="100" class="d-inline-block align-top" alt="센서등"><span style="text-align:center; color:Darkslategray ;">센서등</span></router-link><h2></h2>
         <br>
       </div>
       <hr style="border-color: gray;"/>
 
       <div class="back-box-one" >
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/quarantine.png" width="100" height="100" class="d-inline-block align-top" alt="방역"><span class="spanee" style="text-align:center; color:Darkslategray ;">승강기</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block align-top" alt="자동문"><span class="spanee" style="text-align:center; color:Darkslategray ;">자동문</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/piping.png" width="100" height="100" class="d-inline-block align-top" alt="배관"><span class="spanee" style="text-align:center; color:Darkslategray ;">배관</span></a>
-        <a class="minone-menu" href="/minone/PageMinoneForm"><img src="../../assets/images/minone/etc.png" width="100" height="100" class="d-inline-block align-top" alt="기타"><span class="spanee" style="text-align:center; color:Darkslategray ;">기타</span></a><h2></h2>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/quarantine.png" width="100" height="100" class="d-inline-block align-top" alt="방역"><span class="spanee" style="text-align:center; color:Darkslategray ;">승강기</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block align-top" alt="자동문"><span class="spanee" style="text-align:center; color:Darkslategray ;">자동문</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/piping.png" width="100" height="100" class="d-inline-block align-top" alt="배관"><span class="spanee" style="text-align:center; color:Darkslategray ;">배관</span></router-link>
+        <router-link class="minone-menu"  to="/minone/pageminoneform"><img src="../../assets/images/minone/etc.png" width="100" height="100" class="d-inline-block align-top" alt="기타"><span class="spanee" style="text-align:center; color:Darkslategray ;">기타</span></router-link><h2></h2>
         <br>
       </div>
 

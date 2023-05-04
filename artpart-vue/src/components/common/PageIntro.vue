@@ -17,20 +17,18 @@
                   <a href="http://localhost:80" class="btn btn-primary">관리자 로그인</a>
             </div>
             <!-- Contact Form -->
-            <form> 
-            
+            <form @submit.prevent="login"> 
               <div class="row input-group-newsletter ms-5 ps-5">
                     <div class="col-auto">
                     <label for="inputId" class="visually-hidden">Id</label>
-                    <input type="Id" class="form-control" id="inputId" placeholder="아이디">
+                    <input type="Id" class="form-control" v-model="memberid" id="inputId" placeholder="아이디">
                 </div>
                 <div class="col-auto">
                     <label for="inputPassword2" class="visually-hidden">Password</label>
-                    <input type="password" class="form-control" id="inputPassword2" placeholder="비밀번호">
+                    <input type="password" class="form-control" v-model="memberpwd" id="inputPassword2" placeholder="비밀번호">
                 </div>
                 <div class="col-auto">
-                    <!-- <button type="submit" class="btn btn-primary mb-3">로그인</button> -->
-                    <router-link to="/Pay" class="btn btn-primary">로그인</router-link>
+                    <button type="submit" class="btn btn-primary mb-3">로그인</button>
                 </div>
               </div>
               
@@ -52,43 +50,47 @@
         </div>
       </div>
     </div>
-  </template>
-  <script>
+</template>
+<script>
   export default {
+    name: "PageIntro",
     data() {
       return {
-        email: "",
-        isFormSubmitted: false,
-        isFormSubmitError: false,
+        requestBody: {},
+        member: {} // 로그인한 회원 정보
       };
     },
-    computed: {
-      isEmailRequired() {
-        return !this.email;
-      },
-      isEmailInvalid() {
-        return !this.isEmailRequired && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
-      },
-      isFormInvalid() {
-        return this.isEmailRequired || this.isEmailInvalid || this.isFormSubmitted;
-      },
-    },
     methods: {
-      submitForm() {
-      if (this.$refs.form.checkValidity()) {
-        // If form is valid, submit to server
-        console.log("Submitting form...");
-        // TODO: Send email to server
-        this.$refs.form.reset();
-        this.$refs.successMessage.classList.remove("d-none");
-      } else {
-        // If form is invalid, show error messages
-        console.log("Form is invalid");
-        this.$refs.form.classList.add("was-validated");
+      login() {
+        this.requestBody = {
+          memberid: this.memberid,
+          memberpwd: this.memberpwd
+        };
+        this.$axios.get(this.$serverUrl + "/login/" + this.memberid, {
+          params: {
+            memberpwd: this.memberpwd
+          }
+        })
+        .then((res) => {
+          if(res.data.result_code === 'OK'){
+            sessionStorage.setItem('member', JSON.stringify(res.data.data));
+            alert(sessionStorage.getItem('member'));
+            // 로그인 성공시 메인페이지 이동
+            this.$router.push({ 
+              path: '/member/main',
+            });
+          }
+          if(res.data.result_code === 'ERROR'){
+            alert(res.data.description);
+          }
+        }).catch((err) => {
+          if (err.message.indexOf('Network Error') > -1){
+            alert('서버와 통신이 불안정합니다.');
+          }
+        })
       }
-    },
-  },
-};
+    }
+  }
 </script>
 
 <style>
