@@ -7,7 +7,7 @@
     <div class="flex-shrink-0 p-3" style="width: 280px;">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
-          <router-link to="/notice-list" class="btn d-inline-flex align-items-center rounded border-0">
+          <router-link to="/notice/list" class="btn d-inline-flex align-items-center rounded border-0">
             공지사항
           </router-link>
         </li>
@@ -17,13 +17,13 @@
           </button>
           <div class="collapse" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/fee" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">관리비등록</router-link></li>
-              <li><router-link to="/feeList" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">관리비조회</router-link></li>
-              <li><router-link to="/daily-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">일계표</router-link></li>
-              <li><router-link to="/monthly-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">월계표</router-link></li>
-              <li><router-link to="/voucher-registration" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표등록</router-link></li>
-              <li><router-link to="/voucher-inquiry" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표조회</router-link></li>
-              <li><router-link to="/cash-journal" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">현금출납부</router-link></li>
+              <li><router-link to="/account/fee" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">관리비등록</router-link></li>
+              <li><router-link to="/account/feeList" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">관리비조회</router-link></li>
+              <li><router-link to="/account/daily-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">일계표</router-link></li>
+              <li><router-link to="/account/monthly-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">월계표</router-link></li>
+              <li><router-link to="/account/voucher-registration" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표등록</router-link></li>
+              <li><router-link to="/account/voucher-inquiry" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표조회</router-link></li>
+              <li><router-link to="/account/cash-journal" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">현금출납부</router-link></li>
             </ul>
           </div>
         </li>
