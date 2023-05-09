@@ -6,21 +6,20 @@ import FacilityManageMent from '@/views/facility/FacilityManageMent.vue'
 
 //공지사항
 import PageAnno from '@/views/announcement/PageAnno.vue'
+import PageAnnoForm from '@/views/announcement/PageAnnoForm.vue'
 //민원
 import PageMinone from '@/views/minone/PageMinone.vue'
 import PageMinoneForm from '@/views/minone/PageMinoneForm.vue'
 import PageMyMinone from '@/views/minone/PageMyMinone.vue'
 import PageMyMinoneForm from '@/views/minone/PageMyMinoneForm.vue'
-//주차
-import PageMyCar from '@/views/car/PageMyCar.vue'
-import PageVisitCar from '@/views/car/PageVisitCar.vue'
+
 //회의&투표&설문
 import PageMeeting from '@/views/meeting/PageMeeting.vue'
-import PageMeetingForm from '@/views/meeting/PageMeetingForm.vue'
 import PageArchiveForm from '@/views/meeting/PageArchiveForm.vue'
 
 //마이페이지
 import MemberMypage from '@/views/member/MemberMypage.vue'
+
 //메인페이지
 import MemberMain from '@/views/member/MemberMain.vue'
 
@@ -73,6 +72,11 @@ const routes = [
     name: 'PageAnno',
     component: PageAnno
   },
+  {
+    path: '/announcement/PageAnnoForm',
+    name: 'PageAnnoForm',
+    component: PageAnnoForm
+  },
   //----------------------------------------------
   //회의&투표&설문
   {
@@ -85,23 +89,7 @@ const routes = [
     name: 'PageArchiveForm',
     component: PageArchiveForm
   },
-  {
-    path: '/meeting/pagemeetingform',
-    name: 'PageMeetingForm',
-    component: PageMeetingForm
-  },
-  //----------------------------------------------
-  //주차
-  {
-    path: '/car/pagevisitcar',
-    name: 'PageVisitCar',
-    component: PageVisitCar
-  },
-  {
-    path: '/car/pagemycar',
-    name: 'PageMyCar',
-    component: PageMyCar
-  },
+
 
   //----------------------------------------------
   //민원

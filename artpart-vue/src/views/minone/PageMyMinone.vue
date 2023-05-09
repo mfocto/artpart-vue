@@ -10,7 +10,7 @@
       <!-- <div class="common-buttons">
         <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnwrite">등록</button>
       </div> -->
-      <table class="w3-table-all" style="width:800px; height:100px; font-weight: 100; border:1px solid gray; ">
+      <table class="w3-table-all" style="width:800px; height:100px; font-weight: 100; border:1px solid gray; color:black;">
         <thead>
         <tr>
           <th>No</th>
@@ -30,7 +30,7 @@
         </tbody>
       </table>
 
-
+      <!-- 페이징처리 -->
       <div class="pagination w3-bar w3-padding-16 w3-small" v-if="paging.total_list_cnt > 0">
         <span class="pg">
         <a href="javascript:;" @click="fnPage(1)" class="first w3-button w3-border">&lt;&lt;</a>
