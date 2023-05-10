@@ -15,8 +15,12 @@
                     <td><input class="inputetc mb-2" type="text"  name="user_name" value="경기도 광역시 심심한구 그린아파트" readonly>  </td>		
             </tr>
             <tr>
-                <th width="261" height= "30px;" style=""> 동&호수 </th>
-                    <td><input class="inputetc mb-2" type="text"  name="user_name" value="가라아게동 101호" readonly>  </td>		
+                <th width="261" height= "30px;" style=""> 동 </th>
+                    <td><input class="inputetc mb-2" type="text"  name="user_name" value="가라아게동" readonly>  </td>		
+            </tr>
+            <tr>
+                <th width="261" height= "30px;" style=""> 호수 </th>
+                    <td><input class="inputetc mb-2" type="text"  name="user_name" value="101호" readonly>  </td>		
             </tr>
             <tr>
               <th colspan="2" width="261" height= "30px;" style="font-size: 12px; color: Firebrick;"> 주소&동호수 변경을 원하는 경우, 관리자에게 직접 문의 바랍니다. 02-123-1234 </th> 
@@ -31,6 +35,11 @@
             <tr>
                 <th height= "30px;" style=""> 아이디</th>
                     <td> <input class="inputetc mb-2" type="text"  name="user_id" value="12345" readonly>	</td>
+            </tr>		
+            <tr>
+                <th height= "30px;" style=""> 핸드폰번호</th>
+                    <td> <input class="inputetc mb-2" type="tel"  name="user_id">	</td>
+                    <!-- <input type="tel" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" /> -->
             </tr>		
 
             <hr style="border-color: gray;"/>

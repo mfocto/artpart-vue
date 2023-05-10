@@ -2,12 +2,11 @@
 
 <template>
   <div class="background">
-    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >회의/투표/설문 접수</h1>
+    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >투표/설문 접수</h1>
     <hr style="border-color: gray;"/>
 
     <div class="back-box">
       <div class="back-box-one">
-        <router-link class="meeting-menu" to="/meeting/pagemeetingform"><img src="../../assets/images/meeting/conversation.png" width="100" height="100" class="d-inline-block " alt="회의"><span style="text-align:center; color:Darkslategray ;">회의</span></router-link>
         <router-link class="meeting-menu" to="/meeting/pagearchiveform"><img src="../../assets/images/meeting/archive.png" width="100" height="100" class="d-inline-block " alt="투표"><span style="text-align:center; color:Darkslategray ;">투표</span></router-link>
         <router-link class="meeting-menu" to="/meeting/pagearchiveform"><img src="../../assets/images/meeting/survey.png" width="100" height="100" class="d-inline-block " alt="설문"><span style="text-align:center; color:Darkslategray ;">설문</span></router-link>
         <br>

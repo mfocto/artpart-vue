@@ -52,22 +52,11 @@
         </li>
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#member-collapse" aria-expanded="false">
-            회의/투표/설문
+            투표/설문
           </button>
           <div class="collapse" id="member-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><router-link to="/meeting/meetingpage" class="link-dark d-inline-flex text-decoration-none rounded">회의/투표/설문</router-link></li>
-            </ul>
-          </div>
-        </li>
-        <li class="mb-1">
-          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#car-collapse" aria-expanded="false">
-            주차
-          </button>
-          <div class="collapse" id="car-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/car/pagemycar" class="link-dark d-inline-flex text-decoration-none rounded">내 차량 등록</router-link></li>
-              <li><router-link to="/car/pagevisitcar" class="link-dark d-inline-flex text-decoration-none rounded">방문차량 등록</router-link></li>
+                <li><router-link to="/meeting/meetingpage" class="link-dark d-inline-flex text-decoration-none rounded">투표/설문</router-link></li>
             </ul>
           </div>
         </li>

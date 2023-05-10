@@ -3,68 +3,70 @@
 
 <template>
     <div class="background">
-      <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >투표 & 설문 접수</h1>
-      <hr style="border-color: gray;"/>
-  
-      <div class="back-box rounded-1" >
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm1" style=" width: 100%; color:Firebrick; font-size: 18px;">투표 & 설문 접수</span>
-               
-            </div>
+        <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >투표 & 설문 접수</h1>
+        <hr style="border-color: gray;"/>
+        
+        <form @submit.prevent="fnLogin">
+            <div class="back-box rounded-1" >
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm1" style=" width: 100%; color:Firebrick; font-size: 18px;">투표 & 설문 접수</span>
+                
+                </div>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm1">제목</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm1">제목</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm2">설명</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm2">설명</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
 
-            <!-- //////////////체크박스/////////////////// -->
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked> 
-                    <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>  
-            
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                    <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>
+                <!-- //////////////체크박스/////////////////// -->
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked> 
+                        <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>  
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                        <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
 
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                    <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                        <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
 
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                    <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                        <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
 
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                    <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                        <input class="form-control-1 rounded-1" type="text"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
 
-            <!-- //////////////////////////////////////// -->
-
-
-
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile02">종료 시간</label>
-                <input type="date" class="form-control" id="inputGroupFile02">
-            </div>
+                <!-- //////////////////////////////////////// -->
 
 
-            <div class="submit-button" mb-3>
-            <router-link to="/meeting/meetingpage" class="btn" tabindex="-1" role="button" aria-disabled="true"
-                style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; " >Enter</router-link>
-            </div>
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile02">종료 시간</label>
+                    <input type="date" class="form-control" id="inputGroupFile02">
+                </div>
 
 
-        </div> <!-- back-box close-->
+                <div class="submit-button" mb-3>
+                <router-link to="/meeting/meetingpage" class="btn" tabindex="-1" role="submit" @keyup.enter="submit()" aria-disabled="true"
+                    style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; " >Enter</router-link>
+                </div> 
+
+
+            </div> <!-- back-box close-->
+        </form>
     </div> <!--background close-->
   </template>
   
