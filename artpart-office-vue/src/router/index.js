@@ -42,19 +42,11 @@ import sDeltail from '@/views/admin/scheduleDeltailPage.vue'
 import sChangeA from '@/views/admin/scheduleChangeAdminPage.vue'
 import sChanget from '@/views/admin/scheduleChangTimePage.vue'
 
-// 입주민 차량 관리 페이지
-import mcList from '@/views/car/memberCarListPage.vue'
-import mcDeltail from '@/views/car/memberCarDeltailPage.vue'
-import mcSignUp from '@/views/car/memberCarSignUpPage.vue'
-import mcChange from '@/views/car/memberCarChangePage.vue'
-import mcCheck from '@/views/car/memberCarCheckPage.vue'
-
-// 방문객 차량 관리 페이지
-import vcList from '@/views/car/visitorCarListPage.vue'
-import vcDeltail from '@/views/car/visitorCarDeltailPage.vue'
-import vcSignUp from '@/views/car/visitorCarSignUpPage.vue'
-import vcChange from '@/views/car/visitorCarChangePage.vue'
-import vcCheck from '@/views/car/visitorCarCheckPage.vue'
+//차량 관리 페이지
+import cList from '@/views/car/carListPage.vue'
+import cDeltail from '@/views/car/carDeltailPage.vue'
+import cSignUp from '@/views/car/carSignUpPage.vue'
+import cChange from '@/views/car/carChangePage.vue'
 
 import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
@@ -255,61 +247,31 @@ const routes = [
     name: 'sChangeT',
     component: sChanget
   },
-  // 입주민 차량 관리
+   
+  //차량관리
   {
-    path: '/memberCarList',
-    name: 'mcList',
-    component: mcList
-  },
-  {
-    path: '/memberCarDeltail',
-    name: 'mcDeltail',
-    component: mcDeltail
-  },
-  {
-    path: '/memberSingUp',
-    name: 'mcSignUp',
-    component: mcSignUp
+    path: '/carList',
+    name: 'cList',
+    component: cList
 
   },
   {
-    path: '/memberCarCheck',
-    name: 'mcCheck',
-    component: mcCheck
+    path: '/carDeltail',
+    name: 'cDeltail',
+    component: cDeltail
   },
   {
-    path: '/memberCarChange',
-    name: 'mcChange',
-    component: mcChange
-  },
-  // 방문객 차량 관리
-  {
-    path: '/visitorCarList',
-    name: 'vcList',
-    component: vcList
-  },
-  {
-    path: '/visitorCarDeltail',
-    name: 'vcDeltail',
-    component: vcDeltail
-  },
-  {
-    path: '/visitorSingUp',
-    name: 'vcSignUp',
-    component: vcSignUp
+    path: '/carSingUp',
+    name: 'cSignUp',
+    component: cSignUp
 
   },
   {
-    path: '/visitorCarCheck',
-    name: 'vcCheck',
-    component: vcCheck
-  },
-  {
-    path: '/visitorCarChange',
-    name: 'vcChange',
-    component: vcChange
-   },
+    path: '/carChange',
+    name: 'cChange',
+    component: cChange
 
+  },
   {
     path: '/notice/list',
     name: 'NoticeList',

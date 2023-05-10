@@ -1,43 +1,29 @@
 <template>
   <div>
     <div  align="left" class="jb-header">
-        <h1>방문 차량 관리</h1>
+        <h1>차량 관리</h1>
     </div>
         
   </div>
       <br>
       <br>
-      <div align="left" class="jb-header" ><h2>방문 차량 상세 조회</h2> 
+      <div align="left" class="jb-header" ><h2>차량 상세 조회</h2> 
       </div>
       
       <div>
         <table style="width:100%; border : 1px solid #000 ;">
         <tr style="border : 1px solid #000 ;">
-          <td><font size="5">아파트 명 </font></td>
-          <td>
-            <!-- <input style="width:500px;height:50px;" type="text"> -->
-            <font size="5">ict 2차 아파트</font>
-          </td>
-        </tr>
-        <tr style="border : 1px solid #000 ;">
-          <td> <font size="5">방문 동호 </font></td>
+          <td> <font size="5">동호수 or 직원번호 </font></td>
           <td>
             <!-- <input style="width:500px;height:50px;" type="text"> -->
             <font size="5">101-101</font>
           </td>
         </tr>
         <tr style="border : 1px solid #000 ;">
-          <td><font size="5">입주민 전화 번호 </font></td>
+          <td><font size="5">차량 전화 번호 </font></td>
           <td>
             <!-- <input style="width:500px;height:50px;" type="text" placeholder="-를 넣지 마시오"> -->
             <font size="5">01012345678</font>
-          </td>
-        </tr>
-        <tr style="border : 1px solid #000 ;">
-          <td><font size="5">방문객 전화 번호 </font></td>
-          <td>
-            <!-- <input style="width:500px;height:50px;" type="text" placeholder="-를 넣지 마시오"> -->
-            <font size="5">01034565678</font>
           </td>
         </tr>
         <tr style="border : 1px solid #000 ;">
@@ -91,22 +77,15 @@
       <br>
       <br>
       <div class="button1">
-            <button style="float: center;" type="button" class="btn btn-dark"><router-link to="/visitorCarChange">수정</router-link></button>  &nbsp; 
+            <button style="float: center;" type="button" class="btn btn-dark"><router-link to="/carChange">수정</router-link></button>  &nbsp; 
             <button type="button" class="btn btn-dark">삭제</button>
-            <button style="float: right;" type="button" class="btn btn-dark"><router-link to="/visitorCarList">목록</router-link></button>
+            <button style="float: right;" type="button" class="btn btn-dark"><router-link to="/carList">목록</router-link></button>
       </div>
   
         
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
-</script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

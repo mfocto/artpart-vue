@@ -1,13 +1,13 @@
 <template>
   <div>
     <div  align="left" class="jb-header">
-        <h1>입주민 차량 관리</h1>
+        <h1>방문 차량 관리</h1>
     </div>
         
   </div>
       <br>
       <br>
-      <div align="left" class="jb-header" ><h2>차량 등록</h2> 
+      <div align="left" class="jb-header" ><h2>방문 차량 등록</h2> 
       </div>
       
       <div>
@@ -16,16 +16,23 @@
           <td><font size="5">아파트 명 </font></td><td><input style="width:500px;height:50px;" type="text"></td>
         </tr>
         <tr style="border : 1px solid #000 ;">
-          <td> <font size="5">동호 </font></td><td><input style="width:500px;height:50px;" type="text"></td>
+          <td> <font size="5">방문 동호 </font></td><td><input style="width:500px;height:50px;" type="text"></td>
         </tr>
         <tr style="border : 1px solid #000 ;">
-          <td><font size="5">입주민 전화 번호 </font></td><td><input style="width:500px;height:50px;" type="text" placeholder="-를 넣지 마시오"></td>
+          <td><font size="5">입주민 전화 번호 </font></td>
+          <td><input style="width:500px;height:50px;" type="text" placeholder="-를 넣지 마시오"></td>
+        </tr>
+        <tr style="border : 1px solid #000 ;">
+          <td><font size="5">방문객 전화 번호 </font></td>
+          <td><input style="width:500px;height:50px;" type="text" placeholder="-를 넣지 마시오"></td>
         </tr>
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">차량구분</font></td>
           <td style="margin: 0; padding: 0; vertical-align:middle;">
-            <h1 style="margin: 0; padding: 0; vertical-align:middle;"><input style="width:40px; height:60px;" type="checkbox" name="car" value="member"> &nbsp; 입주민&nbsp; 
-            <input style="width:40px; height:60px " type="checkbox" name="car" value="noentry"> &nbsp; 출입체한 </h1> 
+            <h1 style="margin: 0; padding: 0; vertical-align:middle;">
+              <input style="width:40px; height:60px;" type="checkbox" name="car" value="member"> &nbsp; 방문객 &nbsp; 
+              <input style="width:40px; height:60px " type="checkbox" name="car" value="noentry"> &nbsp; 출입체한
+            </h1> 
           </td>
         </tr>
         <tr style="border : 1px solid #000 ;">
@@ -44,6 +51,13 @@
           <th><font size="5">등록일시</font></th>
           <th><input style="width:500px;height:50px;font-size: 30px;" type="date" id="start" name="trip-start" value="2022-04-26" min="2018-01-01" max="2022-12-31"></th>
         </tr>
+        <tr style="border : 1px solid #000 ;">
+          <th><font size="5">방문시간</font></th>
+          <th>
+            <input style="width:250px;height:50px;font-size: 30px;" type="date" id="start" name="trip-start" value="2022-04-26" min="2018-01-01" max="2022-12-31"> &nbsp; ~ &nbsp; 
+            <input style="width:250px;height:50px;font-size: 30px;" type="date" id="start" name="trip-start" value="2022-04-26" min="2018-01-01" max="2022-12-31">
+          </th>
+        </tr>
         </table>
       </div>
       <br>
@@ -51,7 +65,7 @@
       <div class="button1">
             <button style="float: center;" type="button" class="btn btn-dark">등록</button>  &nbsp; 
             <button type="button" class="btn btn-dark">내용삭제</button>
-            <button style="float: right;" type="button" class="btn btn-dark"> <router-link to="/memberCarList">목록</router-link></button>
+            <button style="float: right;" type="button" class="btn btn-dark"><router-link to="/carList">목록</router-link></button>
       </div>
   
         

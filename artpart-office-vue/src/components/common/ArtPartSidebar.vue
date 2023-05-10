@@ -70,8 +70,7 @@
           </button>
           <div class="collapse" id="car-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/memberCarList" class="link-body-emphasis d-inline-flex text-decoration-none rounded">입주민 차량 관리</router-link></li>
-              <li><router-link to="/visitorCarList" class="link-dark d-inline-flex text-decoration-none rounded">방문 차량 관리</router-link></li>
+              <li><router-link to="/carList" class="link-dark d-inline-flex text-decoration-none rounded">차량 관리</router-link></li>
             </ul>
           </div>
         </li>
