@@ -1,9 +1,9 @@
 <template>  
 
   <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse ">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
+    <router-link class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" to="/member/main">
       <img src="../../assets/images/rogo/ArtPart_navy.png" width="150" height="100" class="d-inline-block align-top" alt="">
-    </a>
+    </router-link>
     <hr>
     <div class="flex-shrink-0 p-3" style="width: 280px;">
       <ul class="list-unstyled ps-0">
@@ -13,8 +13,8 @@
           </button>
           <div class="collapse" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/Using" class="link-dark d-inline-flex text-decoration-none rounded">관리비 사용 내역</a></li>
-              <li><a href="/Pay" class="link-dark d-inline-flex text-decoration-none rounded">관리비 납부 내역</a></li>
+              <li><router-link to="/using" class="link-dark d-inline-flex text-decoration-none rounded">관리비 사용 내역</router-link></li>
+              <li><router-link to="/pay" class="link-dark d-inline-flex text-decoration-none rounded">관리비 납부 내역</router-link></li>
             </ul>
           </div>
         </li>
@@ -24,7 +24,7 @@
           </button>
           <div class="collapse" id="dashboard-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/Facility" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설관리현황</a></li>
+              <li><router-link to="/facility" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설관리현황</router-link></li>
             </ul>
           </div>
         </li>
@@ -34,7 +34,7 @@
           </button>
           <div class="collapse" id="orders-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/announcement/PageAnno" class="link-body-emphasis d-inline-flex text-decoration-none rounded">공지사항</a></li>
+              <li><router-link to="/announcement/pageanno" class="link-body-emphasis d-inline-flex text-decoration-none rounded">공지사항</router-link></li>
             </ul>
           </div>
         </li>
@@ -45,29 +45,18 @@
           </button>
           <div class="collapse" id="resident-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/minone/PageMinone" class="link-dark d-inline-flex text-decoration-none rounded">민원신청</a></li>
-              <li><a href="/minone/PageMyMinone" class="link-dark d-inline-flex text-decoration-none rounded">내 민원 조회</a></li>
+              <li><router-link to="/minone/pageminone" class="link-dark d-inline-flex text-decoration-none rounded">민원신청</router-link></li>
+              <li><router-link to="/minone/pagemyminone" class="link-dark d-inline-flex text-decoration-none rounded">내 민원 조회</router-link></li>
             </ul>
           </div>
         </li>
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#member-collapse" aria-expanded="false">
-            회의/투표/설문
+            투표/설문
           </button>
           <div class="collapse" id="member-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/meeting/PageMeeting" class="link-dark d-inline-flex text-decoration-none rounded">회의/투표/설문</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="mb-1">
-          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#car-collapse" aria-expanded="false">
-            주차
-          </button>
-          <div class="collapse" id="car-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="/car/PageMyCar" class="link-dark d-inline-flex text-decoration-none rounded">내 차량 등록</a></li>
-              <li><a href="/car/PageVisitCar" class="link-dark d-inline-flex text-decoration-none rounded">방문차량 등록</a></li>
+                <li><router-link to="/meeting/meetingpage" class="link-dark d-inline-flex text-decoration-none rounded">투표/설문</router-link></li>
             </ul>
           </div>
         </li>

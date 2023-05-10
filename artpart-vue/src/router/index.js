@@ -6,21 +6,20 @@ import FacilityManageMent from '@/views/facility/FacilityManageMent.vue'
 
 //공지사항
 import PageAnno from '@/views/announcement/PageAnno.vue'
+import PageAnnoForm from '@/views/announcement/PageAnnoForm.vue'
 //민원
 import PageMinone from '@/views/minone/PageMinone.vue'
 import PageMinoneForm from '@/views/minone/PageMinoneForm.vue'
 import PageMyMinone from '@/views/minone/PageMyMinone.vue'
 import PageMyMinoneForm from '@/views/minone/PageMyMinoneForm.vue'
-//주차
-import PageMyCar from '@/views/car/PageMyCar.vue'
-import PageVisitCar from '@/views/car/PageVisitCar.vue'
+
 //회의&투표&설문
 import PageMeeting from '@/views/meeting/PageMeeting.vue'
-import PageMeetingForm from '@/views/meeting/PageMeetingForm.vue'
 import PageArchiveForm from '@/views/meeting/PageArchiveForm.vue'
 
 //마이페이지
 import MemberMypage from '@/views/member/MemberMypage.vue'
+
 //메인페이지
 import MemberMain from '@/views/member/MemberMain.vue'
 
@@ -28,21 +27,20 @@ import MemberMain from '@/views/member/MemberMain.vue'
 
 
 const routes = [
-
   {
-    path: '/Pay',
+    path: '/pay',
     name: 'ManageMentPay',
     component: ManageMentPay
   },
   //관리비 사용 내역
   {
-    path: '/Using',
+    path: '/using',
     name: 'ManageMentUsing',
     component: ManageMentUsing
   },
   //시설 관리
   {
-    path: '/Facility',
+    path: '/facility',
     name: 'FacilityManageMent',
     component: FacilityManageMent
   },
@@ -56,100 +54,66 @@ const routes = [
   //----------------------------------------------
   //마이페이지
   {
-    path: '/member/MemberMypage',
+    path: '/member/mypage',
     name: 'MemberMypage',
     component: MemberMypage
   },
   //----------------------------------------------
   //메인페이지
   {
-    path: '/member/MemberMain',
+    path: '/member/main',
     name: 'MemberMain',
     component: MemberMain
   },
   //----------------------------------------------
   //공지사항
   {
-    path: '/announcement/PageAnno',
+    path: '/announcement/pageanno',
     name: 'PageAnno',
     component: PageAnno
+  },
+  {
+    path: '/announcement/PageAnnoForm',
+    name: 'PageAnnoForm',
+    component: PageAnnoForm
   },
   //----------------------------------------------
   //회의&투표&설문
   {
-    path: '/meeting/PageMeeting',
+    path: '/meeting/meetingpage',
     name: 'PageMeeting',
     component: PageMeeting
   },
   {
-    path: '/meeting/PageArchiveForm',
+    path: '/meeting/pagearchiveform',
     name: 'PageArchiveForm',
     component: PageArchiveForm
   },
-  {
-    path: '/meeting/PageMeetingForm',
-    name: 'PageMeetingForm',
-    component: PageMeetingForm
-  },
-  //----------------------------------------------
-  //주차
-  {
-    path: '/car/PageVisitCar',
-    name: 'PageVisitCar',
-    component: PageVisitCar
-  },
-  {
-    path: '/car/PageMyCar',
-    name: 'PageMyCar',
-    component: PageMyCar
-  },
+
 
   //----------------------------------------------
   //민원
 
   {
-    path: '/minone/PageMinone',
+    path: '/minone/pageminone',
     name: 'PageMinone',
     component: PageMinone
   },
   {
-    path: '/minone/PageMinoneForm',
+    path: '/minone/pageminoneform',
     name: 'PageMinoneForm',
     component: PageMinoneForm
   },
   {
-    path: '/minone/PageMyMinone',
+    path: '/minone/pagemyminone',
     name: 'PageMyMinone',
     component: PageMyMinone
   },
   {
-    path: '/minone/PageMyMinoneForm',
+    path: '/minone/pagemyminoneform',
     name: 'PageMyMinoneForm',
     component: PageMyMinoneForm
-  },
-
-  //----------------------------------------------
-
-
-  {
-    path: '/Pay',
-    name: 'ManageMentPay',
-    component: ManageMentPay
-  },
-  //관리비 사용 내역
-  {
-    path: '/Using',
-    name: 'ManageMentUsing',
-    component: ManageMentUsing
-  },
-  //시설 관리
-  {
-    path: '/Facility',
-    name: 'FacilityManageMent',
-    component: FacilityManageMent
   }
-
-
 ]
 
 const router = createRouter({

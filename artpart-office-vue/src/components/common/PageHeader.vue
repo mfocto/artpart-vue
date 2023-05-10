@@ -3,8 +3,8 @@
   <div></div>
   <div class="navbar-nav ml-auto">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">로그아웃</a>
-      <a class="nav-link px-3" href="#">마이페이지</a>
+      <router-link class="nav-link px-3" to="/" v-on:click="clear">로그아웃</router-link>
+      <router-link class="nav-link px-3" to="#">마이페이지</router-link>
     </div>
   </div>
 </header>
@@ -13,7 +13,11 @@
 
 <script>
 export default {
-
+  methods: {
+    clear: function() {
+      localStorage.clear();
+    }
+  }
 }
 </script>
 

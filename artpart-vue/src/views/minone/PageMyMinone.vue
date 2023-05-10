@@ -10,7 +10,7 @@
       <!-- <div class="common-buttons">
         <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnwrite">등록</button>
       </div> -->
-      <table class="w3-table-all" style="width:800px; height:100px; font-weight: 100; border:1px solid gray; ">
+      <table class="w3-table-all" style="width:800px; height:100px; font-weight: 100; border:1px solid gray; color:black;">
         <thead>
         <tr>
           <th>No</th>
@@ -22,7 +22,7 @@
         <tbody style="font-family:Pretendard-Regular;">
         <tr v-for="(row, idx) in list" :key="idx">
           <td>{{ row.idx }}</td>
-          <td><a href="/minone/PageMyMinoneForm">{{ row.title }}</a></td>
+          <td><router-link to="/minone/pagemyminoneform">{{ row.title }}</router-link></td>
           <!-- <td><a v-on:click="fnView(`${row.idx}`)">{{ row.title }}</a></td> -->
           <td>{{ row.author }}</td>
           <td>{{ row.created_at }}</td>
@@ -30,7 +30,7 @@
         </tbody>
       </table>
 
-
+      <!-- 페이징처리 -->
       <div class="pagination w3-bar w3-padding-16 w3-small" v-if="paging.total_list_cnt > 0">
         <span class="pg">
         <a href="javascript:;" @click="fnPage(1)" class="first w3-button w3-border">&lt;&lt;</a>
@@ -41,7 +41,7 @@
                 <strong class="w3-button w3-border w3-green" :key="index">{{ n }}</strong>
             </template>
             <template v-else>
-                <a class="w3-button w3-border" href="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</a>
+                <router-link class="w3-button w3-border" to="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</router-link>
             </template>
         </template>
         <a href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"

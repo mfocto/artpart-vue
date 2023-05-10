@@ -22,12 +22,12 @@ import ComplaintInsert from '@/views/member/ComplaintInsert.vue'
 import ComplaintUpdate from '@/views/member/ComplaintUpdate'
 import ComplaintDetail from '@/views/member/ComplaintDetail'
 
-import MFee from '@/views/accounting/MFee.vue'
-import CashJournal from '@/views/accounting/Cash-journal.vue'
-import reportD from '@/views/accounting/D-report.vue'
-import reportM from '@/views/accounting/M-report.vue'
-import VoucherReg from '@/views/accounting/Voucher-reg.vue'
-import VoucherInq from '@/views/accounting/Voucher-inquiry.vue'
+import MFee from '@/views/account/MFee.vue'
+import CashJournal from '@/views/account/Cash-journal.vue'
+import reportD from '@/views/account/D-report.vue'
+import reportM from '@/views/account/M-report.vue'
+import VoucherReg from '@/views/account/Voucher-reg.vue'
+import VoucherInq from '@/views/account/Voucher-inquiry.vue'
 
 //직원 정보 관리
 import aList from '@/views/admin/adminListPage.vue'
@@ -64,7 +64,7 @@ import PlaygroundWrite from '@/views/apartment/PlaygroundWrite.vue'
 import CompanyList from '@/views/company/CompanyList.vue'
 
 
-import MFeeList from '@/views/accounting/MFeeList.vue'
+import MFeeList from '@/views/account/MFeeList.vue'
 
 
 
@@ -98,14 +98,12 @@ const routes = [
   name: 'MeetingDetail',
   component: MeetingDetail
   },
- 
   //대표자 화의 수정폼
   {
     path: '/MeetingUpdate',
     name: 'MeetingUpdate',
     component: MeetingUpdate
   },
-
 
 //----------------------------------------
   //입주민 관리
@@ -146,55 +144,55 @@ const routes = [
     name: 'SurveyDetail',
     component: SurveyDetail
   },
-//----------------------------------------------------
-//민원관리
-{
-  path: '/ComplaintList',
-  name: 'ComplaintList',
-  component: ComplaintList
-},
-{
-  path: '/ComplaintInsert',
-  name: 'ComplaintInsert',
-  component: ComplaintInsert
-},
-{
-  path: '/ComplaintUpdate',
-  name: 'ComplaintUpdate',
-  component: ComplaintUpdate
-},
-{
-  path: '/ComplaintDetail',
-  name: 'ComplaintDetail',
-  component: ComplaintDetail
-},
+  //----------------------------------------------------
+  //민원관리
   {
-    path: '/fee',
+    path: '/ComplaintList',
+    name: 'ComplaintList',
+    component: ComplaintList
+  },
+  {
+    path: '/ComplaintInsert',
+    name: 'ComplaintInsert',
+    component: ComplaintInsert
+  },
+  {
+    path: '/ComplaintUpdate',
+    name: 'ComplaintUpdate',
+    component: ComplaintUpdate
+  },
+  {
+    path: '/ComplaintDetail',
+    name: 'ComplaintDetail',
+    component: ComplaintDetail
+  },
+  {
+    path: '/account/fee',
     name: 'MFee',
     component: MFee
   },
   {
-    path: '/cash-journal',
+    path: '/account/cash-journal',
     name: 'CashJournal',
     component: CashJournal
   },
   {
-    path: '/daily-report',
+    path: '/account/daily-report',
     name: 'reportD',
     component: reportD
   },
   {
-    path: '/monthly-report',
+    path: '/account/monthly-report',
     name: 'reportM',
     component: reportM
   },
   {
-    path: '/voucher-registration',
+    path: '/account/voucher-registration',
     name: 'VoucherReg',
     component: VoucherReg
   },
   {
-    path: '/voucher-inquiry',
+    path: '/account/voucher-inquiry',
     name: 'VoucherInq',
     component: VoucherInq
   },
@@ -275,17 +273,17 @@ const routes = [
 
   },
   {
-    path: '/notice-list',
+    path: '/notice/list',
     name: 'NoticeList',
     component: NoticeList
   },
   {
-    path: '/notice-detail',
+    path: '/notice/detail',
     name: 'NoticeDetail',
     component: NoticeDetail
   },
   {
-    path: '/notice-write',
+    path: '/notice/write',
     name: 'NoticeWrite',
     component: NoticeWrite
   },
@@ -346,7 +344,7 @@ const routes = [
     component: CompanyList
   },
   {
-    path: '/feelist',
+    path: '/account/feelist',
     name: 'MFeeList',
     component: MFeeList
   }

@@ -10,67 +10,94 @@
       <!-- <div class="common-buttons">
         <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnwrite">등록</button>
       </div> -->
-      <table class="w3-table-all" style="width:800px; height:100px; font-weight: 100; border:1px solid gray; ">
+      <table class="w3-table-all rounded-1" style="width:800px; height:100px; font-weight: 100; border:1px solid rgb(56, 56, 56); color:black; ">
         <thead>
         <tr>
           <th>No</th>
           <th>제목</th>
           <th>작성자</th>
+          <th>작성일자</th>
           <th>조회수</th>
         </tr>
         </thead>
-        <tbody style="font-family:Pretendard-Regular;">
-        <tr v-for="(row, idx) in list" :key="idx">
-          <td>{{ row.idx }}</td>
-          <td><a v-on:click="fnView(`${row.idx}`)">{{ row.title }}</a></td>
-          <td>{{ row.author }}</td>
-          <td>{{ row.created_at }}</td>
+  <!--
+  "idx":1,
+  "title": "",
+  "author": "",
+  "created_at": "" 
+  -->
+
+        <tbody class="table-text mb-3 " 
+        style="vertical-align:top; ; 
+        font-family:Pretendard-Regular; width:800px; height:100px; font-weight: 100; border:1px solid rgb(56, 56, 56); color:black;">
+
+        
+        <tr style="">
+        <th>3</th>
+        <th>세번째제목</th>
+        <th>관리자</th>
+        <th>2023-05-05</th>
+        <th>11</th>
+        </tr>
+
+        <tr style="">
+        <th>2</th>
+        <th>두번째제목</th>
+        <th>관리자</th>
+        <th>2023-05-05</th>
+        <th>21</th>
+        </tr>
+
+
+        <tr style="">
+        <th>1</th>
+        <th>첫번째제목</th>
+        <th>관리자</th>
+        <th>2023-05-05</th>
+        <th>213</th>
+        </tr>
+
+        <tr v-for="(item, nptice_Idx) in list" :key="nptice_Idx">
+          <td>{{ item.nptice_Idx }}</td>
+          <td><a v-on:click="fnView(`${item.nptice_Idx}`)">{{ item.NOTICE_TITLE }}</a></td>
+          <td>{{ item.NOTICE_WRITER }}</td>
+          <td>{{ item.NOTICE_TITLE }}</td>
+          <td>{{ item.NOTICE_CONTENT }}</td>
+          <td>{{ item.NOTICE_DATE }}</td>
+
         </tr>
         </tbody>
+        
       </table>
 
-
-      <div class="pagination w3-bar w3-padding-16 w3-small" v-if="paging.total_list_cnt > 0">
-        <span class="pg">
-        <a href="javascript:;" @click="fnPage(1)" class="first w3-button w3-border">&lt;&lt;</a>
-        <a href="javascript:;" v-if="paging.start_page > 10" @click="fnPage(`${paging.start_page-1}`)"
-          class="prev w3-button w3-border">&lt;</a>
-        <template v-for=" (n,index) in paginavigation()">
-            <template v-if="paging.page==n">
-                <strong class="w3-button w3-border w3-green" :key="index">{{ n }}</strong>
-            </template>
-            <template v-else>
-                <a class="w3-button w3-border" href="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</a>
-            </template>
-        </template>
-        <a href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"
-          @click="fnPage(`${paging.end_page+1}`)" class="next w3-button w3-border">&gt;</a>
-        <a href="javascript:;" @click="fnPage(`${paging.total_page_cnt}`)" class="last w3-button w3-border">&gt;&gt;</a>
-        </span>
-      </div>
     </div>
 
     <br><br>
-    <!-- 검색필드 추가 -->
-    <div class="serch" style="text-align:left;">
-      <select v-model="search_key" 
-          style="text-align:center; color: gray; font-family:TheJamsil5Bold; font-size: 12px; height: 30px; width: 100px; ">
-        <option value="">- 선택 -</option>
-        <option value="title">글제목</option>
-        <option value="contents">글내용</option>
-        <option value="title">제목+내용</option>
-      </select>
-        &nbsp;
 
-      <input type="text" v-model="search_value" @keyup.enter="fnPage()" style=" width: 300px; height: 30px; border:1px solid gray;  ">
-        &nbsp;
+  
+  
+  <!-- 검색필드 추가 -->
+  <div class="search" style="text-align:left; ">
+    <select v-model="search_key" 
+        style="text-align:center; color: gray; font-family:TheJamsil5Bold; font-size: 12px; height: 30px; width: 100px; ">
+      <option value="">- 선택 -</option>
+      <option value="title">글제목</option>
+      <option value="contents">글내용</option>
+      <option value="ticon">제목+내용</option>
+    </select>
+      &nbsp;
 
-      <button @click="fnPage()" style="text-align:center; color: gray; font-family:TheJamsil5Bold; 
-            font-size: 12px; width: 100px; height: 30px; border:1px solid gray; ">
-            검색
-      </button>
-  </div>
+    <input type="text" v-model="search_value" @keyup.enter="fnPage()" style=" width: 300px; height: 30px; border:1px solid gray;  ">
+      &nbsp;
+
+    <button @click="fnPage()" style="text-align:center; color: gray; font-family:TheJamsil5Bold; 
+          font-size: 12px; width: 100px; height: 30px; border:1px solid gray; ">
+          검색
+    </button>
+</div>
+
 </div> <!-- 백그라운드 설정 -->
+
 </template>
 
 
@@ -80,159 +107,70 @@
 <script>
 export default {
   data() { //변수생성
-    return {
-      requestBody: {}, //리스트 페이지 데이터전송
-      list: {}, //리스트 데이터
-      no: '', //게시판 숫자처리
-      paging: {
-        block: 0,
-        end_page: 0,
-        next_block: 0,
-        page: 0,
-        page_size: 0,
-        prev_block: 0,
-        start_index: 0,
-        start_page: 0,
-        total_block_cnt: 0,
-        total_list_cnt: 0,
-        total_page_cnt: 0,
-      }, //페이징 데이터
-      page: this.$route.query.page ? this.$route.query.page : 1,
-      size: this.$route.query.size ? this.$route.query.size : 10,
-      // keyword: this.$route.query.keyword,
+    // return {
+    //       permanentId: '',
+    //       trial_daily_idx: '',
+    //       name: '',
+    //       trial_daily_debit_in: '',
+    //       trial_daily_debit_out: '',
+    //       trial_daily_debit_total: '',
+    //       trial_daily_credit_in: '',
+    //       trial_daily_credit_out: '',
+    //       trial_daily_credit_total: '',
+    //       trial_daily_account: '',
+    //       list: {},
+    //   }
+  },    //data close
 
-      search_key: this.$route.query.sk ? this.$route.query.sk : '',
-      search_value: this.$route.query.sv ? this.$route.query.sv : '',
 
-      paginavigation: function () { //페이징 처리 for문 커스텀
-        let pageNumber = [] //;
-        let start_page = this.paging.start_page;
-        let end_page = this.paging.end_page;
-        for (let i = start_page; i <= end_page; i++) pageNumber.push(i);
-        return pageNumber;
-      }
-    }
-  },
+
+  //페이지열릴때 자동실행
   mounted() {
-    this.fnGetList()
+    this.fnGetList(),
+    this.getDreportList()
   },
+
+
+
   methods: {
     fnGetList() {
-      
-      //##################임시 데이터 출력 처리##################
-      this.list = [
-        {
-            "idx":1,
-            "title": "첫번째제목",
-            "author": "관리자",
-            "created_at": "131"
-        },
-        {
-            "idx":2,
-            "title": "두번째제목",
-            "author": "관리자",
-            "created_at": "121"
-        },
-        {
-            "idx":3,
-            "title": "세번째제목",
-            "author": "관리자",
-            "created_at": "1"
-        },
-        {
-            "idx":4,
-            "title": "네번째제목",
-            "author": "관리자",
-            "created_at": "2"
-        },
-        {
-            "idx":5,
-            "title": "열한번째제목",
-            "author": "관리자",
-            "created_at": "53"
-        },
-        {
-            "idx":6,
-            "title": "여섯번째제목",
-            "author": "관리자",
-            "created_at": "414"
-        },
-        {
-            "idx":7,
-            "title": "일곱번째제목",
-            "author": "관리자",
-            "created_at": "343"
-        },
-        {
-            "idx":8,
-            "title": "여덟번째제목",
-            "author": "관리자",
-            "created_at": "443"
-        },
-        {
-            "idx":9,
-            "title": "아홉번째제목",
-            "author": "관리자",
-            "created_at": "1212"
-        },
-        {
-            "idx":10,
-            "title": "열번째제목",
-            "author": "관리자",
-            "created_at": "76"
-        },
-  
-      ]
-      //##################임시 데이터 출력 처리 끝##################
+        // 스프링 부트에서 전송받은 데이터 출력 처리
+        this.requestBody = { // 데이터 전송
+        //keyword: this.keyword,
+        sk: this.search_key,
+        sv: this.search_value,
+        page: this.page,
+        size: this.size
+      }
 
+      this.$axios.get(this.$serverUrl + "/announcement/anno-list", {
+        params: this.requestBody,
+        headers: {}
 
-
-
-
-
-      //##################db연동 데이터 출력 처리##################
-      // // 스프링 부트에서 전송받은 데이터 출력 처리
-      // this.requestBody = { // 데이터 전송
-
-        
-      //   //keyword: this.keyword,
-      //   sk: this.search_key,
-      //   sv: this.search_value,
-      //   page: this.page,
-      //   size: this.size
-      // }
-
-      // this.$axios.get(this.$serverUrl + "/board/list", {
-      //   params: this.requestBody,
-      //   headers: {}
-      // }).then((res) => {      
-
-
-      //  // this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
-      // if (res.data.result_code === "OK") {
-      // this.list = res.data.data
+      }).then((res) => {      
+       // this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+      if (res.data.result_code === "OK") {
+      this.list = res.data.data
       // this.paging = res.data.pagination
       // this.no = this.paging.total_list_cnt - ((this.paging.page - 1) * this.paging.page_size)
-      // }
+      }
 
 
-      // }).catch((err) => {
-      //   if (err.message.indexOf('Network Error') > -1) {
-      //     alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
-      //   }
-      // })
-      //##################db연동 데이터 출력 처리 끝##################
-
+      }).catch((err) => {
+        if (err.message.indexOf('Network Error') > -1) {
+          alert('공지사항 네트워크가 원활하지 않습니다ㅠㅠ\n잠시 후 다시 시도해주세요.')
+        }
+      })
     },
 
 
 
 
     
-    fnView(idx){
-      this.requestBody.idx = idx
+    fnView(nptice_Idx){
+      this.requestBody.nptice_Idx = nptice_Idx
       this.$router.push({         // router 에게 요청할 정보, pathVariable 방식
-        path: './detail',         // url(같은폴더에 있는 detail)
+        path: './PageAnnoForm',         // url(같은폴더에 있는 뷰 실행)
         query: this.requestBody   // parameter
       })
     },
@@ -289,9 +227,10 @@ export default {
 }
 
 
-.serch {
+.search {
    position: relative; 
-   top: 50%;
+   top:35%; 
+   
 }
 
 

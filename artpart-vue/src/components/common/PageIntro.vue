@@ -1,94 +1,103 @@
 <template>
-    <div>
-      <!-- Background Video-->
-      <video class="bg-video" playsinline autoplay muted loop>
-        <source src="@/assets/mp4/bg.mp4" type="video/mp4" />
-      </video>
-      <!-- Masthead-->
-      <div class="masthead">
-        <div class="masthead-content text-white">
-          <div class="container-fluid px-4 px-lg-0">
-            <h1 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
-            <p class="mb-5">
-              We're working hard to finish the development of this site. Sign up below to receive updates and to be notified when we launch!
-            </p>
+  <div>
+    <!-- Background Video-->
+    <video class="bg-video" playsinline autoplay muted loop>
+      <source src="@/assets/mp4/bg.mp4" type="video/mp4" />
+    </video>
+    <!-- Masthead-->
+    <div class="masthead">
+      <div class="masthead-content text-white">
+        <div class="container-fluid px-4 px-lg-0">
+          <h1 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
+          <p class="mb-5">
+            We're working hard to finish the development of this site. Sign up below to receive updates and to be notified
+            when we launch!
+          </p>
 
-            <div class="col-auto mb-5">
-                  <a href="http://localhost:80" class="btn btn-primary">관리자 로그인</a>
-            </div>
-            <!-- Contact Form -->
-            <form> 
-            
-              <div class="row input-group-newsletter ms-5 ps-5">
-                    <div class="col-auto">
-                    <label for="inputId" class="visually-hidden">Id</label>
-                    <input type="Id" class="form-control" id="inputId" placeholder="아이디">
-                </div>
-                <div class="col-auto">
-                    <label for="inputPassword2" class="visually-hidden">Password</label>
-                    <input type="password" class="form-control" id="inputPassword2" placeholder="비밀번호">
-                </div>
-                <div class="col-auto">
-                    <!-- <button type="submit" class="btn btn-primary mb-3">로그인</button> -->
-                    <router-link to="/Pay" class="btn btn-primary">로그인</router-link>
-                </div>
-              </div>
-              
-              <!-- Submit success message-->
-              <div class="d-none" :class="{ 'd-block': isFormSubmitted }" id="submitSuccessMessage">
-                <div class="text-center mb-3 mt-2">
-                  <div class="fw-bolder">Form submission successful!</div>
-                  To activate this form, sign up at
-                  <br />
-                  <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                </div>
-              </div>
-              <!-- Submit error message-->
-              <div class="d-none" :class="{ 'd-block': isFormSubmitError }" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3 mt-2">Error sending message!</div>
-              </div>
-            </form>
+          <div class="col-auto mb-5">
+            <a href="http://localhost:8282" class="btn btn-primary">관리자 로그인</a>
           </div>
+          <!-- Contact Form -->
+          <form @submit.prevent="login">
+            <div class="row input-group-newsletter ms-5 ps-5">
+              <div class="col-auto">
+                <label for="inputId" class="visually-hidden">Id</label>
+                <input type="Id" class="form-control" v-model="memberid" id="inputId" placeholder="아이디">
+              </div>
+              <div class="col-auto">
+                <label for="inputPassword2" class="visually-hidden">Password</label>
+                <input type="password" class="form-control" v-model="memberpwd" id="inputPassword2" placeholder="비밀번호">
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">로그인</button>
+              </div>
+            </div>
+
+            <!-- Submit success message-->
+            <div class="d-none" :class="{ 'd-block': isFormSubmitted }" id="submitSuccessMessage">
+              <div class="text-center mb-3 mt-2">
+                <div class="fw-bolder">Form submission successful!</div>
+                To activate this form, sign up at
+                <br />
+                <a
+                  href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+              </div>
+            </div>
+            <!-- Submit error message-->
+            <div class="d-none" :class="{ 'd-block': isFormSubmitError }" id="submitErrorMessage">
+              <div class="text-center text-danger mb-3 mt-2">Error sending message!</div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </template>
-  <script>
-  export default {
-    data() {
-      return {
-        email: "",
-        isFormSubmitted: false,
-        isFormSubmitError: false,
-      };
-    },
-    computed: {
-      isEmailRequired() {
-        return !this.email;
-      },
-      isEmailInvalid() {
-        return !this.isEmailRequired && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
-      },
-      isFormInvalid() {
-        return this.isEmailRequired || this.isEmailInvalid || this.isFormSubmitted;
-      },
-    },
-    methods: {
-      submitForm() {
-      if (this.$refs.form.checkValidity()) {
-        // If form is valid, submit to server
-        console.log("Submitting form...");
-        // TODO: Send email to server
-        this.$refs.form.reset();
-        this.$refs.successMessage.classList.remove("d-none");
-      } else {
-        // If form is invalid, show error messages
-        console.log("Form is invalid");
-        this.$refs.form.classList.add("was-validated");
-      }
-    },
+  </div>
+</template>
+<script>
+export default {
+  name: "PageIntro",
+  data() {
+    return {
+      requestBody: {},
+      member: {} // 로그인한 회원 정보
+    };
   },
-};
+  mounted() {
+    this.sessionclear()
+  },
+  methods: {
+    sessionclear() {
+      sessionStorage.clear();
+    },
+    login() {
+      this.requestBody = {
+        memberid: this.memberid,
+        memberpwd: this.memberpwd
+      };
+      this.$axios.get(this.$serverUrl + "/login/" + this.memberid, {
+        params: {
+          memberpwd: this.memberpwd
+        }
+      })
+        .then((res) => {
+          if (res.data.result_code === 'OK') {
+            sessionStorage.setItem('member', JSON.stringify(res.data.data));
+            // 로그인 성공시 메인페이지 이동
+            this.$router.push({
+              path: '/member/main',
+            });
+          }
+          if (res.data.result_code === 'ERROR') {
+            alert(res.data.description);
+          }
+        }).catch((err) => {
+          if (err.message.indexOf('Network Error') > -1) {
+            alert('서버와 통신이 불안정합니다.');
+          }
+        })
+    }
+  }
+}
 </script>
 
 <style>
