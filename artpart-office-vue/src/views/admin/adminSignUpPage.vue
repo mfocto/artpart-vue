@@ -1,4 +1,3 @@
-import vClickOutsi
 <template>
   <div>
     <div  align="left" class="jb-header">
