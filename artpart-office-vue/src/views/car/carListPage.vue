@@ -3,24 +3,13 @@
     <div  align="left" class="jb-header">
         <table ><h1 class="h2">방문객 차량 관리</h1></table>
         </div>
-        <!-- <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">등록</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">신청 확인</button>
-          </div>
-           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-text-bottom" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            This week
-          </button>
-        </div> -->
       </div>
       <br>
       <br>
       <div align="left" class="jb-header" ><h2>차량 조회&nbsp; 
       
           <div class="button1" style="float: right;" >
-            <button type="button" class="btn btn-dark"><router-link to="/visitorSingUp">등록</router-link></button>  &nbsp; 
-            <button type="button" class="btn btn-dark"><router-link to="/visitorCarCheck">신청 확인</router-link></button>
+            <button type="button" class="btn btn-dark"><router-link to="/carSingUp">등록</router-link></button>  &nbsp;
           </div></h2> 
       </div>
       <br>
@@ -59,13 +48,13 @@
               <td>ict 2차 아파트</td>
               <td>101-101</td>
               <td>방문객</td>
-              <td><router-link to="/visitorCarDeltail">12구4544</router-link></td>
+              <td><router-link to="/carDeltail">12구4544</router-link></td>
               <td>미니벤</td>
               <td></td>
               <td>2022-04-25</td>
               <td>2022-04-25 ~ 2022-04-25</td>
               <td width="100px"><button class="btn btn-dark" >삭제</button></td>
-              <td><button class="btn btn-dark" ><router-link to="/visitorCarChange">수정</router-link></button></td>
+              <td><button class="btn btn-dark" ><router-link to="/carChange">수정</router-link></button></td>
             </tr>
 
             <tr style="text-align: center; vertical-align: middle;">
@@ -84,7 +73,7 @@
             <tr style="text-align: center; vertical-align: middle;">
               <td>ict 2차 아파트</td>
               <td>101-103</td>
-              <td>방문객</td>
+              <td style="background:#86D9AD;">입주민</td>
               <td>23구8980</td>
               <td></td>
               <td>방문차량_1</td>
@@ -110,7 +99,7 @@
             <tr style="text-align: center; vertical-align: middle;">
               <td>ict 2차 아파트</td>
               <td>101-105</td>
-              <td>방문객</td>
+              <td style="background:#86D9AD;">입주민</td>
               <td>23구8983</td>
               <td></td>
               <td></td>
@@ -240,7 +229,7 @@
             <tr style="text-align: center; vertical-align: middle;">
               <td>ict 2차 아파트</td>
               <td>101-501</td>
-              <td>방문객</td>
+              <td style="background:#86D9AD;">입주민</td>
               <td>12구8991</td>
               <td></td>
               <td></td>
