@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHIntro from '@/views/home/PageHIntro.vue'
-import ManageMentPay from '@/views/manageMent/ManageMentPay.vue'
-import ManageMentUsing from '@/views/manageMent/ManageMentUsing.vue'
-import FacilityManageMent from '@/views/facility/FacilityManageMent.vue'
+//관리비 사용
+import UsingList from '@/views/manageMent/UsingList.vue'
+//관리비 납부
+import PayMentList from '@/views/manageMent/PayMentList.vue'
+//시설관리
+import SeesulList from '@/views/seesul/SeesulList.vue'
 
 //공지사항
 import PageAnno from '@/views/announcement/PageAnno.vue'
@@ -28,22 +31,23 @@ import MemberMain from '@/views/member/MemberMain.vue'
 
 
 const routes = [
+  //관리비 납부 내역
   {
-    path: '/pay',
-    name: 'ManageMentPay',
-    component: ManageMentPay
+    path: '/payment/list',
+    name: 'PayMentList',
+    component: PayMentList
   },
   //관리비 사용 내역
   {
-    path: '/using',
-    name: 'ManageMentUsing',
-    component: ManageMentUsing
+    path: '/using/list',
+    name: 'UsingList',
+    component: UsingList
   },
   //시설 관리
   {
-    path: '/facility',
-    name: 'FacilityManageMent',
-    component: FacilityManageMent
+    path: '/seesul/list',
+    name: 'SeesulList',
+    component: SeesulList
   },
   //----------------------------------------------
   //인트로
