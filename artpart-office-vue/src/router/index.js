@@ -26,8 +26,8 @@ import MFee from '@/views/account/MFee.vue'
 import CashJournal from '@/views/account/Cash-journal.vue'
 import reportD from '@/views/account/D-report.vue'
 import reportM from '@/views/account/M-report.vue'
-import VoucherReg from '@/views/account/Voucher-reg.vue'
-import VoucherInq from '@/views/account/Voucher-inquiry.vue'
+import SlipReg from '@/views/account/SlipReg.vue'
+import SlipList from '@/views/account/SlipList.vue'
 
 //직원 정보 관리
 import aList from '@/views/admin/adminListPage.vue'
@@ -195,14 +195,14 @@ const routes = [
     component: reportM
   },
   {
-    path: '/account/voucher-registration',
-    name: 'VoucherReg',
-    component: VoucherReg
+    path: '/account/slip/reg',
+    name: 'SlipReg',
+    component: SlipReg
   },
   {
-    path: '/account/voucher-inquiry',
-    name: 'VoucherInq',
-    component: VoucherInq
+    path: '/account/slip/list',
+    name: 'SlipList',
+    component: SlipList
   },
 
   // 공지사항

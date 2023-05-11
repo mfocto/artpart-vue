@@ -21,8 +21,8 @@
               <li><router-link to="/account/feeList" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">관리비조회</router-link></li>
               <li><router-link to="/account/daily-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">일계표</router-link></li>
               <li><router-link to="/account/monthly-report" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">월계표</router-link></li>
-              <li><router-link to="/account/voucher-registration" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표등록</router-link></li>
-              <li><router-link to="/account/voucher-inquiry" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표조회</router-link></li>
+              <li><router-link to="/account/slip/reg" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표등록</router-link></li>
+              <li><router-link to="/account/slip/list" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">전표조회</router-link></li>
               <li><router-link to="/account/cash-journal" class="link-body-emphasis d-inline-flex text-decoration-none rounded mb-1">현금출납부</router-link></li>
             </ul>
           </div>
