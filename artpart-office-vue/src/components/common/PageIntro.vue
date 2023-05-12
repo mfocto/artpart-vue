@@ -27,26 +27,11 @@
               </div>
               <div class="col-auto">
                 <label for="inputPassword2" class="visually-hidden">Password</label>
-                <input type="password" class="form-control" v-model="emppwd" id="inputPassword2" placeholder="비밀번호">
+                <input type="password" class="form-control" v-model="emppwd" id="inputPassword2" placeholder="비밀번호" autocomplete="off">
               </div>
               <div class="col-auto">
                 <button type="submit" class="btn btn-primary mb-3">로그인</button>
               </div>
-            </div>
-
-            <!-- Submit success message-->
-            <div class="d-none" :class="{ 'd-block': isFormSubmitted }" id="submitSuccessMessage">
-              <div class="text-center mb-3 mt-2">
-                <div class="fw-bolder">Form submission successful!</div>
-                To activate this form, sign up at
-                <br />
-                <a
-                  href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-              </div>
-            </div>
-            <!-- Submit error message-->
-            <div class="d-none" :class="{ 'd-block': isFormSubmitError }" id="submitErrorMessage">
-              <div class="text-center text-danger mb-3 mt-2">Error sending message!</div>
             </div>
           </form>
         </div>
@@ -62,7 +47,9 @@ export default {
   data() {
     return {
       requestBody: {},
-      empDto: {} // 로그인한 회원 정보
+      empDto: {}, // 로그인한 회원 정보
+        empid: '',
+        emppwd: '',
     };
   },
   mounted() {
