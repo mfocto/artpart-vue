@@ -34,12 +34,13 @@
           </thead>
           <tbody>
             <tr>
-              <td colspan="4" style="text-align:left;">2023년 4월 27일 공지사항입니다.<br>
+              <td colspan="4" style="text-align:left;" >
+                  <input type="text" readonly v-model="content"><br>
                <br><br><br><br><br><br><br><br><br>
               </td>
             </tr>
             <tr>
-              <td><button type="button" class="btn btn-dark">메세지 발송</button></td>
+              <td><button type="button" class="btn btn-dark" @click="sendsms">메세지 발송</button></td>
               <td colspan="3"><button type="button" class="btn btn-dark">안내 방송</button></td>
             </tr>
            
@@ -51,10 +52,20 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  data(){
+      return {
+          content: '2023년 4월 27일 공지사항입니다.'
+      };
+  },
+    methods: {
+      sendsms(){
+          this.$axios.post(this.$serverUrl + "/sms/send/", null, {
+              params: {
+                  content: this.content
+              }
+          })
+      }
+    }
 }
 </script>
 
