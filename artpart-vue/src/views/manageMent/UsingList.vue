@@ -21,7 +21,7 @@
           <tbody>
             <tr v-for ="(item, detailIndex) in list" :key="detailIndex">
               <td>{{item.payment_date}}</td>
-              <td>{{item.payment_money}}</td>
+              <td>{{comma(item.payment_money) }}원</td>
               <td>{{item.payment_date}}</td>
               <td>{{item.payment_dad_line}}</td>
               <td>{{item.payment_bank}}</td>
@@ -67,10 +67,18 @@ export default {
               let end_page = this.paging.end_page;
               for (let i = start_page; i <= end_page; i++) pageNumber.push(i);
               return pageNumber;
-          }
-      }
+          },
+          
+        }
+        
   },
   methods: {
+    comma(value) {
+
+    // 여기에서 필터링 로직을 수행하고, 필터링된 값을 반환합니다.
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
     UsingList(){
           //스프링 부트에서 전송받은 데이터 출력 처리
           this.requestBody = { // 데이터 전송
@@ -96,7 +104,9 @@ export default {
   },
  mounted(){
   this.UsingList();
- }
+  
+ } 
+ 
 }
 </script>
 
