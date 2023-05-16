@@ -1,4 +1,4 @@
-<!-- PageMyMinone.vue -->
+<!-- PageMyMinone.vue 내민원 목록 -->
 
 
 <template>
