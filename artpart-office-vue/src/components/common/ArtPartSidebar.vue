@@ -33,7 +33,7 @@
           </button>
           <div class="collapse" id="dashboard-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/read" class="link-body-emphasis d-inline-flex text-decoration-none rounded">검침</router-link></li>
+              <li><router-link to="/read/list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">검침</router-link></li>
               <li><router-link to="/seesul-list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">시설 관리</router-link></li>
               <li><router-link to="/company-list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">외부업체</router-link></li>
             </ul>
