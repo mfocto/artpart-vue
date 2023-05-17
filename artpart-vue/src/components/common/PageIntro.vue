@@ -83,22 +83,23 @@ export default {
           memberpwd: this.memberpwd
         }
       })
-        .then((res) => {
-          if (res.data.result_code === 'OK') {
-            sessionStorage.setItem('member', JSON.stringify(res.data.data));
-            // 로그인 성공시 메인페이지 이동
-            this.$router.push({
-              path: '/member/main',
-            });
-          }
-          if (res.data.result_code === 'ERROR') {
-            alert(res.data.description);
-          }
-        }).catch((err) => {
-          if (err.message.indexOf('Network Error') > -1) {
-            alert('서버와 통신이 불안정합니다.');
-          }
-        })
+      .then((res) => {
+        if (res.data.result_code === 'OK') {
+          // 세션스토리지 이용하여 로그인
+          sessionStorage.setItem('member', JSON.stringify(res.data.data));
+          // 로그인 성공시 메인페이지 이동
+          this.$router.push({
+            path: '/member/main',
+          });
+        }
+        if (res.data.result_code === 'ERROR') {
+          alert(res.data.description);
+        }
+      }).catch((err) => {
+        if (err.message.indexOf('Network Error') > -1) {
+          alert('서버와 통신이 불안정합니다.');
+        }
+      })
     }
   }
 }
