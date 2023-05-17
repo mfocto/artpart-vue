@@ -98,21 +98,25 @@ const routes = [
   //----------------------------------------------
   //민원
 
+  //민원카테고리(메인)
   {
     path: '/minone/pageminone',
     name: 'PageMinone',
     component: PageMinone
   },
+  //민원글쓰기
   {
     path: '/minone/pageminoneform',
     name: 'PageMinoneForm',
     component: PageMinoneForm
   },
+  //내민원 목록
   {
     path: '/minone/pagemyminone',
     name: 'PageMyMinone',
     component: PageMyMinone
   },
+  //내민원 상세보기
   {
     path: '/minone/pagemyminoneform',
     name: 'PageMyMinoneForm',

@@ -1,4 +1,4 @@
-<!-- PageMyMinoneForm.vue -->
+<!-- PageMyMinoneForm.vue 내민원 상세보기 -->
 
 
 <template>
