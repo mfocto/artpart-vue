@@ -3,7 +3,7 @@
         <h1 class="h2">공지사항</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <router-link to="/notice/write"  class="btn btn-sm btn-outline-secondary">작성</router-link>
+              <button class="btn btn-sm btn-outline-secondary" v-on:click="fnWrite">작성</button>
           </div>
         </div>
       </div>
@@ -134,6 +134,11 @@ export default {
           let month = ('0' + (date.getMonth()+1)).slice(-2); // Months are zero based
           let day = ('0' + date.getDate()).slice(-2);
           return `${year}년${month}월${day}일`;
+      },
+      fnWrite(){
+          this.$router.push({
+              path: './write'
+          })
       }
   },
   mounted() {
