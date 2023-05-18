@@ -1,4 +1,4 @@
-<!-- PageMinone.vue -->
+<!-- PageMinone.vue 민원카테고리(메인) -->
 
 <template>
   <div class="background">

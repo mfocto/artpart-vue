@@ -32,7 +32,7 @@
                 <td>101</td>
                 <td>101</td>
                 <td>2020-01-01</td>
-                <td> <a href="/ComplaintDetail">엘베고장이슈요</a></td>
+                <td> <router-link to="/ComplaintDetail">엘베고장이슈요</router-link></td>
                 <td>송지형</td>
                 <td>010-8896-4808</td>
                 <td>Y</td>

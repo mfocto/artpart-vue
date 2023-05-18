@@ -16,6 +16,7 @@
 
           <div class="col-auto mb-5">
             <a href="http://localhost:8282" class="btn btn-primary">관리자 로그인</a>
+            
           </div>
           <!-- Contact Form -->
           <form @submit.prevent="login">
@@ -31,6 +32,8 @@
               <div class="col-auto">
                 <button type="submit" class="btn btn-primary mb-3">로그인</button>
               </div>
+              <router-link to="/member/main" style="color:aliceblue;" class="link-dark d-inline-flex text-decoration-none rounded">임시입주민</router-link>
+
             </div>
 
             <!-- Submit success message-->

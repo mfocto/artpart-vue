@@ -1,4 +1,4 @@
-<!-- PageMyMinone.vue -->
+<!-- PageMyMinone.vue 내민원 목록 -->
 
 
 <template>
@@ -8,7 +8,7 @@
 
 
     <!--################################################ getMinoneByMember ################################################ -->
-    <form @submit.prevent="getMinoneByMember">
+    <form >
       <div class="board-list">
 
         <table class="w3-table-all" style="width:800px; height:100px; font-weight: 100; border:1px solid gray; color:black;">
@@ -16,18 +16,53 @@
           <tr>
             <th style="width:10%">No</th>
             <th style="width:70%">제목</th>
-            <th style="width:20%">처리상황</th>
+            <th style="width:20%;">처리상황</th>
           </tr>
           </thead>
 
 
           <tbody style="font-family:Pretendard-Regular;">
-          <tr v-for="(row, memberIdx) in list" :key="memberIdx">
-            <td>{{ row.memberIdx }}</td>
-            <td><router-link to="/minone/pagemyminoneform">{{ row.minTitle }}</router-link></td>
-            <!-- <td><a v-on:click="fnView(`${row.memberIdx}`)">{{ row.minTitle }}</a></td> -->
-            <td>{{ row.minStatus }}</td>
+
+          <tr v-for="minone in list" :key="minone.memberIdx">
+            <td>{{ minone.memberIdx }}</td>
+            <td><router-link :to="`/minone/pagemyminone/${minone.idx}`">{{ minone.minTitle }}</router-link></td>
+            <td>{{ minone.minStatus }}</td>
           </tr>
+
+            <!--
+            <tr v-for="(minone, memberIdx) in list" :key="memberIdx">
+              <td>{{ minone.memberIdx }}</td>
+              <router-link :to="`/minone/pagemyminone/${minone.idx}`">{{ minone.minTitle }}</router-link>
+              <td>{{ minone.minStatus }}</td>
+            </tr>  
+          -->
+
+
+          <tr>
+            <td>1</td>
+            <td>청소상태불량</td>
+            <td style="width:20%; color:red;">확인 중</td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>맘에안듬</td>
+            <td style="width:20%; color:red;">확인 중</td>
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>어쨌든불만</td>
+            <td>답변 완료</td>
+          </tr>
+
+          <tr>
+            <td>4</td>
+            <td>마지막가짜제목</td>
+            <td>답변 완료</td>
+          </tr>
+
+
           </tbody>
 
 
@@ -40,24 +75,37 @@
     <br><br>
     <!-- 검색필드 추가 -->
     <div class="serch" style="text-align:left;">
-      <select v-model="search_key" 
+      <select v-model="searchKey" class="selectedoption rounded-1"
           style="text-align:center; color: gray; font-family:TheJamsil5Bold; font-size: 12px; height: 30px; width: 100px; ">
-        <option value="" selected>- 선택 -</option>
+        
+        <option value="" selected >- 선택 -</option>
         <option value="title">글제목</option>
         <option value="contents">글내용</option>
-        <option value="title">제목+내용</option>
+
       </select>
         &nbsp;
 
-      <input type="text" v-model="search_value" @keyup.enter="fnPage()" style=" width: 300px; height: 30px; border:1px solid gray;  ">
+      <input type="text" v-model="search_value" class="selectedoption rounded-1" 
+        @keyup.enter="fnPage()" style=" width: 300px; height: 30px; border:1px solid gray;  ">
         &nbsp;
 
-      <button @click="fnPage()" style="text-align:center; color: gray; font-family:TheJamsil5Bold; 
+      <button class="submitbutton rounded-1" @click="fnPage()" style="text-align:center; color: gray; font-family:TheJamsil5Bold; 
             font-size: 12px; width: 100px; height: 30px; border:1px solid gray; ">
             검색
       </button>
   </div>
 </div> <!-- 백그라운드 설정 -->
+
+
+<!-- searchKey === 글제목 -->
+<!-- searchKey === 글제목 -->
+<!-- searchKey === 글제목 -->
+
+
+
+
+
+
 </template>
 
 
@@ -69,76 +117,46 @@ import axios from 'axios';
 
 
 export default {
-
+  
   //##################[[ data ]]##################
   data() { //변수생성
     return {
       requestBody: {}, //리스트 페이지 데이터전송
-      minoneList: [],
+      list: [],
       memberIdx: '',
       minoneByMemberList: null,
+      selectedOption: 'selected' 
     };
 
   },
 
   //##################[[ mounted ]]##################
   mounted() {
-    this.fnGetList();
     this.getMinoneList();
   },
 
 
   //##################[[ methods ]]##################
   methods: {
-    fnGetList() {
-      
-      //####임시 데이터 출력 처리####
-      this.list = [
-        {
-            "idx":1,
-            "title": "민원제목",
-            "author": "2023-04-27",
-            "created_at": "확인 중"
-        },
-        {
-            "idx":2,
-            "title": "민원제목",
-            "author": "2023-04-27",
-            "created_at": "확인 중"
-        },
-      ]
-      //####임시 데이터 출력 처리 끝####
-
-
-    },
 
     getMinoneList() {
-      axios.get('/minone/pagemyminone')
+      axios.get('/minone/pagemyminone', {
+        memberIdx: this.memberIdx,
+        minTitle: this.minTitle,
+        minStatus: this.minStatus,
+      })
         .then(response => {
-          this.minoneList = response.data;
+          this.list = response.data
         })
         .catch(error => {
           console.error(error);
         });
     },
 
+ 
 
 
-    
-    fnView(idx){
-      this.requestBody.idx = idx
-      this.$router.push({         // router 에게 요청할 정보, pathVariable 방식
-        path: './detail',         // url(같은폴더에 있는 detail)
-        query: this.requestBody   // parameter
-      })
-    },
 
-
-    fnwrite() {
-      this.$router.push({
-        path: './write'
-      })
-    },
 
 
 

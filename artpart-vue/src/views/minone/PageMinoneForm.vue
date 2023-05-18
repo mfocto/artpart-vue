@@ -1,4 +1,4 @@
-<!-- PageMinoneForm.vue -->
+<!-- PageMinoneForm.vue 민원글쓰기폼 양식-->
 
 
 <template>
