@@ -8,16 +8,12 @@
     <div class="masthead">
       <div class="masthead-content text-white">
         <div class="container-fluid px-4 px-lg-0">
-          <h1 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
+          <h1 class="fst-italic lh-1 mb-4">Welcome to ArtPart ๑•‿•๑</h1>
           <p class="mb-5">
-            We're working hard to finish the development of this site. Sign up below to receive updates and to be notified
-            when we launch!
+            Welcome, residents of ArtPart! Please log in to access important notices and updates for residents!
           </p>
 
-          <div class="col-auto mb-5">
-            <a href="http://localhost:8282" class="btn btn-primary">관리자 로그인</a>
-            
-          </div>
+
           <!-- Contact Form -->
           <form @submit.prevent="login">
             <div class="row input-group-newsletter ms-5 ps-5">
@@ -29,11 +25,16 @@
                 <label for="inputPassword2" class="visually-hidden">Password</label>
                 <input type="password" class="form-control" v-model="memberpwd" id="inputPassword2" placeholder="비밀번호">
               </div>
-              <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">로그인</button>
-              </div>
-              <router-link to="/member/main" style="color:aliceblue;" class="link-dark d-inline-flex text-decoration-none rounded">임시입주민</router-link>
-
+            </div>
+            
+            <div class="col-auto">
+              <br/>
+              <button type="submit" class="btn btn-primary mb-4" style="float: left; left: 105px; width: 500px;">LOGIN</button><br>
+            </div>
+            
+            <div class="col-auto mb-5">
+              <a href="http://localhost:8282" class="botton1 btn-primary rounded-2" style="float: left; left: 105px; width: 245px; margin-right:10px;">관리자 로그인 </a>
+              <router-link to="/member/main"  class="botton1 btn-primary rounded-2" style="float: left; left: 105px; width: 245px;"> 임시입주민</router-link>
             </div>
 
             <!-- Submit success message-->
@@ -82,22 +83,23 @@ export default {
           memberpwd: this.memberpwd
         }
       })
-        .then((res) => {
-          if (res.data.result_code === 'OK') {
-            sessionStorage.setItem('member', JSON.stringify(res.data.data));
-            // 로그인 성공시 메인페이지 이동
-            this.$router.push({
-              path: '/member/main',
-            });
-          }
-          if (res.data.result_code === 'ERROR') {
-            alert(res.data.description);
-          }
-        }).catch((err) => {
-          if (err.message.indexOf('Network Error') > -1) {
-            alert('서버와 통신이 불안정합니다.');
-          }
-        })
+      .then((res) => {
+        if (res.data.result_code === 'OK') {
+          // 세션스토리지 이용하여 로그인
+          sessionStorage.setItem('member', JSON.stringify(res.data.data));
+          // 로그인 성공시 메인페이지 이동
+          this.$router.push({
+            path: '/member/main',
+          });
+        }
+        if (res.data.result_code === 'ERROR') {
+          alert(res.data.description);
+        }
+      }).catch((err) => {
+        if (err.message.indexOf('Network Error') > -1) {
+          alert('서버와 통신이 불안정합니다.');
+        }
+      })
     }
   }
 }
@@ -159,6 +161,7 @@ export default {
 #submitButton {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+  position: relative; 
 }
 
 .invalid-feedback {
@@ -223,8 +226,19 @@ export default {
     font-size: 1.5rem;
   }
 
-  #submitButton {
-    font-size: 1.5rem;
+  input[type="submit"], 
+  button[type="submit"],
+  .botton1
+  {
+    position: relative;
+    font-size: 15px;
+    width: 500px; 
+    left: 2%; 
+    background-color:Khaki; 
+    color:black;
+    /* margin: 50px; */
+    padding: 10px;
+    text-decoration-line: none; 
   }
 }
 </style>

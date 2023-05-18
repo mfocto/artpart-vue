@@ -5,38 +5,40 @@
     <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >회원가입 정보</h1>
     <hr style="border-color: gray;"/>
 
-    <form style="">			
-      <input type="hidden" name="origin_user_pwd" value="${requestScope.user.user_pwd }">	
+    <!-- form -->
+    <form method="POST" @submit.prevent="fetchMemberInfo">	
       
-      <table class= "userInfo rounded-1" id= "tbl"  style="padding:'5' " >
-        <tr><th class=endpoint colspan="2" width="261" height= "30px;" style="font-size: 12px;"> 주소&동호수 변경을 원하는 경우, 관리자에게 직접 문의 바랍니다. 02-123-1234</th></tr>
+      <table class= "userInfo rounded-1" id= "tbl" style="padding:'5' " >
+        <tr><th class=endpoint colspan="2" width="261" height= "30px;" style="font-size: 12px;"> ※ 주소&동호수 변경을 원하는 경우, 관리자에게 직접 문의 바랍니다. 02-123-1234</th></tr>
         
         <!-- 첫번째 폼 -->
         <div> 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 동 </th>
-            <h2 v-bind="MEMBER_DONG" name="MEMBER_DONG" type="text" class="inputetc mb-2" style="">가라아게동</h2>
+            <td>
+              <h2 v-text="member.member_dong" name="member_dong" type="text" class="inputetc mb-2" style=""></h2>
+            </td>
           </tr>
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 호수 </th>
-            <h2 v-bind="MEMBER_HO" name="MEMBER_HO" type="text" class="inputetc mb-2" style="">101호</h2>
+            <h2 v-text="member.member_dong" name="member_ho" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
 
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 입주완료여부 </th>
-            <h2 v-bind="MEMBER_LOGINOK" name="MEMBER_LOGINOK" type="text" class="inputetc mb-2" style="">입주완료</h2>
+            <h2 v-text="member.member_loginok" name="member_loginok" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 등록차량1 </th>
-            <h2 v-bind="MEMBERMYCAR1" name="MEMBERMYCAR1" type="text" class="inputetc mb-2" style="">123도7485</h2>
+            <h2 v-text="member.member_mycar1" name="member_mycar1" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 등록차량2 </th>
-            <h2 v-bind="MEMBERMYCAR2" name="MEMBERMYCAR2" type="text" class="inputetc mb-2" style="">845파1234</h2>
+            <h2 v-text="member.member_mycar2" name="member_mycar2" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
         </div>
         <tr><th class=endpoint colspan="2" width="261" height= "30px;" ></th></tr>
@@ -46,46 +48,52 @@
         <div> 
           <tr>
             <th class="lefttext" height= "30px;" style=""> 아이디</th>
-            <h2 v-bind="MEMBER_ID" name="MEMBER_ID" type="text" class="inputetc mb-2" style="">kimkim123</h2>
+            <h2 v-text="member.member_id" name="member_id" type="text" class="inputetc mb-2" style=""></h2>
           </tr>		
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 이 름 </th>
-            <h2 v-bind="MEMBER_NAME" name="MEMBER_NAME" type="text" class="inputetc " style="">김태희</h2>
+            <h2 v-bind="member_name" name="member_name" type="text" class="inputetc " style="">김태희</h2>
           </tr>		
 
           <tr>
-            <th class="lefttext" height= "30px;" style=""> 핸드폰번호</th>
-            <td><input v-bind="MEMBER_PHONE" name="MEMBER_PHONE" class="inputupdate rounded-1" type="tel" style="padding-top:5px; margin-top:5px;"></td>
+            <th class="lefttext" height= "30px;" > 핸드폰번호</th>
+            <input v-bind="member_phone" name="member_phone" class="inputetc rounded-1" type="tel" style="">
           </tr>		
         </div>
         <tr><th class=endpoint colspan="2" width="261" height= "30px;"></th></tr>
         
 
         <!-- 세번째 폼 -->
-        <tr><th class=endpoint colspan="2" width="261" height= "30px;"> 비밀번호 변경 </th></tr>
+        <tr><th class=endpoint colspan="2" width="261" height= "30px;" style="">비밀번호 변경하기</th></tr>
         <div>
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 수정할 비밀번호 </th>
-            <td> <input v-bind="MEMBER_PASSWORD" name="MEMBER_PASSWORD" id="PASSWORD1" class="inputupdate mb-2 rounded-1" type="password" > 	</td>
+            <input v-bind="member_password" name="member_password" id="password1" class="inputetc mb-2 rounded-1" type="password" >
           </tr>
       
           <tr>
             <th class="lefttext" height= "30px;" style=""> 비밀번호확인 </th>
-            <td> <input onblur="validate();" id="PASSWORD2" class="inputupdate mb-2 rounded-1" type="password"> 	</td>
+            <input onblur="validate();" id="password2" class="inputetc mb-2 rounded-1" type="password">
           </tr>						
         </div>
         
+        <!-- button -->
         <tr>
-            <th height= "100px;" colspan="2" >
-                <input type="submit" class="thButton rounded-1" value="수정하기">&nbsp;
-                <input type="button" class="thButton rounded-1" onclick="location.href = 'javascript:history.go(-1);'"  value="이전 페이지로">&nbsp;
-                <input type="button" class="thButton rounded-1" onclick="location.href = '/'"  value="메인화면으로"><br>
+            <th height= "100px;" colspan="2" style="float: left; left: 50px; width: 245px;" >
+              <input type="submit" class="botton1 rounded-1" value="수정하기" style="background-color: Coral;">
+              <input type="button" class="botton1 rounded-1" onclick="location.href = 'javascript:history.go(-1);'" style="margin-top: 2%;" value="이전 페이지로" >
+              <router-link to="/member/main" class="botton1 rounded-1" style="float: left; left: 2%; width: 500px;  margin-top: 2%; border: 1px solid;">메인화면으로</router-link>
+            </th>
+        </tr>	
+          
+        <tr>
+            <th height= "1px;" colspan="2" style="float: left; left: 105px; width: 245px;">
             </th>
         </tr>	
           
       </table>
-  </form>
+  </form> <!-- form close -->
 
   </div> <!--background close-->
 </template>
@@ -94,9 +102,84 @@
   
   
   
-  <script>
-  
-  </script>
+<script>
+export default {
+  data() {
+    return {
+    member: null,
+    member_idx: null,
+    member_dong: null,
+    member_ho: null,
+    member_id: '',
+    member_loginok: false,
+    member_mycar1: null,
+    member_mycar2: null,
+    member_name: '',
+    member_password: '',
+    member_phone: '',
+    apt_idx: null
+    };
+  },
+
+  mounted() { //폼 제출 전, 자동으로 회원 정보를 가져와 표시
+    this.fetchMemberInfo();
+  },
+
+  methods: {
+    fetchMemberInfo() {
+
+      // ###################쿠키 데이터가 없을 때 임의의 데이터로 회원 정보 설정###################
+      // 쿠키 데이터가 없을 때 임의의 데이터로 회원 정보 설정
+      this.member = {
+        member_idx: 1,
+        member_dong: '가라아게동',
+        member_ho: '101호',
+        member_id: 'hellomember',
+        member_loginok: true,
+        member_mycar1: '123차번호456',
+        member_mycar2: '789차번호123',
+        member_name: '한예슬',
+        member_password: 'password',
+        member_phone: '010-1234-5678',
+        apt_idx: 1
+      }// if close ############################################################################
+
+
+
+      // 서버로부터 회원 정보를 조회하는 API 호출
+      // API 호출 시 memberId와 memberPassword 값을 사용하여 서버에 요청할 수 있습니다.
+      // 이 예시에서는 가정상의 비동기 동작으로 회원 정보를 가져온다고 가정합니다.
+      // 실제 구현에서는 실제 API 호출이나 데이터베이스 조회 등의 로직을 구현해야 합니다.
+
+      // 비동기 (setTimeout을 사용하여 1초 후에 가상의 회원 정보를 설정합니다.)
+      setTimeout(() => {
+        // 가상의 회원 정보
+        const memberInfo = {
+          member_id: this.member_id,
+          member_dong: this.member_dong,
+          member_ho: this.member_ho,
+          member_loginok: this.member_loginok,
+          member_mycar1: this.member_mycar1,
+          member_mycar2: this.member_mycar2,
+          member_name: this.member_name,
+          member_password: this.member_password,
+          member_phone: this.member_phone,
+          apt_idx: this.apt_idx
+        };
+
+        // 회원 정보를 가져왔을 때 member 데이터에 할당합니다.
+        this.member = memberInfo;
+      }, 1000);
+    },
+    getCookieValue(name) {
+      const value = `; ${document.cookie}`; 
+      //문자열의 앞에 세미콜론(;)을 추가하여 쿠키 값(문자열) 사이에 공백이 생기는 것을 방지 후 value 변수에 할당
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+  }
+};
+</script>
   
   
   <style scoped>
@@ -152,22 +235,31 @@
   
   .lefttext, input {
     padding: 5px;
+    
   }
 
-  .thButton {
-    width: 200px;
-  }
-
-  .inputupdate {
-    float: left;
-  }
 
   .inputetc {
-    width: 350px;
+    width: 245px;
     color:black; 
     font-size: 14px; 
     text-align: left; 
     margin-top:5px;
+  }
+
+  input[type="submit"], 
+  button[type="submit"],
+  .botton1
+   {
+    position: relative;
+    font-size: 15px;
+    width: 500px; 
+    left: 2%; 
+    background-color:Bisque; 
+    color:black;
+    /* margin: 50px; */
+    padding: 10px;
+    text-decoration-line: none; 
   }
 
   </style>
