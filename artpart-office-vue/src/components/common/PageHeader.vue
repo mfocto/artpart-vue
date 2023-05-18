@@ -15,7 +15,8 @@
 export default {
   methods: {
     clear: function() {
-      localStorage.clear();
+        this.$cookie.remove('token');
+        this.$cookie.remove('emp');
     }
   }
 }
