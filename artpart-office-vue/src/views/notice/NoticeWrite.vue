@@ -79,6 +79,7 @@ export default {
             })
         },
         fnSave() {
+            const test = JSON.parse(this.$cookie.get('emp'))
             let apiUrl = this.$serverUrl + '/notice'
             this.form = {
                 "noticeidx": this.noticeidx,
@@ -86,7 +87,7 @@ export default {
                 "content": this.content,
                 // "writer": this.writer
                 "writer": {
-                    "emp_idx": 1
+                    "emp_idx": test.emp_idx
                 }
             }
 
