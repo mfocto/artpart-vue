@@ -213,6 +213,12 @@ export default {
           let day = ('0' + date.getDate()).slice(-2);
           return `${year}-${month}-${day}`; // Modify this line
     },
+    fnPage(n) {
+        if (this.page !== n) {
+            this.page = n
+        }
+        this.fetchCompany()
+    },
   },
   mounted() {
       this.fetchCompany();
