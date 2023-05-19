@@ -27,187 +27,195 @@
           </thead>
         <tbody>
         <tr v-if="showInputRow">
-            <td><input type="text" v-model="newRow.no" disabled style="width: 50px"/></td>
-            <td><input type="text" v-model="newRow.company" style="width: 100px" /></td>
-            <td><input type="text" v-model="newRow.product" style="width: 100px" /></td>
+            <td><input type="text" v-model="newRow.companyidx" disabled style="width: 50px"/></td>
+            <td><input type="text" v-model="newRow.name" style="width: 100px" /></td>
+            <td><input type="text" v-model="newRow.item" style="width: 100px" /></td>
             <td><input type="text" v-model="newRow.phone" style="width: 150px"/></td>
             <td><input type="text" v-model="newRow.address" /></td>
-            <td><input type="date" v-model="newRow.approvalDate" /></td>
+            <td><input type="date" v-model="newRow.companydate" /></td>
             <td>
                 <button type="button" class="btn btn-dark" @click="saveNewRow">완료</button>
             </td>
         </tr>
         <!-- 기존 행들 -->
-        <tr v-for="(row, index) in rows" :key="row.no">
-            <td>{{ row.no }}</td>
-            <td v-show="!editMode">{{ row.company }}</td>
-            <td v-show="editMode"><input type="text" v-model="rows[index].company" style="width: 100px" /></td>
-            <td v-show="!editMode">{{ row.product }}</td>
-            <td v-show="editMode"><input type="text" v-model="rows[index].product" style="width: 100px" /></td>
+        <tr v-for="(row, index) in rows" :key="row.companyidx">
+            <td>{{ row.companyidx }}</td>
+            <td v-show="!editMode">{{ row.name }}</td>
+            <td v-show="editMode"><input type="text" v-model="rows[index].name" style="width: 100px" /></td>
+            <td v-show="!editMode">{{ row.item }}</td>
+            <td v-show="editMode"><input type="text" v-model="rows[index].item" style="width: 100px" /></td>
             <td v-show="!editMode">{{ row.phone }}</td>
             <td v-show="editMode"><input type="text" v-model="rows[index].phone" style="width: 150px" /></td>
             <td v-show="!editMode">{{ row.address }}</td>
             <td v-show="editMode"><input type="text" v-model="rows[index].address" /></td>
-            <td v-show="!editMode">{{ row.approvalDate }}</td>
-            <td v-show="editMode"><input type="text" v-model="rows[index].approvalDate" /></td>
+            <td v-show="!editMode">{{ formatDate(row.companydate) }}</td>
+            <td v-show="editMode"><input type="date" v-model="rows[index].companydate"/></td>
             <td v-if="showDeleteButtons">
                 <button type="button" class="btn btn-dark" @click="deleteRow(index)">삭제</button>
             </td>
         </tr>
         </tbody>
         </table>
+          <div>
+              <div></div>
+              <div v-if="paging.total_list_cnt > 0" style="margin: 0 auto !important;">
+            <span >
+            <a  class="page-item" href="javascript:;" @click="fnPage(1)" >&lt;&lt;</a>
+            <a class="page-item" href="javascript:;" v-if="paging.page > 7" @click="fnPage(`${paging.start_page-1}`)"
+            >&lt;</a>
+            <template v-for=" (n,index) in paginavigation()">
+                <template v-if="paging.page==n">
+                    <strong class="page-item-fn" :key="index">{{ n }}</strong>
+                </template>
+                <template v-else>
+                    <a class="page-item" href="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</a>
+                </template>
+            </template>
+            <a  class="page-item" href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"
+                @click="fnPage(`${paging.end_page+1}`)" >&gt;</a>
+            <a  class="page-item" href="javascript:;" @click="fnPage(`${paging.total_page_cnt}`)" >&gt;&gt;</a>
+            </span>
+              </div>
+          </div>
         </div>
-        <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
   data() {
   return {
     showDeleteButtons: false,
     showNewRow: false,
     showInputRow: false,
     newRow: {
-      no: "",
-      company: "",
-      product: "",
+      companyidx: "",
+      name: "",
+      item: "",
       phone: "",
       address: "",
-      approvalDate: ""
+      companydate: ""
     },
-    rows: [
-        { 
-            no: 10, 
-            company: "A사", 
-            product: "제품A", 
-            phone: "010-1234-5678", 
-            address: "서울시 강남구 도곡동 123-45", 
-            approvalDate: "2022-01-15" 
-        },
-        { 
-            no: 9, 
-            company: "B사", 
-            product: "제품B", 
-            phone: "010-2345-6789", 
-            address: "서울시 서초구 반포동 234-56", 
-            approvalDate: "2022-02-10" 
-        },
-        { 
-            no: 8, 
-            company: "C사", 
-            product: "제품C", 
-            phone: "010-3456-7890", 
-            address: "서울시 마포구 상수동 345-67", 
-            approvalDate: "2022-03-05" 
-        },
-        { 
-            no: 7, 
-            company: "D사", 
-            product: "제품D", 
-            phone: "010-4567-8901", 
-            address: "서울시 강서구 화곡동 456-78", 
-            approvalDate: "2022-04-20" 
-        },
-        { 
-            no: 6, 
-            company: "E사", 
-            product: "제품E", 
-            phone: "010-5678-9012", 
-            address: "서울시 관악구 신림동 567-89", 
-            approvalDate: "2022-05-25" 
-        },
-        { 
-            no: 5, 
-            company: "F사", 
-            product: "제품F", 
-            phone: "010-6789-0123", 
-            address: "경기도 성남시 분당구 정자동 678-90", 
-            approvalDate: "2022-06-10" 
-        },
-        { 
-            no: 4, 
-            company: "G사", 
-            product: "제품G", 
-            phone: "010-7890-1234", 
-            address: "인천광역시 부평구 부평동 789-01", 
-            approvalDate: "2022-07-15" 
-        },
-        { 
-            no: 3, 
-            company: "H사", 
-            product: "제품H", 
-            phone: "010-8901-2345", 
-            address: "경기도 고양시 일산동구 장항동 890-12", 
-            approvalDate: "2022-08-30" 
-        },
-        { 
-            no: 2, 
-            company: "I사", 
-            product: "제품I", 
-            phone: "010-9012-3456", 
-            address: "대전광역시 유성구 신성동 901-23", 
-            approvalDate: "2022-09-14" 
-        },
-        { 
-            no: 1, 
-            company: "J사", 
-            product: "제품J", 
-            phone: "010-0123-4567", 
-            address: "부산광역시 해운대구 우동 123-40", 
-            approvalDate: "2022-10-29" 
-        }
-    ],
-    editMode: false
+    originalRows: [],
+    rows: [],
+    editMode: false,
+      requestBody: {}, //리스트 페이지 데이터전송
+      list: {}, //리스트 데이터
+      no: '', //게시판 숫자처리
+      paging: {
+          block: 0,
+          end_page: 0,
+          next_block: 0,
+          page: 0,
+          page_size: 0,
+          prev_block: 0,
+          start_index: 0,
+          start_page: 0,
+          total_block_cnt: 0,
+          total_list_cnt: 0,
+          total_page_cnt: 0,
+      }, //페이징 데이터
+      page: this.$route.query.page ? this.$route.query.page : 1,
+      size: this.$route.query.size ? this.$route.query.size : 10,
+      //keyword: this.$route.query.keyword,
+      search_key: this.$route.query.sk ? this.$route.query.sk : '',
+      search_value: this.$route.query.sv ? this.$route.query.sv : '',
+
+      paginavigation: function () { //페이징 처리 for문 커스텀
+          let pageNumber = [] //;
+          let start_page = this.paging.start_page;
+          let end_page = this.paging.end_page;
+          for (let i = start_page; i <= end_page; i++) pageNumber.push(i);
+          return pageNumber;
+      }
   };
 },
   methods: {
+    fetchCompany(){
+        //스프링 부트에서 전송받은 데이터 출력 처리
+        this.requestBody = { // 데이터 전송
+              //keyword: this.keyword,
+              sk: this.search_key,
+              sv: this.search_value,
+              page: this.page,
+              size: this.size
+        }
+
+        this.$axios.get(this.$serverUrl + "/company/list", {
+            params: this.requestBody,
+            headers: {}
+        }).then((res) => {
+
+            //this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+            if (res.data.result_code === "OK") {
+                this.rows = res.data.data
+                this.paging = res.data.pagination
+                this.no = this.paging.total_list_cnt - ((this.paging.page - 1) * this.paging.page_size)
+            }
+        }).catch( error => {
+            console.error(error);
+        })
+    },
     toggleDeleteButtons() {
         this.showDeleteButtons = !this.showDeleteButtons;
     },
-    addNewRow() {
-        this.showNewRow = true;
-    },
     saveNewRow() {
-        this.rows.unshift({...this.newRow, no: this.rows[0].no + 1});
+        this.rows.unshift({...this.newRow, companyidx: this.rows[0].companyidx + 1});
         this.showNewRow = false;
+        let apiUrl = this.$serverUrl + '/company'
+        this.form = {
+            "companyidx": this.newRow.companyidx,
+            "name": this.newRow.name,
+            "item": this.newRow.item,
+            "phone": this.newRow.phone,
+            "address": this.newRow.address,
+            "companydate": this.newRow.companydate
+        }
+        this.$axios.post(apiUrl, this.form)
+
         this.newRow = {
-        no: "",
-        company: "",
-        product: "",
+        companyidx: "",
+        name: "",
+        item: "",
         phone: "",
         address: "",
-        approvalDate: ""
+        companydate: ""
         };
     },
     deleteRow(index) {
-        this.rows.splice(index, 1);
+        let companyIdx = this.rows[index].companyidx;
+        this.$axios.delete(this.$serverUrl + '/company/' + companyIdx)
+            .then(() => {
+                this.rows.splice(index, 1);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     },
     toggleEditMode() {
         this.editMode = !this.editMode;
+        if (this.editMode) {
+            // 편집 모드로 진입할 때 원본 데이터를 저장합니다.
+            this.originalRows = JSON.parse(JSON.stringify(this.rows));
+        } else {
+            // 편집 모드에서 나올 때 변경된 데이터를 this.form에 설정하고, 서버로 보냅니다.
+            this.form = JSON.parse(JSON.stringify(this.rows));
+            this.$axios.patch((this.$serverUrl+'/company'), this.form)
+        }
     },
     toggleInputRow() {
       this.showInputRow = !this.showInputRow;
-    }
+    },
+    formatDate: function(datetime) {
+          let date = new Date(datetime);
+          let year = date.getFullYear();
+          let month = ('0' + (date.getMonth()+1)).slice(-2); // Months are zero based
+          let day = ('0' + date.getDate()).slice(-2);
+          return `${year}-${month}-${day}`; // Modify this line
+    },
+  },
+  mounted() {
+      this.fetchCompany();
   }
 };
 </script>
@@ -226,6 +234,38 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #0a0a0a;
+    color: #0a0a0a;
+    text-decoration: none;
+}
+.page-item {
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item-fn{
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item:hover {
+    background: #E4DBD6;
+}
+.page-item a {
+    color:#666;
+}
+.page-item-fn {
+    background-color : #E7AA8D;
+    color:#fff;
+}
+.page-item-fn a {
+    color:#fff;
 }
 </style>

@@ -8,8 +8,8 @@ import PayMentList from '@/views/manageMent/PayMentList.vue'
 import SeesulList from '@/views/seesul/SeesulList.vue'
 
 //공지사항
-import PageAnno from '@/views/announcement/PageAnno.vue'
-import PageAnnoForm from '@/views/announcement/PageAnnoForm.vue'
+import NoticeList from '@/views/notice/NoticeList.vue'
+import NoticeDetail from '@/views/notice/NoticeDetail.vue'
 //민원
 import PageMinone from '@/views/minone/PageMinone.vue'
 import PageMinoneForm from '@/views/minone/PageMinoneForm.vue'
@@ -72,14 +72,14 @@ const routes = [
   //----------------------------------------------
   //공지사항
   {
-    path: '/announcement/pageanno',
-    name: 'PageAnno',
-    component: PageAnno
+    path: '/notice/list',
+    name: 'NoticeList',
+    component: NoticeList
   },
   {
-    path: '/announcement/PageAnnoForm',
-    name: 'PageAnnoForm',
-    component: PageAnnoForm
+    path: '/notice/detail',
+    name: 'NoticeDetail',
+    component: NoticeDetail
   },
   //----------------------------------------------
   //회의&투표&설문

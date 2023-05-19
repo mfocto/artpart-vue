@@ -13,8 +13,8 @@
           </button>
           <div class="collapse" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/using/list" class="link-dark d-inline-flex text-decoration-none rounded">관리비 사용 내역</router-link></li>
-              <li><router-link to="/payment/list" class="link-dark d-inline-flex text-decoration-none rounded">관리비 납부 내역</router-link></li>
+              <li><router-link to="/payment/list" class="link-dark d-inline-flex text-decoration-none rounded">관리비 사용 내역</router-link></li>
+              <li><router-link to="/using/list" class="link-dark d-inline-flex text-decoration-none rounded">관리비 납부 내역</router-link></li>
             </ul>
           </div>
         </li>
@@ -34,7 +34,7 @@
           </button>
           <div class="collapse" id="orders-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/announcement/pageanno" class="link-body-emphasis d-inline-flex text-decoration-none rounded">공지사항</router-link></li>
+              <li><router-link to="/notice/list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">공지사항</router-link></li>
             </ul>
           </div>
         </li>

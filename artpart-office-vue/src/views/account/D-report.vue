@@ -155,7 +155,6 @@ export default {
         }
     },
     mounted() {
-        this.getSessionInfo();
         this.getDreportList();
     },
     methods: {
@@ -173,11 +172,6 @@ export default {
             this.getDreportList();
             this.sv = '';
         },
-        getSessionInfo() {
-            const emp = JSON.parse(sessionStorage.getItem('EmpDto'));
-            this.permanentId = emp.emp_permanent_id;
-            this.name = emp.emp_name;
-        },
         getDreportList() {
             if (this.dateSearch) {
                 this.sk = 'tddate';
@@ -186,6 +180,9 @@ export default {
                 sk: this.sk,
                 sv: this.sv
             }
+            const test = JSON.parse(this.$cookie.get('emp'))
+            console.log(test.emp_name)
+
             this.$axios.get(this.$serverUrl + '/account/daily-report', {
                 params: this.requestBody,
                 headers: {}
