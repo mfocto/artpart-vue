@@ -7,7 +7,7 @@
           </div>
           <div class="input-group">
         <label for="month" class="input-group-text">월 선택:</label>
-        <select class="form-select" id="month" v-model="search_value" @select="fnPage()">
+        <select class="form-select" id="month" v-model="search_value" @change="fnPage()">
           <option value="2023-04" >2023년4월</option>
           <option value="2023-05" selected>2023년5월</option>
         </select>
