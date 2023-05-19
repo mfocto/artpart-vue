@@ -293,52 +293,52 @@ const routes = [
     component: ReadList
   },
   {
-    path: '/seesul-list',
+    path: '/seesul/list',
     name: 'SeesulList',
     component: SeesulList
   },
   {
-    path: '/seesul-electric',
+    path: '/seesul/electric',
     name: 'SeesulElectric',
     component: SeesulElectric
   },
   {
-    path: '/seesul-gas',
+    path: '/seesul/gas',
     name: 'SeesulGas',
     component: SeesulGas
   },
   {
-    path: '/seesul-elevator',
+    path: '/seesul/elevator',
     name: 'SeesulElevator',
     component: SeesulElevator
   },
   {
-    path: '/seesul-playground',
+    path: '/seesul/playground',
     name: 'SeesulPlayground',
     component: SeesulPlayground
   },
   {
-    path: '/electric-write',
+    path: '/electric/write',
     name: 'ElectricWrite',
     component: ElectricWrite
   },
   {
-    path: '/gas-write',
+    path: '/gas/write',
     name: 'GasWrite',
     component: GasWrite
   },
   {
-    path: '/elevator-write',
+    path: '/elevator/write',
     name: 'ElevatorWrite',
     component: ElevatorWrite
   },
   {
-    path: '/playground-write',
+    path: '/playground/write',
     name: 'PlaygroundWrite',
     component: PlaygroundWrite
   },
   {
-    path: '/company-list',
+    path: '/company/list',
     name: 'CompanyList',
     component: CompanyList
   },

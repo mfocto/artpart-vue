@@ -6,7 +6,7 @@
       <div class="table-responsive">
         <div class="d-flex justify-content-end">
           <button type="button" class="btn btn-sm btn-outline-secondary">작성</button>
-          <router-link to="/seesul-list" class="btn btn-sm btn-outline-secondary">목록</router-link>
+          <router-link to="/seesul/list" class="btn btn-sm btn-outline-secondary">목록</router-link>
         </div>
         <table class="table table-striped table-sm">
           <thead>

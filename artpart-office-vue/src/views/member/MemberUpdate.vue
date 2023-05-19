@@ -13,55 +13,59 @@
             <thead class="boarder-0">
               <tr>
                 <th scope style="text-align:left;">동</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="101" /></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="memberdong" placeholder="동 입력" /></th>
               </tr>
               <tr>
                 <th scope style="text-align:left;">호수</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="101" ></th>
-              </tr>
-              <tr>
-                <th scope style="text-align:left;">입주날짜</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="2020-01-01" ></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="memberho" placeholder="호수 입력" ></th>
               </tr>
               <tr>
                 <th scope style="text-align:left;">핸드폰번호</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="010-1234-5678" ></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="memberphone" placeholder="번호 입력" ></th>
               </tr>
-              
+              <tr>
+                  <th scope style="text-align:left;">아이디</th>
+                  <th scope="col" style="text-align:left;" colspan="3"><input type="text"  style="width: 30%" v-model="memberid" placeholder="아이디 입력" ></th>
+              </tr>
+
               <tr>
                 <th scope style="text-align:left;">비밀번호</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="passowrd" :readonly="isReadonly" style="width: 30%" value="*******" ></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="passowrd" :readonly="isReadonly" style="width: 30%" v-model="memberpassword" placeholder="비밀번호 입력" ></th>
               </tr>
-              <tr>
-                <th scope style="text-align:left;">비밀번호 확인</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="passowrd" :readonly="isReadonly" style="width: 30%" value="*******"></th>
-                
-                
-             
-            </tr>
+
           
               <tr>
                 <th scope style="text-align:left;">이름</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="송지형" ></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="membername" placeholder="이름 입력" ></th>
               </tr>
               <tr>
                 <th scope style="text-align:left;">등록차량 1</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="12하 1234" ></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="membermycar1" placeholder="등록차량1 입력" ></th>
               </tr>
               <tr>
                 <th scope style="text-align:left;">등록차량 2</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="34하 5678" ></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="membermycar2" placeholder="등록차량2 입력" ></th>
               </tr>
               <tr>
-                <th scope style="text-align:left;">입주여부</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" value="Y" ></th>
+                <th scope style="text-align:left;">로그인 제한 여부</th>
+                 <th scope style="text-align:left;"> <select id="category" v-model="memberloginok" style="width: 30%">
+
+                      <option value="Y">Y</option>
+                      <option value="N">N</option>
+
+                  </select>
+                 </th>
               </tr>
-             
+
+
+
+
+
               <tr>
                 <th scope="col" colspan="4" style="text-align:right;">
                     <button type="button" class="btn btn-sm btn-outline-secondary" @click="toggleReadonly">비밀번호 수정하기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">목록</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">작성</button>
+                    <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList()">목록</button>
+                  <button  class="btn btn-sm btn-outline-secondary" v-on:click="fnSave()">작성</button>
                   
                 </th>
               </tr>
@@ -76,14 +80,109 @@
     data() {
     return {
       isReadonly: true,
-      selectedOption: 'selected' 
-    };
+      selectedOption: 'selected' ,
+        requestBody: this.$route.query,
+        memberidx: this.$route.query.memberidx,
+        memberdong : this.$route.query.memberdong,
+        memberho : this.$route.query.memberho,
+        memberid : this.$route.query.memberid,
+        memberloginok : this.$route.query.memberloginok,
+        membermycar1 : this.$route.query.membermycar1,
+        membermycar2 : this.$route.query.membermycar2,
+        membername : this.$route.query.membername,
+        memberpassword : this.$route.query.memberpassword,
+        memberphone : this.$route.query.memberphone,
+        aptidx: this.$route.query.aptidx
+    }
   },
   methods: {
     toggleReadonly() {
       this.isReadonly = !this.isReadonly;
-    }
-  }
+    },
+      fetchMember(){
+          if (this.memberidx !== undefined) {
+              this.$axios.get(this.$serverUrl + "/member/" + this.memberidx, {
+                  params: this.requestBody
+              }).then(response => {
+                  this.memberdong = response.data.memberdong;
+                  this.memberho = response.data.memberho;
+                  this.memberid = response.data.memberid;
+                  this.memberloginok = response.data.memberloginok;
+                  this.membermycar1 = response.data.membermycar1;
+                  this.membermycar2 = response.data.membermycar2;
+                  this.membername = response.data.membername;
+                  this.memberpassword = response.data.memberpassword;
+                  this.memberphone = response.data.memberphone;
+                  this.aptidx = response.data.aptidx;
+              })
+                  .catch(error => {
+                      console.error(error);
+                  })
+          }
+      },
+      fnList() {
+          delete this.requestBody.memberidx
+          this.$router.push({
+              path: './memberlist',
+              query: this.requestBody
+          })
+      },
+      fndetail(memberidx){
+          this.requestBody.memberidx = memberidx
+          this.$router.push({
+              path: './memberdetail',
+              query: this.requestBody
+          })
+      },
+      fnSave() {
+          let apiUrl = this.$serverUrl + '/member'
+          this.form = {
+              "memberidx": this.memberidx,
+              "memberdong": this.memberdong,
+              "memberho": this.memberho,
+              "memberid": this.memberid,
+              "memberloginok": this.memberloginok,
+              "membermycar1": this.membermycar1,
+              "membermycar2": this.membermycar2,
+              "membername": this.membername,
+              "memberpassword": this.memberpassword,
+              "memberphone": this.memberphone,
+              "aptidx": {
+                  "apt_idx":1
+              }
+          }
+
+          if (this.memberidx === undefined) {
+              //등록
+              this.$axios.post(apiUrl, this.form)
+                  .then((res) => {
+                      alert('글이 저장되었습니다.')
+                      this.fndetail(res.data.memberidx)
+                  }).catch((err) => {
+                  if (err.message.indexOf('Network Error') > -1) {
+                      alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+                  }
+              })
+          } else {
+              //수정
+              this.$axios.patch(apiUrl, this.form)
+                  .then((res) => {
+                      alert('글이 저장되었습니다.')
+                      this.fndetail(res.data.memberidx)
+                  }).catch((err) => {
+                  if (err.message.indexOf('Network Error') > -1) {
+                      alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+                  }
+              })
+          }
+      },
+
+
+  },
+      mounted() {
+          this.fetchMember()
+      },
+
 
   }
   </script>
