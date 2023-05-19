@@ -3,7 +3,9 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">입주민</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
-            
+              <div class="btn-group me-2">
+                  <button class="btn btn-sm btn-outline-secondary" v-on:click="fnWrite">작성</button>
+              </div>
             
           </div>
         </div>
@@ -25,9 +27,9 @@
             </thead>
             <tbody>
               <tr v-for="(row, memberidx) in list" :key="memberidx">
-                <td>{{row.memberdong}}</td>
+                <td><a v-on:click="fnView(row.memberidx)">{{row.memberdong}}</a></td>
                 <td>{{row.memberho}}</td>
-                <td> <a href="/MemberDetail">{{ row.membername }}</a></td>
+                <td> {{ row.membername }}</td>
                 <td>{{ row.memberphone }}</td>
                 <td>{{row.memberloginok}}</td>
               </tr>
@@ -130,7 +132,18 @@
           }
           this.fetchMember()
       },
-
+      fnView(memberidx){
+          this.requestBody.memberidx = memberidx
+          this.$router.push({
+              path: './memberdetail',
+              query: this.requestBody
+          })
+      },
+       fnWrite(){
+           this.$router.push({
+               path: './memberUpdate',
+           })
+       },
    },
    mounted(){
        this.fetchMember();
