@@ -68,104 +68,59 @@
           </table>
         </div>
         <div id="month" style="display:none">
-          <h3 class="h4" style="float:left">월별 관리비</h3>
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th scope="col">분류</th>
-                <th scope="col">1월</th>
-                <th scope="col">2월</th>
-                <th scope="col">3월</th>
-                <th scope="col">4월</th>
-                <th scope="col">5월</th>
-                <th scope="col">6월</th>
-                <th scope="col">7월</th>
-                <th scope="col">8월</th>
-                <th scope="col">9월</th>
-                <th scope="col">10월</th>
-                <th scope="col">11월</th>
-                <th scope="col">12월</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>공용관리비</td>
-                <td>1,122</td>
-                <td>1,107</td>
-                <td>1,155</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>개별사용료</td>
-                <td>1,055</td>
-                <td>895</td>
-                <td>977</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>장기수선충당금 원부과액</td>
-                <td>493</td>
-                <td>493</td>
-                <td>494</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>합계</td>
-                <td>2,670</td>
-                <td>2,495</td>
-                <td>2,626</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>잡수입</td>
-                <td>104</td>
-                <td>102</td>
-                <td>103</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <h3 class="h4" style="float:left">월별 관리비</h3>
+  <table class="table table-striped table-sm">
+  <thead>
+    <tr> 
+      <!-- 월 단위 표기 -->
+      <th>분류</th>
+      <th v-for="(item, pm_idx) in list" :key="pm_idx">
+        {{ item.pm_date }}월
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 분류와 각각의 금액 -->
+
+    <tr>
+      <td>난방비</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_heat }}</td>                     
+    </tr>
+    <tr>
+      <td>급탕비(온수)</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_onsu }}</td> 
+    </tr>
+    <tr>
+      <td>가스사용</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_gas }}</td> 
+    </tr>
+    <tr>
+      <td>전기료</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_elec }}</td> 
+    </tr>
+    <tr>
+      <td>수도료</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_water }}</td> 
+    </tr>
+    <tr>
+      <td>정화조오물수수료</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_septic }}</td> 
+    </tr>
+    <tr>
+      <td>생활폐기물수수료</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_waste }}</td> 
+    </tr>
+    <tr>
+      <td>관리위원회운영비</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_opercost }}</td> 
+    </tr>
+    <tr>
+      <td>건물보험료</td>
+      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_insure }}</td> 
+    </tr>
+  </tbody>
+</table>
+</div>
         <div id="year" style="display:none">
           <h3 class="h4" style="float:left">연도별 월평균 관리비</h3>
           <br>
@@ -262,6 +217,9 @@
               dayjs
           },
     data:() => ({
+      list: {},
+      month: {},
+
       type: 'line',
       data: {
         labels: [ '22년 10월', '22년 11월', '22년 12월', '23년 01월', '23년 02월', '23년 03월'],
@@ -308,7 +266,7 @@
       document.getElementById('month').style.display = 'block';
       document.getElementById('year').style.display = 'none';
       this.payMentList();
-      
+      console.log(JSON.stringify())
     },change3(){
       document.getElementById('mydong').style.display = 'none';
       document.getElementById('month').style.display = 'none';
@@ -319,9 +277,9 @@
         params : this.requestbody,
         headers: {}
       }).then((res) =>{
-        if(res.data.result.code === "OK"){
+        if(res.data.result_code === "OK"){
           this.list = res.data.data;
-          
+          this.list.pm_date = dayjs(this.list.pm_date).format("MM");          
         }
       }).catch(error =>{
         console.error(error);

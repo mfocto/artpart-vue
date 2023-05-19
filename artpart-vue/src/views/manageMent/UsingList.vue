@@ -23,7 +23,7 @@
               <td>{{item.payment_date}}</td>
               <td>{{comma(item.payment_money) }}원</td>
               <td>{{item.payment_date}}</td>
-              <td>{{item.payment_dad_line}}</td>
+              <td>{{item.payment_ded_line}}</td>
               <td>{{item.payment_bank}}</td>
               <td>{{item.payment_status}}</td>
             </tr>
