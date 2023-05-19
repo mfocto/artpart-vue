@@ -51,7 +51,7 @@ import cChange from '@/views/car/carChangePage.vue'
 import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
 import NoticeWrite from '@/views/notice/NoticeWrite.vue'
-import Read from '@/views/apartment/Read.vue'
+import ReadList from '@/views/apartment/ReadList.vue'
 import SeesulList from '@/views/apartment/SeesulList.vue'
 import SeesulElectric from '@/views/apartment/SeesulElectric.vue'
 import SeesulGas from '@/views/apartment/SeesulGas.vue'
@@ -197,7 +197,6 @@ const routes = [
     component: SlipList
   },
 
-  // 공지사항
 
 
   //직원 정보 등록
@@ -289,9 +288,9 @@ const routes = [
   },
   // 아파트관리
   {
-    path: '/read',
-    name: 'Read',
-    component: Read
+    path: '/read/list',
+    name: 'ReadList',
+    component: ReadList
   },
   {
     path: '/seesul-list',

@@ -94,7 +94,17 @@
   
   
   <script>
-  
+  export default {
+      mounted() {
+          this.checkinfo();
+      },
+      methods: {
+          checkinfo() {
+              const info = JSON.parse(this.$cookie.get('member'))
+              console.log(info.member_name)
+          }
+      }
+  }
   </script>
   
   

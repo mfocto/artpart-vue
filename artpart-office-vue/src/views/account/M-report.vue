@@ -155,7 +155,6 @@ export default {
         }
     },
     mounted() {
-        this.getSessionInfo();
         this.getMreportList();
     },
     methods: {
@@ -172,11 +171,6 @@ export default {
         fnPage() {
             this.getMreportList();
             this.sv = '';
-        },
-        getSessionInfo() {
-            const emp = JSON.parse(sessionStorage.getItem('EmpDto'));
-            this.permanentId = emp.emp_permanent_id;
-            this.name = emp.emp_name;
         },
         getMreportList() {
             if (this.dateSearch) {
