@@ -30,87 +30,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>510</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월26일 전기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-26</td>
+            <tr v-for="(row, sidx) in filteredRows" :key="sidx">
+                <td>{{ row.sidx }}</td>
+                <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 전기점검</a></td>
+                <td>{{ row.swiriter.emp_name }}</td>
+                <td>{{ row.sdate }} </td>
             </tr>
-            <tr>
-              <td>509</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월25일 전기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-25</td>
-            </tr>
-            <tr>
-              <td>508</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월19일 전기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-19</td>
-            </tr>
-            <tr>
-              <td>507</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월17일 전기점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-17</td>
-            </tr>
-            <tr>
-              <td>506</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월16일 전기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-16</td>
-            </tr>
-            <tr>
-              <td>505</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월14일 전기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-14</td>
-            </tr>
-            <tr>
-              <td>504</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월10일 전기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-10</td>
-            </tr>
-            <tr>
-              <td>503</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월07일 전기점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-07</td>
-            </tr>
-            <tr>
-              <td>502</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월06일 전기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-06</td>
-            </tr>
-            <tr>
-              <td>501</td>
-              <td>
-                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월05일 전기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-05</td>
-            </tr>
-            
           </tbody>
         </table>
       </div>
@@ -119,7 +44,7 @@
       <!-- 가스점검 영역 시작 -->
       <div class="table-responsive" id="gas" v-if="selectedOption === 'gas'">
         <div class="d-flex justify-content-end">
-          <router-link to="/gas-write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+          <router-link to="/gas/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -130,88 +55,13 @@
               <th scope="col">일자</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>510</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월26일 가스점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-26</td>
+            <tbody>
+            <tr v-for="(row, sidx) in filteredRows" :key="sidx">
+                <td>{{ row.sidx }}</td>
+                <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 가스점검</a></td>
+                <td>{{ row.swiriter.emp_name }}</td>
+                <td>{{ row.sdate }} </td>
             </tr>
-            <tr>
-              <td>509</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월25일 가스점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-25</td>
-            </tr>
-            <tr>
-              <td>508</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월19일 가스점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-19</td>
-            </tr>
-            <tr>
-              <td>507</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월17일 가스점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-17</td>
-            </tr>
-            <tr>
-              <td>506</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월16일 가스점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-16</td>
-            </tr>
-            <tr>
-              <td>505</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월14일 가스점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-14</td>
-            </tr>
-            <tr>
-              <td>504</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월10일 가스점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-10</td>
-            </tr>
-            <tr>
-              <td>503</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월07일 가스점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-07</td>
-            </tr>
-            <tr>
-              <td>502</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월06일 가스점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-06</td>
-            </tr>
-            <tr>
-              <td>501</td>
-              <td>
-                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월05일 가스점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-05</td>
-            </tr>
-            
           </tbody>
         </table>
       </div>
@@ -220,7 +70,7 @@
       <!-- 승강기점검 영역 시작 -->
       <div class="table-responsive" id="elevator" v-if="selectedOption === 'elevator'">
         <div class="d-flex justify-content-end">
-          <router-link to="/elevator-write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+          <router-link to="/elevator/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -231,89 +81,14 @@
               <th scope="col">일자</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>510</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월26일 승강기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-26</td>
+            <tbody>
+            <tr v-for="(row, sidx) in filteredRows" :key="sidx">
+                <td>{{ row.sidx }}</td>
+                <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 승강기점검</a></td>
+                <td>{{ row.swiriter.emp_name }}</td>
+                <td>{{ row.sdate }} </td>
             </tr>
-            <tr>
-              <td>509</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월25일 승강기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-25</td>
-            </tr>
-            <tr>
-              <td>508</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월19일 승강기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-19</td>
-            </tr>
-            <tr>
-              <td>507</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월17일 승강기점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-17</td>
-            </tr>
-            <tr>
-              <td>506</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월16일 승강기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-16</td>
-            </tr>
-            <tr>
-              <td>505</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월14일 승강기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-14</td>
-            </tr>
-            <tr>
-              <td>504</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월10일 승강기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-10</td>
-            </tr>
-            <tr>
-              <td>503</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월07일 승강기점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-07</td>
-            </tr>
-            <tr>
-              <td>502</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월06일 승강기점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-06</td>
-            </tr>
-            <tr>
-              <td>501</td>
-              <td>
-                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월05일 승강기점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-05</td>
-            </tr>
-            
-          </tbody>
+            </tbody>
         </table>
       </div>
       <!-- 승강기점검 영역 끝 -->
@@ -321,7 +96,7 @@
       <!-- 놀이터점검 영역 시작 -->
       <div class="table-responsive" id="playground" v-if="selectedOption === 'playground'">
         <div class="d-flex justify-content-end">
-           <router-link to="/playground-write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+           <router-link to="/playground/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -332,108 +107,143 @@
               <th scope="col">일자</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>510</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월26일 놀이터점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-26</td>
+            <tbody>
+            <tr v-for="(row, sidx) in filteredRows" :key="sidx">
+                <td>{{ row.sidx }}</td>
+                <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 놀이터점검</a></td>
+                <td>{{ row.swiriter.emp_name }}</td>
+                <td>{{ row.sdate }} </td>
             </tr>
-            <tr>
-              <td>509</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월25일 놀이터점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-25</td>
-            </tr>
-            <tr>
-              <td>508</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월19일 놀이터점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-19</td>
-            </tr>
-            <tr>
-              <td>507</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월17일 놀이터점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-17</td>
-            </tr>
-            <tr>
-              <td>506</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월16일 놀이터점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-16</td>
-            </tr>
-            <tr>
-              <td>505</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월14일 놀이터점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-14</td>
-            </tr>
-            <tr>
-              <td>504</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월10일 놀이터점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-10</td>
-            </tr>
-            <tr>
-              <td>503</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월07일 놀이터점검</router-link>
-              </td>
-              <td>작성자2</td>
-              <td>2023-04-07</td>
-            </tr>
-            <tr>
-              <td>502</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월06일 놀이터점검</router-link>
-              </td>
-              <td>작성자3</td>
-              <td>2023-04-06</td>
-            </tr>
-            <tr>
-              <td>501</td>
-              <td>
-                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월05일 놀이터점검</router-link>
-              </td>
-              <td>작성자1</td>
-              <td>2023-04-05</td>
-            </tr>
-            
-          </tbody>
+            </tbody>
         </table>
       </div>
+    <div>
+        <div></div>
+        <div v-if="paging.total_list_cnt > 0" style="margin: 0 auto !important;">
+            <span >
+            <a  class="page-item" href="javascript:;" @click="fnPage(1)" >&lt;&lt;</a>
+            <a class="page-item" href="javascript:;" v-if="paging.page > 7" @click="fnPage(`${paging.start_page-1}`)"
+            >&lt;</a>
+            <template v-for=" (n,index) in paginavigation()">
+                <template v-if="paging.page==n">
+                    <strong class="page-item-fn" :key="index">{{ n }}</strong>
+                </template>
+                <template v-else>
+                    <a class="page-item" href="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</a>
+                </template>
+            </template>
+            <a  class="page-item" href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"
+                @click="fnPage(`${paging.end_page+1}`)" >&gt;</a>
+            <a  class="page-item" href="javascript:;" @click="fnPage(`${paging.total_page_cnt}`)" >&gt;&gt;</a>
+            </span>
+        </div>
+    </div>
       <!-- 놀이터점검 영역 끝 -->
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
   data() {
     return {
-      selectedOption: 'electric' 
+      selectedOption: 'electric',
+      requestBody: {}, //리스트 페이지 데이터전송
+      list: {}, //리스트 데이터
+      no: '', //게시판 숫자처리
+      paging: {
+          block: 0,
+          end_page: 0,
+          next_block: 0,
+          page: 0,
+          page_size: 0,
+          prev_block: 0,
+          start_index: 0,
+          start_page: 0,
+          total_block_cnt: 0,
+          total_list_cnt: 0,
+          total_page_cnt: 0,
+      }, //페이징 데이터
+      page: this.$route.query.page ? this.$route.query.page : 1,
+      size: this.$route.query.size ? this.$route.query.size : 10,
+      //keyword: this.$route.query.keyword,
+      search_key: this.$route.query.sk ? this.$route.query.sk : ' ',
+      search_value: this.$route.query.sv ? this.$route.query.sv : 'electric',
+
+      paginavigation: function () { //페이징 처리 for문 커스텀
+          let pageNumber = [] //;
+          let start_page = this.paging.start_page;
+          let end_page = this.paging.end_page;
+          for (let i = start_page; i <= end_page; i++) pageNumber.push(i);
+          return pageNumber;
+      }
     };
+  },
+  watch: {
+    selectedOption(newVal) {
+        this.search_value = newVal;
+        this.fetchSeesul();
+    }
   },
   methods: {
     toggleReadonly() {
       this.isReadonly = !this.isReadonly;
+    },
+    fetchSeesul(){
+      //스프링 부트에서 전송받은 데이터 출력 처리
+      this.requestBody = { // 데이터 전송
+          //keyword: this.keyword,
+          sk: 'scategory',
+          sv: this.search_value,
+          page: this.page,
+          size: this.size
+      }
+
+      this.$axios.get(this.$serverUrl + "/seesul/list", {
+          params: this.requestBody,
+          headers: {}
+      }).then((res) => {
+
+          //this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+          if (res.data.result_code === "OK") {
+              this.list = res.data.data
+              this.paging = res.data.pagination
+              this.no = this.paging.total_list_cnt - ((this.paging.page - 1) * this.paging.page_size)
+          }
+      }).catch( error => {
+          console.error(error);
+      })
+    },
+    formatDate: function(datetime) {
+        let date = new Date(datetime);
+        let year = date.getFullYear();
+        let month = ('0' + (date.getMonth()+1)).slice(-2); // Months are zero based
+        let day = ('0' + date.getDate()).slice(-2);
+        return `${year}년${month}월${day}일`;
+    },
+    fnView(sidx){
+      console.log(sidx);
+      this.requestBody.sidx = sidx
+      this.$router.push({
+          path: `./${this.selectedOption}`,
+          query: this.requestBody
+      })
+    },
+    fnPage(n) {
+      if (this.page !== n) {
+          this.page = n
+      }
+      this.fetchSeesul()
+    },
+  },
+  mounted() {
+      this.fetchSeesul();
+  },
+  computed: {
+    filteredRows() {
+        if (Array.isArray(this.list)) {
+            return this.list.filter(row => row.scategory === this.selectedOption);
+        } else {
+            return [];
+        }
     }
   }
 }
@@ -452,12 +262,40 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
-  color: #212529;
+    color: #0a0a0a;
+    text-decoration: none;
 }
-.custom-input {
-    border: none;
-    background: transparent;
-    text-align: center;
-  }
+.page-item {
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item-fn{
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item:hover {
+    background: #E4DBD6;
+}
+.page-item a {
+    color:#666;
+}
+.page-item-fn {
+    background-color : #E7AA8D;
+    color:#fff;
+}
+.page-item-fn a {
+    color:#fff;
+}
 </style>
