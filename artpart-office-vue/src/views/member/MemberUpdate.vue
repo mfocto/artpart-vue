@@ -92,7 +92,7 @@
         membername : this.$route.query.membername,
         memberpassword : this.$route.query.memberpassword,
         memberphone : this.$route.query.memberphone,
-        aptidx: this.$route.query.aptidx
+        aptidx: this.$route.query.aptidx,
     }
   },
   methods: {
@@ -103,20 +103,20 @@
           if (this.memberidx !== undefined) {
               this.$axios.get(this.$serverUrl + "/member/" + this.memberidx, {
                   params: this.requestBody
-              }).then(response => {
-                  this.memberdong = response.data.memberdong;
-                  this.memberho = response.data.memberho;
-                  this.memberid = response.data.memberid;
-                  this.memberloginok = response.data.memberloginok;
-                  this.membermycar1 = response.data.membermycar1;
-                  this.membermycar2 = response.data.membermycar2;
-                  this.membername = response.data.membername;
-                  this.memberpassword = response.data.memberpassword;
-                  this.memberphone = response.data.memberphone;
-                  this.aptidx = response.data.aptidx;
+              }).then((res) => {
+                  this.memberdong = res.data.memberdong;
+                  this.memberho = res.data.memberho;
+                  this.memberid = res.data.memberid;
+                  this.memberloginok = res.data.memberloginok;
+                  this.membermycar1 = res.data.membermycar1;
+                  this.membermycar2 = res.data.membermycar2;
+                  this.membername = res.data.membername;
+                  this.memberpassword = res.data.memberpassword;
+                  this.memberphone = res.data.memberphone;
+                  this.aptidx = res.data.aptidx;
               })
-                  .catch(error => {
-                      console.error(error);
+                  .catch((err) => {
+                      console.log(err);
                   })
           }
       },

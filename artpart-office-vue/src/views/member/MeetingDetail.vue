@@ -3,11 +3,9 @@
           <h1 class="h2">입주자 대표회의</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <router-link to="/MeetingUpdate">
-              <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-            </router-link>
-              <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">목록</button>
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList">목록</button>
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnUpdate">수정</button>
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnDelete">삭제</button>
             </div>
             
           </div>
@@ -18,19 +16,24 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>      
-                <th scope="col">제목</th>   <td scope="col">공사</td>        <td></td>    
+                <th scope="col">제목</th>   <td scope="col">{{ meetingtitle }}</td>        <td></td>
               </tr>
             </thead>
             <thead>
               <tr>      
-                <th scope="col">작성자</th>   <td scope="col">김송이</td>        <td></td>    
+                <th scope="col">작성자</th>   <td scope="col">{{ meetingid.emp_name}}</td>        <td></td>
               </tr>
             </thead>
             <thead>
               <tr>      
-                <th scope="col" style="vertical-align: top;">내용</th>   <td scope="col">우아루알ㅇ러ㅜㄹㄴㅁㅇ룽리ㅏㄴㅇ라ㅣㅇㄴ런아림넝라우왕<br/>asdsadasdasdsadasdasd<br/>asdasdasdasdasd</td>        <td></td>    
+                <th scope="col" style="vertical-align: top;">내용</th>   <td scope="col">{{meetingcontent}}</td>        <td></td>
               </tr>
             </thead>
+              <thead>
+              <tr>
+                  <th scope="col" style="vertical-align: top;">공지여부</th>   <td scope="col">{{ meetingopen}}</td>        <td></td>
+              </tr>
+              </thead>
            
             
           </table>
@@ -39,7 +42,62 @@
   
   <script>
   export default {
-   
+      data(){
+          return {
+              requestBody: this.$route.query,
+              id: this.$route.query.meetingidx,
+              meetingtime : '',
+              meetingtitle : '',
+              meetingcontent :'',
+              meetingid : '',
+              meetingopen : ''
+          };
+      },
+      methods: {
+          fetchMeeting(){
+              this.$axios.get(this.$serverUrl + "/meeting/" + this.id, {
+                  params: this.requestBody
+              }).then(response => {
+                  this.meetingtime = response.data.meetingtime;
+                  this.meetingtitle = response.data.meetingtitle;
+                  this.meetingcontent = response.data.meetingcontent;
+                  this.meetingid = response.data.meetingid;
+                  this.meetingopen = response.data.meetingopen;
+              })
+                  .catch(error => {
+                      console.error(error);
+                  });
+          },
+          fnList(){
+              delete this.requestBody.id
+              this.$router.push({
+                  path: './meetinglist',
+                  query: this.requestBody
+              })
+          },
+          fnUpdate(){
+              this.$router.push({
+                  path: './meetingupdate',
+                  query: this.requestBody
+              })
+          },
+          fnDelete(){
+              if(!confirm("삭제하시겠습니까?")) return
+
+              this.$axios.delete(this.$serverUrl + '/meeting/' + this.id, {})
+                  .then(() => {
+                      alert('삭제되었습니다.')
+                      this.fnList();
+                  }).catch((err) => {
+                  console.log(err);
+              })
+          },
+
+      },
+      mounted() {
+          this.fetchMeeting();
+
+      }
   
   }
   </script>
