@@ -65,17 +65,20 @@ export default {
   data() {
       return {
           today: new Date().toISOString().substring(0, 10),
-          slip_type: '',
-          slip_no: '',
-          slip_item: '',
-          slip_comp: '',
-          slip_brif: '',
-          slip_cash: 0,
-          slip_note: ''
+          // 전표 데이터
+          slip_type: '',      // 전표종류
+          slip_no: '',        // 전표번호
+          slip_item: '',      // 과목
+          slip_comp: '',      // 항목
+          slip_brif: '',      // 적요
+          slip_cash: 0,       // 금액
+          slip_note: '',      // 비고
+          slip_writer: '',    // 작성자
       }
   },
     methods: {
         regSlip() {
+            const emp = JSON.parse(this.$cookie.get('emp'))
             let formData = {
                 slip_type: this.slip_type,
                 slip_no: this.slip_no,
@@ -83,7 +86,8 @@ export default {
                 slip_comp: this.slip_comp,
                 slip_brif: this.slip_brif,
                 slip_cash: this.slip_cash,
-                slip_note: this.slip_note
+                slip_note: this.slip_note,
+                slip_writer: emp.emp_name
             }
             console.log(formData)
             this.$axios.post(this.$serverUrl + '/account/slip/reg', formData)

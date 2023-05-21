@@ -14,30 +14,37 @@
             <thead class="boarder-0">
               <tr>
                 <th scope style="text-align:left;">제목</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="title" placeholder="제목" /></th>
+                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="mintitle" readonly/></th>
               </tr>
-              <tr>
-                <th scope style="text-align:left;">첨부파일</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="file" style="width: 30%"  /></th>
-              </tr>
-              <tr>
-                <th scope style="text-align:left;">처리여부</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="radio"  name="b" value="Y" />Y<input type="radio"  name="b" value="N" />N</th>
-              </tr>
-              
             </thead>
             <tbody>
               <tr>
                 <th scope style="text-align:left;">내용</th>
                 <td colspan="4" style="text-align:left;">
-                  <textarea v-model="content" rows="10" style="width: 30%;" placeholder="공지사항 내용을 입력하세요."></textarea>
+                  <textarea  rows="10" style="width: 30%;"  v-model="mintype" readonly></textarea>
                 </td>
+              </tr>
+              <tr>
+                  <th scope style="text-align:left;">관리자 답변</th>
+                  <td colspan="4" style="text-align:left;">
+                      <textarea  rows="10" style="width: 30%;"  v-model="minres" ></textarea>
+                  </td>
+              </tr>
+              <tr>
+                  <th scope style="text-align:left;">처리여부</th>
+                  <th scope style="text-align:left;"> <select id="category" v-model="minstatus" style="width: 30%">
+
+                      <option value="처리예정">처리예정</option>
+                      <option value="처리완료">처리완료</option>
+
+                  </select>
+                  </th>
               </tr>
             </tbody>
             <tr>
                 <th scope="col" colspan="4" style="text-align:right;">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">목록</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">작성</button>
+                    <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList()">목록</button>
+                    <button  class="btn btn-sm btn-outline-secondary" v-on:click="fnSave()">작성</button>
                 </th>
               </tr>
           </table>
@@ -46,7 +53,89 @@
   
   <script>
   export default {
-    
+      data() {
+          return {
+              requestBody: this.$route.query,
+              minidx: this.$route.query.minidx,
+              memberidx : '',
+              mintitle : '',
+              mintype : '',
+              minstatus : '',
+              minres : '',
+              minfile : '',
+              minrename : '',
+              mincategory : '',
+          }
+      },
+      methods: {
+
+          fetchMinone(){
+              if(this.minidx !== undefined) {
+                  this.$axios.get(this.$serverUrl + "/minone/" + this.minidx, {
+                      params: this.requestBody
+                  }).then(response => {
+                      this.memberidx = response.data.memberidx;
+                      this.mintitle = response.data.mintitle;
+                      this.mintype = response.data.mintype;
+                      this.minstatus = response.data.minstatus;
+                      this.minres = response.data.minres;
+                      this.minfile = response.data.minfile;
+                      this.minrename = response.data.minrename;
+                      this.mincategory = response.data.mincategory;
+                  })
+                      .catch(error => {
+                          console.error(error);
+                      })
+              }
+          },
+          fnList(){
+              delete this.requestBody.minidx
+              this.$router.push({
+                  path: './complaintlist',
+                  query: this.requestBody
+              })
+          },
+          fndetail(minidx){
+              this.requestBody.minidx = minidx
+              this.$router.push({
+                  path: './complaintdetail',
+                  query: this.requestBody
+              })
+          },
+          fnSave() {
+             // const test = JSON.parse(this.$cookie.get('emp'))
+              let apiUrl = this.$serverUrl + '/minone'
+              this.form = {
+                  "minidx": this.minidx,
+                  "memberidx": this.memberidx,
+                  "mintitle": this.mintitle,
+                  "mintype": this.mintype,
+                  "minstatus": this.minstatus,
+                  "minres": this.minres,
+                  "minfile": this.minfile,
+                  "minrename": this.minrename,
+                  "mincategoty": this.mincategory
+              }
+
+                  //수정
+                  this.$axios.patch(apiUrl, this.form)
+                      .then((res) => {
+                          alert('글이 저장되었습니다.')
+                          this.fndetail(res.data.minidx)
+                      }).catch((err) => {
+                      if (err.message.indexOf('Network Error') > -1) {
+                          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+                      }
+                  })
+
+          },
+
+
+      },
+      mounted() {
+          this.fetchMinone()
+      },
+
   }
   </script>
   

@@ -72,8 +72,7 @@ export default {
   
   //##################[[ mounted ]]##################
   mounted() { //페이지열릴때 자동실행
-    this.getSessionInfo();
-    this.getDreportList();
+
   },
   
 
