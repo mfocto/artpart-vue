@@ -10,22 +10,22 @@
       <div align="left" class="jb-header" ><h2>직원 목록&nbsp; 
       
           <div class="button1" style="float: right;" >
-            <button type="button" class="btn btn-dark"><router-link to="/adminSignUp">등록</router-link></button>
+            <button type="button" class="btn btn-dark" v-on:click="fnSignUp">등록</button>
           </div></h2> 
       </div>
 
       <div  class="jb-header">
-            <table>
-              <th> &nbsp; 직원 검색 &nbsp; <select name="car" id="car">
-                <option value="member">전체</option>
-                <option value="member">이름</option>
-                <option value="noentry">소속</option>
-                <option value="noentry">직위</option>
-                <option value="noentry">입사일</option>
-              </select> &nbsp; </th>
-              <th> &nbsp; &nbsp; <input type="text" size=10></th>
-              <th> &nbsp; <button class="btn btn-dark">검색</button></th>
-            </table>
+        직원 검색 &nbsp; &nbsp; &nbsp;
+        <select v-model="search_key">
+          <option selected>-선택-</option>
+          <option value="emp_name">이름</option>
+          <option value="emp_partmentid">직원구분</option>
+          <option value="emp_departmentid">소속</option>
+          <option value="emp_jobid">직위</option>
+          <option value="emp_hiredate">입사일</option>
+        </select> &nbsp; &nbsp;
+        <input type="text" v-model="search_value" @keyup.enter="fnPage()"> &nbsp; &nbsp; 
+        <button class="btn btn-dark" @click="fnPage()">검색</button>
       </div>
       <div>
         <table class="table table-striped table-sm">
@@ -38,173 +38,55 @@
               <th scope="col">사원명 <button>&and;</button><button>&or;</button> </th>
               <th width="15%" scope="col">주소 <button>&and;</button><button>&or;</button></th>
               <th width="15%" scope="col">연락처 <button>&and;</button><button>&or;</button> </th>
+              <th scope="col">차량번호 <button>&and;</button><button>&or;</button> </th>
               <th width="10%" scope="col">입사일 <button>&and;</button><button>&or;</button></th>
               <th width="10%" scope="col">퇴사일 <button>&and;</button><button>&or;</button> </th>
-              <th scope="col">차량번호 <button>&and;</button><button>&or;</button> </th>
               <th scope="col">비고</th>
             </tr>
           </thead>
           <tbody class="tbody1">
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>11</td>
-              <td>정규직</td>
-              <td>관리</td>
-              <td>반장</td>
-              <td>김반장</td>
-              <td>서울시 강서구</td>
-              <td width="15%" >010-5678-3456</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td>34가9897</td>
-              <td></td>
+            <tr v-for="(row, emp_idx) in list" :key="emp_idx">
+                <td>{{ row.emp_id }}</td>
+                <td>{{ row.emp_permanent_id }}</td><!--사원구분-->
+                <td>{{ row.emp_department_id }}</td><!--소속-->
+                <td>{{ row.emp_job_id }}</td><!--직급/직위-->
+                <td><a v-on:click="fnView(row.emp_idx)">{{ row.emp_name}}</a></td><!--사원이름-->
+                <td>{{ row.emp_address }}</td><!--주소-->
+                <td>{{ row.emp_phone }}</td><!--연락처-->
+                <td>{{ row.emp_car }}</td><!--차량번호-->
+                <td>{{ formatDate(row.emp_hire_date) }}</td><!--입사일-->
+                <td>{{ formatDate(row.emp_departure_date )}}</td><!--퇴사일-->
+                <td>{{ row.emp_memo }}</td><!--비고-->
             </tr>
-            
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>12</td>
-              <td>정규직</td>
-              <td>관리</td>
-              <td>과장</td>
-              <td>이과장</td>
-              <td>서울시 강서구</td>
-              <td>010-2878-0090</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>13</td>
-              <td>정규직</td>
-              <td>관리</td>
-              <td>소장</td>
-              <td>박소장</td>
-              <td>서울시 강서구</td>
-              <td>010-3424-2344</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>14</td>
-              <td>정규직</td>
-              <td>관리</td>
-              <td>기사</td>
-              <td>장기사</td>
-              <td>서울시 강서구</td>
-              <td>010-4654-6788</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>15</td>
-              <td>정규직</td>
-              <td>관리</td>
-              <td>사무원</td>
-              <td><router-link to="/adminDeltail">차사원</router-link></td>
-              <td>서울시 강서구</td>
-              <td>010-9283-0293</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>16</td>
-              <td>계약직</td>
-              <td>경비원</td>
-              <td>반장</td>
-              <td>이반장</td>
-              <td>서울시 강서구</td>
-              <td>010-7657-3245</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>17</td>
-              <td>계약직</td>
-              <td>경비원</td>
-              <td>관리원</td>
-              <td>김관리</td>
-              <td>서울시 강서구</td>
-              <td>010-9283-0293</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>18</td>
-              <td>계약직</td>
-              <td>경비원</td>
-              <td>관리원</td>
-              <td>오리원</td>
-              <td>서울시 강서구</td>
-              <td>010-5466-2344</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>19</td>
-              <td>계약직</td>
-              <td>청소원</td>
-              <td>반장</td>
-              <td>박반장</td>
-              <td>서울시 강서구</td>
-              <td>010-5644-2342</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td>34구7878</td>
-              <td></td>
-            </tr>
-            <tr style="text-align: center; vertical-align: middle;">
-              <td>20</td>
-              <td>계약직</td>
-              <td>청소원</td>
-              <td>미화원</td>
-              <td>송미화</td>
-              <td>서울시 강서구</td>
-              <td>010-67544-3244</td>
-              <td>22.04.26</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-
-
+           </tbody>
+         </table>
+        <!-- 페이지 처리 해야 함 -->
       </div>
+
       
       <br>
       <br>
       <br>
-      <div style="position: absolute; left: 50%; transform: translateX(-50%);">
-      <table>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px; color:white; background-color:black;" >&lt;&lt;</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px; color:white; background-color:black;" >&lt;</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >1</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px; color:white; background-color:black;" >2</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >3</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >4</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >5</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >6</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >7</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >8</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >9</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px;" >10</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px; color:white; background-color:black;" >&gt;</th>
-        <th style="border : 1px solid black; border-collapse : collapse; width: 30px; height: 30px; color:white; background-color:black;" >&gt;&gt;</th>
-      </table>
-      </div>
+
+      <div v-if="paging.total_list_cnt > 0" style="margin: 0 auto !important;">
+            <span >
+            <a href="javascript:;" @click="fnPage(1)" class="page-item"  >&lt;&lt;</a>
+            <a class="page-item" href="javascript:;" v-if="paging.page > 10" @click="fnPage(`${paging.start_page-1}`)">&lt;</a>
+      <template v-for=" (n,emp_idx) in paginavigation()">
+          <template v-if="paging.page==n">
+              <strong class="w3-button w3-border w3-green" :key="emp_idx">{{ n }}</strong>
+          </template>
+          <template v-else>
+              <a class="w3-button w3-border" href="javascript:;" @click="fnPage(`${n}`)" :key="emp_idx">{{ n }}</a>
+          </template>
+          
+      </template>
+      <a href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"
+         @click="fnPage(`${paging.end_page+1}`)" class="next w3-button w3-border">&gt;</a>
+      <a href="javascript:;" @click="fnPage(`${paging.total_page_cnt}`)" class="last w3-button w3-border">&gt;&gt;</a>
+      </span>
+    </div>
+
 
 
       
@@ -214,10 +96,97 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  data() { //변수생성
+    return {
+      requestBody: {}, //리스트 페이지 데이터전송
+      list: {}, //리스트 데이터
+      no: '', //게시판 숫자처리
+      paging: { //페이징
+        block: 0,
+        end_page: 0,
+        next_block: 0,
+        page: 0,
+        page_size: 0,
+        prev_block: 0,
+        start_index: 0,
+        start_page: 0,
+        total_block_cnt: 0,
+        total_list_cnt: 0,
+        total_page_cnt: 0,
+      }, //페이징 데이터
+      page: this.$route.query.page ? this.$route.query.page : 1,
+      size: this.$route.query.size ? this.$route.query.size : 10,
+      search_key: this.$route.query.sk ? this.$route.query.sk : '',
+      search_value: this.$route.query.sv ? this.$route.query.sv : '',
+
+      paginavigation: function () { //페이징 처리 for문 커스텀
+        let pageNumber = [] //;
+        let start_page = this.paging.start_page;
+        let end_page = this.paging.end_page;
+        for (let i = start_page; i <= end_page; i++) pageNumber.push(i);
+        return pageNumber;
+      }
+    };
+  },
+  mounted(){
+    this.fnGetEmp()
+  },
+  methods: {
+    fnGetEmp(){
+      // 서버에서 갖고 온 데이터 출력
+      this.requestBody = {//데이터 전송
+        sk: this.search_key,
+        sv: this.search_value,
+        page: this.page,
+        size: this.size
+      }
+      this.$axios.get(this.$serverUrl + "/admin/list",{
+        params: this.requestBody,
+        headers: {}
+
+      }).then((res) => {
+        if(res.data.result_code == "OK"){
+          this.list = res.data.data
+          this.paging = res.data.pagination
+          this.no = this.paging.total_list_cnt - ((this.paging.page - 1) * this.paging.page_size)
+        }
+      }).catch(
+        (err) => {
+        if (err.message.indexOf('Network Error') > -1) {
+          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+        }
+      })
+    },
+    fnView(emp_idx) {
+          console.log(emp_idx);
+          this.requestBody.emp_idx = emp_idx
+          this.$router.push({
+              path: './deltail',
+              query: this.requestBody
+          })
+    },
+    fnPage(n) {
+      if (this.page !== n) {
+        this.page = n       
+      }
+      this.fnGetEmp() 
+    },
+    formatDate: function(datetime){
+      let date = new Date(datetime);
+      let year = date.getFullYear();
+      let month = ('0' + (date.getMonth()+1)).slice(-2); // Months are zero based
+      let day = ('0' + date.getDate()).slice(-2);
+      return `${year}년${month}월${day}일`;
+
+    },
+    fnSignUp(){
+      this.$route.push({
+        path: './signUp',
+        query: this.requestBody
+      })
+    }
   }
+
 }
 </script>
 
@@ -235,7 +204,39 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+    color: #0a0a0a;
+    text-decoration: none;
+}
+.page-item {
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item-fn{
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item:hover {
+    background: #E4DBD6;
+}
+.page-item a {
+    color:#666;
+}
+.page-item-fn {
+    background-color : #E7AA8D;
+    color:#fff;
+}
+.page-item-fn a {
+    color:#fff;
 }
 table.table1 {
  border: "4" ;

@@ -30,23 +30,22 @@ import SlipReg from '@/views/account/SlipReg.vue'
 import SlipList from '@/views/account/SlipList.vue'
 
 //직원 정보 관리
-import aList from '@/views/admin/adminListPage.vue'
-import aDeltail from '@/views/admin/adminDeltailPage.vue'
-import aSignUp from '@/views/admin/adminSignUpPage.vue'
-import aChange from '@/views/admin/adminChangPage.vue'
+import AdminList from '@/views/admin/adminListPage.vue'
+import AdminDeltail from '@/views/admin/adminDeltailPage.vue'
+import AdminSignUp from '@/views/admin/adminSignUpPage.vue'
+import AdminChange from '@/views/admin/adminChangePage.vue'
 
 //직원 스케줄 관리
-import sList from '@/views/admin/scheduleListPage.vue'
-import sSingUp from '@/views/admin/scheduleSignUpPage.vue'
-import sDeltail from '@/views/admin/scheduleDeltailPage.vue'
-import sChangeA from '@/views/admin/scheduleChangeAdminPage.vue'
-import sChanget from '@/views/admin/scheduleChangTimePage.vue'
+import ScheduleList from '@/views/admin/scheduleListPage.vue'
+import ScheduleWrite from '@/views/admin/scheduleWrite.vue'
+import ScheduleDeltail from '@/views/admin/scheduleDeltailPage.vue'
+import ScheduleChangeAdmin from '@/views/admin/scheduleChangeAdminPage.vue'
+import ScheduleChangeTime from '@/views/admin/scheduleChangTimePage.vue'
 
 //차량 관리 페이지
-import cList from '@/views/car/carListPage.vue'
-import cDeltail from '@/views/car/carDeltailPage.vue'
-import cSignUp from '@/views/car/carSignUpPage.vue'
-import cChange from '@/views/car/carChangePage.vue'
+import CarList from '@/views/car/carListPage.vue'
+import CarDeltail from '@/views/car/carDeltailPage.vue'
+import CarWrite from '@/views/car/carWritePage.vue'
 
 import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
@@ -201,76 +200,70 @@ const routes = [
 
   //직원 정보 등록
   {
-    path: '/adminList',
-    name: 'aList',
-    component: aList
+    path: '/admin/list',
+    name: 'AdminList',
+    component: AdminList
   },
   {
-    path: '/adminDeltail',
-    name: 'aDeltail',
-    component: aDeltail
+    path: '/admin/deltail',
+    name: 'AdminDeltail',
+    component: AdminDeltail
   },
   {
-    path: '/adminSignUp',
-    name: 'aSignUp',
-    component: aSignUp
+    path: '/admin/signUp',
+    name: 'AdminSignUp',
+    component: AdminSignUp
   },
   {
-    path: '/adminChange',
-    name: 'aChange',
-    component: aChange
+    path: '/admin/change',
+    name: 'AdminChange',
+    component: AdminChange
   },
   //직원 스케줄 관리
   {
-    path: '/scheduleList',
-    name: 'sList',
-    component: sList
+    path: '/schedule/list',
+    name: 'ScheduleList',
+    component: ScheduleList
   },
   {
-    path: '/scheduleSingUp',
-    name: 'sSingUp',
-    component: sSingUp
+    path: '/schedule/write',
+    name: 'ScheduleWrite',
+    component: ScheduleWrite
   },
   {
-    path: '/scheduleDeltail',
-    name: 'sDeltail',
-    component: sDeltail
+    path: '/schedule/deltail',
+    name: 'ScheduleDeltail',
+    component: ScheduleDeltail
   },
   {
-    path: '/scheduleChangeAdmin',
-    name: 'sChangeA',
-    component: sChangeA
+    path: '/schedule/change/admin',
+    name: 'ScheduleChangeAdmin',
+    component: ScheduleChangeAdmin
   },
   {
-    path: '/scheduleChangeTime',
-    name: 'sChangeT',
-    component: sChanget
+    path: '/schedule/change/time',
+    name: 'ScheduleChangeTime',
+    component: ScheduleChangeTime
   },
    
   //차량관리
   {
-    path: '/carList',
-    name: 'cList',
-    component: cList
+    path: '/car/list',
+    name: 'CarList',
+    component: CarList
 
   },
   {
-    path: '/carDeltail',
-    name: 'cDeltail',
-    component: cDeltail
+    path: '/car/deltail',
+    name: 'CarDeltail',
+    component: CarDeltail
   },
   {
-    path: '/carSingUp',
-    name: 'cSignUp',
-    component: cSignUp
-
+    path: '/car/write',
+    name: 'CarWrite',
+    component: CarWrite
   },
-  {
-    path: '/carChange',
-    name: 'cChange',
-    component: cChange
-
-  },
+  //공지사항
   {
     path: '/notice/list',
     name: 'NoticeList',
