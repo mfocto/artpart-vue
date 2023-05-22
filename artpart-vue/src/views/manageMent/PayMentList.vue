@@ -219,6 +219,7 @@
     data:() => ({
       list: {},
       month: {},
+
       type: 'line',
       data: {
         labels: [ '22년 10월', '22년 11월', '22년 12월', '23년 01월', '23년 02월', '23년 03월'],
@@ -247,7 +248,6 @@
   
     mounted(){
       this.createChart()
-      
     },
     methods:{
       createChart(){
@@ -261,14 +261,12 @@
       document.getElementById('mydong').style.display = 'block';
       document.getElementById('month').style.display = 'none';
       document.getElementById('year').style.display = 'none';
-      
     },change2(){
       document.getElementById('mydong').style.display = 'none';
       document.getElementById('month').style.display = 'block';
       document.getElementById('year').style.display = 'none';
       this.payMentList();
       console.log(JSON.stringify())
-  
     },change3(){
       document.getElementById('mydong').style.display = 'none';
       document.getElementById('month').style.display = 'none';
@@ -281,8 +279,7 @@
       }).then((res) =>{
         if(res.data.result_code === "OK"){
           this.list = res.data.data;
-          this.list.pm_date = dayjs(this.list.pm_date).format("MM");
-          
+          this.list.pm_date = dayjs(this.list.pm_date).format("MM");          
         }
       }).catch(error =>{
         console.error(error);
