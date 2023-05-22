@@ -217,6 +217,8 @@ export default {
           }).catch(error => {
               console.error(error);
           });
+
+          
           this.$axios.get(this.$serverUrl + "/scheck/" + this.sidx, {
               params: this.requestBody,
               headers: {}

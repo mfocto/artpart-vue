@@ -52,6 +52,7 @@ import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
 import NoticeWrite from '@/views/notice/NoticeWrite.vue'
 import ReadList from '@/views/apartment/ReadList.vue'
+//시설 관리
 import SeesulList from '@/views/apartment/SeesulList.vue'
 import SeesulElectric from '@/views/apartment/SeesulElectric.vue'
 import SeesulGas from '@/views/apartment/SeesulGas.vue'
