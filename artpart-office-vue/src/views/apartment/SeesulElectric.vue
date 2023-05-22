@@ -5,7 +5,7 @@
   <!-- 전기점검 영역 시작 -->
       <div class="table-responsive" id="electric">
         <div class="d-flex justify-content-end">
-          <router-link to="/seesul-list" class="btn btn-sm btn-outline-secondary">목록</router-link>
+          <router-link to="/seesul/list" class="btn btn-sm btn-outline-secondary">목록</router-link>
           <button type="button" class="btn btn-sm btn-outline-secondary" @click="toggleReadonly">수정</button>
         </div>
         <table class="table table-striped table-sm">

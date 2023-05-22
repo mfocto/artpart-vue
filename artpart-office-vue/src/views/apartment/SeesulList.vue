@@ -18,7 +18,7 @@
   <!-- 전기점검 영역 시작 -->
       <div class="table-responsive" id="electric" v-if="selectedOption === 'electric'">
         <div class="d-flex justify-content-end">
-          <router-link to="/electric-write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+          <router-link to="/electric/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -33,7 +33,7 @@
             <tr>
               <td>510</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월26일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월26일 전기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-26</td>
@@ -41,7 +41,7 @@
             <tr>
               <td>509</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월25일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월25일 전기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-25</td>
@@ -49,7 +49,7 @@
             <tr>
               <td>508</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월19일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월19일 전기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-19</td>
@@ -57,7 +57,7 @@
             <tr>
               <td>507</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월17일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월17일 전기점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-17</td>
@@ -65,7 +65,7 @@
             <tr>
               <td>506</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월16일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월16일 전기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-16</td>
@@ -73,7 +73,7 @@
             <tr>
               <td>505</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월14일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월14일 전기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-14</td>
@@ -81,7 +81,7 @@
             <tr>
               <td>504</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월10일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월10일 전기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-10</td>
@@ -89,7 +89,7 @@
             <tr>
               <td>503</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월07일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월07일 전기점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-07</td>
@@ -97,7 +97,7 @@
             <tr>
               <td>502</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월06일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월06일 전기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-06</td>
@@ -105,7 +105,7 @@
             <tr>
               <td>501</td>
               <td>
-                <router-link to="/seesul-electric" class="text-decoration-none">2023년4월05일 전기점검</router-link>
+                <router-link to="/seesul/electric" class="text-decoration-none">2023년4월05일 전기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-05</td>
@@ -134,7 +134,7 @@
             <tr>
               <td>510</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월26일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월26일 가스점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-26</td>
@@ -142,7 +142,7 @@
             <tr>
               <td>509</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월25일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월25일 가스점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-25</td>
@@ -150,7 +150,7 @@
             <tr>
               <td>508</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월19일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월19일 가스점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-19</td>
@@ -158,7 +158,7 @@
             <tr>
               <td>507</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월17일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월17일 가스점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-17</td>
@@ -166,7 +166,7 @@
             <tr>
               <td>506</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월16일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월16일 가스점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-16</td>
@@ -174,7 +174,7 @@
             <tr>
               <td>505</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월14일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월14일 가스점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-14</td>
@@ -182,7 +182,7 @@
             <tr>
               <td>504</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월10일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월10일 가스점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-10</td>
@@ -190,7 +190,7 @@
             <tr>
               <td>503</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월07일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월07일 가스점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-07</td>
@@ -198,7 +198,7 @@
             <tr>
               <td>502</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월06일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월06일 가스점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-06</td>
@@ -206,7 +206,7 @@
             <tr>
               <td>501</td>
               <td>
-                <router-link to="/seesul-gas" class="text-decoration-none">2023년4월05일 가스점검</router-link>
+                <router-link to="/seesul/gas" class="text-decoration-none">2023년4월05일 가스점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-05</td>
@@ -235,7 +235,7 @@
             <tr>
               <td>510</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월26일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월26일 승강기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-26</td>
@@ -243,7 +243,7 @@
             <tr>
               <td>509</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월25일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월25일 승강기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-25</td>
@@ -251,7 +251,7 @@
             <tr>
               <td>508</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월19일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월19일 승강기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-19</td>
@@ -259,7 +259,7 @@
             <tr>
               <td>507</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월17일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월17일 승강기점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-17</td>
@@ -267,7 +267,7 @@
             <tr>
               <td>506</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월16일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월16일 승강기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-16</td>
@@ -275,7 +275,7 @@
             <tr>
               <td>505</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월14일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월14일 승강기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-14</td>
@@ -283,7 +283,7 @@
             <tr>
               <td>504</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월10일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월10일 승강기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-10</td>
@@ -291,7 +291,7 @@
             <tr>
               <td>503</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월07일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월07일 승강기점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-07</td>
@@ -299,7 +299,7 @@
             <tr>
               <td>502</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월06일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월06일 승강기점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-06</td>
@@ -307,7 +307,7 @@
             <tr>
               <td>501</td>
               <td>
-                <router-link to="/seesul-elevator" class="text-decoration-none">2023년4월05일 승강기점검</router-link>
+                <router-link to="/seesul/elevator" class="text-decoration-none">2023년4월05일 승강기점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-05</td>
@@ -336,7 +336,7 @@
             <tr>
               <td>510</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월26일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월26일 놀이터점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-26</td>
@@ -344,7 +344,7 @@
             <tr>
               <td>509</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월25일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월25일 놀이터점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-25</td>
@@ -352,7 +352,7 @@
             <tr>
               <td>508</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월19일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월19일 놀이터점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-19</td>
@@ -360,7 +360,7 @@
             <tr>
               <td>507</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월17일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월17일 놀이터점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-17</td>
@@ -368,7 +368,7 @@
             <tr>
               <td>506</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월16일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월16일 놀이터점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-16</td>
@@ -376,7 +376,7 @@
             <tr>
               <td>505</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월14일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월14일 놀이터점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-14</td>
@@ -384,7 +384,7 @@
             <tr>
               <td>504</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월10일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월10일 놀이터점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-10</td>
@@ -392,7 +392,7 @@
             <tr>
               <td>503</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월07일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월07일 놀이터점검</router-link>
               </td>
               <td>작성자2</td>
               <td>2023-04-07</td>
@@ -400,7 +400,7 @@
             <tr>
               <td>502</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월06일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월06일 놀이터점검</router-link>
               </td>
               <td>작성자3</td>
               <td>2023-04-06</td>
@@ -408,7 +408,7 @@
             <tr>
               <td>501</td>
               <td>
-                <router-link to="/seesul-playground" class="text-decoration-none">2023년4월05일 놀이터점검</router-link>
+                <router-link to="/seesul/playground" class="text-decoration-none">2023년4월05일 놀이터점검</router-link>
               </td>
               <td>작성자1</td>
               <td>2023-04-05</td>
