@@ -18,7 +18,7 @@
   <!-- 전기점검 영역 시작 -->
       <div class="table-responsive" id="electric" v-if="selectedOption === 'electric'">
         <div class="d-flex justify-content-end">
-          <router-link to="/electric/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+            <button class="btn btn-sm btn-outline-secondary" v-on:click="fnWrite">작성</button>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -44,7 +44,7 @@
       <!-- 가스점검 영역 시작 -->
       <div class="table-responsive" id="gas" v-if="selectedOption === 'gas'">
         <div class="d-flex justify-content-end">
-          <router-link to="/gas/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+            <button class="btn btn-sm btn-outline-secondary" v-on:click="fnWrite">작성</button>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -70,7 +70,7 @@
       <!-- 승강기점검 영역 시작 -->
       <div class="table-responsive" id="elevator" v-if="selectedOption === 'elevator'">
         <div class="d-flex justify-content-end">
-          <router-link to="/elevator/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+            <button class="btn btn-sm btn-outline-secondary" v-on:click="fnWrite">작성</button>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -96,7 +96,7 @@
       <!-- 놀이터점검 영역 시작 -->
       <div class="table-responsive" id="playground" v-if="selectedOption === 'playground'">
         <div class="d-flex justify-content-end">
-           <router-link to="/playground/write" class="btn btn-sm btn-outline-secondary">작성</router-link>
+            <button class="btn btn-sm btn-outline-secondary" v-on:click="fnWrite">작성</button>
         </div>
         <table class="table table-striped table-sm">
           <thead>
@@ -233,6 +233,12 @@ export default {
       }
       this.fetchSeesul()
     },
+    fnWrite(){
+        this.$router.push({
+            path: `/${this.selectedOption}/write`,
+            query: this.requestBody
+        })
+    }
   },
   mounted() {
       this.fetchSeesul();
