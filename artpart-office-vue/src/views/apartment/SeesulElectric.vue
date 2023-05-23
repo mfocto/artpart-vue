@@ -200,22 +200,24 @@ export default {
     return {
       isReadonly: true,
       requestBody: {},
-      sidx: this.$route.query.sidx,
-      sdate: '',
-      swiriter: '',
+      sidx: this.$route.query.sidx, // 글번호
+      sdate: '',  // 작성 날짜
+      swiriter: '', // 작성자
       list: [],
-      originalResults: [],
-      originalProcess: []
+      originalResults: [],  // 원본 결과 데이터 리스트
+      originalProcess: []   // 원본 처리상황 데이터 리스트
     };
   },
   methods: {
+    // 수정 버튼 클릭시 실행 함수
     toggleReadonly() {
-
-      if(this.isReadonly){
+      if(this.isReadonly){  // 읽기모드일 때
+          // 현재 결과 및 처리상황을 원본 변수에 저장
           this.originalProcess = JSON.parse(JSON.stringify(this.electricProcess));
           this.originalResults = JSON.parse(JSON.stringify(this.electricResults));
-          this.isReadonly = false;
-      }else{
+          this.isReadonly = false;  // 수정모드로 전환
+      }else{  // 수정모드일 때
+          // 수정된 결과 및 처리상황을 requestBody에 반영
           let requestBody = this.list.map((item, index) => {
               return{
                   ...item,
@@ -224,14 +226,16 @@ export default {
               };
           });
 
+          // 수정된 정보를 서버로 전송
           console.log(requestBody);
           this.$axios.patch((this.$serverUrl+'/scheck'), requestBody)
               .then(() => {
-                  // Handle success, e.g. showing a success message
+                  // 서버로부터 응답을 받으면 다시 데이터 불러옴
+                  this.fetchElectric();
               })
               .catch((error) => {
                   console.error(error);
-                  // Rollback the changes in case of an error
+                  // 에러 발생 시 원래 데이터로 복구
                   this.electricResults = this.originalResults;
                   this.electricProcess = this.originalProcess;
               });
@@ -243,8 +247,10 @@ export default {
                   "emp_idx": test.emp_idx
               }
           }
+          // 수정된 정보를 서버로 전송
           this.$axios.patch(this.$serverUrl+'/seesul', this.form)
               .then((res) => {
+                  // 서버로부터 응답을 받으면 다시 데이터 불러옴
                   this.fetchElectric(res.data.sidx)
               }).catch((err) => {
               if (err.message.indexOf('Network Error') > -1) {
@@ -252,32 +258,36 @@ export default {
               }
           })
 
-
+          // 수정 모드 종료하고 다시 읽기모드로 전환
           this.isReadonly = true;
       }
     },
-      fetchElectric() {
-          this.$axios.get(this.$serverUrl + "/seesul/" + this.sidx, {
-              params: this.requestBody
-          }).then(response => {
-              this.sdate = response.data.sdate;
-              this.swiriter = response.data.swiriter.emp_name;
-          }).catch(error => {
-              console.error(error);
-          });
-          this.$axios.get(this.$serverUrl + "/scheck/" + this.sidx, {
-              params: this.requestBody,
-              headers: {}
-          }).then((res) => {
-              if (res.data.result_code === "OK") {
-                  this.list = res.data.data;
-                  console.log(this.list); // 이 위치에서 console.log 실행
-              }
-          }).catch(error => {
-              console.error(error);
-              console.log(this.list); // 이 위치에서 console.log 실행
-          });
-      },
+    // 데이터 불러오는 함수
+    async fetchElectric() {
+       try {
+           // 서버에서 시설테이블 데이터 불러오기
+            const res1 = await this.$axios.get(this.$serverUrl + "/seesul/" + this.sidx, {
+                params: this.requestBody
+            });
+            this.sdate = res1.data.sdate;
+            this.swiriter = res1.data.swiriter.emp_name;
+            // 서버에서 체크리스트 데이터 불러오기
+            const res2 = await this.$axios.get(this.$serverUrl + "/scheck/" + this.sidx, {
+                params: this.requestBody,
+                headers: {}
+            });
+            if (res2.data.result_code === "OK") {
+                //scheck 값을 기준으로 정렬
+                this.list = res2.data.data.sort((a, b) => a.scheck - b.scheck);
+                console.log(this.list);
+                await this.$nextTick(); // 데이터 업데이트 된 후 실행되도록 설정
+            }
+        } catch (error) {
+            console.error(error);
+            console.log(this.list);
+        }
+    },
+      // 목록 페이지 이동 함수
       fnList(){
           delete this.requestBody.sidx
           this.$router.push({
@@ -287,9 +297,11 @@ export default {
       }
   },
   mounted() {
+      // 컴포넌트가 마운트될 때 데이터 불러옴
       this.fetchElectric();
   },
     computed: {
+        // 데이터에서 점검결과만 추출하여 배열생성
         electricResults() {
             if (!Array.isArray(this.list)) return []; // 빈 배열로 초기화
 
@@ -302,6 +314,7 @@ export default {
 
             return results;
         },
+        // 데이터에서 처리상황만 추출하여 배열생성
         electricProcess(){
             if (!Array.isArray(this.list)) return []; // 빈 배열로 초기화
 
