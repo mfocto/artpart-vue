@@ -16,29 +16,29 @@
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 동 </th>
             <td>
-              <h2 v-text="member.memberdong" name="member_dong" type="text" class="inputetc mb-2" style=""></h2>
+              <h2 v-text="memberdong" name="member_dong" type="text" class="inputetc mb-2" style=""></h2>
             </td>
           </tr>
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 호수 </th>
-            <h2 v-text="member.memberdong" name="member_ho" type="text" class="inputetc mb-2" style=""></h2>
+            <h2 v-text="memberho" name="member_ho" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
 
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 입주완료여부 </th>
-            <h2 v-text="member.memberloginok" name="member_loginok" type="text" class="inputetc mb-2" style=""></h2>
+            <h2 v-text="memberloginok" name="member_loginok" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 등록차량1 </th>
-            <h2 v-text="member.membermycar1" name="member_mycar1" type="text" class="inputetc mb-2" style=""></h2>
+            <h2 v-text="membermycar1" name="member_mycar1" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
 
           <tr>
             <th class="lefttext" width="261" height= "30px;" style=""> 등록차량2 </th>
-            <h2 v-text="member.membermycar2" name="member_mycar2" type="text" class="inputetc mb-2" style=""></h2>
+            <h2 v-text="membermycar2" name="member_mycar2" type="text" class="inputetc mb-2" style=""></h2>
           </tr>
         </div>
         <tr><th class=endpoint colspan="2" width="261" height= "30px;" ></th></tr>
@@ -48,7 +48,7 @@
         <div> 
           <tr>
             <th class="lefttext" height= "30px;" style=""> 아이디</th>
-            <h2 v-text="member.memberid" name="member_id" type="text" class="inputetc mb-2" style=""></h2>
+            <h2 v-text="memberid" name="member_id" type="text" class="inputetc mb-2" style=""></h2>
           </tr>		
 
           <tr>
@@ -104,6 +104,8 @@
   
 <script>
 export default {
+  name: 'MemberMyPage',
+
   data() {
     return {
     member: null,
@@ -123,64 +125,49 @@ export default {
 
   mounted() { //폼 제출 전, 자동으로 회원 정보를 가져와 표시
     this.fetchMemberInfo();
-  },
+  },  //mounted
 
   methods: {
+  // 데이터 넣기
+
     fetchMemberInfo() {
+      
+      this.$axios.post("/member?memberidx=" + this.memberidx + "&memberpassword=" + this.memberpassword, {
+      memberIdx: this.memberIdx,
+      memberpassword: this.memberpassword,
+      }) //axios
 
-      // ###################쿠키 데이터가 없을 때 임의의 데이터로 회원 정보 설정###################
-      // 쿠키 데이터가 없을 때 임의의 데이터로 회원 정보 설정
-      this.member = {
-        memberidx: 1,
-        aptidx: 1,
-        memberdong: '가라아게동',
-        memberho: '101호',
-        membername: '한예슬',
-        memberid: 'hellomember',
-        memberpassword: 'password',
-        memberphone: '010-1234-5678',
-        memberloginok: true,
-        membermycar1: '123차번호456',
-        membermycar2: '789차번호123',
-      }// if close ############################################################################
+      .then((res) => {
+          if (res.headers.authorization != null) {
+              this.$cookie.set('token', res.headers.authorization.substring(7))
+              this.$axios.defaults.headers.common.Authorization = "Bearer " + this.$cookie.get('token');
+              this.$axios.get(this.$serverUrl + "/member/"+ this.memberidx)
+                  .then((res2) => {
+                      const str = JSON.stringify(res2.data.data)
+                      this.$cookie.set('member', str);
+                      this.$router.push({
+                          path: '/notice/list',
+                      }); //push
+                  })
+          } //if
 
+        if (res.headers.authorization == null) {
+            alert("접속할 수 없습니다.");
+            this.$router.push({
+                path: "/",
+            })  //push
+        } //if
 
+        }).catch((err) => {
+          if (err.message.indexOf('Network Error') > -1) {
+              alert('서버와 통신이 불안정합니다.');
+          } //if
 
-      // 서버로부터 회원 정보를 조회하는 API 호출
-      // API 호출 시 memberId와 memberPassword 값을 사용하여 서버에 요청할 수 있습니다.
-      // 이 예시에서는 가정상의 비동기 동작으로 회원 정보를 가져온다고 가정합니다.
-      // 실제 구현에서는 실제 API 호출이나 데이터베이스 조회 등의 로직을 구현해야 합니다.
+      });  //catch    
 
-      // 비동기 (setTimeout을 사용하여 1초 후에 가상의 회원 정보를 설정합니다.)
-      setTimeout(() => {
-        console.log(memberInfo(this.memberidx));
-        // 가상의 회원 정보
-        const memberInfo = {
-          memberidx: this.memberidx,
-          aptidx: this.aptidx,
-          memberdong: this.memberdong,
-          memberho: this.memberho,
-          membername: this.membername,
-          memberid: this.memberid,
-          memberpassword: this.memberpassword,
-          memberphone: this.memberphone,
-          memberloginok: this.memberloginok,
-          membermycar1: this.membermycar1,
-          membermycar2: this.membermycar2,
-        };
-
-        // 회원 정보를 가져왔을 때 member 데이터에 할당합니다.
-        this.member = memberInfo;
-      }, 1000);
-    },
-    getCookieValue(name) {
-      const value = `; ${document.cookie}`; 
-      //문자열의 앞에 세미콜론(;)을 추가하여 쿠키 값(문자열) 사이에 공백이 생기는 것을 방지 후 value 변수에 할당
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-  }
-};
+    }, //fetchMemberInfo
+  } //methods
+}; //export default (document ready)
 </script>
   
   
