@@ -91,9 +91,8 @@ export default {
             }
             console.log(formData)
             this.$axios.post(this.$serverUrl + '/account/slip/reg', formData)
-                .then((req) => {
+                .then(() => {
                     alert('전표가 등록되었습니다.');
-                    alert(req.data.data);
                     this.$router.push('/account/slip/list')
                 })
                 .catch((err) => {

@@ -37,6 +37,7 @@
                             </div>
                         </div>
                     </form>
+                    <button class="btn btn-primary mb-3" @click="testlogin">테스트로그인</button>
                 </div>
             </div>
         </div>
@@ -76,10 +77,11 @@ export default {
                                 this.$cookie.set('emp', str);
                                 this.$router.push({
                                     path: '/notice/list',
-                                });
+                                }); //push
                             })
-
                     }
+
+
                     if (res.headers.authorization == null) {
                         alert("접속할 수 없습니다.");
                         this.$router.push({
@@ -101,6 +103,37 @@ export default {
                     }
                     if (res.data.result_code === 'ERROR') {
                         alert('실패');
+                    }
+                }).catch((err) => {
+                if (err.message.indexOf('Network Error') > -1) {
+                    alert('서버와 통신이 불안정합니다.');
+                }
+            });
+        },
+        testlogin() {
+            this.$axios.post(this.$serverUrl + "/login?username=so여물&password=duanf", {
+                username: 'so여물',
+                password: 'duanf',
+            })
+                .then((res) => {
+                    if (res.headers.authorization != null) {
+                        this.$cookie.set('token', res.headers.authorization.substring(7))
+                        this.$axios.defaults.headers.common.Authorization = "Bearer " + this.$cookie.get('token');
+                        this.$axios.get(this.$serverUrl + "/emp/so여물")
+                            .then((res2) => {
+                                const str = JSON.stringify(res2.data.data)
+                                this.$cookie.set('emp', str);
+                                this.$router.push({
+                                    path: '/notice/list',
+                                });
+                            })
+
+                    }
+                    if (res.headers.authorization == null) {
+                        alert("접속할 수 없습니다.");
+                        this.$router.push({
+                            path: "/"
+                        })
                     }
                 }).catch((err) => {
                 if (err.message.indexOf('Network Error') > -1) {
