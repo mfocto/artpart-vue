@@ -74,7 +74,7 @@
     <tr> 
       <!-- 월 단위 표기 -->
       <th>분류</th>
-      <th v-for="(item, pm_idx) in list" :key="pm_idx">
+      <th v-for="(item, pm_idx) in monthList" :key="pm_idx">
         {{ item.pm_date }}월
       </th>
     </tr>
@@ -84,39 +84,39 @@
 
     <tr>
       <td>난방비</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_heat }}</td>                     
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_heat }}</td>                     
     </tr>
     <tr>
       <td>급탕비(온수)</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_onsu }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_onsu }}</td> 
     </tr>
     <tr>
       <td>가스사용</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_gas }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_gas }}</td> 
     </tr>
     <tr>
       <td>전기료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_elec }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_elec }}</td> 
     </tr>
     <tr>
       <td>수도료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_water }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_water }}</td> 
     </tr>
     <tr>
       <td>정화조오물수수료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_septic }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_septic }}</td> 
     </tr>
     <tr>
       <td>생활폐기물수수료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_waste }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_waste }}</td> 
     </tr>
     <tr>
       <td>관리위원회운영비</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_opercost }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_opercost }}</td> 
     </tr>
     <tr>
       <td>건물보험료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_insure }}</td> 
+      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_insure }}</td> 
     </tr>
   </tbody>
 </table>
@@ -218,7 +218,8 @@
           },
     data:() => ({
       list: {},
-      month: {},
+      monthList: {},
+      yearList: {},
 
       type: 'line',
       data: {
@@ -245,9 +246,12 @@
         }
       }
     }),
-  
     mounted(){
       this.createChart()
+      this.payMentList()
+      console.log("List : " + JSON.stringify(this.list));
+      console.log("monthList : " + JSON.stringify(this.monthList));
+      
     },
     methods:{
       createChart(){
@@ -261,33 +265,50 @@
       document.getElementById('mydong').style.display = 'block';
       document.getElementById('month').style.display = 'none';
       document.getElementById('year').style.display = 'none';
+
     },change2(){
       document.getElementById('mydong').style.display = 'none';
       document.getElementById('month').style.display = 'block';
       document.getElementById('year').style.display = 'none';
-      this.payMentList();
-      console.log(JSON.stringify())
+      this.payMentList()
+
     },change3(){
       document.getElementById('mydong').style.display = 'none';
       document.getElementById('month').style.display = 'none';
       document.getElementById('year').style.display = 'block';
     },
-    payMentList(){
-      this.$axios.get(this.$serverUrl + "/payment/list", {
-        params : this.requestbody,
-        headers: {}
-      }).then((res) =>{
-        if(res.data.result_code === "OK"){
-          this.list = res.data.data;
-          this.list.pm_date = dayjs(this.list.pm_date).format("MM");          
-        }
-      }).catch(error =>{
-        console.error(error);
-      })
-    }
+
+    payMentList() {
+  this.$axios
+    .get(this.$serverUrl + "/payment/list", {
+      params: this.requestbody,
+      headers: {}
+    })
+    .then((res) => {
+      this.list = res.data;
+      this.monthList = this.list.monthList;
+      this.yearList = this.list.yearList;
+    })
+    .catch((error) => {
+      if (error.response) {
+        // 서버가 응답한 상태 코드가 2xx가 아닌 경우
+        console.log('응답 상태 코드:', error.response.status);
+        console.log('응답 데이터:', error.response.data);
+      } else if (error.request) {
+        // 요청은 서버에 전송되었지만 응답이 없는 경우
+        console.log('요청이 전송되었지만 응답이 없습니다.');
+        console.log('요청:', error.request);
+      } else {
+        // 요청을 보내는 동안 오류가 발생한 경우
+        console.log('오류 발생:', error.message);
+      }
+    });
+}
+    },
+  
   }
-    
-  }
+  
+  
   
   </script>
   

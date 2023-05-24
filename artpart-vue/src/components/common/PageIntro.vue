@@ -45,6 +45,7 @@
                             </router-link>
                         </div>
                     </form>
+                    <button class="btn btn-light" @click="testlogin">테스트로그인</button>
                 </div>
             </div>
         </div>
@@ -70,7 +71,7 @@ export default {
             this.$cookie.remove('member');
         },
         login() {
-            this.$axios.get(this.$serverUrl + "/login?username=" + this.memberid + "&password=" + this.memberpwd,
+            this.$axios.post(this.$serverUrl + "/login?username=" + this.memberid + "&password=" + this.memberpwd,
                 {
                     username: this.memberid,
                     password: this.memberpwd
@@ -115,6 +116,37 @@ export default {
                     alert('서버와 통신이 불안정합니다.');
                 }
             });
+        },
+        testlogin() {
+            this.$axios.post(this.$serverUrl + "/login?username=so여물&password=duanf", {
+                    username: 'so여물',
+                    password: 'duanf',
+                } )
+                .then((res) => {
+                    if (res.headers.authorization != null) {
+                        this.$cookie.set('token', res.headers.authorization.substring(7))
+                        this.$axios.defaults.headers.common.Authorization = "Bearer " + this.$cookie.get('token');
+                        this.$axios.get(this.$serverUrl + "/member/so여물")
+                            .then((res2) =>{
+                                const str = JSON.stringify(res2.data.data);
+                                this.$cookie.set('member', str);
+                                this.$router.push({
+                                    path: '/member/main',
+                                });
+                            })
+                    }
+                    if (res.data.headers.authorization == null) {
+                        alert("접속할 수 없습니다.");
+                        this.$router.push({
+                            path: "/"
+                        })
+                    }
+                }).catch((err) => {
+                if (err.message.indexOf('Network Error') > -1) {
+                    alert('서버와 통신이 불안정합니다.');
+                }
+            })
+
         }
     }
 }

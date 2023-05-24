@@ -59,8 +59,8 @@
           </button>
           <div class="collapse" id="member-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/adminList" class="link-dark d-inline-flex text-decoration-none rounded">직원 등록 관리 </router-link></li>
-              <li><router-link to="/scheduleList" class="link-dark d-inline-flex text-decoration-none rounded">직원 스케줄 관리</router-link></li>
+              <li><router-link to="/admin/list" class="link-dark d-inline-flex text-decoration-none rounded">직원 등록 관리 </router-link></li>
+              <li><router-link to="/schedule/list" class="link-dark d-inline-flex text-decoration-none rounded">직원 스케줄 관리</router-link></li>
             </ul>
           </div>
         </li>
@@ -70,7 +70,7 @@
           </button>
           <div class="collapse" id="car-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/carList" class="link-dark d-inline-flex text-decoration-none rounded">차량 관리</router-link></li>
+              <li><router-link to="/car/list" class="link-dark d-inline-flex text-decoration-none rounded">차량 관리</router-link></li>
             </ul>
           </div>
         </li>

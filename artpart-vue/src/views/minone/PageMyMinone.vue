@@ -29,38 +29,7 @@
             <td>{{ minone.minStatus }}</td>
           </tr>
 
-            <!--
-            <tr v-for="(minone, memberIdx) in list" :key="memberIdx">
-              <td>{{ minone.memberIdx }}</td>
-              <router-link :to="`/minone/pagemyminone/${minone.idx}`">{{ minone.minTitle }}</router-link>
-              <td>{{ minone.minStatus }}</td>
-            </tr>  
-          -->
 
-
-          <tr>
-            <td>1</td>
-            <td>청소상태불량</td>
-            <td style="width:20%; color:red;">확인 중</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>맘에안듬</td>
-            <td style="width:20%; color:red;">확인 중</td>
-          </tr>
-
-          <tr>
-            <td>3</td>
-            <td>어쨌든불만</td>
-            <td>답변 완료</td>
-          </tr>
-
-          <tr>
-            <td>4</td>
-            <td>마지막가짜제목</td>
-            <td>답변 완료</td>
-          </tr>
 
 
           </tbody>
@@ -85,22 +54,12 @@
       </select>
         &nbsp;
 
-      <input type="text" v-model="search_value" class="selectedoption rounded-1" 
-        @keyup.enter="fnPage()" style=" width: 300px; height: 30px; border:1px solid gray;  ">
-        &nbsp;
 
-      <button class="submitbutton rounded-1" @click="fnPage()" style="text-align:center; color: gray; font-family:TheJamsil5Bold; 
-            font-size: 12px; width: 100px; height: 30px; border:1px solid gray; ">
-            검색
-      </button>
   </div>
 </div> <!-- 백그라운드 설정 -->
 
 
 <!-- searchKey === 글제목 -->
-<!-- searchKey === 글제목 -->
-<!-- searchKey === 글제목 -->
-
 
 
 
@@ -113,8 +72,6 @@
 
 
 <script>
-import axios from 'axios';
-
 
 export default {
   
@@ -125,7 +82,8 @@ export default {
       list: [],
       memberIdx: '',
       minoneByMemberList: null,
-      selectedOption: 'selected' 
+      selectedOption: 'selected',
+      minidx: this.$route.query.minidx,
     };
 
   },
@@ -138,28 +96,23 @@ export default {
 
   //##################[[ methods ]]##################
   methods: {
-
+  // 데이터 넣기
     getMinoneList() {
-      axios.get('/minone/pagemyminone', {
+      
+      this.$axios.post("/minone?pagemyminone=" + this.memberidx + "&memberpassword=" + this.memberpassword, {
+      this.axios.get('/minone/pagemyminone', {
         memberIdx: this.memberIdx,
         minTitle: this.minTitle,
         minStatus: this.minStatus,
+        
       })
-        .then(response => {
-          this.list = response.data
-        })
-        .catch(error => {
-          console.error(error);
-        });
+      .then(response => {
+        this.list = response.data
+      })
+      .catch(error => {
+        console.error(error);
+      });
     },
-
- 
-
-
-
-
-
-
 
   }//method close
 }
