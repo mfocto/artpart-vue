@@ -108,8 +108,10 @@ export default {
 
   data() {
     return {
+    requestBody: this.$route.query,
+    memberidx: this.$route.query.memberidx,
+    
     member: null,
-    memberidx: null,
     memberdong: null,
     memberho: null,
     memberid: '',
