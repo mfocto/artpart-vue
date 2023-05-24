@@ -145,7 +145,7 @@
 export default {
   data() {
     return {
-      selectedOption: 'electric',
+      selectedOption: '',
       requestBody: {}, //리스트 페이지 데이터전송
       list: {}, //리스트 데이터
       no: '', //게시판 숫자처리
@@ -164,7 +164,6 @@ export default {
       }, //페이징 데이터
       page: this.$route.query.page ? this.$route.query.page : 1,
       size: this.$route.query.size ? this.$route.query.size : 10,
-      //keyword: this.$route.query.keyword,
       search_key: this.$route.query.sk ? this.$route.query.sk : ' ',
       search_value: this.$route.query.sv ? this.$route.query.sv : 'electric',
 
@@ -176,6 +175,13 @@ export default {
           return pageNumber;
       }
     };
+  },
+  created() {
+      if (!this.$route.query.selectedOption) {
+          this.selectedOption = 'electric';
+      } else {
+          this.selectedOption = this.$route.query.selectedOption;
+      }
   },
   watch: {
     selectedOption(newVal) {
@@ -202,7 +208,6 @@ export default {
           headers: {}
       }).then((res) => {
 
-          //this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
           if (res.data.result_code === "OK") {
               this.list = res.data.data
               this.paging = res.data.pagination
