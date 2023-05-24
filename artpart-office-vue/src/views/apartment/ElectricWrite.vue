@@ -16,10 +16,6 @@
               </th>
             </tr>
             <tr>
-              <th colspan="4" style="text-align:right;"> 점검일자 : <input type="text" value="2023-04-26" class="custom-input" /></th>
-                            
-            </tr>
-            <tr>
               <th scope="col" style="width: 10%"> 구 분 </th>
               <th scope="col" style="width: 60%"> 점 검 사 항 </th>
               <th scope="col" style="width: 20%"> 결 과 </th>
@@ -197,29 +193,31 @@
 export default {
   data() {
     return {
-        sidx: '',
-        sdate: '',
-        swiriter: '',
-        scategory: 'electric',
-        scheckidx: '',
-        sresult: [],
-        sprocess: [],
-        scheck: [],
+        sidx: '', // 글번호
+        sdate: '',  // 작성날짜
+        swiriter: '', // 작성자
+        scategory: 'electric',  // 카테고리
+        scheckidx: '',  // 체크리스트 인덱스
+        sresult: [],  // 결과 리스트
+        sprocess: [], // 처리상황 리스트
+        scheck: [], // 체크리스트
         requestBody: {}
     };
   },
   methods: {
+    //데이터 저장하는 함수
     async fnSave(){
-        const test = JSON.parse(this.$cookie.get('emp'))
+        const test = JSON.parse(this.$cookie.get('emp')) // 쿠키로부터 작성자 정보 가져오기
         let data = [];
         let sidx = 0;
         this.form = {
-            "scategory": this.scategory,
+            "scategory": this.scategory,  // 카테고리 정보 저장
             "swiriter": {
-                "emp_idx": test.emp_idx
+                "emp_idx": test.emp_idx // 작성자 정보 저장
             }
         }
         for(let i=0; i < 22; i++){
+            // 결과 및 처리상황 정보를 데이터에 저장
             data.push({
                 scheck: i+1,
                 sresult: this.sresult[i],
@@ -228,18 +226,21 @@ export default {
         }
 
         try {
+            // 시설테이블 데이터 서버로 전송
             const res = await this.$axios.post(this.$serverUrl + '/seesul', this.form);
             sidx = res.data.sidx;
             console.log(data);
+            // 체크리스트 데이터 서버로 전송
             await this.$axios.post(this.$serverUrl + '/scheck/' + sidx, data);
             alert('글이 저장되었습니다.');
-            this.fnView(sidx);
+            this.fnView(sidx);  // 저장된 글 상세보기
         } catch(err) {
             if (err.message.indexOf('Network Error') > -1) {
                 alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
             }
         }
     },
+    // 상세보기 페이지 이동 함수
     fnView(sidx) {
         console.log(sidx);
         this.requestBody.sidx = sidx
@@ -248,6 +249,7 @@ export default {
             query: this.requestBody
         })
     },
+    // 목록 페이지 이동 함수
     fnList(){
         delete this.requestBody.sidx
         this.$router.push({
