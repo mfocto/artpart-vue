@@ -85,7 +85,6 @@ export default {
                 "noticeidx": this.noticeidx,
                 "title": this.title,
                 "content": this.content,
-                // "writer": this.writer
                 "writer": {
                     "emp_idx": test.emp_idx
                 }
