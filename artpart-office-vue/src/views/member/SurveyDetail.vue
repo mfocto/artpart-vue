@@ -36,27 +36,47 @@
             </thead>
             <thead>
               <tr>      
-                <th scope="col">답변1</th>   <td scope="col">{{ answer1 }}</td>   <td>10명</td>
+                <th scope="col">답변1</th>   <td scope="col">{{ answer1 }}</td>   <td>{{ answer1count }}명
+                  {{ answer1count !== 0 ?
+                    ((answer1count / (answer1count + answer2count + answer3count + answer4count + answer5count)) * 100).toFixed(1) + '%'
+                    : '0%'
+                  }}</td>
               </tr>
             </thead>
             <thead>
               <tr>      
-                <th scope="col">답변2</th>   <td scope="col">{{ answer2 }}</td>   <td>15명</td>
+                <th scope="col">답변2</th>   <td scope="col">{{ answer2 }}</td>   <td>{{ answer2count }}명
+                  {{ answer2count !== 0 ?
+                    ((answer2count / (answer1count + answer2count + answer3count + answer4count + answer5count)) * 100).toFixed(1) + '%'
+                    : '0%'
+                  }}</td>
               </tr>
             </thead>
             <thead>
               <tr>      
-                <th scope="col">답변3</th>   <td scope="col">{{ answer3 }}</td>   <td>11명</td>
+                <th scope="col">답변3</th>   <td scope="col">{{ answer3 }}</td>   <td>{{ answer3count }}명
+                  {{ answer3count !== 0 ?
+                    ((answer3count / (answer1count + answer2count + answer3count + answer4count + answer5count)) * 100).toFixed(1) + '%'
+                    : '0%'
+                  }}</td>
               </tr>
             </thead>
             <thead>
               <tr>      
-                <th scope="col">답변4</th>   <td scope="col">{{ answer4 }}</td>   <td></td>
+                  <th scope="col">답변4</th>   <td scope="col">{{ answer4 }}</td>   <td>{{answer4count }}명
+                  {{ answer4count !== 0 ?
+                    ((answer4count / (answer1count + answer2count + answer3count + answer4count + answer5count)) * 100).toFixed(1) + '%'
+                    : '0%'
+                  }}</td>
               </tr>
             </thead>
             <thead>
               <tr>      
-                <th scope="col">답변5</th>   <td scope="col">{{ answer5 }}</td>   <td></td>
+                  <th scope="col">답변5</th>   <td scope="col">{{ answer5 }}</td>   <td> {{ answer5count }}명
+                  {{ answer5count !== 0 ?
+                    ((answer5count / (answer1count + answer2count + answer3count + answer4count + answer5count)) * 100).toFixed(1) + '%'
+                    : '0%'
+                  }}</td>
               </tr>
             </thead>
 
@@ -67,7 +87,7 @@
             </thead>
             <thead>
               <tr>      
-                <th scope="col">인원</th>   <td scope="col">{{ membercount }}</td>   <td> 36명참여</td>
+                <th scope="col">인원</th>   <td scope="col">{{ membercount }}</td>   <td> {{answer1count+answer2count+answer3count+answer4count+answer5count}}명({{((answer1count+answer2count+answer3count+answer4count+answer5count)/membercount)*100}}%)</td>
               </tr>
             </thead>
 
@@ -92,7 +112,12 @@
               answer3 : '',
               answer4 : '',
               answer5 : '',
-              membercount : ''
+              membercount : '',
+              answer1count : '',
+              answer2count : '',
+              answer3count : '',
+              answer4count : '',
+              answer5count : ''
           };
       },
       methods: {
@@ -113,6 +138,11 @@
                   this.votingwriter = response.data.votingwriter;
                   this.votingstart = response.data.votingstart;
                   this.membercount = response.data.membercount;
+                  this.answer1count = response.data.answer1count;
+                  this.answer2count = response.data.answer2count;
+                  this.answer3count = response.data.answer3count;
+                  this.answer4count = response.data.answer4count;
+                  this.answer5count = response.data.answer5count;
               })
                   .catch(error => {
                       console.error(error);
