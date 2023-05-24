@@ -95,15 +95,33 @@
   
   <script>
   export default {
+    data(){
+      return {
+        list: {}
+      }
+    },
       mounted() {
           this.checkinfo();
       },
-      methods: {
+      methods:{
           checkinfo() {
-              const info = JSON.parse(this.$cookie.get('member'))
-              console.log(info.member_name)
+              const info = JSON.parse(this.$cookie.get('member'));
+              console.log(info.member_name);
+              this.top3List();
+          },
+          top3List(){
+            this.$axios.get(this.$serverUrl + "/member/main", {
+            }).then((res) => {
+                this.list = res.data.data;
+                this.aaa = res.data;
+                console.log( "11111" + JSON.stringify(this.list));
+                console.log( "22222" + JSON.stringify(this.aaa));
+            
+            }).catch( error => {
+                console.error(error);
+            })
           }
-      }
+      },
   }
   </script>
   
