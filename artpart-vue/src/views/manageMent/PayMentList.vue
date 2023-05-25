@@ -284,7 +284,6 @@
       var data = [];
       for (let i = 0; i < 6; i++) {
       var index = this.sixMonthList[i];
-      console.log("11" + JSON.stringify(index));
       data.push(index.pm_heat);
       labels.push(dayjs(index.pm_date).format("YY년 MM월"));
     
