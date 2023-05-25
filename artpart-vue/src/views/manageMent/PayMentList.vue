@@ -249,8 +249,9 @@
       headers: {}
       
     }).then((res) => {
+      if (res.data.result_code === "OK") {
       //총 리스트 담은 MAP
-      this.list = res.data;
+      this.list = res.data.data;
       //월별 관리비
       this.monthList = this.list.monthList;
       //연도별 관리비
@@ -259,7 +260,7 @@
       this.sixMonthList = this.list.sixMonthList;
       //이번달 관리비
       this.recentlyMonth = this.list.recentlyMonth
-      
+      }
       //차트 메소드실행
       this.createChart();
 

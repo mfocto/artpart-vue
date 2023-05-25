@@ -85,8 +85,9 @@
           top3List(){
             this.$axios.get(this.$serverUrl + "/member/main", {
             }).then((res) => {
-                this.noticeList = res.data;
-            
+              if (res.data.result_code === "OK") {
+                this.noticeList = res.data.data;
+              }
             }).catch( error => {
                 console.error(error);
             })
