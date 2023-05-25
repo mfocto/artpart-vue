@@ -7,18 +7,21 @@
   </div>
       <br>
       <br>
-      <div align="left" class="jb-header" ><h2>직원등록</h2> 
+      <div align="left" class="jb-header" ><h2>직원 정보 수정</h2> 
       </div>
-      
       <div>
-        <table style="width:100%; border : 1px solid #000 ;">
-        <!-- <tr style="border : 1px solid #000 ;">
-          <td><font size="5">이미지 </font></td>
+        <img src = "../../assets/images/차사원.jpeg" />
+      </div>
+      <div>
+         <table style="width:100%; border : 1px solid #000 ;">
+          <!--<tr style="border : 1px solid #000 ;">
+          <td><font size="5">수정 할 파일 </font></td>
           <td>
               <input id="customFile" type="file" @change="handleFileChange"/>
                <label class="custom-file-label" for="customFile">{{file_name}}</label>
-          </td>
-        </tr> -->
+          </td> 
+        </tr>-->
+        
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">사원아이디</font></td>
           <td>
@@ -73,14 +76,6 @@
           <td><input style="width:250px;height:30px;" id="emp_email" type="text" v-model="emp_email" placeholder="사원 이메일을 입력 하시오"></td>
         </tr>
         <tr style="border : 1px solid #000 ;">
-          <td><font size="5">비밀번호</font></td>
-          <td><input style="width:250px;height:30px;" id="emp_paw" type="pasword" v-model="emp_paw" placeholder="사원 비밀번호를 입력 하시오"></td>
-        </tr>
-        <tr style="border : 1px solid #000 ;">
-          <td><font size="5">권한</font></td>
-          <td><input style="width:250px;height:30px;" id="emp_auth" type="text" v-model="emp_auth" placeholder="화원 권한을 입력 하시오"></td>
-        </tr>
-        <tr style="border : 1px solid #000 ;">
           <td><font size="5">주소</font></td>
           <td><input style="width:250px;height:30px;" id="emp_address" type="text" v-model="emp_address" placeholder="사원 주소를 입력 하시오"></td>
         </tr>
@@ -119,25 +114,25 @@
             <button style="float: center;" class="btn btn-dark" v-on:click="fnSave">등록</button>  &nbsp;
             <button style="float: right;" type="button" class="btn btn-dark" v-on:click="fnList">목록</button>
       </div>
-
-
-
+  
+        
 </template>
 
+
 <script>
-export default {
-  data() {
+export default{
+
+  data(){
     return {
       requestBody: this.$route.query,
-      emp_idx: this.$route.query.emp_idx,
+      id: this.$route.query.emp_idx,
 
       emp_id: '',
       emp_permanent_id: '',
       emp_department_id:'',
       emp_job_id:'',
       emp_name:'',
-      emp_email:'',
-      emp_paw:'',
+      emp_email: '',
       emp_address:'',
       emp_phone:'',
       emp_car:'',
@@ -145,84 +140,78 @@ export default {
       emp_departure_date:'',
       emp_img:'',
       emp_img_up:'',
-      emp_memo:'' ,
-      emp_auth:''
+      emp_memo:''
     }
   },
-  mounted() {
-    this.fnGetView()
+  mounted(){
+    this.fnGetEmp()
   },
   methods:{
-    fnGetView(){
-      if (this.emp_idx !== undefined) {
-                this.$axios.get(this.$serverUrl + '/admin/' + this.emp_idx, {
-                    params: this.requestBody
-                }).then((res) => {
-                    this.emp_id = res.data.emp_id
-                    this.emp_permanent_id = res.data.emp_permanent_id
-                    this.emp_department_id = res.data.emp_department_id
-                    this.emp_job_id = res.data.emp_job_id
-                    this.emp_name = res.data.emp_name
-                    this.emp_email = res.data.emp_email
-                    this.emp_paw = res.data.emp_paw
-                    this.emp_address = res.data.emp_address
-                    this.emp_phone = res.data.emp_phone
-                    this.emp_car = res.data.emp_car
-                    this.emp_hire_date = res.data.emp_hire_date
-                    this.emp_departure_date = res.data.emp_departure_date
-                    this.emp_img = res.data.emp_img
-                    this.emp_memo = res.data.emp_memo
-                    this.emp_auth = res.data.emp_auth
-                }).catch((err) => {
-                    console.log(err)
-                })
-    }
-  },
-  fnList(){
-    delete this.requestBody.emp_idx
-    this.$route.push({
-      path: './list',
-      query: this.requestBody
-    })
-  },
-  fnView(emp_idx){
-    this.requestBody.emp_idx = emp_idx
-    this.$route.push({
-      path: './detail',
-      query: this.requestBody
-    })
+    fnGetEmp(){ 
+      if(this.id !== undefined){
+          this.$axios.get(this.$serverUrl + '/admin/' + this.id, {
+            params: this.requestBody
+          }).then((res) => {
+            this.emp_id = res.data.emp_id
+            this.emp_permanent_id = res.data.emp_permanent_id
+            this.emp_department_id = res.data.emp_department_id
+            this.emp_job_id = res.data.emp_job_id
+            this.emp_name = res.data.emp_name
+            this.emp_address = res.data.emp_address
+            this.emp_email = res.data.emp_email
+            this.emp_phone = res.data.emp_phone
+            this.emp_car = res.data.emp_car
+            this.emp_hire_date = res.data.emp_hire_date
+            this.emp_departure_date = res.data.emp_departure_date
+            this.emp_img = res.data.emp_img
+            this.emp_img_up = res.data.emp_img_up
+            this.emp_memo = res.data.emp_memo
+          }).catch((err) => {
+            console.log(err)
+          })
+        }
+    },
+    fnList(){
+      delete this.requestBody.id
+        this.$router.push({
+          path: './list',
+          query: this.requestBody
+        })
+    },
+    fnEmp(id){
+      this.requestBody.id = id
+      this.$router.push({
+        path: './detail',
+        query: this.requestBody
+      })
 
-  },
-  fnSave(){
-    let apiUrl = this.$serverUrl+'/admin'
-    this.form = {
+
+    },
+    fnSave(){
+      let apiUrl = this.$serverUrl + '/admin'
+      this.form = {
       "emp_id": this.emp_id,
       "emp_permanent_id": this.emp_permanent_id,
       "emp_department_id": this.emp_department_id,
       "emp_job_id": this.emp_job_id,
       "emp_name": this.emp_name,
-      "emp_email": this.emp_email,
-      "emp_paw": this.emp_paw,
       "emp_address": this.emp_address,
+      "emp_email": this.emp_email,
       "emp_phone": this.emp_phone,
       "emp_car": this.emp_car,
       "emp_hire_date": this.emp_hire_date,
       "emp_departure_date": this.emp_departure_date,
       "emp_img": this.emp_img,
-      "emp_memo":this.emp_memo,
-      "emp_auth":this.emp_auth
-    }
-    if(this.emp_idx === undefined){
-      this.$axios.post(apiUrl, this.form)
-      .then((res) =>{
-        alert('직원 등록이 완료 되었습니다!')
-        this.fnView(res.data.emp_idx)
-      }).eatch((err) =>{
-        if (err.message.indexOf('Networt Erro')>-1){
-          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해 주세요')
-        }
-      })
-    }
+      "emp_img_up":this.emp_img_up,
+      "emp_memo": this.emp_memo
+      }
+      this.$axios.patch(apiUrl, this.form).then((res) => {alert('직원정보가 수정 되었습니다.')
+        this.fnEmp(res.data.id)}
+      ).catch((err) => {
+        if (err.message.indexOf('Network Error') > -1) {
+                        alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+      }
+    })
   },
   formatDate: function(datetime){
       let date = new Date(datetime);
@@ -232,11 +221,13 @@ export default {
       return `${year}년${month}월${day}일`;
 
     }
-  
 
-}}
+
+}
+
+}
+
 </script>
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
