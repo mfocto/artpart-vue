@@ -30,151 +30,151 @@
             <tr>
               <td rowspan="7">정압기</td>
               <td style="text-align:left;">1. 가스 누설 경보기 작동 상태는?</td>
-              <td><input type="radio"  name="gas1_1result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[0]" /> 양호
-              <input type="radio" name="gas1_1result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[0]" /> 불량</td>
+              <td><input type="radio"  name="gas1_1result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[0]" /> 양호
+              <input type="radio" name="gas1_1result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[0]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[0]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">2. 가스 누설 유무는?</td>
-              <td><input type="radio"  name="gas1_2result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[1]" /> 양호
-              <input type="radio" name="gas1_2result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[1]" /> 불량</td>
+              <td><input type="radio"  name="gas1_2result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[1]" /> 양호
+              <input type="radio" name="gas1_2result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[1]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[1]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">3. 이상압 통보 설비 작동 상태는?</td>
-              <td><input type="radio"  name="gas1_3result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[2]" /> 양호
-              <input type="radio" name="gas1_3result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[2]" /> 불량</td>
+              <td><input type="radio"  name="gas1_3result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[2]" /> 양호
+              <input type="radio" name="gas1_3result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[2]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[2]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">4. 가스의 압력 측정 기록 및 게이지 작동 상태는?</td>
-              <td><input type="radio"  name="gas1_4result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[3]" /> 양호
-              <input type="radio" name="gas1_4result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[3]" /> 불량</td>
+              <td><input type="radio"  name="gas1_4result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[3]" /> 양호
+              <input type="radio" name="gas1_4result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[3]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[3]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">5. 환기구 통풍상태는 양호한가?</td>
-              <td><input type="radio"  name="gas1_5result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[4]" /> 양호
-              <input type="radio" name="gas1_5result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[4]" /> 불량</td>
+              <td><input type="radio"  name="gas1_5result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[4]" /> 양호
+              <input type="radio" name="gas1_5result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[4]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[4]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">6. 전기설비의 작동 유무(방폭 등, 히터트레스) 상태는?</td>
-              <td><input type="radio"  name="gas1_6result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[5]" /> 양호
-              <input type="radio" name="gas1_6result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[5]" /> 불량</td>
+              <td><input type="radio"  name="gas1_6result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[5]" /> 양호
+              <input type="radio" name="gas1_6result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[5]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[5]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">7. 외부인의 출입은 없는가?</td>
-              <td><input type="radio"  name="gas1_7result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[6]" /> 양호
-              <input type="radio" name="gas1_7result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[6]" /> 불량</td>
+              <td><input type="radio"  name="gas1_7result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[6]" /> 양호
+              <input type="radio" name="gas1_7result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[6]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[6]" /></td>
               <td></td>
             </tr>
             <tr>
               <td rowspan="7">배관</td>
               <td style="text-align:left;">1. 가스계량기 작동 상태는?</td>
-              <td><input type="radio"  name="gas2_1result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[7]" /> 양호
-              <input type="radio" name="gas2_1result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[7]" /> 불량</td>
+              <td><input type="radio"  name="gas2_1result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[7]" /> 양호
+              <input type="radio" name="gas2_1result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[7]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[7]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">2. 배관 도색 상태는?</td>
-              <td><input type="radio"  name="gas2_2result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[8]" /> 양호
-              <input type="radio" name="gas2_2result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[8]" /> 불량</td>
+              <td><input type="radio"  name="gas2_2result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[8]" /> 양호
+              <input type="radio" name="gas2_2result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[8]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[8]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">3. 가스 누설 자동 차단기 및 누설 경보기 작동 상태는?</td>
-              <td><input type="radio"  name="gas2_3result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[9]" /> 양호
-              <input type="radio" name="gas2_3result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[9]" /> 불량</td>
+              <td><input type="radio"  name="gas2_3result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[9]" /> 양호
+              <input type="radio" name="gas2_3result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[9]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[9]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">4. 가스 누설여부(비눗물 확인)는 확인되었는가?</td>
-              <td><input type="radio"  name="gas2_4result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[10]" /> 양호
-              <input type="radio" name="gas2_4result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[10]" /> 불량</td>
+              <td><input type="radio"  name="gas2_4result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[10]" /> 양호
+              <input type="radio" name="gas2_4result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[10]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[10]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">5. 호스 길이(30cm 이내) 및 각 부위 연결 상태는?</td>
-              <td><input type="radio"  name="gas2_5result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[11]" /> 양호
-              <input type="radio" name="gas2_5result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[11]" /> 불량</td>
+              <td><input type="radio"  name="gas2_5result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[11]" /> 양호
+              <input type="radio" name="gas2_5result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[11]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[11]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">6. 압력 표기 및 흐름 방향 표시 상태는?</td>
-              <td><input type="radio"  name="gas2_6result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[12]" /> 양호
-              <input type="radio" name="gas2_6result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[12]" /> 불량</td>
+              <td><input type="radio"  name="gas2_6result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[12]" /> 양호
+              <input type="radio" name="gas2_6result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[12]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[12]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">7. 배관 고정 상태는 양호한가?</td>
-              <td><input type="radio"  name="gas2_7result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[13]" /> 양호
-              <input type="radio" name="gas2_7result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[13]" /> 불량</td>
+              <td><input type="radio"  name="gas2_7result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[13]" /> 양호
+              <input type="radio" name="gas2_7result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[13]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[13]" /></td>
               <td></td>
             </tr>
             <tr>
               <td rowspan="5">연소기</td>
               <td style="text-align:left;">1. 연소기의 급.배기 설치 상태는?</td>
-              <td><input type="radio"  name="gas3_1result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[14]" /> 양호
-              <input type="radio" name="gas3_1result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[14]" /> 불량</td>
+              <td><input type="radio"  name="gas3_1result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[14]" /> 양호
+              <input type="radio" name="gas3_1result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[14]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[14]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">2. 배기통의 설치 상태는 이상이 없는가?</td>
-              <td><input type="radio"  name="gas3_2result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[15]" /> 양호
-              <input type="radio" name="gas3_2result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[15]" /> 불량</td>
+              <td><input type="radio"  name="gas3_2result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[15]" /> 양호
+              <input type="radio" name="gas3_2result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[15]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[15]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">3. 압력조정기 및 각 부위 게이지 작동 상태는?</td>
-              <td><input type="radio"  name="gas3_3result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[16]" /> 양호
-              <input type="radio" name="gas3_3result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[16]" /> 불량</td>
+              <td><input type="radio"  name="gas3_3result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[16]" /> 양호
+              <input type="radio" name="gas3_3result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[16]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[16]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">4. 연결부위 가스 누설 여부는?</td>
-              <td><input type="radio"  name="gas3_4result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[17]" /> 양호
-              <input type="radio" name="gas3_4result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[17]" /> 불량</td>
+              <td><input type="radio"  name="gas3_4result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[17]" /> 양호
+              <input type="radio" name="gas3_4result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[17]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[17]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">5. 누설 경보기 작동 상태는?</td>
-              <td><input type="radio"  name="gas3_5result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[18]" /> 양호
-              <input type="radio" name="gas3_5result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[18]" /> 불량</td>
+              <td><input type="radio"  name="gas3_5result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[18]" /> 양호
+              <input type="radio" name="gas3_5result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[18]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[18]" /></td>
               <td></td>
             </tr>
             <tr>
               <td rowspan="2">기타</td>
               <td style="text-align:left;">1. 사고발생시 안전조치 사항은 숙지하고 있는가?</td>
-              <td><input type="radio"  name="gas4_1result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[19]" /> 양호
-              <input type="radio" name="gas4_1result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[19]" /> 불량</td>
+              <td><input type="radio"  name="gas4_1result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[19]" /> 양호
+              <input type="radio" name="gas4_1result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[19]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[19]" /></td>
               <td></td>
             </tr>
             <tr>
               <td style="text-align:left;">2. 소화기는 항상 비치되어 있는가?</td>
-              <td><input type="radio"  name="gas4_2result" value="Y" class="custom-input" :disabled="isReadonly" v-model="gasResults[20]" /> 양호
-              <input type="radio" name="gas4_2result" value="N" class="custom-input" :disabled="isReadonly" v-model="gasResults[20]" /> 불량</td>
+              <td><input type="radio"  name="gas4_2result" value="Y" class="form-check-input" :disabled="isReadonly" v-model="gasResults[20]" /> 양호
+              <input type="radio" name="gas4_2result" value="N" class="form-check-input" :disabled="isReadonly" v-model="gasResults[20]" /> 불량</td>
               <td><input type="text" :readonly="isReadonly" class="custom-input" v-model="gasProcess[20]" /></td>
               <td></td>
             </tr>

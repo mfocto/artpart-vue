@@ -58,6 +58,8 @@ export default {
               params: {
                   content: this.content
               }
+          }).then(()=>{
+              alert("메세지 전송 완료")
           })
       },
       fetchNotice(){
