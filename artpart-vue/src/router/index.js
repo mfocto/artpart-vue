@@ -1,15 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHIntro from '@/views/home/PageHIntro.vue'
-//관리비 사용
+
+//관리비 
 import UsingList from '@/views/manageMent/UsingList.vue'
-//관리비 납부
 import PayMentList from '@/views/manageMent/PayMentList.vue'
+
 //시설관리
 import SeesulList from '@/views/seesul/SeesulList.vue'
+import SeesulElectric from '@/views/seesul/SeesulElectric.vue'
+import SeesulGas from '@/views/seesul/SeesulGas.vue'
+import SeesulElevator from '@/views/seesul/SeesulElevator.vue'
+import SeesulPlayground from '@/views/seesul/SeesulPlayground.vue'
 
 //공지사항
 import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
+
 //민원
 import PageMinone from '@/views/minone/PageMinone.vue'
 import PageMinoneForm from '@/views/minone/PageMinoneForm.vue'
@@ -42,11 +48,36 @@ const routes = [
     name: 'UsingList',
     component: UsingList
   },
+  // --------------------------------
   //시설 관리
   {
     path: '/seesul/list',
     name: 'SeesulList',
     component: SeesulList
+  },
+  //전기
+  {
+    path: '/seesul/electric',
+    name: 'SeesulElectric',
+    component: SeesulElectric
+  },
+  //가스
+  {
+    path: '/seesul/gas',
+    name: 'SeesulGas',
+    component: SeesulGas
+  },
+  //엘베
+  {
+    path: '/seesul/elevator',
+    name: 'SeesulElevator',
+    component: SeesulElevator
+  },
+  //놀이터
+  {
+    path: '/seesul/playground',
+    name: 'SeesulPlayground',
+    component: SeesulPlayground
   },
   //----------------------------------------------
   //인트로

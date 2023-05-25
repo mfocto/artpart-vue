@@ -17,7 +17,9 @@
       <br>
       <hr>
       <div id="mydong" style="display:none">
-        <h3 class="h4" style="float:left">2023년 4월 관리비</h3>
+        <!-- 이번달 관리비 -->
+        <h3 class="h4" style="float:left" v-for="(item, index) in recentlyMonth" :key="index">
+          {{ $dayjs(item.lastpm_date).format("YYYY년 MM월") }} 관리비</h3>
           <table class="table table-striped table-sm">
             <thead>
               <tr>
@@ -27,42 +29,60 @@
                 <th scope="col">증감</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-for="(item, index) in recentlyMonth" :key="index">
               <tr>
-                <td>일반관리비</td>
-                <td>57,750</td>
-                <td>59,880</td>
-                <td>-2,130</td>
+                <td>난방비</td>
+                <td>{{comma(item.lastpm_heat)}}원</td>
+                <td>{{comma(item.pm_heat)}}원</td>
+                <td>{{comma(item.pm_heat - item.lastpm_heat)}}원</td>
               </tr>
               <tr>
-                <td>청소비</td>
-                <td>16,180</td>
-                <td>16,180</td>
-                <td>0</td>
+                <td>급탕비(온수)</td>
+                <td>{{comma(item.lastpm_onsu)}}원</td>
+                <td>{{comma(item.pm_onsu)}}원</td>
+                <td>{{comma(item.pm_onsu - item.lastpm_onsu)}}원</td>
               </tr>
               <tr>
-                <td>소독비</td>
-                <td>750</td>
-                <td>750</td>
-                <td>0</td>
+                <td>가스사용</td>
+                <td>{{comma(item.lastpm_gas)}}원</td>
+                <td>{{comma(item.pm_gas)}}원</td>
+                <td>{{comma(item.pm_gas - item.lastpm_gas)}}원</td>
               </tr>
               <tr>
-                <td>승강기유지비</td>
-                <td>2,720</td>
-                <td>2,720</td>
-                <td>0</td>
+                <td>전기료</td>
+                <td>{{comma(item.lastpm_elec)}}원</td>
+                <td>{{comma(item.pm_elec)}}원</td>
+                <td>{{comma(item.pm_elec - item.lastpm_elec)}}원</td>
               </tr>
               <tr>
-                <td>수선유지비</td>
-                <td>10,790</td>
-                <td>13,670</td>
-                <td>-2,880</td>
+                <td>수도료</td>
+                <td>{{comma(item.lastpm_water)}}원</td>
+                <td>{{comma(item.pm_water)}}원</td>
+                <td>{{comma(item.pm_water - item.lastpm_water)}}원</td>
               </tr>
               <tr>
-                <td>전기수선충당금</td>
-                <td>28,660</td>
-                <td>28.660</td>
-                <td>0</td>
+                <td>정화조오물수수료</td>
+                <td>{{comma(item.lastpm_septic)}}원</td>
+                <td>{{comma(item.pm_septic)}}원</td>
+                <td>{{comma(item.pm_septic - item.lastpm_septic)}}원</td>
+              </tr>
+              <tr>
+                <td>생활폐기물수수료</td>
+                <td>{{comma(item.lastpm_waste)}}원</td>
+                <td>{{comma(item.pm_waste)}}원</td>
+                <td>{{comma(item.pm_waste - item.lastpm_waste)}}원</td>
+              </tr>
+              <tr>
+                <td>관리위원회운영비</td>
+                <td>{{comma(item.lastpm_opercost)}}원</td>
+                <td>{{comma(item.pm_opercost)}}원</td>
+                <td>{{comma(item.pm_opercost - item.lastpm_opercost)}}원</td>
+              </tr>
+              <tr>
+                <td>건물보험료</td>
+                <td>{{comma(item.lastpm_insure)}}원</td>
+                <td>{{comma(item.pm_insure)}}원</td>
+                <td>{{comma(item.pm_insure - item.lastpm_insure)}}원</td>
               </tr>
             </tbody>
           </table>
@@ -74,7 +94,7 @@
     <tr> 
       <!-- 월 단위 표기 -->
       <th>분류</th>
-      <th v-for="(item, pm_idx) in monthList" :key="pm_idx"> {{ $dayjs(item.pm_date).format('MM') }}월</th>
+      <th v-for="(item, index) in monthList" :key="index"> {{ $dayjs(item.pm_date).format('MM') }}월</th>
     </tr>
   </thead>
   <tbody>
@@ -82,39 +102,44 @@
 
     <tr>
       <td>난방비</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_heat }}</td>                     
+      <td v-for="(item, index) in monthList" :key="index">{{comma(item.pm_heat) }}원</td>                     
     </tr>
     <tr>
       <td>급탕비(온수)</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_onsu }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_onsu) }}원</td> 
     </tr>
     <tr>
       <td>가스사용</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_gas }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_gas) }}원</td> 
     </tr>
     <tr>
       <td>전기료</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_elec }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_elec) }}원</td> 
     </tr>
     <tr>
       <td>수도료</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_water }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_water) }}원</td> 
     </tr>
     <tr>
       <td>정화조오물수수료</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_septic }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_septic) }}원</td> 
     </tr>
     <tr>
       <td>생활폐기물수수료</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_waste }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_waste) }}원</td> 
     </tr>
     <tr>
       <td>관리위원회운영비</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_opercost }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_opercost) }}원</td> 
     </tr>
     <tr>
       <td>건물보험료</td>
-      <td v-for="(item, pm_idx) in monthList" :key="pm_idx">{{ item.pm_insure }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_insure) }}원</td> 
+    </tr>
+    <tr>
+      <td>총합</td>
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_heat + item.pm_onsu + item.pm_gas + item.pm_elec + item.pm_water +
+      item.pm_septic + item.pm_waste + item.pm_opercost + item.pm_insure) }}원</td> 
     </tr>
   </tbody>
 </table>
@@ -124,9 +149,9 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr> 
-                <!-- 월 단위 표기 -->
+                <!-- 연도별 단위 표기 -->
                 <th>분류</th>
-                <th v-for="(item, pm_idx) in yearList" :key="pm_idx"> {{ $dayjs(item.pm_date).format('YYYY') }}년</th>
+                <th v-for="(item, index) in yearList" :key="index"> {{ $dayjs(item.pm_date).format('YYYY') }}년</th>
               </tr>
             </thead>
             <tbody>
@@ -134,39 +159,39 @@
 
               <tr>
                 <td>난방비</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_heat }}</td>                     
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_heat) }}원</td>                     
               </tr>
               <tr>
                 <td>급탕비(온수)</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_onsu }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_onsu) }}원</td> 
               </tr>
               <tr>
                 <td>가스사용</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_gas }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_gas) }}원</td> 
               </tr>
               <tr>
                 <td>전기료</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_elec }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_elec) }}원</td> 
               </tr>
               <tr>
                 <td>수도료</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_water }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_water) }}원</td> 
               </tr>
               <tr>
                 <td>정화조오물수수료</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_septic }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_septic) }}원</td> 
               </tr>
               <tr>
                 <td>생활폐기물수수료</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_waste }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_waste) }}원</td> 
               </tr>
               <tr>
                 <td>관리위원회운영비</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_opercost }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_opercost) }}원</td> 
               </tr>
               <tr>
                 <td>건물보험료</td>
-                <td v-for="(item, pm_idx) in yearList" :key="pm_idx">{{ item.pm_insure }}</td> 
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_insure) }}원</td> 
               </tr>
             </tbody>
           </table>
@@ -189,8 +214,8 @@
       list: {},
       monthList: {},
       yearList: {},
-      pmdate: {},
       sixMonthList: {},
+      recentlyMonth: {},
       labels: {},
       data: {},
       options: {
@@ -212,19 +237,30 @@
       
     },
     methods:{
+      comma(value) {
+
+      // 여기에서 필터링 로직을 수행하고, 필터링된 값을 반환합니다.
+      //소수점까지 짜르고 반올림후 3자리단위 끊기
+      return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      },
       payMentList() {
       this.$axios.get(this.$serverUrl + "/payment/list", {
       params: this.requestbody,
       headers: {}
       
     }).then((res) => {
+      //총 리스트 담은 MAP
       this.list = res.data;
+      //월별 관리비
       this.monthList = this.list.monthList;
+      //연도별 관리비
       this.yearList = this.list.yearList;
+      //최근 6개월 관리비 차트용
       this.sixMonthList = this.list.sixMonthList;
-      console.log(this.monthList);
-      console.log(this.yearList);
-      console.log(this.sixMonthList);
+      //이번달 관리비
+      this.recentlyMonth = this.list.recentlyMonth
+      
+      //차트 메소드실행
       this.createChart();
 
     })
