@@ -2,16 +2,18 @@
 
 
 <template>
+  <thead>
+    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >민원 접수</h1>
+    <hr style="border-color: gray;"/>
+  </thead>
+
+  <tbody>
     <div class="background">
-      <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >민원 접수</h1>
-      <hr style="border-color: gray;"/>
-  
-    <form class="" @submit.prevent="regMinone">
       <div class="back-box rounded-1" >
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm1">종류</span>
                 <select class="form-select" 
-                v-model="mincatecory" required="true">
+                v-model="mincategory" required="true">
                   <option value="-기타-" selected>-기타-</option>
                   <option value="승강기">승강기</option>
                   <option value="소방">소방</option>
@@ -38,21 +40,29 @@
             </div>
 
             <div class="input-group mb-3" >
-                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >상태</span>
-                <input type="text" class="form-control" v-model="minstatus" required style=" height: 32px;" readonly placeholder="처리예정">
+                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >처리상태</span>
+                <input type="text" class="form-control" v-model="minstatus" required style=" width: 15px; height: 32px;" placeholder="처리중">
             </div>
 
+            <div class="input-group mb-3" >
+                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >관리자답변</span>
+                <input type="text" class="form-control" v-model="minres" required style=" width: 15px; height: 32px;"  placeholder="처리중">
+            </div>
+
+
+
+
             <div class="submit-button">
-            <button class="btn" type="submit" v-on="regMinone"
+            <button class="btn" v-on:click="regMinone"
             style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">
             Enter
             </button>        
             </div>
 
 
-        </div> <!-- back-box close-->
-    </form>
-    </div> <!--background close-->
+          </div> <!-- back-box close-->
+        </div> <!--background close-->
+      </tbody>
   </template>
 
   
@@ -62,45 +72,56 @@
   export default {
   name: 'PageMinoneForm',
   data() {
-      return {
+      return {    //초기화
         requestBody: this.$route.query,
-        
-        list: [],
-        minoneidx: this.$route.query.minoneidx,
+
         memberidx: '',
-        mincatecory: '',     // 민원종류
-        mintitle: '',        // 제목
-        mintype: '',         // 내용
+        mintitle: '',
+        mintype: '',
         minstatus: '',
+        minres: '',
+        mincategory: '',
       }
   },
   
     methods: {
-        regMinone() {
-            //const minone = JSON.parse(this.$cookie.get('minone'))
-            const member = JSON.parse(this.$cookie.get('member'))
-            let formData = {
-                memberidx: member.memberidx,  //민원idx
-                minidx: this.minidx,  //민원idx
-                mincatecory: this.mincatecory,
-                mintitle: this.mintitle,
-                mintype: this.mintype,
-                minstatus: this.minstatus
-            }
-            
-            console.log(formData)
 
-            this.$axios.post('/pageminoneform/newMin', formData)    //formData보낸다는 뜻
-                .then(() => {
-                    alert('민원등록 완료!');
-                    this.$router.push('/minone/pagemyminone')   //내 민원 목록으로 리다이렉트
+
+        regMinone() {
+          const member = JSON.parse(this.$cookie.get('member'))
+          let apiUrl = this.$serverUrl + '/newmin'
+
+            this.form = {
+              "memberidx":  member.member_idx,   //멤버idx
+              "mintitle" : this.mintitle,         //민원제목
+              "mintype" : this.mintype,           //민원내용
+              "minstatus": this.minstatus,        //처리상황
+              "minres" : this.minres,             //관리자답변
+              "mincategory":this.mincategory,     //카테고리
+            },
+
+            console.log(this.form)
+
+            //등록
+            this.$axios.post(apiUrl, this.form)
+              .then(() => {
+                  alert('글이 저장되었습니다.')
+
+                }).catch((err) => {
+                  if (err.message.indexOf('Network Error') > -1) {
+                    alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+                  }//if
                 })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
-    },
-}
+              }//regMinone
+
+
+
+            }//methods
+          }//export default
+        
+      
+
+
   </script>
   
   
@@ -137,7 +158,7 @@
     padding-top: 20px;
     background-color: #ebe9e9;
     width: 800px;
-    height: 60vh;                 /* 폼 높이 */
+    height: 150vh;                 /* 폼 높이 */
     overflow: hidden;
     margin:auto;
     background-size: cover;

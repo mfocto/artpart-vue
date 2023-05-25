@@ -3,7 +3,7 @@
 
 <template>
   <div class="background">
-    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >내 민원 조회</h1>
+    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >내 민원 목록</h1>
     <hr style="border-color: gray;"/>
 
 
@@ -14,19 +14,20 @@
         <table class="w3-table-all" style="width:800px; height:100px; font-weight: 100; border:1px solid gray; color:black;">
           <thead>
           <tr>
-            <th style="width:10%">No</th>
-            <th style="width:70%">제목</th>
-            <th style="width:20%;">처리상황</th>
+            <th scope="col" style="width:20%">No</th>
+            <th scope="col" style="width:50%">제목</th>
+            <th scope="col" style="width:30%;">처리상황</th>
+
           </tr>
           </thead>
 
 
           <tbody style="font-family:Pretendard-Regular;">
 
-          <tr v-for="minone in list" :key="minone.memberidx">
-            <td>{{ memberidx }}</td>
-            <td><router-link to="/minone/pagemyminone/${minoneIdx}">{{ mintitle }}</router-link></td>
-            <td>{{ minstatus }}</td>
+          <tr v-for="(row, minidx) in list" :key="minidx">
+            <td>{{ row.minidx }}</td>
+            <td><a v-on:click="fnView(row.minidx)">{{ row.mintitle}}</a></td>
+            <td>{{ row.minstatus }}</td>
           </tr>
 
 
@@ -49,7 +50,7 @@
 <!-- searchKey === 글제목 -->
 
 
-
+3
 
 
 </template>
