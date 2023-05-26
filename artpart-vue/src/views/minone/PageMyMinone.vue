@@ -7,7 +7,7 @@
     <hr style="border-color: gray;"/>
 
 
-    <!--################################################ getMinoneByMember ################################################ -->
+    <!--getMinoneByMember-->
     <form >
       <div class="board-list">
 
@@ -23,10 +23,10 @@
 
           <tbody style="font-family:Pretendard-Regular;">
 
-          <tr v-for="minone in list" :key="minone.memberIdx">
-            <td>{{ minone.memberIdx }}</td>
-            <td><router-link :to="`/minone/pagemyminone/${minone.idx}`">{{ minone.minTitle }}</router-link></td>
-            <td>{{ minone.minStatus }}</td>
+          <tr v-for="minone in list" :key="minone.memberidx">
+            <td>{{ memberidx }}</td>
+            <td><router-link to="/minone/pagemyminone/${minoneIdx}">{{ mintitle }}</router-link></td>
+            <td>{{ minstatus }}</td>
           </tr>
 
 
@@ -41,21 +41,8 @@
 
 
 
-    <br><br>
-    <!-- 검색필드 추가 -->
-    <div class="serch" style="text-align:left;">
-      <select v-model="searchKey" class="selectedoption rounded-1"
-          style="text-align:center; color: gray; font-family:TheJamsil5Bold; font-size: 12px; height: 30px; width: 100px; ">
-        
-        <option value="" selected >- 선택 -</option>
-        <option value="title">글제목</option>
-        <option value="contents">글내용</option>
-
-      </select>
-        &nbsp;
 
 
-  </div>
 </div> <!-- 백그라운드 설정 -->
 
 
@@ -78,12 +65,12 @@ export default {
   //##################[[ data ]]##################
   data() { //변수생성
     return {
+
       requestBody: {}, //리스트 페이지 데이터전송
-      list: [],
-      memberIdx: '',
-      minoneByMemberList: null,
-      selectedOption: 'selected',
       minidx: this.$route.query.minidx,
+
+      list: [],
+      memberidx: '',
     };
 
   },
@@ -98,23 +85,26 @@ export default {
   methods: {
   // 데이터 넣기
     getMinoneList() {
-      
-      this.$axios.post("/minone?pagemyminone=" + this.memberidx + "&memberpassword=" + this.memberpassword, {
-      this.axios.get('/minone/pagemyminone', {
-        memberIdx: this.memberIdx,
-        minTitle: this.minTitle,
-        minStatus: this.minStatus,
-        
-      })
-      .then(response => {
-        this.list = response.data
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    },
+    const member = JSON.parse(this.$cookie.get('member'))
+      let formData = {
+        memberidx: member.memberidx,  //민원idx
+        mintitle: this.mintitle,    //민원제목
+        minstatus: this.minstatus,  //민원상태
 
-  }//method close
+      }
+      console.log(formData)
+
+
+      this.$axios.post('/pageminoneform/all/list')
+                .then(() => {
+                    alert('민원조회 완료');
+                    this.$router.push('/pageminoneform/list')
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+    },
 }
 </script>
 

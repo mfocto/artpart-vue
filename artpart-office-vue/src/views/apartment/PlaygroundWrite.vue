@@ -25,40 +25,40 @@
             <tr>
               <td> 1 </td>
               <td style="text-align:left;">안전표시 및 준수사항등의 안내는 되어 있는가</td>
-              <td><input type="radio"  name="playground1result" value="Y" class="custom-input" v-model="sresult[0]"/> 양호
-              <input type="radio" name="playground1result" value="N" class="custom-input" v-model="sresult[0]"/> 불량</td>
+              <td><input type="radio"  name="playground1result" value="Y" class="form-check-input" v-model="sresult[0]"/> 양호
+              <input type="radio" name="playground1result" value="N" class="form-check-input" v-model="sresult[0]"/> 불량</td>
               <td><input type="text" class="custom-input" v-model="sprocess[0]" /></td>
               <td></td>
             </tr>
             <tr>
               <td> 2 </td>
               <td style="text-align:left;">놀이시설의 파손, 고장, 훼손, 너트풀림등은 없는가</td>
-              <td><input type="radio"  name="playground2result" value="Y" class="custom-input" v-model="sresult[1]" /> 양호
-              <input type="radio" name="playground2result" value="N" class="custom-input" v-model="sresult[1]" /> 불량</td>
+              <td><input type="radio"  name="playground2result" value="Y" class="form-check-input" v-model="sresult[1]" /> 양호
+              <input type="radio" name="playground2result" value="N" class="form-check-input" v-model="sresult[1]" /> 불량</td>
               <td><input type="text"  class="custom-input" v-model="sprocess[1]" /></td>
               <td></td>
             </tr>
             <tr>
               <td> 3 </td>
               <td style="text-align:left;">놀이시설의 작동부 주유상태는 양호한가</td>
-              <td><input type="radio"  name="playground3result" value="Y" class="custom-input" v-model="sresult[2]" /> 양호
-              <input type="radio" name="playground3result" value="N" class="custom-input" v-model="sresult[2]" /> 불량</td>
+              <td><input type="radio"  name="playground3result" value="Y" class="form-check-input" v-model="sresult[2]" /> 양호
+              <input type="radio" name="playground3result" value="N" class="form-check-input" v-model="sresult[2]" /> 불량</td>
               <td><input type="text" class="custom-input" v-model="sprocess[2]" /></td>
               <td></td>
             </tr>
             <tr>
               <td> 4 </td>
               <td style="text-align:left;">모래바닥에 깨진 유리, 돌등은 없는가</td>
-              <td><input type="radio"  name="playground4result" value="Y" class="custom-input" v-model="sresult[3]" /> 양호
-              <input type="radio" name="playground4result" value="N" class="custom-input" v-model="sresult[3]" /> 불량</td>
+              <td><input type="radio"  name="playground4result" value="Y" class="form-check-input" v-model="sresult[3]" /> 양호
+              <input type="radio" name="playground4result" value="N" class="form-check-input" v-model="sresult[3]" /> 불량</td>
               <td><input type="text" class="custom-input" v-model="sprocess[3]" /></td>
               <td></td>
             </tr>
             <tr>
               <td> 5 </td>
               <td style="text-align:left;">놀이터 CCTV는 정상 작동하는가</td>
-              <td><input type="radio"  name="playground5result" value="Y" class="custom-input" v-model="sresult[4]" /> 양호
-              <input type="radio" name="playground5result" value="N" class="custom-input" v-model="sresult[4]" /> 불량</td>
+              <td><input type="radio"  name="playground5result" value="Y" class="form-check-input" v-model="sresult[4]" /> 양호
+              <input type="radio" name="playground5result" value="N" class="form-check-input" v-model="sresult[4]" /> 불량</td>
               <td><input type="text" class="custom-input" v-model="sprocess[4]" /></td>
               <td></td>
             </tr>

@@ -14,12 +14,12 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm1">제목</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="정말 불만이에요" readonly>
+                <input type="text" class="form-control" value="정말 불만이에요" readonly>
             </div>
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm2">내용</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="불만사항 작성되어있음" readonly>
+                <input type="text" class="form-control" value="불만사항 작성되어있음" readonly>
             </div>
 
             <div class="input-group mb-3">
@@ -29,14 +29,14 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm3">관리자 답변</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="빠르게 조치하겠습니다" readonly>
+                <input type="text" class="form-control" value="빠르게 조치하겠습니다" readonly>
             </div>
 
 
 
             <div class="submit-button">
             <a href="/minone/PageMyMinone" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-                style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; " >확인</a>
+                style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">확인</a>
             </div>
 
 
