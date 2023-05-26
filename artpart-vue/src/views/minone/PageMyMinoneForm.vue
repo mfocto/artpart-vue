@@ -7,47 +7,51 @@
       <hr style="border-color: gray;"/>
   
       <div class="back-box rounded-1" >
-      <thead>
-        <tr>      
-          <span class="input-group-text" id="inputGroup-sizing-sm1">종류</span>
-          <td scope="col">{{ mincategory }}</td>   <td></td>
-        </tr>
-      </thead>
+        <thead style="text-align: center;">
+          <tr class="minone-menu">      
+            <td class="input-group-text" style="text-align: left; width: 230px;">종류</td>
+            <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ mincategory }}</td> 
+          </tr>
+        </thead>
 
-      <thead>
-        <tr>      
-          <span class="input-group-text" id="inputGroup-sizing-sm1">제목</span>
-          <td scope="col">{{ mintitle }}</td>   <td></td>
-        </tr>
-      </thead>
+        <thead>
+          <tr class="minone-menu">      
+            <td class="input-group-text" style="text-align: left; width: 230px;">제목</td>
+            <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ mintitle }}</td>  
+          </tr>
+        </thead>
 
-      <thead>
-        <tr>      
-          <span class="input-group-text" id="inputGroup-sizing-sm1">내용</span>
-          <td scope="col">{{ mintype }}</td>   <td></td>
-        </tr>
-      </thead>
+        <thead>
+          <tr class="minone-menu">      
+            <td class="input-group-text" style="text-align: left; width: 230px; height: 80px">내용</td>
+            <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ mintype }}</td>  
+          </tr>
+        </thead>
 
-      <thead>
-        <tr>      
-          <span class="input-group-text" id="inputGroup-sizing-sm1">관리자 답변</span>
-          <td scope="col">{{ minres }}</td>   <td></td>
-        </tr>
-      </thead>
+        <thead>
+          <tr class="minone-menu">      
+            <td class="input-group-text" style="text-align: left; width: 230px;">관리자 답변</td>
+            <td class="mintd" scope="col" style="text-align: left; padding:10px; ">{{ minres }}</td>  
+          </tr>
+        </thead>
 
-      <thead>
-        <tr>      
-          <span class="input-group-text" id="inputGroup-sizing-sm1">처리여부</span>
-          <td scope="col">{{ minstatus }}</td>   <td></td>
-        </tr>
-      </thead>
-
-      <div class="btn-group me-2">
-        <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList">목록</button>
-        <button class="btn btn-sm btn-outline-secondary" v-on:click="fnUpdate">수정</button>
-        <button class="btn btn-sm btn-outline-secondary" v-on:click="fnDelete">삭제</button>
-      </div>
-
+        <thead>
+          <tr class="minone-menu">      
+            <td class="input-group-text" style="text-align: left; width: 230px;">처리여부</td>
+            <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ minstatus }}</td>  
+          </tr>
+        </thead>
+        
+        <tbody>
+          <!-- button -->
+          <tr class="minone-menu">
+              <th height= "100px;" colspan="2" style="float: left; width: 100%;" >
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList" style="margin-top: 10px; width: 200px;" >전체 목록으로 </button>
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnUpdate" style="margin-top: 20px; width: 200px;">글 수정하기</button>
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnDelete" style="margin-top: 30px; width: 200px;">글 삭제하기</button>
+              </th>
+          </tr>	
+        </tbody>
       </div> <!-- back-box close-->
   </div> <!--background close-->
   </template>
@@ -129,59 +133,79 @@
   
   <style scoped>
 
-    @font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    }
+  @font-face {
+  font-family: 'TheJamsil5Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  }
 
-    @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    }
+  @font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  }
 
 
-    .background{ /*background*/
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    margin:auto;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  .background{ /*background*/
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin:auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
-    }
+  }
 
-    .back-box { /*back-box*/
-    padding: 20px;                /* 안쪽여백 */
-    padding-top: 20px;
-    background-color: #ebe9e9;
-    width: 800px;
-    height: 80vh;                 /* 폼 높이 */
-    overflow: hidden;
-    margin:auto;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: left;
+  .back-box { /*back-box*/
+  padding: 20px;                /* 안쪽여백 */
+  padding-top: 20px;
+  background-color: #ebe9e9;
+  width: 800px;
+  height: 500px;                 /* 폼 높이 */
+  overflow: hidden;
+  margin:auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+  position: absolute;
+  }
+
+  #inputGroup-sizing-sm2 {    /* 내용 */
+  height: 30vh;
+  }
+
+  #inputGroup-sizing-sm3 {    /* 관리자 답변 */
+  height: 20vh;
+  }
+
+
+
+  .minone-menu {      /*메뉴박스들*/ 
+  margin: 45px;     /*박스 사이간격*/
+  }
+
+  input[type="submit"], 
+  button[type="submit"],
+  .btn
+   {
     position: absolute;
-    }
+    font-size: 15px;
+    left: 10%; 
+    background-color:Bisque; 
+    color:black;
+    /* margin: 50px; */
+    padding: 10px;
+    text-decoration-line: none; 
+  }
 
-    #inputGroup-sizing-sm2 {    /* 내용 */
-    height: 30vh;
-    }
-
-    #inputGroup-sizing-sm3 {    /* 관리자 답변 */
-    height: 20vh;
-    }
+.mintd {
+  background-color: #ebe9e9;
+}
 
 
-
-    .minone-menu {      /*메뉴박스들*/ 
-    margin: 45px;     /*박스 사이간격*/
-    }
 
   
   </style>
