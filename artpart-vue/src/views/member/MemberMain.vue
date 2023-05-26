@@ -32,56 +32,26 @@
     </div> <!-- popup1 close -->
 
 
-  <!-- 하단 공지 -->
-    <div class="anno rounded-1" align="left" >
-          
-      <!--################# 공지1 #################-->
-      <div class="anno1 rounded-1" style="float:left; margin:10px; font-size: 18px;">
+      <!-- 하단 공지 -->
+      <div class="anno rounded-1" v-for="(item, index) in noticeList" :key="index">
 
+      <!-- 공지 제목과 내용 -->
+      <div class="anno1 rounded-1" style="float:left; margin:10px; font-size: 18px;">
         <div class="anno1-1" style="margin-top: 10px;">
-        <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36); font-size: 18px;">연휴기간 청소안내</h1>
-        <span style="text-align:center; color:Darkslategray; font-size: 12px;">청소는 블라블라</span>
+          <input type="hidden" :value="item.noticeidx">
+          <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36); font-size: 18px;">{{ item.title }}</h1>
+          <span style="text-align:center; color:Darkslategray; font-size: 12px;">{{ item.content }}</span>
         </div>
 
         <div class="anno1-2" style="margin-top: 10px;">
-          <router-link to="/meetingpage" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-              style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</router-link>
+          <a v-on:click="noticeDetail(item.noticeidx)" class="btn" tabindex="-1" role="button" :aria-disabled="true"
+            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px; width: 100px; height: 32px;">
+            MORE VIEW ▶
+          </a>
         </div>
-
-      </div>  <!-- back-box-inputbox close-->
-
-      <!--################# 공지2 #################-->
-      <div class="anno1 rounded-1" style="float:left; margin:10px; font-size: 18px;">
-
-      <div class="anno1-1" style="margin-top: 10px;">
-      <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36); font-size: 18px;">연휴기간 청소안내</h1>
-      <span style="text-align:center; color:Darkslategray; font-size: 12px;">청소는 블라블라</span>
       </div>
 
-      <div class="anno1-2" style="margin-top: 10px;">
-        <router-link to="/meetingpage" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</router-link>
-      </div>
-
-      </div>  <!-- back-box-inputbox close-->
-
-
-      <!--################# 공지3 #################-->
-      <div class="anno1 rounded-1" style="float:left; margin:10px; font-size: 18px;">
-
-      <div class="anno1-1" style="margin-top: 10px;">
-      <h1 style="font-family: 'TheJamsil5Bold'; color: rgb(36, 36, 36); font-size: 18px;">연휴기간 청소안내</h1>
-      <span style="text-align:center; color:Darkslategray; font-size: 12px;">청소는 블라블라</span>
-      </div>
-
-      <div class="anno1-2" style="margin-top: 10px;">
-        <router-link to="/meetingpage" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-            style="background-color: rgb(36, 36, 36); color:Antiquewhite; text-align:center; margin-top: 60px; font-family:TheJamsil5Bold; font-size: 10px;  width: 100px; height: 32px; " >MORE VIEW ▶</router-link>
-      </div>
-
-      </div>  <!-- back-box-inputbox close-->
-          
-    </div> <!-- anno close--> 
+      </div> <!-- anno close -->
 
 
 
@@ -95,15 +65,46 @@
   
   <script>
   export default {
+    data(){
+      return {
+        noticeList: {},
+        query: '',
+        path: '',
+
+      }
+    },
       mounted() {
           this.checkinfo();
       },
-      methods: {
+      methods:{
           checkinfo() {
-              const info = JSON.parse(this.$cookie.get('member'))
-              console.log(info.member_name)
-          }
-      }
+              const info = JSON.parse(this.$cookie.get('member'));
+              console.log(info.member_name);
+              this.top3List();
+          },
+          top3List(){
+            this.$axios.get(this.$serverUrl + "/member/main", {
+            }).then((res) => {
+              if (res.data.result_code === "OK") {
+                this.noticeList = res.data.data;
+              }
+            }).catch( error => {
+                console.error(error);
+            })
+          },
+          noticeDetail(noticeidx) {
+          this.$router.push({
+            path: '/notice/detail',
+            query: {
+              sk: '',
+              sv: '',
+              page: 1,
+              size: 10,
+              noticeidx: noticeidx
+            }
+          });
+        }
+      },
   }
   </script>
   
