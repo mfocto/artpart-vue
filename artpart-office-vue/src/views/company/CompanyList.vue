@@ -160,7 +160,8 @@ export default {
         this.showDeleteButtons = !this.showDeleteButtons;
     },
     saveNewRow() {
-        this.rows.unshift({...this.newRow, companyidx: this.rows[0].companyidx + 1});
+        const newCompanyIdx = this.rows.length > 0 ? this.rows[0].companyidx + 1 : 1;
+        this.rows.unshift({...this.newRow, companyidx: newCompanyIdx});
         this.showNewRow = false;
         let apiUrl = this.$serverUrl + '/company'
         this.form = {
