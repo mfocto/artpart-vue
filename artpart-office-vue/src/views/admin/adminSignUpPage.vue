@@ -9,7 +9,7 @@
       <br>
       <div align="left" class="jb-header" ><h2>직원등록</h2> 
       </div>
-      
+
       <div>
         <table style="width:100%; border : 1px solid #000 ;">
         <!-- <tr style="border : 1px solid #000 ;">
@@ -22,7 +22,7 @@
         <tr style="border : 1px solid #000 ;">
           <td><font size="5">사원아이디</font></td>
           <td>
-            <font size="5">{{emp_id}}</font>
+            <input style="width:250px;height:30px;" id="emp_id" type="text"  v-model="emp_id" placeholder="사원아이디을 입력 하시오">
           </td>
         </tr>
         <tr style="border : 1px solid #000 ;">
@@ -116,7 +116,7 @@
       <br>
       <br>
       <div class="button1">
-            <button style="float: center;" class="btn btn-dark" v-on:click="fnSave">등록</button>  &nbsp;
+            <button class="btn btn-dark" v-on:click="fnSave">등록</button>  &nbsp;
             <button style="float: right;" type="button" class="btn btn-dark" v-on:click="fnList">목록</button>
       </div>
 
@@ -164,7 +164,6 @@ export default {
                     this.emp_job_id = res.data.emp_job_id
                     this.emp_name = res.data.emp_name
                     this.emp_email = res.data.emp_email
-                    this.emp_paw = res.data.emp_paw
                     this.emp_address = res.data.emp_address
                     this.emp_phone = res.data.emp_phone
                     this.emp_car = res.data.emp_car
@@ -180,14 +179,14 @@ export default {
   },
   fnList(){
     delete this.requestBody.emp_idx
-    this.$route.push({
+    this.$router.push({
       path: './list',
       query: this.requestBody
     })
   },
   fnView(emp_idx){
     this.requestBody.emp_idx = emp_idx
-    this.$route.push({
+    this.$router.push({
       path: './detail',
       query: this.requestBody
     })
@@ -196,13 +195,13 @@ export default {
   fnSave(){
     let apiUrl = this.$serverUrl+'/admin'
     this.form = {
+      "emp_idx": this.emp_idx,
       "emp_id": this.emp_id,
       "emp_permanent_id": this.emp_permanent_id,
       "emp_department_id": this.emp_department_id,
       "emp_job_id": this.emp_job_id,
       "emp_name": this.emp_name,
       "emp_email": this.emp_email,
-      "emp_paw": this.emp_paw,
       "emp_address": this.emp_address,
       "emp_phone": this.emp_phone,
       "emp_car": this.emp_car,
