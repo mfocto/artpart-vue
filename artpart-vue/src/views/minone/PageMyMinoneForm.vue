@@ -49,7 +49,56 @@
   
   
   <script>
+    export default {
+  name: 'PageMinoneForm',
+  data() {
+      return {    //초기화
+        requestBody: this.$route.query,
+        minidx: '',
+        memberidx: '',
+
+        mintitle: '',
+        mintype: '',
+        minstatus: '',
+        minres: '',
+        mincatecory: '',
+      }
+  },
   
+    methods: {
+        regMinone() {
+          if(this.minidx !== undefined) {
+            this.$axios.post('/pageminoneform/read/'+ this.minidx,{ 
+              params: this.requestBody
+            }).then(response => {
+              //const minone = JSON.parse(this.$cookie.get('minone'))
+              const member = JSON.parse(this.$cookie.get('member'))
+              this.minidx = response.data.minidx,             //민원번호
+              this.memberidx = member.member_idx,             //멤버idx
+              this.mintitle = response.data.mintitle,         //민원제목
+              this.mintype = response.data.mintype,           //민원내용
+              this.minstatus = response.data.minstatus,       //처리상황
+              this.minres = response.data.minres,             //관리자답변
+              this.mincatecory = response.data.mincatecory,    //카테고리
+
+              console(this.minidx + "," + this.memberidx + "," + this.mintitle + "," + this.mintype + "," + this.minstatus + "," + this.minres + "," + this.mincatecory);
+            })
+            .catch(error => {
+              console.error(error);
+            })
+            
+            .then(() => {
+                alert('민원조회 완료');
+                this.$router.push('/minone/pagemyminone')   //내 민원 목록으로 리다이렉트
+            })
+
+            .catch((err) => {
+                console.log(err)
+            })
+          }
+        },
+    },
+}
   </script>
   
   
