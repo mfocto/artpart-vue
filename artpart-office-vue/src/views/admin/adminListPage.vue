@@ -31,16 +31,16 @@
         <table class="table table-striped table-sm">
           <thead class="thead1">
             <tr>
-              <th scope="col">사원번호 <button>&and;</button><button>&or;</button> </th>
-              <th scope="col">사원구분 <button>&and;</button><button>&or;</button> </th>
-              <th scope="col">소속 <button>&and;</button><button>&or;</button> </th>
-              <th scope="col">직위 <button>&and;</button><button>&or;</button> </th>
-              <th scope="col">사원명 <button>&and;</button><button>&or;</button> </th>
-              <th width="15%" scope="col">주소 <button>&and;</button><button>&or;</button></th>
-              <th width="15%" scope="col">연락처 <button>&and;</button><button>&or;</button> </th>
-              <th scope="col">차량번호 <button>&and;</button><button>&or;</button> </th>
-              <th width="10%" scope="col">입사일 <button>&and;</button><button>&or;</button></th>
-              <th width="10%" scope="col">퇴사일 <button>&and;</button><button>&or;</button> </th>
+              <th scope="col">사원번호</th>
+              <th scope="col">사원구분</th>
+              <th scope="col">소속</th>
+              <th scope="col">직위</th>
+              <th scope="col">사원명</th>
+              <th width="15%" scope="col">주소</th>
+              <th width="15%" scope="col">연락처</th>
+              <th scope="col">차량번호</th>
+              <th width="10%" scope="col">입사일</th>
+              <th width="10%" scope="col">퇴사일</th>
               <th scope="col">비고</th>
             </tr>
           </thead>
@@ -145,23 +145,31 @@ export default {
         headers: {}
 
       }).then((res) => {
-        if(res.data.result_code == "OK"){
+        if(res.data.result_code === "OK"){
           this.list = res.data.data
           this.paging = res.data.pagination
           this.no = this.paging.total_list_cnt - ((this.paging.page - 1) * this.paging.page_size)
         }
-      }).catch(
-        (err) => {
-        if (err.message.indexOf('Network Error') > -1) {
-          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+      }).catch(error => {
+        if (error.response) {
+          // 오류 응답을 받은 경우
+          console.log(error.response.status);
+          console.log(error.response.data);
+        } else if (error.request) {
+          // 요청이 전송되지 않은 경우
+          console.log(error.request);
+        } else {
+          // 오류가 발생한 경우
+          console.log('Error', error.message);
         }
-      })
+        console.log(error.config);
+      });
     },
     fnView(emp_idx) {
           console.log(emp_idx);
           this.requestBody.emp_idx = emp_idx
           this.$router.push({
-              path: './deltail',
+              path: './detail',
               query: this.requestBody
           })
     },
@@ -180,9 +188,8 @@ export default {
 
     },
     fnSignUp(){
-      this.$route.push({
-        path: './signUp',
-        query: this.requestBody
+      this.$router.push({
+        path: './signUp'
       })
     }
   }

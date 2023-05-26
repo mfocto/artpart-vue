@@ -16,9 +16,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, notice_idx) in list" :key="notice_idx">
-                <td>{{ item.notice_idx }}</td>
-                <td><a v-on:click="fnView(item.notice_idx)">{{ item.title }}</a></td>
+            <tr v-for="(item, noticeidx) in list" :key="noticeidx">
+                <td>{{ item.noticeidx }}</td>
+                <td><a v-on:click="fnView(item.noticeidx)">{{ item.title }}</a></td>
                 <td>{{ item.writer.emp_name }}</td>
                 <td>{{ formatDate(item.notice_date) }}</td>
             </tr>

@@ -58,7 +58,7 @@
             }).then(response => {
                     this.title = response.data.title;
                     this.content = response.data.content;
-                    this.noticeDate = dayjs(response.data.notice_date).format("YYYY년 MM월 DD일 HH시 mm분 ss초");
+                    this.noticeDate = dayjs(response.data.notice_date).format("YYYY-MM-DD HH:mm:ss");
                     this.writer = response.data.writer.emp_name;
                 })
                 

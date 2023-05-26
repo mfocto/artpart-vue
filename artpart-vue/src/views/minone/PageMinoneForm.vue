@@ -2,48 +2,126 @@
 
 
 <template>
+  <thead>
+    <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >민원 접수</h1>
+    <hr style="border-color: gray;"/>
+  </thead>
+
+  <tbody>
     <div class="background">
-      <h1 style="text-align:left; font-size: 26px; font-family:TheJamsil5Bold;" >민원 접수</h1>
-      <hr style="border-color: gray;"/>
-  
       <div class="back-box rounded-1" >
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm1">종류</span>
-                <input type="text" class="form-control" name="" value="카테고리명" readonly><br>
+                <select class="form-select" 
+                v-model="mincategory" required="true">
+                  <option value="-기타-" selected>-기타-</option>
+                  <option value="승강기">승강기</option>
+                  <option value="소방">소방</option>
+                  <option value="인터폰">인터폰</option>
+                  <option value="물탱크">물탱크</option>
+                  <option value="청소">청소</option>
+                  <option value="전기">전기</option>
+                  <option value="정화조">정화조</option>
+                  <option value="센서등">센서등</option>
+                  <option value="승강기">승강기</option>
+                  <option value="자동문">자동문</option>
+                  <option value="배관">배관</option>
+                </select>
             </div>
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm1">제목</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input type="text" class="form-control" v-model="mintitle" required>
             </div>
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm2">내용</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input type="text" class="form-control" v-model="mintype" required>
+            </div>
+
+            <div class="input-group mb-3" >
+                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >처리상태</span>
+                <input type="text" class="form-control" v-model="minstatus" required style=" width: 15px; height: 32px;" placeholder="처리중">
+            </div>
+
+            <div class="input-group mb-3" >
+                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >관리자답변</span>
+                <input type="text" class="form-control" v-model="minres" required style=" width: 15px; height: 32px;"  placeholder="처리중">
             </div>
 
 
-            <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile02">
-                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-            </div>
+
 
             <div class="submit-button">
-            <a href="/minone/pagemyminone" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-                style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; " >Enter</a>
+            <button class="btn" v-on:click="regMinone"
+            style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">
+            Enter
+            </button>        
             </div>
 
 
-        </div> <!-- back-box close-->
-    </div> <!--background close-->
+          </div> <!-- back-box close-->
+        </div> <!--background close-->
+      </tbody>
   </template>
-  
-  
+
   
   
   
   <script>
+  export default {
+  name: 'PageMinoneForm',
+  data() {
+      return {    //초기화
+        requestBody: this.$route.query,
+
+        memberidx: '',
+        mintitle: '',
+        mintype: '',
+        minstatus: '',
+        minres: '',
+        mincategory: '',
+      }
+  },
   
+    methods: {
+
+
+        regMinone() {
+          const member = JSON.parse(this.$cookie.get('member'))
+          let apiUrl = this.$serverUrl + '/newmin'
+
+            this.form = {
+              "memberidx":  member.member_idx,   //멤버idx
+              "mintitle" : this.mintitle,         //민원제목
+              "mintype" : this.mintype,           //민원내용
+              "minstatus": this.minstatus,        //처리상황
+              "minres" : this.minres,             //관리자답변
+              "mincategory":this.mincategory,     //카테고리
+            },
+
+            console.log(this.form)
+
+            //등록
+            this.$axios.post(apiUrl, this.form)
+              .then(() => {
+                  alert('글이 저장되었습니다.')
+
+                }).catch((err) => {
+                  if (err.message.indexOf('Network Error') > -1) {
+                    alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+                  }//if
+                })
+              }//regMinone
+
+
+
+            }//methods
+          }//export default
+        
+      
+
+
   </script>
   
   
@@ -80,7 +158,7 @@
     padding-top: 20px;
     background-color: #ebe9e9;
     width: 800px;
-    height: 60vh;                 /* 폼 높이 */
+    height: 150vh;                 /* 폼 높이 */
     overflow: hidden;
     margin:auto;
     background-size: cover;

@@ -74,10 +74,11 @@ export default {
                                 this.$cookie.set('emp', str);
                                 this.$router.push({
                                     path: '/notice/list',
-                                });
+                                }); //push
                             })
-
                     }
+
+
                     if (res.headers.authorization == null) {
                         alert("접속할 수 없습니다.");
                         this.$router.push({
