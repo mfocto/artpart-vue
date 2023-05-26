@@ -7,41 +7,49 @@
       <hr style="border-color: gray;"/>
   
       <div class="back-box rounded-1" >
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm1">종류</span>
-                <input type="text" class="form-control" name="" value="카테고리명" readonly><br>
-            </div>
+      <thead>
+        <tr>      
+          <span class="input-group-text" id="inputGroup-sizing-sm1">종류</span>
+          <td scope="col">{{ mincategory }}</td>   <td></td>
+        </tr>
+      </thead>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm1">제목</span>
-                <input type="text" class="form-control" value="정말 불만이에요" readonly>
-            </div>
+      <thead>
+        <tr>      
+          <span class="input-group-text" id="inputGroup-sizing-sm1">제목</span>
+          <td scope="col">{{ mintitle }}</td>   <td></td>
+        </tr>
+      </thead>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm2">내용</span>
-                <input type="text" class="form-control" value="불만사항 작성되어있음" readonly>
-            </div>
+      <thead>
+        <tr>      
+          <span class="input-group-text" id="inputGroup-sizing-sm1">내용</span>
+          <td scope="col">{{ mintype }}</td>   <td></td>
+        </tr>
+      </thead>
 
-            <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile02" >
-                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-            </div>
+      <thead>
+        <tr>      
+          <span class="input-group-text" id="inputGroup-sizing-sm1">관리자 답변</span>
+          <td scope="col">{{ minres }}</td>   <td></td>
+        </tr>
+      </thead>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm3">관리자 답변</span>
-                <input type="text" class="form-control" value="빠르게 조치하겠습니다" readonly>
-            </div>
+      <thead>
+        <tr>      
+          <span class="input-group-text" id="inputGroup-sizing-sm1">처리여부</span>
+          <td scope="col">{{ minstatus }}</td>   <td></td>
+        </tr>
+      </thead>
 
+      <div class="btn-group me-2">
+        <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList">목록</button>
+        <button class="btn btn-sm btn-outline-secondary" v-on:click="fnUpdate">수정</button>
+        <button class="btn btn-sm btn-outline-secondary" v-on:click="fnDelete">삭제</button>
+      </div>
 
-
-            <div class="submit-button">
-            <a href="/minone/PageMyMinone" class="btn" tabindex="-1" role="button" aria-disabled="true" 
-                style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">확인</a>
-            </div>
-
-
-        </div> <!-- back-box close-->
-    </div> <!--background close-->
+      </div> <!-- back-box close-->
+  </div> <!--background close-->
   </template>
   
   
@@ -49,56 +57,73 @@
   
   
   <script>
-    export default {
-  name: 'PageMinoneForm',
-  data() {
-      return {    //초기화
-        requestBody: this.$route.query,
-        minidx: '',
-        memberidx: '',
+  export default {
+      data(){
+          return {
+              requestBody: this.$route.query,
+              id: this.$route.query.minidx,
+              memberidx : '',
+              mintitle : '',
+              mintype : '',
+              minstatus : '',
+              minres : '',
+              minfile : '',
+              minrename : '',
+              mincategory : '',
 
-        mintitle: '',
-        mintype: '',
-        minstatus: '',
-        minres: '',
-        mincatecory: '',
+
+          };
+      },
+      methods: {
+          fetchMinone(){
+              this.$axios.get(this.$serverUrl + "/minone/" + this.id, {
+                  params: this.requestBody
+              }).then(response => {
+                  this.memberidx = response.data.memberidx;
+                  this.mintitle = response.data.mintitle;
+                  this.mintype = response.data.mintype;
+                  this.minstatus = response.data.minstatus;
+                  this.minres = response.data.minres;
+                  this.minfile = response.data.minfile;
+                  this.minrename = response.data.minrename;
+                  this.mincategory = response.data.mincategory;
+              })
+                  .catch(error => {
+                      console.error(error);
+                  });
+          },
+          fnList(){
+              delete this.requestBody.id
+              this.$router.push({
+                  path: './pagemyminone',   //리스트로 이동
+                  query: this.requestBody
+              })
+          },
+          fnUpdate(){
+              this.$router.push({
+                  path: './pageminupdate', //업데이트페이지로 이동
+                  query: this.requestBody
+              })
+          },
+          fnDelete(){
+              if(!confirm("삭제하시겠습니까?")) return
+
+              this.$axios.delete(this.$serverUrl + '/minone/' + this.id, {})
+                  .then(() => {
+                      alert('삭제되었습니다.')
+                      this.fnList();
+                  }).catch((err) => {
+                  console.log(err);
+              })
+          },
+
+      },
+      mounted() {
+          this.fetchMinone();
+
       }
-  },
-  
-    methods: {
-        regMinone() {
-          if(this.minidx !== undefined) {
-            this.$axios.post('/pageminoneform/read/'+ this.minidx,{ 
-              params: this.requestBody
-            }).then(response => {
-              //const minone = JSON.parse(this.$cookie.get('minone'))
-              const member = JSON.parse(this.$cookie.get('member'))
-              this.minidx = response.data.minidx,             //민원번호
-              this.memberidx = member.member_idx,             //멤버idx
-              this.mintitle = response.data.mintitle,         //민원제목
-              this.mintype = response.data.mintype,           //민원내용
-              this.minstatus = response.data.minstatus,       //처리상황
-              this.minres = response.data.minres,             //관리자답변
-              this.mincatecory = response.data.mincatecory,    //카테고리
 
-              console(this.minidx + "," + this.memberidx + "," + this.mintitle + "," + this.mintype + "," + this.minstatus + "," + this.minres + "," + this.mincatecory);
-            })
-            .catch(error => {
-              console.error(error);
-            })
-            
-            .then(() => {
-                alert('민원조회 완료');
-                this.$router.push('/minone/pagemyminone')   //내 민원 목록으로 리다이렉트
-            })
-
-            .catch((err) => {
-                console.log(err)
-            })
-          }
-        },
-    },
-}
+  }
   </script>
   
   
