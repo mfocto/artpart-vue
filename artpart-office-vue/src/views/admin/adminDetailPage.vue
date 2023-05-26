@@ -9,9 +9,9 @@
       <br>
       <div align="left" class="jb-header" ><h2>직원 상세 정보</h2> 
       </div>
-      <div>
-        <img src = "../../assets/images/차사원.jpeg" /><!--db에 이미지 파일로 변경해야 함-->
-      </div>
+<!--      <div>-->
+<!--        <img src = "../../assets/images/차사원.jpeg" />&lt;!&ndash;db에 이미지 파일로 변경해야 함&ndash;&gt;-->
+<!--      </div>-->
       <div>
         <table style="width:100%; border : 1px solid #000 ;">
         <tr style="border : 1px solid #000 ;">
@@ -92,9 +92,8 @@
       <br>
       <br>
       <div class="button1">
-            <button style="float: center;" type="button" class="btn btn-dark" v-on:click="fnUpdateEmp">수정</button>  &nbsp; <!--/admin/change"-->
-            <button style="float: center;" type="button" class="btn btn-dark" v-on:click="fnUpdateEmpDepartureDate">직원퇴사</button>  &nbsp; <!--/admin/departureDate-->
-            <button style="float: right;" type="button" class="btn btn-dark" v-on:click="fnList">목록</button><!--/admin/list-->
+            <button  type="button" class="btn btn-dark" v-on:click="fnUpdateEmp">수정</button>
+            <button style="float: right;" type="button" class="btn btn-dark" v-on:click="fnList">목록</button>
       </div>
   
         

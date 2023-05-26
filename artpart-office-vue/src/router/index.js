@@ -31,26 +31,29 @@ import SlipList from '@/views/account/SlipList.vue'
 
 //직원 정보 관리
 import AdminList from '@/views/admin/adminListPage.vue'
-import AdminDeltail from '@/views/admin/adminDeltailPage.vue'
+import AdminDetail from '@/views/admin/adminDetailPage.vue'
 import AdminSignUp from '@/views/admin/adminSignUpPage.vue'
 import AdminChange from '@/views/admin/adminChangePage.vue'
 
 //직원 스케줄 관리
 import ScheduleList from '@/views/admin/scheduleListPage.vue'
 import ScheduleWrite from '@/views/admin/scheduleWrite.vue'
-import ScheduleDeltail from '@/views/admin/scheduleDeltailPage.vue'
+import ScheduleDetail from '@/views/admin/scheduleDetailPage.vue'
 import ScheduleChangeAdmin from '@/views/admin/scheduleChangeAdminPage.vue'
 import ScheduleChangeTime from '@/views/admin/scheduleChangTimePage.vue'
 
 //차량 관리 페이지
 import CarList from '@/views/car/carListPage.vue'
-import CarDeltail from '@/views/car/carDeltailPage.vue'
+import CarDetail from '@/views/car/carDetailPage.vue'
 import CarWrite from '@/views/car/carWritePage.vue'
+import CarWriteAdmin from "@/views/car/carWriteAdmin.vue";
+import CarWriteMember from "@/views/car/carWriteMember.vue";
 
 import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
 import NoticeWrite from '@/views/notice/NoticeWrite.vue'
 import ReadList from '@/views/apartment/ReadList.vue'
+//시설 관리
 import SeesulList from '@/views/apartment/SeesulList.vue'
 import SeesulElectric from '@/views/apartment/SeesulElectric.vue'
 import SeesulGas from '@/views/apartment/SeesulGas.vue'
@@ -64,6 +67,7 @@ import CompanyList from '@/views/company/CompanyList.vue'
 
 
 import MFeeList from '@/views/account/MFeeList.vue'
+
 
 
 
@@ -205,9 +209,9 @@ const routes = [
     component: AdminList
   },
   {
-    path: '/admin/deltail',
-    name: 'AdminDeltail',
-    component: AdminDeltail
+    path: '/admin/detail',
+    name: 'AdminDetail',
+    component: AdminDetail
   },
   {
     path: '/admin/signUp',
@@ -231,9 +235,9 @@ const routes = [
     component: ScheduleWrite
   },
   {
-    path: '/schedule/deltail',
-    name: 'ScheduleDeltail',
-    component: ScheduleDeltail
+    path: '/schedule/detail',
+    name: 'ScheduleDetail',
+    component: ScheduleDetail
   },
   {
     path: '/schedule/change/admin',
@@ -254,15 +258,26 @@ const routes = [
 
   },
   {
-    path: '/car/deltail',
-    name: 'CarDeltail',
-    component: CarDeltail
+    path: '/car/detail',
+    name: 'CarDetail',
+    component: CarDetail
+  },
+  {
+    path: '/car/adminwrite',
+    name: 'CarWriteAdmin',
+    component: CarWriteAdmin
+  },
+  {
+    path: '/car/memberwrite',
+    name: 'CarWriteMember',
+    component: CarWriteMember
   },
   {
     path: '/car/write',
     name: 'CarWrite',
     component: CarWrite
   },
+
   //공지사항
   {
     path: '/notice/list',

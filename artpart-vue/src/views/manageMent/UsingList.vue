@@ -19,11 +19,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for ="(item, detailIndex) in list" :key="detailIndex">
-              <td>{{item.payment_date}}</td>
+            <tr v-for ="(item, index) in list" :key="index">
+              <td>{{$dayjs(item.payment_date).format("YYYY년 MM월 D일")}}</td>
               <td>{{comma(item.payment_money) }}원</td>
-              <td>{{item.payment_date}}</td>
-              <td>{{item.payment_ded_line}}</td>
+              <td>{{$dayjs(item.payment_date).format("YYYY년 MM월 D일")}}</td>
+              <td>{{$dayjs(item.payment_ded_line).format("YYYY년 MM월 D일")}}</td>
               <td>{{item.payment_bank}}</td>
               <td>{{item.payment_status}}</td>
             </tr>
@@ -32,13 +32,34 @@
           </tbody>
         </table>
       </div>
+      <div>
+          <div></div>
+          <div v-if="paging.total_list_cnt > 0" style="margin: 0 auto !important;">
+            <span >
+            <a  class="page-item" href="javascript:;" @click="fnPage(1)" >&lt;&lt;</a>
+            <a class="page-item" href="javascript:;" v-if="paging.page > 7" @click="fnPage(`${paging.start_page-1}`)"
+               >&lt;</a>
+            <template v-for=" (n,index) in paginavigation()">
+                <template v-if="paging.page==n">
+                    <strong class="page-item-fn" :key="index">{{ n }}</strong>
+                </template>
+                <template v-else>
+                    <a class="page-item" href="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</a>
+                </template>
+            </template>
+            <a  class="page-item" href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"
+               @click="fnPage(`${paging.end_page+1}`)" >&gt;</a>
+            <a  class="page-item" href="javascript:;" @click="fnPage(`${paging.total_page_cnt}`)" >&gt;&gt;</a>
+            </span>
+          </div>
+          </div>
 </template>
 
 <script>
-
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
 
 export default {
- 
   data(){
       return {
           requestBody: {}, //리스트 페이지 데이터전송
@@ -82,7 +103,6 @@ export default {
     UsingList(){
           //스프링 부트에서 전송받은 데이터 출력 처리
           this.requestBody = { // 데이터 전송
-
               page: this.page,
               size: this.size
           }
@@ -100,10 +120,18 @@ export default {
               }).catch( error => {
                   console.error(error);
               })
+      },fnPage(n) {
+          if (this.page !== n) {
+              this.page = n
+          }
+          this.UsingList()
       }
   },
  mounted(){
   this.UsingList();
+  this.$dayjs = dayjs; // dayjs를 Vue 인스턴스의 속성으로 등록합니다
+  this.$dayjs.locale('ko'); // 사용할 로케일을 설정합니다
+
   
  } 
  
@@ -125,5 +153,36 @@ li {
 }
 a {
   color: #42b983;
+}
+.page-item {
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item-fn{
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.page-item:hover {
+    background: #E4DBD6;
+}
+.page-item a {
+    color:#666;
+}
+.page-item-fn {
+    background-color : #E7AA8D;
+    color:#fff;
+}
+.page-item-fn a {
+    color:#fff;
 }
 </style>

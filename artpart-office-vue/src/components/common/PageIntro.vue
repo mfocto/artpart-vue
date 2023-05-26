@@ -35,6 +35,7 @@
                             </div>
                         </div>
                     </form>
+                    <button class="btn btn-primary mb-3" @click="testlogin">테스트로그인</button>
                 </div>
             </div>
         </div>
@@ -74,10 +75,11 @@ export default {
                                 this.$cookie.set('emp', str);
                                 this.$router.push({
                                     path: '/notice/list',
-                                });
+                                }); //push
                             })
-
                     }
+
+
                     if (res.headers.authorization == null) {
                         alert("접속할 수 없습니다.");
                         this.$router.push({
@@ -91,6 +93,7 @@ export default {
             });
 
         },
+
         // testinsert() {
         //     this.$axios.post(this.$serverUrl + "/testinsert")
         //         .then((res) => {
@@ -106,6 +109,7 @@ export default {
         //         }
         //     });
         // },
+
     }
 };
 </script>

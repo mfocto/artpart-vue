@@ -17,7 +17,9 @@
       <br>
       <hr>
       <div id="mydong" style="display:none">
-        <h3 class="h4" style="float:left">2023년 4월 관리비</h3>
+        <!-- 이번달 관리비 -->
+        <h3 class="h4" style="float:left" v-for="(item, index) in recentlyMonth" :key="index">
+          {{ $dayjs(item.lastpm_date).format("YYYY년 MM월") }} 관리비</h3>
           <table class="table table-striped table-sm">
             <thead>
               <tr>
@@ -27,42 +29,60 @@
                 <th scope="col">증감</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-for="(item, index) in recentlyMonth" :key="index">
               <tr>
-                <td>일반관리비</td>
-                <td>57,750</td>
-                <td>59,880</td>
-                <td>-2,130</td>
+                <td>난방비</td>
+                <td>{{comma(item.lastpm_heat)}}원</td>
+                <td>{{comma(item.pm_heat)}}원</td>
+                <td>{{comma(item.pm_heat - item.lastpm_heat)}}원</td>
               </tr>
               <tr>
-                <td>청소비</td>
-                <td>16,180</td>
-                <td>16,180</td>
-                <td>0</td>
+                <td>급탕비(온수)</td>
+                <td>{{comma(item.lastpm_onsu)}}원</td>
+                <td>{{comma(item.pm_onsu)}}원</td>
+                <td>{{comma(item.pm_onsu - item.lastpm_onsu)}}원</td>
               </tr>
               <tr>
-                <td>소독비</td>
-                <td>750</td>
-                <td>750</td>
-                <td>0</td>
+                <td>가스사용</td>
+                <td>{{comma(item.lastpm_gas)}}원</td>
+                <td>{{comma(item.pm_gas)}}원</td>
+                <td>{{comma(item.pm_gas - item.lastpm_gas)}}원</td>
               </tr>
               <tr>
-                <td>승강기유지비</td>
-                <td>2,720</td>
-                <td>2,720</td>
-                <td>0</td>
+                <td>전기료</td>
+                <td>{{comma(item.lastpm_elec)}}원</td>
+                <td>{{comma(item.pm_elec)}}원</td>
+                <td>{{comma(item.pm_elec - item.lastpm_elec)}}원</td>
               </tr>
               <tr>
-                <td>수선유지비</td>
-                <td>10,790</td>
-                <td>13,670</td>
-                <td>-2,880</td>
+                <td>수도료</td>
+                <td>{{comma(item.lastpm_water)}}원</td>
+                <td>{{comma(item.pm_water)}}원</td>
+                <td>{{comma(item.pm_water - item.lastpm_water)}}원</td>
               </tr>
               <tr>
-                <td>전기수선충당금</td>
-                <td>28,660</td>
-                <td>28.660</td>
-                <td>0</td>
+                <td>정화조오물수수료</td>
+                <td>{{comma(item.lastpm_septic)}}원</td>
+                <td>{{comma(item.pm_septic)}}원</td>
+                <td>{{comma(item.pm_septic - item.lastpm_septic)}}원</td>
+              </tr>
+              <tr>
+                <td>생활폐기물수수료</td>
+                <td>{{comma(item.lastpm_waste)}}원</td>
+                <td>{{comma(item.pm_waste)}}원</td>
+                <td>{{comma(item.pm_waste - item.lastpm_waste)}}원</td>
+              </tr>
+              <tr>
+                <td>관리위원회운영비</td>
+                <td>{{comma(item.lastpm_opercost)}}원</td>
+                <td>{{comma(item.pm_opercost)}}원</td>
+                <td>{{comma(item.pm_opercost - item.lastpm_opercost)}}원</td>
+              </tr>
+              <tr>
+                <td>건물보험료</td>
+                <td>{{comma(item.lastpm_insure)}}원</td>
+                <td>{{comma(item.pm_insure)}}원</td>
+                <td>{{comma(item.pm_insure - item.lastpm_insure)}}원</td>
               </tr>
             </tbody>
           </table>
@@ -74,9 +94,7 @@
     <tr> 
       <!-- 월 단위 표기 -->
       <th>분류</th>
-      <th v-for="(item, pm_idx) in list" :key="pm_idx">
-        {{ item.pm_date }}월
-      </th>
+      <th v-for="(item, index) in monthList" :key="index"> {{ $dayjs(item.pm_date).format('MM') }}월</th>
     </tr>
   </thead>
   <tbody>
@@ -84,123 +102,97 @@
 
     <tr>
       <td>난방비</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_heat }}</td>                     
+      <td v-for="(item, index) in monthList" :key="index">{{comma(item.pm_heat) }}원</td>                     
     </tr>
     <tr>
       <td>급탕비(온수)</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_onsu }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_onsu) }}원</td> 
     </tr>
     <tr>
       <td>가스사용</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_gas }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_gas) }}원</td> 
     </tr>
     <tr>
       <td>전기료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_elec }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_elec) }}원</td> 
     </tr>
     <tr>
       <td>수도료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_water }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_water) }}원</td> 
     </tr>
     <tr>
       <td>정화조오물수수료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_septic }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_septic) }}원</td> 
     </tr>
     <tr>
       <td>생활폐기물수수료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_waste }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_waste) }}원</td> 
     </tr>
     <tr>
       <td>관리위원회운영비</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_opercost }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_opercost) }}원</td> 
     </tr>
     <tr>
       <td>건물보험료</td>
-      <td v-for="(item, pm_idx) in list" :key="pm_idx">{{ item.pm_insure }}</td> 
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_insure) }}원</td> 
+    </tr>
+    <tr>
+      <td>총합</td>
+      <td v-for="(item, index) in monthList" :key="index">{{ comma(item.pm_heat + item.pm_onsu + item.pm_gas + item.pm_elec + item.pm_water +
+      item.pm_septic + item.pm_waste + item.pm_opercost + item.pm_insure) }}원</td> 
     </tr>
   </tbody>
 </table>
 </div>
         <div id="year" style="display:none">
           <h3 class="h4" style="float:left">연도별 월평균 관리비</h3>
-          <br>
           <table class="table table-striped table-sm">
             <thead>
-              <tr>
-                <th scope="col">분류</th>
-                <th scope="col">2014년</th>
-                <th scope="col">2015년</th>
-                <th scope="col">2016년</th>
-                <th scope="col">2017년</th>
-                <th scope="col">2018년</th>
-                <th scope="col">2019년</th>
-                <th scope="col">2020년</th>
-                <th scope="col">2021년</th>
-                <th scope="col">2022년</th>
+              <tr> 
+                <!-- 연도별 단위 표기 -->
+                <th>분류</th>
+                <th v-for="(item, index) in yearList" :key="index"> {{ $dayjs(item.pm_date).format('YYYY') }}년</th>
               </tr>
             </thead>
             <tbody>
+              <!-- 분류와 각각의 금액 -->
+
               <tr>
-                <td>공용관리비</td>
-                <td>723</td>
-                <td>722</td>
-                <td>733</td>
-                <td>781</td>
-                <td>843</td>
-                <td>925</td>
-                <td>951</td>
-                <td>1,029</td>
-                <td>1,053</td>
+                <td>난방비</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_heat) }}원</td>                     
               </tr>
               <tr>
-                <td>개별사용료</td>
-                <td>970</td>
-                <td>907</td>
-                <td>835</td>
-                <td>790</td>
-                <td>808</td>
-                <td>784</td>
-                <td>821</td>
-                <td>857</td>
-                <td>898</td>
+                <td>급탕비(온수)</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_onsu) }}원</td> 
               </tr>
               <tr>
-                <td>장기수선충당금 원부과액</td>
-                <td>169</td>
-                <td>169</td>
-                <td>169</td>
-                <td>169</td>
-                <td>152</td>
-                <td>204</td>
-                <td>247</td>
-                <td>247</td>
-                <td>247</td>
+                <td>가스사용</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_gas) }}원</td> 
               </tr>
               <tr>
-                <td>합계</td>
-                <td>1,862</td>
-                <td>1,798</td>
-                <td>1,737</td>
-                <td>1,740</td>
-                <td>1,803</td>
-                <td>1,913</td>
-                <td>2,018</td>
-                <td>2,133</td>
-                <td>2,198</td>
+                <td>전기료</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_elec) }}원</td> 
               </tr>
               <tr>
-                <td>잡수입</td>
-                <td>93</td>
-                <td>111</td>
-                <td>98</td>
-                <td>125</td>
-                <td>140</td>
-                <td>170</td>
-                <td>150</td>
-                <td>146</td>
-                <td>166</td>>
+                <td>수도료</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_water) }}원</td> 
               </tr>
-             
+              <tr>
+                <td>정화조오물수수료</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_septic) }}원</td> 
+              </tr>
+              <tr>
+                <td>생활폐기물수수료</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_waste) }}원</td> 
+              </tr>
+              <tr>
+                <td>관리위원회운영비</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_opercost) }}원</td> 
+              </tr>
+              <tr>
+                <td>건물보험료</td>
+                <td v-for="(item, index) in yearList" :key="index">{{ comma(item.pm_insure) }}원</td> 
+              </tr>
             </tbody>
           </table>
           </div>
@@ -208,86 +200,136 @@
   </template>
   
   <script>
-  import { Chart, registerables } from 'chart.js'
   import dayjs from 'dayjs';
+  import 'dayjs/locale/ko';
+  import { Chart, registerables } from 'chart.js';
   Chart.register(...registerables)
   
   export default {
-    component: { 
-              dayjs
-          },
-    data:() => ({
+   component:{
+      dayjs
+   },
+    data() {
+    return {
       list: {},
-      month: {},
-
-      type: 'line',
-      data: {
-        labels: [ '22년 10월', '22년 11월', '22년 12월', '23년 01월', '23년 02월', '23년 03월'],
-        datasets: [{
-          label: '관리비',
-          data: [ 800000, 350000, 420000, 1400000, 200000, 200000 ],
-          backgroundColor: [
-            'rgb(5, 191, 219, 0.2)',
-          ],
-          borderColor: [
-            'rgba(5, 191, 219, 2)',
-          ],
-          borderWidth: 1,
-          pointBorderWidth: 8
-        }]
-      },
+      monthList: {},
+      yearList: {},
+      sixMonthList: {},
+      recentlyMonth: {},
+      labels: {},
+      data: {},
       options: {
         responsive: true,
         scales: {
           y: {
-            beginAtZero: true
-          }
-        }
-      }
-    }),
-  
+            beginAtZero: true,
+          },
+        },
+      },
+    };
+  },
     mounted(){
-      this.createChart()
+      this.payMentList();
+      this.$dayjs = dayjs; // dayjs를 Vue 인스턴스의 속성으로 등록합니다
+      this.$dayjs.locale('ko'); // 사용할 로케일을 설정합니다
+     
+     
+      
     },
     methods:{
-      createChart(){
-        new Chart(this.$refs.lineChart, {
-          type:'line',
-          data:this.data,
-          options:this.options
-        })      
-      },  
-      change1(){
+      comma(value) {
+
+      // 여기에서 필터링 로직을 수행하고, 필터링된 값을 반환합니다.
+      //소수점까지 짜르고 반올림후 3자리단위 끊기
+      return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      },
+      payMentList() {
+      this.$axios.get(this.$serverUrl + "/payment/list", {
+      params: this.requestbody,
+      headers: {}
+      
+    }).then((res) => {
+      if (res.data.result_code === "OK") {
+      //총 리스트 담은 MAP
+      this.list = res.data.data;
+      //월별 관리비
+      this.monthList = this.list.monthList;
+      //연도별 관리비
+      this.yearList = this.list.yearList;
+      //최근 6개월 관리비 차트용
+      this.sixMonthList = this.list.sixMonthList;
+      //이번달 관리비
+      this.recentlyMonth = this.list.recentlyMonth
+      }
+      //차트 메소드실행
+      this.createChart();
+
+    })
+    .catch((error) => {
+      if (error.response) {
+        // 서버가 응답한 상태 코드가 2xx가 아닌 경우
+        console.log('응답 상태 코드:', error.response.status);
+        console.log('응답 데이터:', error.response.data);
+      } else if (error.request) {
+        // 요청은 서버에 전송되었지만 응답이 없는 경우
+        console.log('요청이 전송되었지만 응답이 없습니다.');
+        console.log('요청:', error.request);
+      } else {
+        // 요청을 보내는 동안 오류가 발생한 경우
+        console.log('오류 발생:', error.message);
+      }
+    });
+      },
+      createChart() {
+      var labels = [];
+      var data = [];
+      for (let i = 0; i < 6; i++) {
+      var index = this.sixMonthList[i];
+      data.push(index.pm_heat);
+      labels.push(dayjs(index.pm_date).format("YY년 MM월"));
+    
+    }
+  new Chart(this.$refs.lineChart, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '관리비',
+          data: data,
+          backgroundColor: ['rgb(5, 191, 219, 0.2)'],
+          borderColor: ['rgba(5, 191, 219, 2)'],
+          borderWidth: 1,
+          pointBorderWidth: 8,
+        },
+      ],
+    },
+    options: this.options,
+      });
+      //우리동 관리비
+    },change1(){
       document.getElementById('mydong').style.display = 'block';
       document.getElementById('month').style.display = 'none';
       document.getElementById('year').style.display = 'none';
+      
+      //월별 관리비
     },change2(){
       document.getElementById('mydong').style.display = 'none';
       document.getElementById('month').style.display = 'block';
       document.getElementById('year').style.display = 'none';
-      this.payMentList();
-      console.log(JSON.stringify())
+      //년도별 관리비
     },change3(){
       document.getElementById('mydong').style.display = 'none';
       document.getElementById('month').style.display = 'none';
       document.getElementById('year').style.display = 'block';
-    },
-    payMentList(){
-      this.$axios.get(this.$serverUrl + "/payment/list", {
-        params : this.requestbody,
-        headers: {}
-      }).then((res) =>{
-        if(res.data.result_code === "OK"){
-          this.list = res.data.data;
-          this.list.pm_date = dayjs(this.list.pm_date).format("MM");          
-        }
-      }).catch(error =>{
-        console.error(error);
-      })
+
+    //전체 리스트
     }
+    },
+  
   }
-    
-  }
+  
+  
   
   </script>
   
