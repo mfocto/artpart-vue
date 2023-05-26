@@ -8,17 +8,15 @@
         <div class="masthead">
             <div class="masthead-content text-white">
                 <div class="container-fluid px-4 px-lg-0">
-                    <h1 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
+                    <h1 class="fst-italic lh-1 mb-4">Welcome to ArtPart ๑•‿•๑</h1>
                     <p class="mb-5">
-                        We're working hard to finish the development of this site. Sign up below to receive updates and
-                        to be notified
-                        when we launch!
+                        Welcome, residents of ArtPart! Please log in to access important notices and updates for
+                        residents!
                     </p>
-
                     <div class="col-auto mb-5">
                         <a href="http://localhost:8887/" class="btn btn-primary">입주민 로그인</a>
                     </div>
-                    <button @click="testinsert" class="btn">버튼</button>
+                    <!--<button @click="testinsert" class="btn">버튼</button>-->
                     <!-- Contact Form -->
                     <form @submit.prevent="login">
                         <!-- Email address input-->
@@ -37,7 +35,6 @@
                             </div>
                         </div>
                     </form>
-                    <button class="btn btn-primary mb-3" @click="testlogin">테스트로그인</button>
                 </div>
             </div>
         </div>
@@ -94,52 +91,21 @@ export default {
             });
 
         },
-        testinsert() {
-            this.$axios.post(this.$serverUrl + "/testinsert")
-                .then((res) => {
-                    if (res.data.result_code === 'OK') {
-                        alert('성공');
-                    }
-                    if (res.data.result_code === 'ERROR') {
-                        alert('실패');
-                    }
-                }).catch((err) => {
-                if (err.message.indexOf('Network Error') > -1) {
-                    alert('서버와 통신이 불안정합니다.');
-                }
-            });
-        },
-        testlogin() {
-            this.$axios.post(this.$serverUrl + "/login?username=so여물&password=duanf", {
-                username: 'so여물',
-                password: 'duanf',
-            })
-                .then((res) => {
-                    if (res.headers.authorization != null) {
-                        this.$cookie.set('token', res.headers.authorization.substring(7))
-                        this.$axios.defaults.headers.common.Authorization = "Bearer " + this.$cookie.get('token');
-                        this.$axios.get(this.$serverUrl + "/emp/so여물")
-                            .then((res2) => {
-                                const str = JSON.stringify(res2.data.data)
-                                this.$cookie.set('emp', str);
-                                this.$router.push({
-                                    path: '/notice/list',
-                                });
-                            })
-
-                    }
-                    if (res.headers.authorization == null) {
-                        alert("접속할 수 없습니다.");
-                        this.$router.push({
-                            path: "/"
-                        })
-                    }
-                }).catch((err) => {
-                if (err.message.indexOf('Network Error') > -1) {
-                    alert('서버와 통신이 불안정합니다.');
-                }
-            });
-        }
+        // testinsert() {
+        //     this.$axios.post(this.$serverUrl + "/testinsert")
+        //         .then((res) => {
+        //             if (res.data.result_code === 'OK') {
+        //                 alert('성공');
+        //             }
+        //             if (res.data.result_code === 'ERROR') {
+        //                 alert('실패');
+        //             }
+        //         }).catch((err) => {
+        //         if (err.message.indexOf('Network Error') > -1) {
+        //             alert('서버와 통신이 불안정합니다.');
+        //         }
+        //     });
+        // },
     }
 };
 </script>
@@ -188,32 +154,6 @@ export default {
 
 .input-group-newsletter {
     max-width: 500px;
-}
-
-#email {
-    font-size: 1.2rem;
-    border: none;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-}
-
-#submitButton {
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-}
-
-.invalid-feedback {
-    display: block;
-    margin-top: 0.25rem;
-    font-size: 80%;
-    color: #dc3545;
-}
-
-.social-icons {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2rem;
 }
 
 .social-icons .btn {

@@ -177,7 +177,6 @@ export default {
                 params: this.requestBody
             })
                 .then((res) => {
-                    console.log(JSON.stringify(res.data))
                     if (res.data.result_code === 'OK') {
                         this.list = res.data.data;
                     }
