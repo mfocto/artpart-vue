@@ -35,6 +35,7 @@
                             </div>
                         </div>
                     </form>
+                    <button class="btn btn-primary mb-3" @click="testlogin">테스트로그인</button>
                 </div>
             </div>
         </div>
@@ -92,6 +93,7 @@ export default {
             });
 
         },
+
         // testinsert() {
         //     this.$axios.post(this.$serverUrl + "/testinsert")
         //         .then((res) => {
@@ -107,6 +109,7 @@ export default {
         //         }
         //     });
         // },
+
     }
 };
 </script>
