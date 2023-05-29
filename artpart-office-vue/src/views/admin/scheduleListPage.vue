@@ -15,7 +15,7 @@ import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from '@fullcalendar/list';
-import axios from "axios";
+
 
 export default {
   mounted() {
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     getSchedule() {
-      return axios
+      return this.$axios
           .get("/schedule/list")
           .then((response) => {
             return response.data.data.map((event) => ({

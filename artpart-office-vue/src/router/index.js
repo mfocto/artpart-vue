@@ -35,6 +35,8 @@ import AdminDetail from '@/views/admin/adminDetailPage.vue'
 import AdminSignUp from '@/views/admin/adminSignUpPage.vue'
 import AdminChange from '@/views/admin/adminChangePage.vue'
 
+//직원 개인 페이지
+import AdminMyPage from "@/views/admin/adminMyPage.vue";
 //직원 스케줄 관리
 import ScheduleList from '@/views/admin/scheduleListPage.vue'
 import ScheduleWrite from '@/views/admin/scheduleWrite.vue'
@@ -222,6 +224,12 @@ const routes = [
     path: '/admin/change',
     name: 'AdminChange',
     component: AdminChange
+  },
+  //직원 개인 페이지
+  {
+    path: '/mypage',
+    name: 'AdminMyPage',
+    component: AdminMyPage
   },
   //직원 스케줄 관리
   {

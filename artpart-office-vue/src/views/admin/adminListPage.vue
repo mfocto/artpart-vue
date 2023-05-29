@@ -46,17 +46,17 @@
           </thead>
           <tbody class="tbody1">
             <tr v-for="(row, emp_idx) in list" :key="emp_idx">
-                <td>{{ row.emp_id }}</td>
-                <td>{{ row.emp_permanent_id }}</td><!--사원구분-->
-                <td>{{ row.emp_department_id }}</td><!--소속-->
-                <td>{{ row.emp_job_id }}</td><!--직급/직위-->
-                <td><a v-on:click="fnView(row.emp_idx)">{{ row.emp_name}}</a></td><!--사원이름-->
-                <td>{{ row.emp_address }}</td><!--주소-->
-                <td>{{ row.emp_phone }}</td><!--연락처-->
-                <td>{{ row.emp_car }}</td><!--차량번호-->
-                <td>{{ formatDate(row.emp_hire_date) }}</td><!--입사일-->
-                <td>{{ formatDate(row.emp_departure_date )}}</td><!--퇴사일-->
-                <td>{{ row.emp_memo }}</td><!--비고-->
+                <td>{{ row.emp_id ||' '}}</td>
+                <td>{{ row.emp_permanent_id || ' '}}</td><!--사원구분-->
+                <td>{{ row.emp_department_id || ' '}}</td><!--소속-->
+                <td>{{ row.emp_job_id || ' '}}</td><!--직급/직위-->
+                <td><a v-on:click="fnView(row.emp_idx)">{{ row.emp_name || ' '}}</a></td><!--사원이름-->
+                <td>{{ row.emp_address || ' '}}</td><!--주소-->
+                <td>{{ row.emp_phone || ' '}}</td><!--연락처-->
+                <td>{{ row.emp_car || ' '}}</td><!--차량번호-->
+                <td>{{ row.emp_hire_date ? formatDate(row.emp_hire_date) :' '}}</td><!--입사일-->
+                <td>{{ row.emp_departure_date ? formatDate(row.emp_departure_date ) : ' '}}</td><!--퇴사일-->
+                <td>{{ row.emp_memo || ' '}}</td><!--비고-->
             </tr>
            </tbody>
          </table>
@@ -145,10 +145,14 @@ export default {
         headers: {}
 
       }).then((res) => {
-        if(res.data.result_code === "OK"){
-          this.list = res.data.data
-          this.paging = res.data.pagination
-          this.no = this.paging.total_list_cnt - ((this.paging.page - 1) * this.paging.page_size)
+        if(res.data.result_code === "OK") {
+          this.list = res.data.data || [];
+          this.paging = res.data.pagination ||{};
+          this.no = (res?.data?.pagination?.total_list_cnt || 0) - ((res?.data?.pagination?.page - 1) * (res?.data?.pagination?.page_size || 0));
+        }else {
+          this.list = []; // list 값이 없어도 출력되도록 빈 배열로 설정
+          this.paging = {};
+          this.no = 0;
         }
       }).catch(error => {
         if (error.response) {
@@ -179,13 +183,16 @@ export default {
       }
       this.fnGetEmp() 
     },
-    formatDate: function(datetime){
-      let date = new Date(datetime);
-      let year = date.getFullYear();
-      let month = ('0' + (date.getMonth()+1)).slice(-2); // Months are zero based
-      let day = ('0' + date.getDate()).slice(-2);
-      return `${year}년${month}월${day}일`;
-
+    formatDate: function (datetime) {
+      if (datetime) {
+        let date = new Date(datetime);
+        let year = date.getFullYear();
+        let month = ('0' + (date.getMonth() + 1)).slice(-2);
+        let day = ('0' + date.getDate()).slice(-2);
+        return `${year}년${month}월${day}일`;
+      } else {
+        return '';
+      }
     },
     fnSignUp(){
       this.$router.push({
@@ -211,39 +218,39 @@ li {
   margin: 0 10px;
 }
 a {
-    color: #0a0a0a;
-    text-decoration: none;
+  color: #0a0a0a;
+  text-decoration: none;
 }
 .page-item {
-    min-width:32px;
-    padding:2px 6px;
-    text-align:center;
-    margin:0 3px;
-    border-radius: 6px;
-    border:1px solid #eee;
-    color:#666;
+  min-width:32px;
+  padding:2px 6px;
+  text-align:center;
+  margin:0 3px;
+  border-radius: 6px;
+  border:1px solid #eee;
+  color:#666;
 }
 .page-item-fn{
-    min-width:32px;
-    padding:2px 6px;
-    text-align:center;
-    margin:0 3px;
-    border-radius: 6px;
-    border:1px solid #eee;
-    color:#666;
+  min-width:32px;
+  padding:2px 6px;
+  text-align:center;
+  margin:0 3px;
+  border-radius: 6px;
+  border:1px solid #eee;
+  color:#666;
 }
 .page-item:hover {
-    background: #E4DBD6;
+  background: #E4DBD6;
 }
 .page-item a {
-    color:#666;
+  color:#666;
 }
 .page-item-fn {
-    background-color : #E7AA8D;
-    color:#fff;
+  background-color : #E7AA8D;
+  color:#fff;
 }
 .page-item-fn a {
-    color:#fff;
+  color:#fff;
 }
 table.table1 {
  border: "4" ;
