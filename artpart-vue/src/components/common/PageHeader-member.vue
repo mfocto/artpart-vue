@@ -3,7 +3,7 @@
   <div></div>
   <div class="navbar-nav ml-auto">
     <div class="nav-item text-nowrap">
-      <router-link class="nav-link px-3" to="/member/mypage">마이페이지</router-link>
+      <!-- <router-link class="nav-link px-3" to="/member/mypage">마이페이지</router-link> -->
       <router-link class="nav-link px-3" to="/" v-on:click="delsession()">로그아웃</router-link>
     </div>
   </div>
