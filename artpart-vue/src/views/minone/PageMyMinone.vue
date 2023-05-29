@@ -20,23 +20,15 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>
-                <!-- <th scope="col">동수</th>
-                <th scope="col">호수</th> -->
-                <!-- <th scope="col">이름</th> -->
-                <!-- <th scope="col">핸드폰번호</th> -->
                 <th scope="col">no</th>
-                <th scope="col">카테고리</th>
                 <th scope="col">민원제목</th>
+                <th scope="col">카테고리</th>
                 <th scope="col">처리여부</th>
                 
               </tr>
             </thead>
             <tbody>
               <tr v-for="(row, minidx) in list" :key="minidx">
-                <!-- <td>{{ row.memberidx.memberdong }}</td>
-                <td>{{ row.memberidx.memberho }}</td> -->
-                <!-- <td>{{ row.memberidx.membername }}</td>
-                <td>{{ row.memberidx.memberphone }}</td> -->
                 <td style="width:10%">{{ row.minidx }}</td>
                 <td style="width:50%; color:#aa879e; text-decoration:underline;"><a v-on:click="fnView(row.minidx)">{{row.mintitle}}</a></td>
                 <td style="width:20%">{{ row.mincategory }}</td>

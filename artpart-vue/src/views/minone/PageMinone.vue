@@ -9,19 +9,23 @@
     <form class="back-box">
 
         <div class="back-box-one">
-          <router-link class="minone-menu" to="/minone/pageminoneform"><img src="../../assets/images/minone/elevator.png" width="100" height="100" class="d-inline-block " alt="승강기">
+          <router-link class="minone-menu" to="/minone/pageminoneform">
+            <img src="../../assets/images/minone/elevator.png" width="100" height="100" class="d-inline-block " alt="승강기">
             <span style="text-align:center; color:Darkslategray;" :data-text="'승강기'">승강기</span>
           </router-link>
 
-          <router-link class="minone-menu" to="/minone/pageminoneform"><img src="../../assets/images/minone/fire.png" width="100" height="100" class="d-inline-block " alt="소방">
+          <router-link class="minone-menu" to="/minone/pageminoneform">
+            <img src="../../assets/images/minone/fire.png" width="100" height="100" class="d-inline-block " alt="소방">
             <span style="text-align:center; color:Darkslategray ;" :data-text="'소방'">소방</span>
           </router-link>
 
-          <router-link class="minone-menu" to="/minone/pageminoneform"><img src="../../assets/images/minone/intercom.png" width="100" height="100" class="d-inline-block " alt="인터폰">
+          <router-link class="minone-menu" to="/minone/pageminoneform">
+            <img src="../../assets/images/minone/intercom.png" width="100" height="100" class="d-inline-block " alt="인터폰">
             <span style="text-align:center; color:Darkslategray ;" :data-text="'인터폰'">인터폰</span>
           </router-link>
 
-          <router-link class="minone-menu" to="/minone/pageminoneform"><img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block " alt="물탱크">
+          <router-link class="minone-menu" to="/minone/pageminoneform">
+            <img src="../../assets/images/minone/automatic-doors.png" width="100" height="100" class="d-inline-block " alt="물탱크">
             <span style="text-align:center; color:Darkslategray ;" :data-text="'물탱크'">물탱크</span>
           </router-link>
           <br><br>

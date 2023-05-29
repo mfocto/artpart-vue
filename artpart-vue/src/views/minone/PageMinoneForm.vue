@@ -50,15 +50,13 @@
             </div>
 
 
-
-
             <div class="submit-button">
             <button class="btn" v-on:click="regMinone"
-            style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">
+            style="background-color: #EBC07F; color:rgb(36, 36, 36); 
+            text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">
             Enter
             </button>        
             </div>
-
 
           </div> <!-- back-box close-->
         </div> <!--background close-->
@@ -74,7 +72,6 @@ name: 'PageMinoneForm',
 data() {
     return {    //초기화
       requestBody: this.$route.query,
-
       memberidx: '',
       mintitle: '',
       mintype: '',
@@ -83,16 +80,13 @@ data() {
       mincategory: '',
     }
 },
-
   methods: {
-
-
   regMinone() {
     const member = JSON.parse(this.$cookie.get('member'))
     let apiUrl = this.$serverUrl + '/newmin'
 
       this.form = {
-        "memberidx":  member.member_idx,   //멤버idx
+        "memberidx":  member.member_idx,    //멤버idx
         "mintitle" : this.mintitle,         //민원제목
         "mintype" : this.mintype,           //민원내용
         "minstatus": this.minstatus,        //처리상황
@@ -114,10 +108,11 @@ data() {
           })
         },//regMinone
 
-        fnList(){ //글 저장 후 리스트이동
+        //글 저장 후 페이지이동
+        fnList(){ 
         delete this.requestBody.id
         this.$router.push({
-            path: './pagemyminone',   //리스트로 이동필요한 url 지정
+            path: './pagemyminone',   //이동할 url 지정
             query: this.requestBody
         })
         },
@@ -160,7 +155,7 @@ data() {
     padding-top: 20px;
     background-color: #ebe9e9;
     width: 800px;
-    height: 150vh;                 /* 폼 높이 */
+    height: 1000px;                 /* 폼 높이 */
     overflow: hidden;
     margin:auto;
     background-size: cover;
