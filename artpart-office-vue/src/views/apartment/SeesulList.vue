@@ -23,7 +23,6 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">번호</th>
               <th scope="col">제목</th>
               <th scope="col">작성자</th>
               <th scope="col">일자</th>
@@ -31,7 +30,6 @@
           </thead>
           <tbody>
             <tr v-for="(row, sidx) in filteredRows" :key="sidx">
-                <td>{{ row.sidx }}</td>
                 <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 전기점검</a></td>
                 <td>{{ row.swiriter.emp_name }}</td>
                 <td>{{ row.sdate }} </td>
@@ -49,7 +47,6 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">번호</th>
               <th scope="col">제목</th>
               <th scope="col">작성자</th>
               <th scope="col">일자</th>
@@ -57,7 +54,6 @@
           </thead>
             <tbody>
             <tr v-for="(row, sidx) in filteredRows" :key="sidx">
-                <td>{{ row.sidx }}</td>
                 <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 가스점검</a></td>
                 <td>{{ row.swiriter.emp_name }}</td>
                 <td>{{ row.sdate }} </td>
@@ -75,7 +71,6 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">번호</th>
               <th scope="col">제목</th>
               <th scope="col">작성자</th>
               <th scope="col">일자</th>
@@ -83,7 +78,6 @@
           </thead>
             <tbody>
             <tr v-for="(row, sidx) in filteredRows" :key="sidx">
-                <td>{{ row.sidx }}</td>
                 <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 승강기점검</a></td>
                 <td>{{ row.swiriter.emp_name }}</td>
                 <td>{{ row.sdate }} </td>
@@ -101,7 +95,6 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">번호</th>
               <th scope="col">제목</th>
               <th scope="col">작성자</th>
               <th scope="col">일자</th>
@@ -109,7 +102,6 @@
           </thead>
             <tbody>
             <tr v-for="(row, sidx) in filteredRows" :key="sidx">
-                <td>{{ row.sidx }}</td>
                 <td><a v-on:click="fnView(row.sidx)">{{ formatDate(row.sdate) }} 놀이터점검</a></td>
                 <td>{{ row.swiriter.emp_name }}</td>
                 <td>{{ row.sdate }} </td>
