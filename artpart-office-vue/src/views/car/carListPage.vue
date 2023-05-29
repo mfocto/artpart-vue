@@ -44,26 +44,32 @@
         <tbody class="tbody1">
         <tr v-for="(row, car_idx) in list" :key="car_idx">
           <td>
-            <span v-if="row.member_carid.memberdong === '직원'">{{row.emp_carid.emp_name}} </span>
-            <span v-else-if="row.emp_carid.emp_name === '입주민'">{{ row.member_carid.memberdong}} &nbsp; - {{ row.member_carid.memberho}}</span>
-            <span v-else>---</span>
-
+<!--            <span>-->
+<!--    {{ row.emp_carid && row.emp_carid.emp_name ? row.emp_carid.emp_name + ' ' : '' }}-->
+<!--    {{ row.member_carid && row.member_carid.memberdong ? row.member_carid.memberdong + ' ' : '' }}-->
+<!--    &nbsp;- {{ row.member_carid && row.member_carid.memberho ? row.member_carid.memberho + ' ' : '' }}-->
+<!--  </span>-->
+            <span>
+  {{ row.member_carid && row.member_carid.memberdong && row.member_carid.memberdong !== '직원' ? row.member_carid.memberdong + ' ' : '' }}
+  {{ row.member_carid && row.member_carid.memberho ? row.member_carid.memberho + ' ' : '' }}
+  {{ !row.member_carid || row.member_carid.memberdong === '직원' ? (row.emp_carid && row.emp_carid.emp_name ? row.emp_carid.emp_name + ' ' : '') : '' }}
+          </span>
           </td>
-          <td><span v-if="row.car_division_id === undefined">---</span>
-            <span v-else>{{ row.car_division_id}}</span>
+          <td>
+            <span >{{ row.car_division_id || ' ' }}</span>
           </td>
-          <td><span v-if="row.car_number === undefined">---</span>
-            <span v-else><a v-on:click="fnView(row.car_idx)">{{ row.car_number }}</a></span>
+          <td>
+            <span><a v-on:click="fnView(row.car_idx)">{{ row.car_number || ' ' }}</a></span>
           </td>
-          <td><span v-if="row.car_type === undefined">---</span>
-              <span v-else>{{ row.car_type }}</span>
+          <td>
+              <span>{{ row.car_type || ' ' }}</span>
           </td>
-          <td><span v-if="row.car_note === undefined">---</span>
-              <span v-else>{{ row.car_note }}</span>
+          <td>
+              <span>{{ row.car_note || ' ' }}</span>
           </td>
-          <td>{{ row.car_enrolldate }}</td>
-          <td><span v-if="row.car_startdate === undefined || row.car_enddate === undefined">--</span>
-              <span v-else>{{ row.car_startdate }} ~ {{row.car_enddate}}</span>
+          <td>{{ row.car_enrolldate || ' ' }}</td>
+          <td>
+              <span>{{ row.car_startdate || ' ' }} ~ {{ row.car_enddate || ' ' }}</span>
           </td>
           <td><button class="btn btn-dark" v-on:click="fnUpdate(row.car_idx)">수정</button>
           </td>
@@ -150,10 +156,9 @@ export default {
       }).then((res) => {
         //this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
         if (res.data.result_code === "OK") {
-          this.list = res.data.data
-          this.paging = res.data.pagination
-          this.no = this.paging.total_list_cnt - ((this.paging.page - 1) * this.paging.page_size)
-        }
+          this.list = res.data.data || [];
+          this.paging = res.data.pagination ||{};
+          this.no = (res?.data?.pagination?.total_list_cnt || 0) - ((res?.data?.pagination?.page - 1) * (res?.data?.pagination?.page_size || 0));        }
       }).catch(error => {
         if (error.response) {
           // 오류 응답을 받은 경우
@@ -183,17 +188,30 @@ export default {
       }
       this.fnGetCarList()
     },
-    formatDate: function(datetime){
-      let date = new Date(datetime);
-      let year = date.getFullYear();
-      let month = ('0' + (date.getMonth()+1)).slice(-2); // Months are zero based
-      let day = ('0' + date.getDate()).slice(-2);
-      return `${year}년${month}월${day}일`;
-
+    formatDate: function (datetime) {
+      if (datetime) {
+        let date = new Date(datetime);
+        let year = date.getFullYear();
+        let month = ('0' + (date.getMonth() + 1)).slice(-2);
+        let day = ('0' + date.getDate()).slice(-2);
+        return `${year}년${month}월${day}일`;
+      } else {
+        return '';
+      }
     },
     fnWrite(){
       this.$router.push({
         path: './write'
+      })
+    },
+    fnWriteEmp(){
+      this.$router.push({
+        path: './adminwrite'
+      })
+    },
+    fnWriteMember(){
+      this.$router.push({
+        path: './memberwrite'
       })
     },
     fnUpdate(car_idx){
@@ -207,14 +225,23 @@ export default {
       this.requestBody.car_idx = car_idx
       if(!confirm("삭제하시겠습니까?")) return
 
-      this.$axios.delete(this.$serverUrl + '/car/' + this.car_idx, {})
+      this.$axios.delete(this.$serverUrl + '/car/' + this.requestBody.car_idx, {})
           .then(() => {
             alert('삭제되었습니다.')
             this.fnList();
+            // this.$router.push({ path: './car/list', query: this.requestBody });
+            // this.$router.go(); // 현재 페이지로 돌아가는 코드
           }).catch((err) => {
         console.log(err);
       })
 
+    },
+    fnList(){
+      delete this.requestBody
+      this.$router.push({
+        path: './list',
+        query: this.requestBody
+      })
     }
   }
 }
@@ -266,6 +293,9 @@ a {
 .page-item-fn a {
   color:#fff;
 }
+table.table1 {
+  border: "4" ;
+}
 .thead1{
   padding: 20px;
   margin-bottom: 20px;
@@ -283,7 +313,13 @@ tbody.tbody1 {
   border: 1px solid #bcbcbc;
 
 }
-jb-header.button1{
+jb-header.button2{
   float: right;
 }
+
+
+input #start {
+  margin: 0.4rem 0;
+}
+
 </style>
