@@ -7,7 +7,7 @@
   </div>
   <br>
   <br>
-  <div align="left" class="jb-header"><h2>직원등록</h2>
+  <div align="left" class="jb-header"><h2>직원 수정</h2>
   </div>
 
   <div>

@@ -7,7 +7,9 @@
     <br>
     <div class="jb-header" >
       <h2>차량 조회&nbsp;
+        <div class="button1" style="float: right;" >
         <button class="btn btn-dark" v-on:click="fnWrite">등록</button>
+        </div>
       </h2>
     </div>
     <br>
@@ -158,7 +160,12 @@ export default {
         if (res.data.result_code === "OK") {
           this.list = res.data.data || [];
           this.paging = res.data.pagination ||{};
-          this.no = (res?.data?.pagination?.total_list_cnt || 0) - ((res?.data?.pagination?.page - 1) * (res?.data?.pagination?.page_size || 0));        }
+          this.no = (res?.data?.pagination?.total_list_cnt || 0) - ((res?.data?.pagination?.page - 1) * (res?.data?.pagination?.page_size || 0));
+        }else {
+          this.list = []; // list 값이 없어도 출력되도록 빈 배열로 설정
+          this.paging = {};
+          this.no = 0;
+        }
       }).catch(error => {
         if (error.response) {
           // 오류 응답을 받은 경우
