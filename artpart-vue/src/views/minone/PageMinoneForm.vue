@@ -46,7 +46,7 @@
 
             <div class="input-group mb-3" >
                 <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >관리 답변</span>
-                <input type="text" class="form-control" v-model="minres" required style=" width: 15px; height: 32px;"  placeholder="처리 예정입니다" >
+                <input type="text" class="form-control" v-model="minres" required style=" width: 15px; height: 32px;"  placeholder="답변 예정입니다" >
             </div>
 
 

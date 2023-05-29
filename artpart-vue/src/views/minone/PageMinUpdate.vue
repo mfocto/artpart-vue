@@ -3,7 +3,7 @@
           <h1 class="h2">민원 수정</h1>
           
           
-        </div>
+    </div>
   
         
   
@@ -14,26 +14,27 @@
 
             <thead class="boarder-0">
               <tr>
-                <th scope style="text-align:left;">제목</th>
-                <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="mintitle" readonly/></th>
+                <th scope style="text-align:left; width: 10%;">제목</th>
+                <th scope="col" style="text-align:left;" colspan="3">
+                  <input type="text" style="width: 40%" v-model="mintitle" /></th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <th scope style="text-align:left; width: 70%;">내용</th>
+                <th scope style="text-align:left; ">내용</th>
                 <td colspan="4" style="text-align:left;">
-                  <textarea  rows="10" style="width: 70%;"  v-model="mintype" readonly></textarea>
+                  <textarea  rows="10" style="width: 40%"  v-model="mintype" ></textarea>
                 </td>
+              </tr>
+              <tr>
+                <th scope="col" colspan="4" style="float: left;">
+                  <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList()" style="margin-left: 2%; margin-top: 20px; width: 200px; ">목록 이동</button>
+                  <button  class="btn btn-sm btn-outline-secondary" v-on:click="fnSave()" style="margin-top: 20px; width: 200px; ">수정 완료</button>
+                </th>
               </tr>
             </tbody>
 
-            <tr>
-                <th scope="col" colspan="4" style="text-align:right;">
-                    <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList()" style="margin-left: 2%;">목록</button>
-                    <button  class="btn btn-sm btn-outline-secondary" v-on:click="fnSave()">작성</button>
-                </th>
-            </tr>
 
           </table>
         </div>
@@ -109,7 +110,7 @@
                   //수정
                   this.$axios.patch(apiUrl, this.form)
                       .then((res) => {
-                          alert('글이 저장되었습니다.')
+                          alert('수정 완료')
                           this.fndetail(res.data.minidx)
                       }).catch((err) => {
                       if (err.message.indexOf('Network Error') > -1) {
@@ -142,19 +143,15 @@
     display: inline-block;
     margin: 0 10px;
   }
-  a {
-    color: #42b983;
-  }
+
 
   input[type="submit"], 
   button[type="submit"],
-  .botton1,
   .btn
    {
     position: relative;
     font-size: 15px;
-    width: 500px; 
-    left: 2%; 
+    left: 10%; 
     background-color:Bisque; 
     color:black;
     /* margin: 50px; */

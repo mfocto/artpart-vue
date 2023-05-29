@@ -8,50 +8,53 @@
   
       <div class="back-box rounded-1" >
         <thead style="text-align: center;">
-          <tr class="minone-menu">      
-            <td class="input-group-text" style="text-align: left; width: 230px;">종류</td>
-            <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ mincategory }}</td> 
+          <tr class="minone-menu" style="">      
+            <td class="input-group-text" style="text-align: center; width: 100%;">종류</td>
+            <td class="mintd" scope="col" style="text-align: left; padding:10px; width: 600px;">{{ mincategory }}</td> 
           </tr>
         </thead>
 
         <thead>
           <tr class="minone-menu">      
-            <td class="input-group-text" style="text-align: left; width: 230px;">제목</td>
-            <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ mintitle }}</td>  
+            <td class="input-group-text" style="text-align: center; width: 100%;">제목</td>
+            <td class="mintd" scope="col" style="text-align: left; padding:10px; ">{{ mintitle }}</td>  
           </tr>
         </thead>
 
         <thead>
           <tr class="minone-menu">      
-            <td class="input-group-text" style="text-align: left; width: 230px; height: 80px">내용</td>
+            <td class="input-group-text" style="text-align: center; width: 100%; height: 80px">내용</td>
             <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ mintype }}</td>  
           </tr>
         </thead>
 
         <thead>
           <tr class="minone-menu">      
-            <td class="input-group-text" style="text-align: left; width: 230px;">관리자 답변</td>
+            <td class="input-group-text" style="text-align: left; width: 100%;">관리자 답변</td>
             <td class="mintd" scope="col" style="text-align: left; padding:10px; ">{{ minres }}</td>  
           </tr>
         </thead>
 
         <thead>
           <tr class="minone-menu">      
-            <td class="input-group-text" style="text-align: left; width: 230px;">처리여부</td>
+            <td class="input-group-text" style="text-align: left; width: 100%;">처리여부</td>
             <td class="mintd" scope="col" style="text-align: left; padding:10px;">{{ minstatus }}</td>  
           </tr>
         </thead>
         
-        <tbody>
-          <!-- button -->
+        <!-- button -->
+        <thead>
           <tr class="minone-menu">
-              <th height= "100px;" colspan="2" style="float: left; width: 100%;" >
-                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList" style="margin-top: 10px; width: 200px;" >전체 목록으로 </button>
-                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnUpdate" style="margin-top: 20px; width: 200px;">글 수정하기</button>
-                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnDelete" style="margin-top: 30px; width: 200px;">글 삭제하기</button>
+              <th height= "100px;" style="float: left; width: 100%;" >
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnUpdate" style="margin-top: 20px; width: 200px; ">글 수정하기</button>
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnDelete" style="margin-top: 30px; width: 200px; top: -5px; ">글 삭제하기</button>
+                <button class="btn btn-sm btn-outline-secondary" v-on:click="fnList" style="margin-top: 10px; width: 400px;" >전체 목록으로 </button> 
               </th>
           </tr>	
-        </tbody>
+        </thead>
+
+        
+
       </div> <!-- back-box close-->
   </div> <!--background close-->
   </template>
@@ -191,7 +194,7 @@
   button[type="submit"],
   .btn
    {
-    position: absolute;
+    position: relative;
     font-size: 15px;
     left: 10%; 
     background-color:Bisque; 
