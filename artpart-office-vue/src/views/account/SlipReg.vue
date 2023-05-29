@@ -89,7 +89,7 @@ export default {
                 slip_note: this.slip_note,
                 slip_writer: emp.emp_name
             }
-            console.log(formData)
+
             this.$axios.post(this.$serverUrl + '/account/slip/reg', formData)
                 .then(() => {
                     alert('전표가 등록되었습니다.');

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div  align="left" class="jb-header">
-        <h1>차량 관리</h1>
+        <h1>차량 관리 입주민</h1>
     </div>
         
   </div>

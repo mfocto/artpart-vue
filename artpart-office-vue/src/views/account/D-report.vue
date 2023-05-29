@@ -180,9 +180,6 @@ export default {
                 sk: this.sk,
                 sv: this.sv
             }
-            const test = JSON.parse(this.$cookie.get('emp'))
-            console.log(test.emp_name)
-
             this.$axios.get(this.$serverUrl + '/account/daily-report', {
                 params: this.requestBody,
                 headers: {}

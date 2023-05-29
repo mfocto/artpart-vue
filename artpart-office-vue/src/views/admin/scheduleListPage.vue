@@ -1,207 +1,85 @@
 <template>
-    <div>
-    <div  align="left" class="jb-header">
+  <div>
+      <div  align="left" class="jb-header">
         <h1>직원 관리</h1>
-    </div>
-        
+      </div> <br><br>
+      <div align="left" class="jb-header" ><h2>직원 목록&nbsp;<div class="button1" style="float: right;" >
+        <button type="button" class="btn btn-dark" v-on:click="fnWrite">등록</button>
+      </div></h2></div>
+    <div id="calendar"></div>
   </div>
-      <br>
-      <br>
-      <div align="left" class="jb-header" ><h2>직원 스케줄 목록&nbsp; 
-      
-          <div class="button1" style="float: right;" >
-            <button type="button" class="btn btn-dark"><router-link to="/scheduleSingUp">등록</router-link></button>
-          </div></h2> 
-      </div>
-    <section class="section">
-      <div class="container">
-        <h2 class="subtitle has-text-centered">
-          <button class="button is-small is-primary is-outlined mr-5"
-          @click="calendarData(-1)">&lt;</button>
-          {{ year }}년 {{ month }}월
-          <button class="button is-small is-primary is-outlined ml-5"
-          @click="calendarData(1)">&gt;</button>
-        </h2>
-        <table class="table has-text-centered is-fullwidth">
-          <thead>
-            <th v-for="day in days" :key="day">{{ day }}</th>
-            
-          </thead>
-          <tbody>
-            <tr v-for="(date, idx) in dates" :key="idx">
-              <td style="width: 14%; height: 100px; text-align:left;"
-                v-for="(day, secondIdx) in date"
-                :key="secondIdx"
-                :class="{ 'has-text-info-dark': idx === 0 && day >= lastMonthStart,
-                'has-text-danger': dates.length - 1 === idx && nextMonthStart > day,
-                'has-text-primary': day === today && month === currentMonth && year === currentYear
-                }"
-              >
-                {{ day }}
-                <br>
-                <span v-if="month == 4 && day == 8 ">
-                  <router-link to="/scheduleDeltail">차사원(9:00~18:00)</router-link></span>
-                <span v-if="month == 4 && day == 22 ">이과장(9:00~18:00)</span>
-                
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        days: [
-          '일요일',
-          '월요일',
-          '화요일',
-          '수요일',
-          '목요일',
-          '금요일',
-          '토요일',
-        ],
-        dates: [],
-        currentYear: 0,
-        currentMonth: 0,
-        year: 0,
-        month: 0,
-        lastMonthStart: 0,
-        nextMonthStart: 0,
-        today: 0,
-      };
+</template>
+
+<script>
+import { Calendar } from "@fullcalendar/core";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import listPlugin from '@fullcalendar/list';
+import axios from "axios";
+
+export default {
+  mounted() {
+    this.getSchedule().then((events) => {
+      const calendarEl = document.getElementById("calendar");
+
+      const calendar = new Calendar(calendarEl, {
+        plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
+        headerToolbar: {
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek,listMonth"
+        },
+        initialView: "dayGridMonth",
+        events,
+        eventClick: this.handleEventClick,
+      });
+
+      calendar.render();
+    });
+  },
+  methods: {
+    getSchedule() {
+      return axios
+          .get("/schedule/list")
+          .then((response) => {
+            return response.data.data.map((event) => ({
+              id: event.event_id,
+              title: event.title,
+              start: event.start,
+              end: event.end,
+              backgroundColor: event.background_color,
+              description: event.description,
+            }));
+          })
+          .catch((error) => {
+            console.error("Failed to fetch events from API:", error);
+            return []; // Return an empty array or implement error handling
+          });
+
     },
-    created() { // 데이터에 접근이 가능한 첫 번째 라이프 사이클
-      const date = new Date();
-      this.currentYear = date.getFullYear(); // 이하 현재 년, 월 가지고 있기
-      this.currentMonth = date.getMonth() + 1;
-      this.year = this.currentYear;
-      this.month = this.currentMonth;
-      this.today = date.getDate(); // 오늘 날짜
-      this.calendarData();
+    handleEventClick(info) {
+      const event_id = info.event.id;
+
+      this.$router.push({
+        path: './detail',
+        query: {
+          event_id: event_id
+        }
+      });
     },
-    methods: {
-      calendarData(arg) { // 인자를 추가
-        if (arg < 0) { // -1이 들어오면 지난 달 달력으로 이동
-          this.month -= 1;
-        } else if (arg === 1) { // 1이 들어오면 다음 달 달력으로 이동
-          this.month += 1;
-        }
-        if (this.month === 0) { // 작년 12월
-          this.year -= 1;
-          this.month = 12;
-        } else if (this.month > 12) { // 내년 1월
-          this.year += 1;
-          this.month = 1;
-        }
-        const [
-          monthFirstDay,
-          monthLastDate,
-          lastMonthLastDate,
-        ] = this.getFirstDayLastDate(this.year, this.month);
-        this.dates = this.getMonthOfDays(
-          monthFirstDay,
-          monthLastDate,
-          lastMonthLastDate,
-        );
-      },
-      getFirstDayLastDate(year, month) {
-        const firstDay = new Date(year, month - 1, 1).getDay(); // 이번 달 시작 요일
-        const lastDate = new Date(year, month, 0).getDate(); // 이번 달 마지막 날짜
-        let lastYear = year;
-        let lastMonth = month - 1;
-        if (month === 1) {
-          lastMonth = 12;
-          lastYear -= 1;
-        }
-        const prevLastDate = new Date(lastYear, lastMonth, 0).getDate(); // 지난 달 마지막 날짜
-        return [firstDay, lastDate, prevLastDate];
-      },
-      getMonthOfDays(
-        monthFirstDay,
-        monthLastDate,
-        prevMonthLastDate,
-      ) {
-        let day = 1;
-        let prevDay = (prevMonthLastDate - monthFirstDay) + 1;
-        const dates = [];
-        let weekOfDays = [];
-        while (day <= monthLastDate) {
-          if (day === 1) {
-            // 1일이 어느 요일인지에 따라 테이블에 그리기 위한 지난 셀의 날짜들을 구할 필요가 있다.
-            for (let j = 0; j < monthFirstDay; j += 1) {
-              if (j === 0) this.lastMonthStart = prevDay; // 지난 달에서 제일 작은 날짜
-              weekOfDays.push(prevDay);
-              prevDay += 1;
-            }
-          }
-          weekOfDays.push(day);
-          if (weekOfDays.length === 7) {
-            // 일주일 채우면
-            dates.push(weekOfDays);
-            weekOfDays = []; // 초기화
-          }
-          day += 1;
-        }
-        const len = weekOfDays.length;
-        if (len > 0 && len < 7) {
-          for (let k = 1; k <= 7 - len; k += 1) {
-            weekOfDays.push(k);
-          }
-        }
-        if (weekOfDays.length > 0) dates.push(weekOfDays); // 남은 날짜 추가
-        this.nextMonthStart = weekOfDays[0]; // 이번 달 마지막 주에서 제일 작은 날짜
-        return dates;
-      },
-    },
-  };
-  </script>
+    fnWrite(){
+      this.$router.push({
+        path: './write'
+      })
+    }
+
+  },
+};
+</script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+#calendar {
+  max-width: 1100px;
+  margin: 0 auto;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-table.table1 {
- border: "4" ;
-}
-.thead1{
-  padding: 20px;
-        margin-bottom: 20px;
-        border: 4px solid #bcbcbc;
-}
-tbody.tbody1 {
-  padding: 20px;
-        margin-bottom: 20px;
-        border: 4px solid #bcbcbc;
-}
-
-*.jb-header {
-        padding: 20px;
-        margin-bottom: 20px;
-        border: 1px solid #bcbcbc;
-        
-      }
-jb-header.button2{
-  float: right;
-}
-
-
-input #start {
-    margin: 0.4rem 0;
-}
-
 </style>

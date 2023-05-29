@@ -2,9 +2,6 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">검침</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" @click="toggleReadonly">수정</button>
-            </div>
             <div class="input-group">
                 <label for="month" class="input-group-text">월 선택:</label>
                 <select class="form-select" id="month" v-model="search_value" @change="fnPage()">
@@ -127,9 +124,6 @@ export default {
         };
     },
     methods: {
-        toggleReadonly() {
-            this.isReadonly = !this.isReadonly;
-        },
         fetchRead(){
             //스프링 부트에서 전송받은 데이터 출력 처리
             this.requestBody = { // 데이터 전송
