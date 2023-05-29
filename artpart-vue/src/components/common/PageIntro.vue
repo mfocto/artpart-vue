@@ -81,7 +81,7 @@ export default {
                     if (res.headers.authorization != null) {
                         this.$cookie.set('token', res.headers.authorization.substring(7))
                         this.$axios.defaults.headers.common.Authorization = "Bearer " + this.$cookie.get('token');
-                        this.$axios.get(this.$serverUrl + "/member/" + this.memberid)
+                        this.$axios.get(this.$serverUrl + "/member/" + this.memberid,)
                             .then((res2) =>{
                                 const str = JSON.stringify(res2.data.data);
                                 this.$cookie.set('member', str);
@@ -97,6 +97,7 @@ export default {
                         })
                     }
                 }).catch((err) => {
+                    alert("로그인 할 수 없습니다. 관리자에게 문의하세요.")
                 if (err.message.indexOf('Network Error') > -1) {
                     alert('서버와 통신이 불안정합니다.');
                 }
