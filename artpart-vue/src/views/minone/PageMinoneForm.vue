@@ -40,25 +40,23 @@
             </div>
 
             <div class="input-group mb-3" >
-                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >처리상태</span>
-                <input type="text" class="form-control" v-model="minstatus" required style=" width: 15px; height: 32px;" placeholder="처리중">
+                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >처리 상황</span>
+                <input type="text" class="form-control" v-model="minstatus" required style=" width: 15px; height: 32px;" placeholder="처리 예정입니다" >
             </div>
 
             <div class="input-group mb-3" >
-                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >관리자답변</span>
-                <input type="text" class="form-control" v-model="minres" required style=" width: 15px; height: 32px;"  placeholder="처리중">
+                <span class="input-group-text" id="inputGroup-sizing-sm2" style=" height: 32px;" >관리 답변</span>
+                <input type="text" class="form-control" v-model="minres" required style=" width: 15px; height: 32px;"  placeholder="답변 예정입니다" >
             </div>
-
-
 
 
             <div class="submit-button">
             <button class="btn" v-on:click="regMinone"
-            style="background-color: #EBC07F; color:rgb(36, 36, 36); text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">
+            style="background-color: #EBC07F; color:rgb(36, 36, 36); 
+            text-align:center; font-family:TheJamsil5Bold; font-size: 15px; width: 760px; height: 32px; ">
             Enter
             </button>        
             </div>
-
 
           </div> <!-- back-box close-->
         </div> <!--background close-->
@@ -68,60 +66,59 @@
   
   
   
-  <script>
-  export default {
-  name: 'PageMinoneForm',
-  data() {
-      return {    //초기화
-        requestBody: this.$route.query,
+<script>
+export default {
+name: 'PageMinoneForm',
+data() {
+    return {    //초기화
+      requestBody: this.$route.query,
+      memberidx: '',
+      mintitle: '',
+      mintype: '',
+      minstatus: '',
+      minres: '',
+      mincategory: '',
+    }
+},
+  methods: {
+  regMinone() {
+    const member = JSON.parse(this.$cookie.get('member'))
+    let apiUrl = this.$serverUrl + '/newmin'
 
-        memberidx: '',
-        mintitle: '',
-        mintype: '',
-        minstatus: '',
-        minres: '',
-        mincategory: '',
-      }
-  },
-  
-    methods: {
+      this.form = {
+        "memberidx":  member.member_idx,    //멤버idx
+        "mintitle" : this.mintitle,         //민원제목
+        "mintype" : this.mintype,           //민원내용
+        "minstatus": this.minstatus,        //처리상황
+        "minres" : this.minres,             //관리자답변
+        "mincategory":this.mincategory,     //카테고리
+      },
 
+      console.log(this.form)
 
-        regMinone() {
-          const member = JSON.parse(this.$cookie.get('member'))
-          let apiUrl = this.$serverUrl + '/newmin'
+      //등록
+      this.$axios.post(apiUrl, this.form)
+        .then(() => {
+            alert('글이 저장되었습니다.')
+            this.fnList();
+          }).catch((err) => {
+            if (err.message.indexOf('Network Error') > -1) {
+              alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+            }//if
+          })
+        },//regMinone
 
-            this.form = {
-              "memberidx":  member.member_idx,   //멤버idx
-              "mintitle" : this.mintitle,         //민원제목
-              "mintype" : this.mintype,           //민원내용
-              "minstatus": this.minstatus,        //처리상황
-              "minres" : this.minres,             //관리자답변
-              "mincategory":this.mincategory,     //카테고리
-            },
+        //글 저장 후 페이지이동
+        fnList(){ 
+        delete this.requestBody.id
+        this.$router.push({
+            path: './pagemyminone',   //이동할 url 지정
+            query: this.requestBody
+        })
+        },
 
-            console.log(this.form)
-
-            //등록
-            this.$axios.post(apiUrl, this.form)
-              .then(() => {
-                  alert('글이 저장되었습니다.')
-
-                }).catch((err) => {
-                  if (err.message.indexOf('Network Error') > -1) {
-                    alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
-                  }//if
-                })
-              }//regMinone
-
-
-
-            }//methods
-          }//export default
-        
-      
-
-
+      }//methods
+    }//export default
   </script>
   
   
@@ -158,7 +155,7 @@
     padding-top: 20px;
     background-color: #ebe9e9;
     width: 800px;
-    height: 150vh;                 /* 폼 높이 */
+    height: 1000px;                 /* 폼 높이 */
     overflow: hidden;
     margin:auto;
     background-size: cover;

@@ -16,7 +16,8 @@ import SeesulPlayground from '@/views/seesul/SeesulPlayground.vue'
 import NoticeList from '@/views/notice/NoticeList.vue'
 import NoticeDetail from '@/views/notice/NoticeDetail.vue'
 
-//민원
+//민원 
+import PageMinUpdate from '@/views/minone/PageMinUpdate.vue'
 import PageMinone from '@/views/minone/PageMinone.vue'
 import PageMinoneForm from '@/views/minone/PageMinoneForm.vue'
 import PageMyMinone from '@/views/minone/PageMyMinone.vue'
@@ -129,25 +130,31 @@ const routes = [
   //----------------------------------------------
   //민원
 
-  //민원카테고리(메인)
+  //민원카테고리(리스트로 이동)
   {
-    path: '/minone/pageminone',
+    path: '/minone/pageminone',  
     name: 'PageMinone',
     component: PageMinone
   },
-  //민원글쓰기
+  //민원업데이트
   {
-    path: '/minone/pageminoneform',
+    path: '/minone/pageminupdate',  
+    name: 'PageMinUpdate',
+    component: PageMinUpdate
+  },
+  //글쓰기로 이동
+  {
+    path: '/minone/pageminoneform', 
     name: 'PageMinoneForm',
     component: PageMinoneForm
   },
-  //내민원 목록
+  //리스트로 이동
   {
-    path: '/minone/pagemyminone',
+    path: '/minone/pagemyminone', 
     name: 'PageMyMinone',
     component: PageMyMinone
   },
-  //내민원 상세보기
+  //글 상세정보 조회
   {
     path: '/minone/pagemyminoneform',
     name: 'PageMyMinoneForm',

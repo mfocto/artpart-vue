@@ -4,7 +4,7 @@
   <div class="navbar-nav ml-auto">
     <div class="nav-item text-nowrap">
       <router-link class="nav-link px-3" to="/" v-on:click="clear">로그아웃</router-link>
-      <router-link class="nav-link px-3" to="#">마이페이지</router-link>
+      <router-link class="nav-link px-3" to="/mypage">마이페이지</router-link>
     </div>
   </div>
 </header>

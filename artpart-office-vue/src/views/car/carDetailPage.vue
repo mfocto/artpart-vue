@@ -7,48 +7,47 @@
   </div>
       <br>
       <br>
-      <div align="left" class="jb-header" ><h2>차량 상세 조회</h2> 
+      <div align="left" class="jb-header" ><h2>차량 상세 조회</h2>
       </div>
 
   <div>
     <table style="width:100%; border : 1px solid #000 ;">
       <tr style="border : 1px solid #000 ;">
-        <td> <font size="5">동호수 or 직원번호 </font></td>
+        <td>동호수 or 직원번호</td>
         <td>
-          <span v-if="member_carid.memberdong === '직원'"> {{emp_carid}} </span>
-          <span v-else-if="emp_carid.emp_name === '입주민'">{{member_carid}}</span>
-          <span v-else>왜 이따구로 출력돼??</span>
-
+          <span>
+            {{emp_carid || " "}} {{member_carid || " "}}
+          </span>
         </td>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <td>차량 전화 번호 </td>
-        <td>{{ car_phone }}
+        <td>{{ car_phone || " "}}
         </td>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <td>차량구분</td>
-        <td>{{ car_division_id }}</td>
+        <td>{{ car_division_id || " "}}</td>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <td>차량번호</td>
-        <td>{{ car_number }}</td>
+        <td>{{ car_number || " "}}</td>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <td>차종</td>
-        <td>{{ car_type }}</td>
+        <td>{{ car_type || " "}}</td>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <td>비고</td>
-        <td>{{ car_note }}</td>
+        <td>{{ car_note || " "}}</td>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <th>등록일시</th>
-        <th>{{ car_enrolldate }}</th>
+        <th>{{ car_enrolldate || " "}}</th>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <th>방문시간</th>
-        <th>{{ car_startdate }} ~ {{ car_enddate }}</th>
+        <th>{{ car_startdate || " "}} ~ {{ car_enddate || " "}}</th>
       </tr>
     </table>
   </div>
@@ -67,75 +66,111 @@ export default {
   data(){
     return{
       requestBody: this.$route.query,
-      id:this.$route.query.car_idx,
-
-      member_carid:'',
-      emp_carid:'',
-      car_phone:'',
-      car_division_id:'',
-      car_number:'',
-      car_type:'',
-      car_note:'',
-      car_enrolldate:'',
-      car_startdate:'',
-      car_enddate:''
+      id: this.$route.query.car_idx,
+      car_number: '',
+      member_carid: '',
+      emp_carid: '',
+      car_division_id: '',
+      car_phone: '',
+      car_type: '',
+      car_note: '',
+      car_enrolldate: '',
+      car_startdate: '',
+      car_enddate: ''
     };
 
   },
-  mounthed(){
+  mounted(){
     this.fnGetCar();
   },
   methods:{
     fnGetCar(){
-      this.$axios.get(this.$serverUrl +"/car/"+this.id,{
-        params: this.requestBody
-      }).then(response => {
-        this.car_phone = response.data.car_phone;
-        this.car_division_id = response.data.car_division_id;
-        this.car_number = response.data.car_number;
-        this.car_type = response.data.car_type;
-        this.car_note = response.data.car_note;
-        this.car_enrolldate = response.data.car_enrolldate;
-        this.car_startdate = response.data.car_startdate;
-        this.car_enddate = response.data.car_enddate;
-        this.member_carid = response.data.member_carid.memberdong + " - " +response.data.member_carid.memberho;
-        this.emp_carid = response.data.emp_carid.emp_name;
-      }).catch(err => {
-        console.error(err);
-      });
+      this.$axios
+          .get(this.$serverUrl + "/car/" + this.id, {
+            params: this.requestBody
+          })
+          .then(response => {
+            this.car_phone = response.data.car_phone || ' '
+            this.car_division_id = response.data.car_division_id || ' '
+            this.car_number = response.data.car_number || ' '
+            this.car_type = response.data.car_type || ' '
+            this.car_note = response.data.car_note || ' '
+            this.car_enrolldate = response.data.car_enrolldate || ' '
+            if(!this.car_startdate){
+              this.car_startdate = ''
+            }else {
+              this.car_startdate = response.data.car_startdate
+            }
+            if(!this.car_enddate){
+              this.car_enddate = ''
+            }else{
+              this.car_enddate = response.data.car_enddate
+            }
+            this.car_enddate = response.data.car_enddate || ' '
+                // member_carid에 대한 null 값 처리
+            if (
+                response.data.member_carid &&
+                response.data.member_carid.memberdong &&
+                response.data.member_carid.memberho
+               ) {
+                this.member_carid =
+               response.data.member_carid.memberdong +
+                      " - " +
+               response.data.member_carid.memberho;
+            } else {
+               this.member_carid = ' ';
+            }
+
+            // emp_carid에 대한 null 값 처리
+            if (response.data.emp_carid !== null) {
+               this.emp_carid = response.data.emp_carid.emp_name;
+            } else {
+                 this.emp_carid = '';
+            }
+
+
+          })
+          .catch(err => {
+            console.error(err);
+          });
     },
     fnList(){
-      delete this.requestBody.id
+      delete this.requestBody.id;
       this.$router.push({
         path: './list',
         query: this.requestBody
-      })
+      });
     },
     fnUpdate(){
-      if(this.member_carid === 1){
-      this.$router.push({
-        path: './adminwrite',
-        query: this.requestBody})
-      }else if(this.emp_carid === 1){
+      if (this.$route.query.member_carid === '1') { // 수정: 숫자 1 대신 문자열 '1'로 변경
+        this.$router.push({
+          path: './adminwrite',
+          query: this.requestBody
+        });
+      } else if (this.$route.query.emp_carid === '1') { // 수정: 숫자 1 대신 문자열 '1'로 변경
         this.$router.push({
           path: './memberwrite',
-          query: this.requestBody})
-      }else{
+          query: this.requestBody
+        });
+      } else {
         this.$router.push({
           path: './write',
-          query: this.requestBody})
+          query: this.requestBody
+        });
       }
     },
     fnDelete(){
-      if(!confirm("삭제하시겠습니까?")) return
+      if (!confirm("삭제하시겠습니까?")) return;
 
-      this.$axios.delete(this.$serverUrl + '/car/' + this.id, {})
+      this.$axios
+          .delete(this.$serverUrl + '/car/' + this.id, {})
           .then(() => {
-            alert('삭제되었습니다.')
+            alert('삭제되었습니다.');
             this.fnList();
-          }).catch((err) => {
-        console.log(err);
-      })
+          })
+          .catch(err => {
+            console.log(err);
+          });
     }
 
   }

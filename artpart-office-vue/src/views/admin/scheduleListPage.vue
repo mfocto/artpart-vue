@@ -3,7 +3,7 @@
       <div  align="left" class="jb-header">
         <h1>직원 관리</h1>
       </div> <br><br>
-      <div align="left" class="jb-header" ><h2>직원 목록&nbsp;<div class="button1" style="float: right;" >
+      <div align="left" class="jb-header" ><h2>직원 스케줄&nbsp;<div class="button1" style="float: right;" >
         <button type="button" class="btn btn-dark" v-on:click="fnWrite">등록</button>
       </div></h2></div>
     <div id="calendar"></div>
@@ -15,7 +15,7 @@ import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from '@fullcalendar/list';
-import axios from "axios";
+
 
 export default {
   mounted() {
@@ -27,7 +27,7 @@ export default {
         headerToolbar: {
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek,listMonth"
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth"
         },
         initialView: "dayGridMonth",
         events,
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     getSchedule() {
-      return axios
+      return this.$axios
           .get("/schedule/list")
           .then((response) => {
             return response.data.data.map((event) => ({
