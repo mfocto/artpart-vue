@@ -97,7 +97,7 @@
                 <label for="lastName" class="form-label">그 외 관리비</label>
                 <input type="number" class="form-control" v-model="etc2">
             </div>
-            <button @click="updateFee()">update</button>
+            <button @click="updateFee(this.dong, this.ho)">update</button>
             <button @click="closePopup">Close</button>
         </div>
 
@@ -164,6 +164,7 @@ export default {
         },
         toggleUp(idx) {
             this.updateIdx = idx;
+            this.date = this.list[idx].date;
             this.dong = this.list[idx].dong;
             this.ho = this.list[idx].ho;
             this.gen = this.list[idx].gen;
@@ -178,16 +179,29 @@ export default {
         closePopup() {
             this.showPopup = false;
         },
-        updateFee() {
-            this.list[this.updateIdx].gen = this.gen2;
-            this.list[this.updateIdx].heat = this.heat2;
-            this.list[this.updateIdx].onsu = this.onsu2;
-            this.list[this.updateIdx].gas = this.gas2;
-            this.list[this.updateIdx].elec = this.elec2;
-            this.list[this.updateIdx].water = this.water2;
-            this.list[this.updateIdx].etc = this.etc2;
-            this.list[this.updateIdx].sum = this.gen2+this.heat2+this.onsu2+this.gas2+this.elec2+this.water2+this.etc2;
-            this.showPopup = false;
+        updateFee(dong, ho) {
+            const data = {
+                dong,
+                ho,
+                date:this.date,
+                gen: this.gen2,
+                heat: this.heat2,
+                onsu: this.onsu2,
+                gas: this.gas2,
+                elec: this.elec2,
+                water: this.water2,
+                etc: this.etc2
+            }
+
+            this.$axios.patch(this.$serverUrl + "/account/payment", data)
+                .then((res)=>{
+                    console.log(JSON.stringify(res.data))
+                    this.showPopup = false;
+                    this.getFeeList();
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
         }
 
     }

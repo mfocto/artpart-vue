@@ -2,18 +2,7 @@
     <div class="col-md-7 col-lg-8" style="margin:0 auto; width: 100%;">
         <h2 class="mb-3">월계표</h2>
         <form class="needs-validation" @submit.prevent="insertMReport">
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label for="firstName" class="form-label">직급</label> &nbsp; &nbsp;
-                    <input type="text" name="permanentId" v-model="permanentId" required="true" readonly>
-                </div>
 
-                <div class="col-sm-6">
-                    <label for="firstName" class="form-label">성명</label> &nbsp;&nbsp;
-                    <input type="text" v-model="name" required="true" readonly>
-
-                </div>
-            </div>
             <hr class="my-4">
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
