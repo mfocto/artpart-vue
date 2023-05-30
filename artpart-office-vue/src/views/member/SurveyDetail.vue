@@ -87,7 +87,7 @@
             </thead>
             <thead>
               <tr>      
-                <th scope="col">인원</th>   <td scope="col">{{ membercount }}</td>   <td> {{answer1count+answer2count+answer3count+answer4count+answer5count}}명({{((answer1count+answer2count+answer3count+answer4count+answer5count)/membercount)*100}}%)</td>
+                <th scope="col">인원</th>   <td scope="col">{{ membercount }}</td>   <td> {{answer1count+answer2count+answer3count+answer4count+answer5count}}명({{(((answer1count+answer2count+answer3count+answer4count+answer5count)/membercount)*100).toFixed(1)}}%)</td>
               </tr>
             </thead>
 
