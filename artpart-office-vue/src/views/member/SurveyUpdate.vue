@@ -16,7 +16,7 @@
                 <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="title" placeholder="제목 입력" /></th>
               </tr>
               <tr>
-                  <th scope style="text-align:left;">등록제목</th>
+                  <th scope style="text-align:left;">카테고리</th>
                   <th scope="col" style="text-align:left;" colspan="3"><input type="text" style="width: 30%" v-model="category" placeholder="카테고리 입력" /></th>
               </tr>
               <tr>
