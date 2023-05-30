@@ -248,7 +248,6 @@
       const member = JSON.parse(this.$cookie.get('member'));
       console.log(member);
       const id = member.member_idx
-      console.log('m111' + member.member_idx);
       this.$axios.get(this.$serverUrl + "/payment/list/" + id, {
       params: this.requestbody,
       headers: {}
