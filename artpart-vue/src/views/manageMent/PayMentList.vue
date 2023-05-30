@@ -229,6 +229,7 @@
     };
   },
     mounted(){
+      
       this.payMentList();
       this.$dayjs = dayjs; // dayjs를 Vue 인스턴스의 속성으로 등록합니다
       this.$dayjs.locale('ko'); // 사용할 로케일을 설정합니다
@@ -244,7 +245,11 @@
       return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       },
       payMentList() {
-      this.$axios.get(this.$serverUrl + "/payment/list", {
+      const member = JSON.parse(this.$cookie.get('member'));
+      console.log(member);
+      const id = member.member_idx
+      console.log('m111' + member.member_idx);
+      this.$axios.get(this.$serverUrl + "/payment/list/" + id, {
       params: this.requestbody,
       headers: {}
       
@@ -306,6 +311,7 @@
     },
     options: this.options,
       });
+      
       //우리동 관리비
     },change1(){
       document.getElementById('mydong').style.display = 'block';
