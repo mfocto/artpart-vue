@@ -16,21 +16,6 @@
         <td>동호수 or 직원번호</td>
         <td>
           <span>
-            ??
-            {{ !emp_carid || emp_carid === '1' ? '1'+member_carid : '왜' }}
-            {{ !member_carid || member_carid === '1' ? '2'+emp_carid : '뭐' }}
-            {{ emp_carid && emp_carid !== '1' && member_carid && member_carid !== '1' ? "기타"+member_carid + ' ' + emp_carid : '이거 맞아' }}
-          </span>
-        </td>
-        <td>
-          ????
-          <span v-if="member_carid.memberdong === '직원' || member_carid === '1'|| emp_carid === null"> {{emp_carid || " "}} </span>
-          <span v-else-if="emp_carid.emp_name === '입주민' || emp_carid === '1' ||emp_carid === null">{{member_carid || " "}}</span>
-          <span v-else>입력정보가 없습니다 다시 확인해주세요</span>
-        </td>
-        <td>
-          <span>
-            ??????
             {{emp_carid || " "}} {{member_carid || " "}}
           </span>
         </td>
@@ -111,7 +96,16 @@ export default {
             this.car_type = response.data.car_type || ' '
             this.car_note = response.data.car_note || ' '
             this.car_enrolldate = response.data.car_enrolldate || ' '
-            this.car_startdate = response.data.car_startdate || ' '
+            if(!this.car_startdate){
+              this.car_startdate = ''
+            }else {
+              this.car_startdate = response.data.car_startdate
+            }
+            if(!this.car_enddate){
+              this.car_enddate = ''
+            }else{
+              this.car_enddate = response.data.car_enddate
+            }
             this.car_enddate = response.data.car_enddate || ' '
                 // member_carid에 대한 null 값 처리
             if (
@@ -124,11 +118,11 @@ export default {
                       " - " +
                response.data.member_carid.memberho;
             } else {
-               this.member_carid = '';
+               this.member_carid = ' ';
             }
 
             // emp_carid에 대한 null 값 처리
-            if (response.data.emp_carid && response.data.emp_carid.emp_name) {
+            if (response.data.emp_carid !== null) {
                this.emp_carid = response.data.emp_carid.emp_name;
             } else {
                  this.emp_carid = '';

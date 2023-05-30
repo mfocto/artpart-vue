@@ -68,7 +68,7 @@
       </tr>
       <tr style="border : 1px solid #000 ;">
         <td>비밀번호</td>
-        <td><input style="width:250px;height:30px;" id="emp_paw" type="pasword" v-model="emp_paw" placeholder="사원 비밀번호를 입력 하시오"></td>
+        <td><input style="width:250px;height:30px;" id="emp_paw" type="password" v-model="emp_paw" placeholder="사원 비밀번호를 입력 하시오"></td>
       </tr>
       <tr style="border : 1px solid #000 ;">
         <td>주소</td>
