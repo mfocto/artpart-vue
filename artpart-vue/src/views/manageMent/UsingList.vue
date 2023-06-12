@@ -106,8 +106,10 @@ export default {
               page: this.page,
               size: this.size
           }
-
-          this.$axios.get(this.$serverUrl + "/using/list", {
+          const member = JSON.parse(this.$cookie.get('member'));
+          console.log(member);
+          const id = member.member_idx
+          this.$axios.get(this.$serverUrl + "/using/list/" + id, {
               params: this.requestBody,
               headers: {}
           }).then((res) => {
